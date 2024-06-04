@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class RegisterComponent {
   public form: FormGroup;
   private authSubscription: Subscription;
+  hideRequiredControl = new FormControl(false);
   hide = true;
   constructor(
     // private authService: AuthService,

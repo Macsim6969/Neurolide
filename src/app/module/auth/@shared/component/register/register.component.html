@@ -39,8 +39,7 @@
     </div>
 
     <div class="check-login">
-      <input type="checkbox">
-      <p>Remember data</p>
+      <mat-checkbox [formControl]="hideRequiredControl">Remember data</mat-checkbox>
     </div>
 
     <button [disabled]="form.invalid" type="submit" class="register" mat-button>Sign up</button>
