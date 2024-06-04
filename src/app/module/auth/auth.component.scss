@@ -1,0 +1,45 @@
+.auth {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  gap: 39px;
+
+  .auth_logo {
+    background: url('../../../assets/images/auth/auth_bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: auto;
+    max-width: 1195px;
+    position: relative;
+
+    .auth_logo_inner {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      position: absolute;
+      align-items: center;
+      right: 174px;
+      top: 223.91px;
+
+      .logo {
+        max-width: 300px;
+      }
+
+      .title {
+        font-family: DM Sans;
+        font-size: 10rem;
+        font-weight: 400;
+        line-height: 13.02px;
+        text-align: left;
+        color: #FFFFFF;
+
+      }
+    }
+
+  }
+}

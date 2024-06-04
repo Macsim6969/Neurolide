@@ -1,0 +1,120 @@
+.register {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  width: 410px;
+
+  .register-title {
+    text-align: center;
+    font-size: 3.6rem;
+    line-height: 5.6rem;
+    color: #000000;
+    padding-bottom: 10px;
+  }
+  .line {
+    border-bottom: 1px solid #E0E5F2;
+    width: 100%;
+    max-width: 388px;
+  }
+
+
+
+  .form {
+    max-width: 410px;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .form-header{
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .label {
+      font-size: 1.4rem;
+      line-height: 1.4rem;
+      color: #000000;
+      font-weight: 500;
+    }
+
+    input {
+      padding: 17px 0 19px 24px;
+      font-size: 1.4rem;
+      line-height: 1.4rem;
+      font-weight: 400;
+      outline: none;
+      border: 1px solid #E0E2E7;
+      border-radius: 16px;
+      color: #A3AED0;
+    }
+
+    .email,
+    .password {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .password {
+      margin-top: 23px;
+
+      .password_actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        border: 1px solid #E0E2E7;
+        border-radius: 16px;
+
+        input {
+          border: none;
+        }
+      }
+    }
+
+    .forget {
+      padding-top: 5px;
+      color: #2E65F3;
+      cursor: pointer;
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 20px;
+      width: 100%;
+      text-align: right;
+    }
+
+    .check-login {
+      padding: 29px 0 39px 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+
+      p {
+        color: #000000;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 2rem;
+      }
+    }
+
+    .login {
+      background: linear-gradient(90deg, #70A9FF 0%, #316EC9 57.5%, #0149B4 100%);
+      border-radius: 16px;
+      padding: 18.5px 91.5px  ;
+      display: flex;
+      flex: 1;
+      max-width: 218px;
+      font-size: 1.4rem;
+      color: #FFFFFF;
+    }
+  }
+
+}

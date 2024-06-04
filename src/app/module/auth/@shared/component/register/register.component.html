@@ -1,0 +1,44 @@
+<!-- <mat-card class="register">
+  <h3 class="register-title">Rejestracja</h3>
+  <div class="line"></div>
+
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-header">
+      <input placeholder="Nazwa" type="text" formControlName="name">
+      <input placeholder="E-mail" type="email" formControlName="email">
+      <div *ngIf="form.get('email').invalid && form.get('email').touched">
+        <small style="color: red">Email invalid</small>
+      </div>
+    </div>
+    <div class="email">
+      <mat-label class="label">Hasło</mat-label>
+      <input matInput
+             type="password"
+             placeholder="Hasło"
+             required formControlName="password">
+      <div *ngIf="form.get('password').invalid && form.get('password').touched">
+        <small style="color: red">Password invalid</small>
+      </div>
+    </div>
+    <div class="password">
+      <mat-label class="label">Potwierdź hasło*</mat-label>
+      <div class="password_actions">
+        <input  type="text" value="Hasło">
+        <button mat-icon-button>
+          <mat-icon svgIcon="view"></mat-icon>
+        </button>
+      </div>
+    </div>
+    <p class="forget">Forget password?</p>
+    <div class="check-login">
+      <input type="checkbox">
+      <p>Keep me logged in</p>
+    </div>
+
+    <button [disabled]="form.invalid" type="submit" class="login" mat-button>Login</button>
+  </form>
+
+
+
+
+</mat-card> -->
