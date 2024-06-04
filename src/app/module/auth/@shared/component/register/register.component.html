@@ -1,44 +1,52 @@
-<!-- <mat-card class="register">
-  <h3 class="register-title">Rejestracja</h3>
-  <div class="line"></div>
+<mat-card class="register">
+  <h3 class="register-title">Registration</h3>
 
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
-    <div class="form-header">
-      <input placeholder="Nazwa" type="text" formControlName="name">
-      <input placeholder="E-mail" type="email" formControlName="email">
+    <div class="form-rules">
+      <button mat-button class="rules">Affiliate</button>
+      <button mat-button class="rules">Brand</button>
+    </div>
+    <div class="name">
+      <mat-label class="label">Name</mat-label>
+      <input placeholder="Name" type="text" formControlName="name">
+    </div>
+    <div class="email">
+      <mat-label class="label">Email</mat-label>
+      <input matInput type="email" placeholder="Email" required formControlName="Email">
       <div *ngIf="form.get('email').invalid && form.get('email').touched">
         <small style="color: red">Email invalid</small>
       </div>
+
     </div>
+
     <div class="email">
-      <mat-label class="label">Hasło</mat-label>
-      <input matInput
-             type="password"
-             placeholder="Hasło"
-             required formControlName="password">
+      <mat-label class="label">Password</mat-label>
+      <input matInput type="password" placeholder="password" required formControlName="password">
       <div *ngIf="form.get('password').invalid && form.get('password').touched">
         <small style="color: red">Password invalid</small>
       </div>
     </div>
     <div class="password">
-      <mat-label class="label">Potwierdź hasło*</mat-label>
-      <div class="password_actions">
-        <input  type="text" value="Hasło">
-        <button mat-icon-button>
-          <mat-icon svgIcon="view"></mat-icon>
+      <mat-label class="label">Repeat the password</mat-label>
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-      </div>
-    </div>
-    <p class="forget">Forget password?</p>
-    <div class="check-login">
-      <input type="checkbox">
-      <p>Keep me logged in</p>
+      </mat-form-field>
     </div>
 
-    <button [disabled]="form.invalid" type="submit" class="login" mat-button>Login</button>
+    <div class="check-login">
+      <input type="checkbox">
+      <p>Remember data</p>
+    </div>
+
+    <button [disabled]="form.invalid" type="submit" class="register" mat-button>Sign up</button>
   </form>
 
 
 
 
-</mat-card> -->
+</mat-card>

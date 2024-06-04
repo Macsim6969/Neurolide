@@ -5,6 +5,12 @@
   height: 100%;
   width: 100%;
   gap: 39px;
+  background-color: #FEF9F3;
+
+  .auth_content {
+    width: 38.2%;
+    height: 100%;
+  }
 
   .auth_logo {
     background: url('../../../assets/images/auth/auth_bg.png');
@@ -13,9 +19,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: auto;
-    max-width: 1195px;
+    max-width: 100%;
+    /* максимальная ширина будет равна ширине родительского контейнера */
     position: relative;
+    flex: 1;
 
     .auth_logo_inner {
       display: flex;
@@ -31,7 +38,6 @@
       }
 
       .title {
-        font-family: DM Sans;
         font-size: 10rem;
         font-weight: 400;
         line-height: 13.02px;

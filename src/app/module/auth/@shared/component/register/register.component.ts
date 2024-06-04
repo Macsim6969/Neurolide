@@ -9,30 +9,31 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  // public form: FormGroup;
-  // private authSubscription: Subscription;
-  // constructor(
-  //   private authService: AuthService,
-  //   private router: Router
-  // ) { }
-  // ngOnInit() {
-  //   this.form = new FormGroup<any>({
-  //     name: new FormControl('', [Validators.required]),
-  //     email: new FormControl('', [Validators.required, Validators.email]),
-  //     password: new FormControl(null, [Validators.required, Validators.minLength(8)])
-  //   })
-  // }
+  public form: FormGroup;
+  private authSubscription: Subscription;
+  hide = true;
+  constructor(
+    // private authService: AuthService,
+    private router: Router
+  ) { }
+  ngOnInit() {
+    this.form = new FormGroup<any>({
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(8)])
+    })
+  }
 
-  // public submit() {
-  //   const formData = { ...this.form.value }
-  //   this.form.reset()
+  public submit() {
+    const formData = { ...this.form.value }
+    this.form.reset()
 
-  //   this.authSubscription = this.authService.sigUp(formData).subscribe((data) => {
-  //     data ? this.router.navigate(['auth/login']).then() : null;
-  //   })
-  // }
+    // this.authSubscription = this.authService.sigUp(formData).subscribe((data) => {
+    //   data ? this.router.navigate(['auth/login']).then() : null;
+    // })
+  }
 
-  // ngOnDestroy() {
-  //   this.authSubscription.unsubscribe();
-  // }
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
+  }
 }

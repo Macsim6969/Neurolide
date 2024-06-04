@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthComponent } from './auth.component';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterComponent } from 'src/app/module/auth/@shared/component/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './@shared/component/register/register.component';
+import { ShareModule } from '../../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -15,10 +17,14 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AuthComponent
+    AuthComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
+    ShareModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ]
 })
