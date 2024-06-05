@@ -34,7 +34,7 @@
       <mat-checkbox [formControl]="hideRequiredControl">Remember data</mat-checkbox>
     </div>
     <div class="footer_info">
-      <p>© 2022 Horizon UI. All Rights Reserved. Made with love by Simmmple!</p>
+      <p>© {{data.getFullYear()}} Horizon UI. All Rights Reserved. Made with love by Simmmple!</p>
     </div>
 
     <div *ngIf="form.get('email').invalid && form.get('email').touched">

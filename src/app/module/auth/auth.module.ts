@@ -8,11 +8,13 @@ import { ShareModule } from '../../shared/shared.module';
 import { AuthService } from './@shared/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthIconsService } from './@shared/services/authIcon.service';
+import { LoginComponent } from './@shared/component/login/login.component';
 
 const routes: Routes = [
   {
     path: '', component: AuthComponent, children: [
       { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent },
       { path: '**', redirectTo: 'register' }
     ]
   }
@@ -21,7 +23,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AuthComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

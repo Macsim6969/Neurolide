@@ -1,21 +1,16 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
-import { ThemePalette } from '@angular/material/core';
 import { AuthIconsService } from '../../services/authIcon.service';
-export interface Task {
-  name: string;
-  completed: boolean;
+import { Router } from '@angular/router';
 
-}
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
+export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   public data: Date = new Date();
   public form: FormGroup;
   public hideRequiredControl = new FormControl(false);
@@ -29,20 +24,16 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
   ) { }
   ngOnInit() {
     this.form = new FormGroup<any>({
-      name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
-      doublePassword: new FormControl('', [Validators.required, Validators.minLength(8)])
+      password: new FormControl(null, [Validators.required, Validators.minLength(8)])
     })
   }
 
   ngAfterViewInit(): void {
     if (localStorage.getItem('save')) {
       const data = JSON.parse(localStorage.getItem('save'))
-      this.form.value.name = data.name
       this.form.value.email = data.email
       this.form.value.password = data.password
-      this.form.value.doublePassword = data.password
       this.isRulesChoise = data.rules
 
       console.log(this.form.value)
