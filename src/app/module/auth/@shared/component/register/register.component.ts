@@ -2,19 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
   public form: FormGroup;
   private authSubscription: Subscription;
   hideRequiredControl = new FormControl(false);
   hide = true;
   constructor(
-    // private authService: AuthService,
+    private authService: AuthService,
     private router: Router
   ) { }
   ngOnInit() {
@@ -29,9 +30,10 @@ export class RegisterComponent {
     const formData = { ...this.form.value }
     this.form.reset()
 
-    // this.authSubscription = this.authService.sigUp(formData).subscribe((data) => {
-    //   data ? this.router.navigate(['auth/login']).then() : null;
-    // })
+    this.authSubscription = this.authService.sigUp(formData).subscribe((data) => {
+      console.log(data)
+      // data ? this.router.navigate(['auth/login']).then() : null;
+    })
   }
 
   ngOnDestroy() {

@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './@shared/component/register/register.component';
 import { ShareModule } from '../../shared/shared.module';
+import { AuthService } from './@shared/services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -24,8 +26,10 @@ const routes: Routes = [
     CommonModule,
     ShareModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  providers: [AuthService]
 })
 export class AuthModule { }

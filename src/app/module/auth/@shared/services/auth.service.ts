@@ -18,9 +18,7 @@ export interface AuthResponseData {
   registered?: boolean
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 
 export class AuthService {
   public user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
@@ -46,8 +44,8 @@ export class AuthService {
   resetPassword(email: string, newPassword: string) {
     return this.http.post<any>(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${environment.apiKey}`, {
       email: email,
-      newPassword: newPassword, // Correct the field name if needed
-      requestType: 'PASSWORD_RESET', // Specify the request type if required
+      newPassword: newPassword, 
+      requestType: 'PASSWORD_RESET', 
     });
   }
 
