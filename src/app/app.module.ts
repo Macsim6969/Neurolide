@@ -10,6 +10,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { storeReducers } from './store/reducers/store.reducers';
 import { BackendService } from './shared/services/backend.service';
+import { AuthGuard } from './shared/services/canActive.guard';
 ;
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -32,7 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [BackendService],
+  providers: [BackendService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
