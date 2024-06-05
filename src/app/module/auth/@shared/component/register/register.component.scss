@@ -2,7 +2,7 @@
   border: none;
   box-shadow: none;
   outline: none;
-  max-width: 454px;
+  min-width: 454px;
   padding-top: 81px;
   margin-left: calc(25.7rem);
   background-color: transparent;
@@ -15,8 +15,7 @@
   }
 
   .form {
-    max-width: 410px;
-    margin-top: 50px ;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -38,7 +37,7 @@
 
         outline: none;
         border: none;
-        
+
         font-size: 2rem;
         font-weight: 400;
         line-height: 2.35rem;
@@ -52,20 +51,21 @@
     }
 
     .label {
-      font-size: 1.4rem;
-      line-height: 1.4rem;
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 2.604rem;
       color: #000000;
-      font-weight: 500;
     }
 
     input {
-      padding: 17px 0 19px 24px;
-      font-size: 1.4rem;
-      line-height: 1.4rem;
+      background-color: transparent;
+      padding: 20px 0 20px 20px;
+      font-size: 2rem;
+      line-height: 2.35rem;
       font-weight: 400;
       outline: none;
-      border: 1px solid #E0E2E7;
-      border-radius: 16px;
+      border: 1px solid #A3AED0;
+      border-radius: 20px;
       color: #A3AED0;
     }
 
@@ -75,11 +75,11 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 13px;
+      gap: 10px;
+      margin-bottom: 30px;
     }
 
     .password {
-      margin-top: 23px;
 
       .password_actions {
         display: flex;
@@ -95,8 +95,19 @@
       }
     }
 
+    .doublePass {
+      position: relative;
+
+      button {
+        position: absolute;
+        right: 20px;
+        bottom: 10px;
+        z-index: 99;
+
+      }
+    }
+
     .check-login {
-      padding: 29px 0 39px 0;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -110,6 +121,18 @@
         font-weight: 400;
         line-height: 2rem;
       }
+    }
+
+    .footer_info {
+      margin-bottom: 20px;
+     p{
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 2.4rem;
+      letter-spacing: -0.02em;
+      color: #A3AED0;
+      margin: 0;
+     }
     }
 
     .register {

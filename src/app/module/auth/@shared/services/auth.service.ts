@@ -31,7 +31,7 @@ export class AuthService {
     private backendService: BackendService) {
   }
 
-  sigUp(form: { email: string, password: string, name: string }) {
+  sigUp(form: { email: string, password: string, name: string, rules: 'affiliate' | 'brand' }) {
     return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`, {
       email: form.email, password: form.password, returnSecureToken: true
     }).pipe(tap(resData => {
