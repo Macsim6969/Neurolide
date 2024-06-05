@@ -11,13 +11,10 @@ $Neuroline-accent: mat.define-palette(mat.$blue-palette, A200, A100, A400);
 $Neuroline-warn: mat.define-palette(mat.$blue-palette);
 
 // Создаём объект темы. Тема состоит из конфигураций для отдельных систем, таких как "цвет" или "типография".
-$Neuroline-theme: mat.define-light-theme((
-  color: (
-    primary: $Neuroline-primary,
-    accent: $Neuroline-accent,
-    warn: $Neuroline-warn,
-  )
-));
+$Neuroline-theme: mat.define-light-theme((color: (primary: $Neuroline-primary,
+        accent: $Neuroline-accent,
+        warn: $Neuroline-warn,
+      )));
 
 // Включаем стили темы для ядра и каждого компонента, используемого в вашем приложении.
 @include mat.all-component-themes($Neuroline-theme);
@@ -37,8 +34,12 @@ h6 {
 html,
 body {
   height: 100%;
-
   font-size: 10px;
+
+}
+
+* {
+  transition: 0.5s all ease;
 }
 
 body {
