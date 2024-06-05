@@ -11,9 +11,15 @@
     flex-direction: column-reverse;
   }
 
+
+
   .auth_content {
     width: 38.2%;
     height: 100%;
+
+    @media (max-width: 1124px) {
+      margin-top: 332px;
+    }
   }
 
   .auth_logo {
@@ -27,6 +33,16 @@
     /* максимальная ширина будет равна ширине родительского контейнера */
     position: relative;
     flex: 1;
+
+    @media (max-width: 1124px) {
+      position: absolute;
+      top: 0;
+      width: calc(100% - 50px);
+      right: 0;
+      .auth_logo_inner{
+        position: unset !important;
+      }
+    }
 
     .auth_logo_inner {
       display: flex;
