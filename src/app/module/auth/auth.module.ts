@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthIconsService } from './@shared/services/authIcon.service';
 import { LoginComponent } from './@shared/component/login/login.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { PopupInfoService } from './@shared/services/popupInfo.service';
 
 const routes: Routes = [
   {
@@ -36,6 +37,6 @@ const routes: Routes = [
     TranslateModule,
     RouterModule.forChild(routes)
   ],
-  providers: [AuthService, AuthIconsService]
+  providers: [AuthService, AuthIconsService, PopupInfoService]
 })
 export class AuthModule { }

@@ -129,4 +129,34 @@
     }
 
   }
+
+  .popup-info {
+    position: fixed;
+    right: 70px;
+    top: 100px;
+    border-radius: 16px;
+    padding: 12px;
+    background-color: #D1F5E4;
+
+    &.active {
+      transition: all 0.5s ease;
+      animation: open 0.5s;
+    }
+
+    p {
+      font-size: 2rem;
+    }
+  }
+}
+
+@keyframes open {
+  from {
+    /* pushes the sun down past the viewport */
+    transform: translateX(500px);
+  }
+
+  to {
+    /* returns the sun to its default position */
+    transform: translateX(0);
+  }
 }

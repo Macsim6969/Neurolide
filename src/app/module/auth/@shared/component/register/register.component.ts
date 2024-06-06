@@ -1,11 +1,12 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, take, timer } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { AuthIconsService } from '../../services/authIcon.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Form, Rules } from '../../interfaces/auth.interface';
+import { PopupInfoService } from '../../services/popupInfo.service';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +27,9 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
     private authService: AuthService,
     private authIconsService: AuthIconsService,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private popupInfoService: PopupInfoService,
+    private cd: ChangeDetectorRef
   ) { }
   ngOnInit() {
     this.initializeForm();
@@ -35,6 +38,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.initializeStorageDataForm();
+    this.cd.detectChanges();
   }
 
   private initializeForm() {
@@ -72,10 +76,15 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
     const formData = { ...this.form.value, rules: this.isRulesChoise }
 
     this.authSubscription = this.authService.sigUp(formData).subscribe((data) => {
-      data ? this.router.navigate(['auth/login']).then() : null;
-      if (this.hideRequiredControl && this.form.value) {
-        localStorage.setItem('save', JSON.stringify(formData))
-      }
+
+      this.popupInfoService._isAlert = true;
+      timer(300).pipe(take(1)).subscribe(() => {
+        data ? this.router.navigate(['/login']).then() : null;
+        if (this.hideRequiredControl && this.form.value) {
+          localStorage.setItem('save', JSON.stringify(formData))
+        }
+      })
+
     })
     this.form.reset()
   }

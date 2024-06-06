@@ -6,6 +6,7 @@ export interface UserData{
   address?: string
   number?: string
   image?: string
+  rules: string
 }
 
 export interface PeyementList{

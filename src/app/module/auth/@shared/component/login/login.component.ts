@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   public formData: Form;
   private authSubscription: Subscription;
   private translateSubscription: Subscription;
+  private dataUser;
+  public errorData: string;
   constructor(
     private authService: AuthService,
     private authIconsService: AuthIconsService,
@@ -57,6 +59,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
       this.form.value.email = data.email
       this.form.value.password = data.password
       this.isRulesChoise = data.rules
+      this.dataUser = data.rules
     }
   }
 
@@ -67,15 +70,20 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public submit() {
-    const formData = { ...this.form.value, rules: this.isRulesChoise }
+    if (this.isRulesChoise === this.dataUser) {
+      const formData = { ...this.form.value, rules: this.isRulesChoise }
 
-    this.authSubscription = this.authService.login(formData).subscribe((data) => {
-      data ? this.router.navigate(['/manager']).then() : null;
-      if (this.hideRequiredControl && this.form.value) {
-        localStorage.setItem('save', JSON.stringify(formData))
-      }
-    })
-    this.form.reset()
+      this.authSubscription = this.authService.login(formData).subscribe((data) => {
+        data ? this.router.navigate(['/manager']).then() : null;
+        if (this.hideRequiredControl && this.form.value) {
+          localStorage.setItem('save', JSON.stringify(formData))
+        }
+      })
+      this.form.reset()
+    } else {
+      this.errorData = 'Account has another rule'
+    }
+
   }
 
   ngOnDestroy() {
