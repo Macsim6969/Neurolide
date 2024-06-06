@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/services/canActive.guard';
 
 const routes: Routes = [
-  { path: 'manager', loadChildren: () => import('./module/manager/manager.module').then((m) => m.ManagerModule), canActivate: [AuthGuard] },
-  { path: '', loadChildren: () => import('./module/auth/auth.module').then((m) => m.AuthModule), canActivate: [AuthGuard] }
+  { path: 'manager', loadChildren: () => import('./module/manager/manager.module').then((m) => m.ManagerModule) },
+  { path: '', loadChildren: () => import('./module/auth/auth.module').then((m) => m.AuthModule) },
 ];
 
 @NgModule({

@@ -3,13 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
-import { ThemePalette } from '@angular/material/core';
 import { AuthIconsService } from '../../services/authIcon.service';
-export interface Task {
-  name: string;
-  completed: boolean;
 
-}
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
