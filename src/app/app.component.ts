@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -6,13 +6,13 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
 
   choiceLang: ['en', 'ua', 'ru'] = ['en', 'ua', 'ru'];
   constructor(
     private translate: TranslateService
   ) { }
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     if (this.translate.getBrowserLang() === this.choiceLang.find(e => e === this.translate.getBrowserLang())) {
       console.log(this.translate.getBrowserLang())
       this.translate.use(this.translate.getBrowserLang())
