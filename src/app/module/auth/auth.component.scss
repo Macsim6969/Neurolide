@@ -5,20 +5,70 @@
   height: 100%;
   width: 100%;
   gap: 39px;
-  background-color: #FEF9F3;
+  background-color: #FFFFFF;
 
   @media (max-width: 1124px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
+  .auth_logo_mobile {
+    display: none;
 
+
+    @media (max-width: 1124px) {
+      background: url('../../../assets/images/auth/auth_bg_mobile.png');
+      background-repeat: no-repeat;
+      background-size: 96% 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      min-height: 154px;
+      background-position: right;
+    }
+
+    .auth_logo_inner {
+      display: flex;
+      flex-direction: row;
+      gap: 14px;
+      position: absolute;
+      align-items: center;
+      left: 18px;
+      top: 33px;
+
+
+
+      .logo {
+        width: 68px;
+        height: 68px;
+        background: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+
+        img {
+          object-fit: cover;
+          width: 53px;
+          height: 56px;
+        }
+      }
+
+      .title {
+        font-size: 3.2rem;
+        line-height: 4.16rem;
+        color: #FFFFFF;
+      }
+    }
+
+  }
 
   .auth_content {
     width: 38.2%;
     height: 100%;
 
     @media (max-width: 1124px) {
-      margin-top: 332px;
+      width: 100%;
     }
   }
 
@@ -35,13 +85,7 @@
     flex: 1;
 
     @media (max-width: 1124px) {
-      position: absolute;
-      top: 0;
-      width: calc(100% - 50px);
-      right: 0;
-      .auth_logo_inner{
-        position: unset !important;
-      }
+      display: none;
     }
 
     .auth_logo_inner {

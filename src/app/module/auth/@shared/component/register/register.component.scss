@@ -15,6 +15,11 @@
     margin-left: calc(4.8rem);
   }
 
+  @media (max-width: 1124px) {
+    margin: 0 auto;
+    width: 95%;
+  }
+
   .register-title {
     text-align: center;
     font-size: 3.6rem;
