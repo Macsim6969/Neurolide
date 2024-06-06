@@ -48,3 +48,18 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 42px;
+
+  .right_block {
+    width: 100%;
+    background-image: url("./assets/images/main/main_page.png");
+    background-repeat: no-repeat;
+    background-size: 950px 455px;
+    background-position: top right;
+  }
+}

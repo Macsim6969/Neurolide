@@ -24,5 +24,23 @@
       "loginAccount": "Войти в аккаунт",
       "loginDescription": "Введите адрес электронной почты и пароль для входа в аккаунт!"
     }
-  }
+  },
+  "headerInfo": [
+    {
+      "title": "Індекс",
+      "color": "red"
+    },
+    {
+      "title": "Зачислення",
+      "color": "red"
+    },
+    {
+      "title": "Бюджет",
+      "color": "red"
+    },
+    {
+      "title": "Сповіщення",
+      "color": "red"
+    }
+  ]
 }
