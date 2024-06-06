@@ -13,9 +13,9 @@ export class AppComponent implements AfterViewInit {
     private translate: TranslateService
   ) { }
   ngAfterViewInit(): void {
-    if (this.translate.getBrowserLang() === this.choiceLang.find(e => e === this.translate.getBrowserLang())) {
-      console.log(this.translate.getBrowserLang())
-      this.translate.use(this.translate.getBrowserLang())
-    }
+    // if (this.translate.getBrowserLang() === this.choiceLang.find(e => e === this.translate.getBrowserLang())) {
+    //   console.log(this.translate.getBrowserLang())
+    //   this.translate.use(this.translate.getBrowserLang())
+    // }
   }
 }
