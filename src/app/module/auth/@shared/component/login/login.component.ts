@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { AuthIconsService } from '../../services/authIcon.service';
 import { Router } from '@angular/router';
+import { Rules, Form } from '../../interfaces/auth.interface';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -15,32 +17,52 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   public form: FormGroup;
   public hideRequiredControl = new FormControl(false);
   public hide = true;
-  public isRulesChoise: 'affiliate' | 'brand' = null;
+  public isRulesChoise: string = null;
+  public authRules: Rules[];
+  public formData: Form;
   private authSubscription: Subscription;
+  private translateSubscription: Subscription;
   constructor(
     private authService: AuthService,
     private authIconsService: AuthIconsService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) { }
   ngOnInit() {
+    this.initializeForm();
+    this.initializeDataFromJSON();
+  }
+
+  ngAfterViewInit(): void {
+    this.initializeStorageDataForm();
+  }
+
+  private initializeForm() {
     this.form = new FormGroup<any>({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(8)])
     })
   }
 
-  ngAfterViewInit(): void {
+  private initializeDataFromJSON() {
+    this.translateSubscription = this.translate.stream('auth').subscribe((data) => {
+      this.authRules = data.rules;
+      this.formData = data.form;
+    })
+  }
+
+  private initializeStorageDataForm() {
     if (localStorage.getItem('save')) {
       const data = JSON.parse(localStorage.getItem('save'))
       this.form.value.email = data.email
       this.form.value.password = data.password
       this.isRulesChoise = data.rules
-
-      console.log(this.form.value)
     }
   }
 
-  public choiseRules(rules: 'affiliate' | 'brand') {
+
+
+  public choiseRules(rules: string) {
     this.isRulesChoise = rules;
   }
 
@@ -58,5 +80,6 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
+    this.translateSubscription.unsubscribe();
   }
 }

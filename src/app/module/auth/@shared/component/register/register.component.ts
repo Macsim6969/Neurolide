@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { AuthIconsService } from '../../services/authIcon.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Form, Rules } from '../../interfaces/auth.interface';
 
 @Component({
   selector: 'app-register',
@@ -15,14 +17,27 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
   public form: FormGroup;
   public hideRequiredControl = new FormControl(false);
   public hide = true;
-  public isRulesChoise: 'affiliate' | 'brand' = null;
+  public isRulesChoise: string = null;
+  public authRules: Rules[];
+  public formData: Form;
+  private translateSubscription: Subscription;
   private authSubscription: Subscription;
   constructor(
     private authService: AuthService,
     private authIconsService: AuthIconsService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) { }
   ngOnInit() {
+    this.initializeForm();
+    this.initializeDataFromJSON();
+  }
+
+  ngAfterViewInit(): void {
+    this.initializeStorageDataForm();
+  }
+
+  private initializeForm() {
     this.form = new FormGroup<any>({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,7 +46,14 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
-  ngAfterViewInit(): void {
+  private initializeDataFromJSON() {
+    this.translateSubscription = this.translate.stream('auth').subscribe((data) => {
+      this.authRules = data.rules;
+      this.formData = data.form;
+    })
+  }
+
+  private initializeStorageDataForm() {
     if (localStorage.getItem('save')) {
       const data = JSON.parse(localStorage.getItem('save'))
       this.form.value.name = data.name
@@ -39,12 +61,10 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
       this.form.value.password = data.password
       this.form.value.doublePassword = data.password
       this.isRulesChoise = data.rules
-
-      console.log(this.form.value)
     }
   }
 
-  public choiseRules(rules: 'affiliate' | 'brand') {
+  public choiseRules(rules: string) {
     this.isRulesChoise = rules;
   }
 
@@ -62,5 +82,6 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
+    this.translateSubscription.unsubscribe();
   }
 }

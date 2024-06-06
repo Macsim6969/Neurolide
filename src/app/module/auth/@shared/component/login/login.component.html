@@ -1,29 +1,28 @@
 <mat-card class="register">
-  <h3 class="register-title">Login to the account</h3>
-  <p class="register-description">Enter e-mail and password to log in to the account!</p>
+  <h3 class="register-title" [innerHTML]="formData.loginAccount"></h3>
+  <p class="register-description" [innerHTML]="formData.loginDescription"></p>
 
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-rules">
-      <button type="button" mat-button class="rules" [ngClass]="{'active': isRulesChoise === 'affiliate'}"
-        (click)="choiseRules('affiliate')">Affiliate</button>
-      <button type="button" mat-button class="rules" [ngClass]="{'active': isRulesChoise === 'brand'}"
-        (click)="choiseRules('brand')">Brand</button>
+      <button *ngFor="let rule of authRules" type="button" mat-button class="rules"
+        [ngClass]="{'active': isRulesChoise === rule.rule}" (click)="choiseRules(rule.rule)">{{rule.data}}</button>
     </div>
 
     <div class="email">
-      <mat-label class="label">E-mail</mat-label>
-      <input matInput type="email" placeholder="Email" required formControlName="email" [value]="this.form.value.email">
+      <mat-label class="label" [innerHTML]="formData.email"></mat-label>
+      <input matInput type="email" [placeholder]="formData.email" required formControlName="email"
+        [value]="this.form.value.email">
     </div>
 
     <div class="password">
-      <mat-label class="label">Password</mat-label>
-      <input matInput type="password" placeholder="password" required formControlName="password"
+      <mat-label class="label" [innerHTML]="formData.password"></mat-label>
+      <input matInput type="password" [placeholder]="formData.password" required formControlName="password"
         [value]="this.form.value.password">
     </div>
 
 
     <div class="check-login">
-      <mat-checkbox [formControl]="hideRequiredControl">Remember data</mat-checkbox>
+      <mat-checkbox [formControl]="hideRequiredControl">{{formData.rememberData}}</mat-checkbox>
     </div>
 
     <div *ngIf="form.get('email').invalid && form.get('email').touched">
@@ -33,10 +32,9 @@
       <small style="color: red">Password invalid</small>
     </div>
 
-    <button [disabled]="form.invalid && (!this.isRulesChoise)" type="submit" class="login" mat-button>Sign
-      in</button>
+    <button [disabled]="form.invalid && (!this.isRulesChoise)" type="submit" class="login" mat-button [innerHTML]="formData.login"></button>
   </form>
   <div class="footer_info">
-    <p>© {{data.getFullYear()}} Horizon UI. All Rights Reserved. Made with love by Simmmple!</p>
+    <p><span>© </span> <span>{{data.getFullYear()}} </span> <span [innerHTML]="formData.formDescription"></span> </p>
   </div>
 </mat-card>

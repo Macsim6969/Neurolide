@@ -1,29 +1,30 @@
 <mat-card class="register">
-  <h3 class="register-title">Registration</h3>
+  <h3 class="register-title" [innerHTML]="formData.registration"></h3>
 
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-rules">
-      <button type="button" mat-button class="rules" [ngClass]="{'active': isRulesChoise === 'affiliate'}"
-        (click)="choiseRules('affiliate')">Affiliate</button>
-      <button type="button" mat-button class="rules" [ngClass]="{'active': isRulesChoise === 'brand'}"
-        (click)="choiseRules('brand')">Brand</button>
+      <button *ngFor="let rule of authRules" type="button" mat-button class="rules"
+        [ngClass]="{'active': isRulesChoise === rule.rule}" (click)="choiseRules(rule.rule)">{{rule.data}}</button>
     </div>
     <div class="name">
-      <mat-label class="label">Name</mat-label>
-      <input placeholder="Name" type="text" formControlName="name" [value]="this.form.value.name">
+      <mat-label class="label" [innerHTML]="formData.name"></mat-label>
+      <input [placeholder]="formData.name" type="text" formControlName="name" [value]="this.form.value.name">
     </div>
     <div class="email">
-      <mat-label class="label">E-mail</mat-label>
-      <input matInput type="email" placeholder="Email" required formControlName="email" [value]="this.form.value.email">
+      <mat-label class="label" [innerHTML]="formData.email"></mat-label>
+      <input matInput type="email" [placeholder]="formData.email" required formControlName="email"
+        [value]="this.form.value.email">
     </div>
 
     <div class="email">
-      <mat-label class="label">Password</mat-label>
-      <input matInput type="password" placeholder="password" required formControlName="password" [value]="this.form.value.password">
+      <mat-label class="label" [innerHTML]="formData.password"></mat-label>
+      <input matInput type="password" [placeholder]="formData.password" required formControlName="password"
+        [value]="this.form.value.password">
     </div>
     <div class="password doublePass">
-      <mat-label class="label">Repeat the password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" placeholder="password" formControlName="doublePassword" [value]="this.form.value.doublePassword">
+      <mat-label class="label" [innerHTML]="formData.repeatPassword"></mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [placeholder]="formData.password"
+        formControlName="doublePassword" [value]="this.form.value.doublePassword">
       <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide">
         <mat-icon [svgIcon]="hide ? 'view' : 'view'"></mat-icon>
@@ -31,10 +32,10 @@
     </div>
 
     <div class="check-login">
-      <mat-checkbox [formControl]="hideRequiredControl">Remember data</mat-checkbox>
+      <mat-checkbox [formControl]="hideRequiredControl">{{formData.rememberData}}</mat-checkbox>
     </div>
     <div class="footer_info">
-      <p>© {{data.getFullYear()}} Horizon UI. All Rights Reserved. Made with love by Simmmple!</p>
+      <p><span>© </span> <span>{{data.getFullYear()}} </span> <span [innerHTML]="formData.formDescription"></span> </p>
     </div>
 
     <div *ngIf="form.get('email').invalid && form.get('email').touched">
@@ -45,7 +46,7 @@
     </div>
 
     <button [disabled]="form.invalid && form.value.password !== form.value.doublePassword && (!this.isRulesChoise)"
-      type="submit" class="register" mat-button>Sign up</button>
+      type="submit" class="register" mat-button [innerHTML]="formData.reg"></button>
   </form>
 
 

@@ -9,6 +9,7 @@ import { AuthService } from './@shared/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthIconsService } from './@shared/services/authIcon.service';
 import { LoginComponent } from './@shared/component/login/login.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   {
@@ -32,6 +33,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    TranslateModule,
     RouterModule.forChild(routes)
   ],
   providers: [AuthService, AuthIconsService]

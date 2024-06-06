@@ -1,3 +1,28 @@
 {
-  "ter": "EN"
+  "logo": "Neurolide",
+  "auth": {
+    "rules": [
+      {
+        "data": "Affiliate",
+        "rule": "afiiliat"
+      },
+      {
+        "data": "Brand",
+        "rule": "brand"
+      }
+    ],
+    "form": {
+      "registration": "Registration",
+      "name": "Name",
+      "email": "E-mail",
+      "password": "Password",
+      "repeatPassword": "Repeat the password",
+      "rememberData": "Remember data",
+      "formDescription": "Horizon UI. All Rights Reserved. Made with love by Simmmple!",
+      "reg": "Sign up",
+      "login": "Sign in",
+      "loginAccount": "Login to the account",
+      "loginDescription": "Enter e-mail and password to log in to the account!"
+    }
+  }
 }
