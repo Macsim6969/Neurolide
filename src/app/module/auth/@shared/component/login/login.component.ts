@@ -77,9 +77,9 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
         data ? this.router.navigate(['/manager']).then() : null;
         if (this.hideRequiredControl && this.form.value) {
           localStorage.setItem('save', JSON.stringify(formData))
+          this.form.reset()
         }
       })
-      this.form.reset()
     } else {
       this.errorData = 'Account has another rule'
     }

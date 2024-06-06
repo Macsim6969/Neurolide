@@ -38,11 +38,8 @@
       <p><span>© </span> <span>{{data.getFullYear()}} </span> <span [innerHTML]="formData.formDescription"></span> </p>
     </div>
 
-    <div *ngIf="form.get('email').invalid && form.get('email').touched">
-      <small style="color: red">Email invalid</small>
-    </div>
-    <div *ngIf="form.get('password').invalid && form.get('password').touched">
-      <small style="color: red">Password invalid</small>
+    <div class="error" *ngIf="form.get('email').invalid && form.get('email').touched || form.get('password').invalid && form.get('password').touched">
+      <small style="color: red">Email or password have incorrect data</small>
     </div>
 
     <button [disabled]="form.invalid && form.value.password !== form.value.doublePassword && (!this.isRulesChoise)"
