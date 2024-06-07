@@ -1,4 +1,4 @@
-import { newUserData, updatedMonitoringData } from './../../store/actions/store.actions';
+import { newUserData, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { UserData } from "../interfaces/backend.interface";
@@ -14,7 +14,9 @@ export class BackendService {
     private store: Store<{ store: StoreInterface }>,) {
   }
 public sendUserProfile(userData: UserData) {
-    return this.http.post<UserData>(`${this.baseUrl}/users/${userData.userID}/profile.json`, userData).subscribe();
+    return this.http.post<UserData>(`${this.baseUrl}/users/${userData.userID}/profile.json`, userData).subscribe(() =>{
+      this.store.dispatch(setUserData({data: true}));
+    });
   }
 
   public getUserProfile(userId: string) {

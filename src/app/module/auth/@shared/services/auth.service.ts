@@ -6,7 +6,7 @@ import { User } from "../auth.model";
 import { BackendService } from "../../../../shared/services/backend.service";
 import { Store } from "@ngrx/store";
 import { StoreInterface } from "../../../../store/model/store.model";
-import { newUserID } from "../../../../store/actions/store.actions";
+import { newUserID, startGetData } from "../../../../store/actions/store.actions";
 import { environment } from '../../../../../environment/environment';
 
 export interface AuthResponseData {
@@ -36,7 +36,9 @@ export class AuthService {
       email: form.email, password: form.password, rules: form.rules, returnSecureToken: true
     }).pipe(tap(resData => {
       console.log(resData, 'register')
-      this.backendService.sendUserProfile({ userID: resData.localId, email: form.email, password: form.password, name: form.name , rules: form.rules})
+      localStorage.setItem('isRegister', JSON.stringify(true));
+      localStorage.setItem('id', JSON.stringify(resData.localId));
+      this.backendService.sendUserProfile({ userID: resData.localId, email: form.email, password: form.password, name: form.name, rules: form.rules })
       this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn, resData.localId);
     }));
 
@@ -54,7 +56,16 @@ export class AuthService {
     return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDoWSiI1UE0JosMMolT2Mw_kc8dWXPm7vM', {
       email: form.email, password: form.password, returnSecureToken: true
     }).pipe(tap((resData: AuthResponseData) => {
+      const id = JSON.parse(localStorage.getItem('id'));
+      this.handleAuthentication(resData.email, id, resData.idToken, +resData.expiresIn, id);
       console.log(resData, 'login')
+
+      if (localStorage.getItem('userData')) {
+        const id = JSON.parse(localStorage.getItem('userData'))
+        this.store.dispatch(newUserID({ id: id.localId }))
+
+        this.store.dispatch(startGetData({ data: true }))
+      }
     }));
   }
 

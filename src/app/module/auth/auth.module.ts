@@ -37,6 +37,6 @@ const routes: Routes = [
     TranslateModule,
     RouterModule.forChild(routes)
   ],
-  providers: [AuthService, AuthIconsService, PopupInfoService]
+  providers: [AuthIconsService, PopupInfoService]
 })
 export class AuthModule { }

@@ -7,6 +7,7 @@ export const USERID = 'USERID';
 export const USERDATA = 'USERDATA';
 export const MONITORINGDATA = 'MONITORINGDATA';
 export const STARTAFFECT = 'STARTAFFECT';
+export const SETUSERDATA = 'SETUSERDATA';
 
 export const newUserID = createAction(
   USERID,
@@ -25,5 +26,10 @@ export const updatedMonitoringData = createAction(
 
 export const startGetData = createAction(
   STARTAFFECT,
+  props<{ data: boolean }>()
+)
+
+export const setUserData = createAction(
+  SETUSERDATA,
   props<{ data: boolean }>()
 )

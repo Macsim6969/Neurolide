@@ -3,6 +3,6 @@
     <img src="../../../../../../assets/images/profile/avatar.png" alt="Avatar">
   </div>
   <div class="user_actions">
-    <button *ngFor="let action of userActions" class="sans {{action.class}}" mat-button>{{action.text}}</button>
+    <button (click)="actionsLogout(action.class)" *ngFor="let action of userActions" class="sans {{action.class}}" mat-button>{{action.text}}</button>
   </div>
 </section>
