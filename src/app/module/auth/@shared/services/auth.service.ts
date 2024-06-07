@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, tap } from "rxjs";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { BehaviorSubject, Observable, catchError, tap, throwError } from "rxjs";
 
 import { User } from "../auth.model";
 import { BackendService } from "../../../../shared/services/backend.service";
@@ -8,6 +8,9 @@ import { Store } from "@ngrx/store";
 import { StoreInterface } from "../../../../store/model/store.model";
 import { newUserID, startGetData } from "../../../../store/actions/store.actions";
 import { environment } from '../../../../../environment/environment';
+import { Router } from "@angular/router";
+
+
 
 export interface AuthResponseData {
   idToken: string
@@ -28,7 +31,9 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private store: Store<{ store: StoreInterface }>,
-    private backendService: BackendService) {
+    private backendService: BackendService,
+    private router: Router
+  ) {
   }
 
   sigUp(form: { email: string, password: string, name: string, rules: 'affiliate' | 'brand' }) {
@@ -53,7 +58,7 @@ export class AuthService {
   }
 
   login(form: { email: string, password: string }) {
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDoWSiI1UE0JosMMolT2Mw_kc8dWXPm7vM', {
+    return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, {
       email: form.email, password: form.password, returnSecureToken: true
     }).pipe(tap((resData: AuthResponseData) => {
       const id = JSON.parse(localStorage.getItem('id'));
@@ -67,6 +72,30 @@ export class AuthService {
         this.store.dispatch(startGetData({ data: true }))
       }
     }));
+  }
+
+  deleteUser() {
+    const idToken = JSON.parse(localStorage.getItem('userData'))._token;
+    const apiKey = environment.apiKey;
+
+    console.log(idToken)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    const body = {
+      idToken: idToken
+    };
+
+    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:delete?key=${apiKey}`, body, httpOptions).subscribe(() => {
+      this.logout();
+      localStorage.removeItem('save');
+      localStorage.removeItem('isRegister');
+      localStorage.removeItem('id');
+      this.router.navigate(['/register']).then();
+    })
   }
 
   logout() {

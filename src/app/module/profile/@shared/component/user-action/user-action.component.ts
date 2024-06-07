@@ -35,7 +35,8 @@ export class UserActionComponent implements OnInit, OnDestroy {
       this.authService.logout();
       this.router.navigate(['/login']).then();
     } else if (action === 'remove') {
-      console.log(action)
+
+      this.authService.deleteUser()
     }
   }
 
