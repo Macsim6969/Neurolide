@@ -1,0 +1,41 @@
+<div class="users-list">
+  <div class="user" *ngFor="let user of allUsers; index as i">
+    <div class="user_info" (click)="openSettings(i)">
+      <nav class="id sans">1</nav>
+      <nav class="name sans">Test</nav>
+      <nav class="email sans">test@gmail.com</nav>
+      <nav class="balance sans">$122</nav>
+      <nav class="transaction sans">$1489</nav>
+      <nav class="status sans">Brand</nav>
+    </div>
+    <div class="user_dop" [ngClass]="{'active': i == isActiveId}">
+      <div class="main_info">
+        <div *ngFor="let card of headerData" class="card">
+          <p class="title">{{card.title}}</p>
+          <p class="info">{{card.data}}</p>
+          <div class="line {{card.color}}"></div>
+        </div>
+      </div>
+      <div class="transaction">
+        <div class="history" *ngFor="let history of transaction[isUseCard]">
+          <nav class="id sans">{{history.nomer}}</nav>
+          <nav class="name sans">{{history.data}}</nav>
+          <nav class="email sans">{{history.termin}}</nav>
+          <nav class="balance sans">{{history.subscription}}</nav>
+          <nav class="transaction sans">{{history.method}}</nav>
+          <nav class="status sans">{{history.status}}</nav>
+          <nav class="status sans">{{history.kwota}}</nav>
+        </div>
+      </div>
+      <div class="allCard">
+        <div>
+          Картки
+        </div>
+        <div class="card" *ngFor="let card of card" (click)="choiceCard(card.cvc)">
+          <p>{{card.number}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

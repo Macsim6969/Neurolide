@@ -4,6 +4,7 @@ import { AuthGuard } from './shared/services/canActive.guard';
 
 const routes: Routes = [
   { path: 'manager', loadChildren: () => import('./module/manager/manager.module').then((m) => m.ManagerModule), canActivate: [AuthGuard] },
+  { path: 'users', loadChildren: () => import('./module/users/users.module').then((m) => m.UsersModule), canActivate: [AuthGuard] },
   { path: '', loadChildren: () => import('./module/auth/auth.module').then((m) => m.AuthModule) },
 ];
 

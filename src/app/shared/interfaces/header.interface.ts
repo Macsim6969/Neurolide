@@ -5,8 +5,15 @@ export interface HeaderInfo {
 }
 
 export interface MonitoringData {
-  index: number
-  enrollment: number
-  budget: number
   advice: number
+  approve: number
+  balance: number
+  budget: number
+  enrollment: number
+  index: number
+  leads: number
+  transactions: number
+  ['write - off']: number
+
+
 }

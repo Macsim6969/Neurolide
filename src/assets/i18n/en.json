@@ -90,5 +90,27 @@
         "class": "remove"
       }
     ]
-  }
+  },
+  "usersList": [
+    {
+      "title": "Leads",
+      "color": "red"
+    },
+    {
+      "title": "Write-off",
+      "color": "yellow"
+    },
+    {
+      "title": "Approve",
+      "color": "green"
+    },
+    {
+      "title": "Advice",
+      "color": "purple"
+    },
+    {
+      "title": "Balance",
+      "color": "purple"
+    }
+  ]
 }

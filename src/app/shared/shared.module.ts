@@ -9,6 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SidebarComponent } from "../component/sidebar/sidebar.component";
 import { HeaderComponent } from "../component/header/header.component";
 import { CommonModule } from "@angular/common";
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { CommonModule } from "@angular/common";
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatListModule,
     MatInputModule,
     MatCheckboxModule,
     SidebarComponent,
@@ -32,6 +34,7 @@ import { CommonModule } from "@angular/common";
     CommonModule,
     MatIconModule,
     MatCardModule,
+    MatListModule,
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,

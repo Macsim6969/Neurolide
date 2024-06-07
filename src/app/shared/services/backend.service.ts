@@ -1,4 +1,4 @@
-import { newUserData, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
+import { allUsers, newUserData, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { UserData } from "../interfaces/backend.interface";
@@ -13,9 +13,9 @@ export class BackendService {
   constructor(private http: HttpClient,
     private store: Store<{ store: StoreInterface }>,) {
   }
-public sendUserProfile(userData: UserData) {
-    return this.http.post<UserData>(`${this.baseUrl}/users/${userData.userID}/profile.json`, userData).subscribe(() =>{
-      this.store.dispatch(setUserData({data: true}));
+  public sendUserProfile(userData: UserData) {
+    return this.http.post<UserData>(`${this.baseUrl}/users/${userData.userID}/profile.json`, userData).subscribe(() => {
+      this.store.dispatch(setUserData({ data: true }));
     });
   }
 
@@ -25,10 +25,16 @@ public sendUserProfile(userData: UserData) {
     });
   }
 
-  public getMonitoringData(userId: string){
-    return this.http.get<MonitoringData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/monitoring.json`).subscribe((data: MonitoringData) =>{
-      this.store.dispatch(updatedMonitoringData({data: data}));
+  public getMonitoringData(userId: string) {
+    return this.http.get<MonitoringData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/monitoring.json`).subscribe((data: MonitoringData) => {
+      this.store.dispatch(updatedMonitoringData({ data: data }));
     })
+  }
+
+  public getAlluser() {
+    return this.http.get<any>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users.json`).subscribe((data: UserData) => {
+      this.store.dispatch(allUsers({ data: data }));
+    });
   }
 
 }

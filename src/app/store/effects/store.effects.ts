@@ -17,6 +17,7 @@ export class AuthEffects {
       tap(([action, id]) => {
         this.backendService.getUserProfile(id);
         this.backendService.getMonitoringData(id);
+        this.backendService.getAlluser();
       })
     )
     ,

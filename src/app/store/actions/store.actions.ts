@@ -3,6 +3,7 @@ import { UserData } from "../../shared/interfaces/backend.interface"
 import { MonitoringData } from "../../shared/interfaces/header.interface"
 
 
+export const USERS = 'USERS'
 export const USERID = 'USERID';
 export const USERDATA = 'USERDATA';
 export const MONITORINGDATA = 'MONITORINGDATA';
@@ -12,6 +13,11 @@ export const SETUSERDATA = 'SETUSERDATA';
 export const newUserID = createAction(
   USERID,
   props<{ id: string }>()
+)
+
+export const allUsers = createAction(
+  USERS,
+  props<{ data: any }>()
 )
 
 export const newUserData = createAction(
