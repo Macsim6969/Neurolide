@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ManagerComponent } from './manager.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ShareModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { ProfileModule } from '../profile/profile.module';
 
 
 const routes: Routes = [
@@ -11,10 +11,11 @@ const routes: Routes = [
 ]
 @NgModule({
   declarations: [
-    ManagerComponent
+    ManagerComponent,
   ],
   imports: [
     ShareModule,
+    ProfileModule,
     TranslateModule,
     RouterModule.forChild(routes)
   ],

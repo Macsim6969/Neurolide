@@ -42,5 +42,53 @@
       "title": "Сповіщення",
       "color": "purple"
     } 
-  ]
+  ],
+  "user": {
+    "userInfo": [
+      {
+        "key": "userID",
+        "text": "Admin id:"
+      },
+      {
+        "key": "name",
+        "text": "Имя:"
+      },
+      {
+        "key": "address",
+        "text": "Адрес:"
+      },
+      {
+        "key": "number",
+        "text": "Номер телефона:"
+      },
+      {
+        "key": "email",
+        "text": "Электронная почта:"
+      },
+      {
+        "key": "password",
+        "text": "Пароль:"
+      }
+    ],
+    "userActions": [
+      {
+        "text": "Редактировать личные данные",
+        "class": "edit"
+      },
+      {
+        "text": "Сохранить изменения",
+        "class": "save"
+      }
+    ],
+    "userLogoutChanges": [
+      {
+        "text": "Выход",
+        "class": "logout"
+      },
+      {
+        "text": "Удалить профиль",
+        "class": "remove"
+      }
+    ]
+  }
 }

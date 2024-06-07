@@ -42,5 +42,53 @@
       "title": "Advice",
       "color": "purple"
     }
-  ]
+  ],
+  "user": {
+    "userInfo": [
+      {
+        "key": "userID",
+        "text": "Admin id:"
+      },
+      {
+        "key": "name",
+        "text": "Name:"
+      },
+      {
+        "key": "address",
+        "text": "Address:"
+      },
+      {
+        "key": "number",
+        "text": "Number phone:"
+      },
+      {
+        "key": "email",
+        "text": "E-mail:"
+      },
+      {
+        "key": "password",
+        "text": "Password:"
+      }
+    ],
+    "userActions": [
+      {
+        "text": "Edit personal data",
+        "class": "edit"
+      },
+      {
+        "text": "Save changes",
+        "class": "save"
+      }
+    ],
+    "userLogoutChanges": [
+      {
+        "text": "Exit",
+        "class": "logout"
+      },
+      {
+        "text": "Delete profile",
+        "class": "remove"
+      }
+    ]
+  }
 }

@@ -1,0 +1,65 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+  max-width: 495px;
+  width: 100%;
+
+  .user_info {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    .info_table {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 95px;
+
+      nav {
+        font-size: 2rem;
+        line-height: 2.35rem;
+
+        &.description {
+          color: #434343;
+        }
+
+        &.log {
+          color: #2A578B;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 200px;
+        }
+      }
+    }
+  }
+
+  .user_action {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    button {
+      height: 100%;
+      min-height: 100%;
+      padding: 15px 20px;
+      outline: none;
+      border-radius: 20px;
+      box-shadow: 0px 4px 10px 0px #00000040;
+
+      font-size: 1.6rem;
+      line-height: 1.88rem;
+
+      &.edit {
+        background-color: #2E65F3;
+        color: #FFFFFF;
+      }
+
+      &.save {
+        color: #434343;
+        background-color: #F1F4FF;
+      }
+    }
+  }
+}

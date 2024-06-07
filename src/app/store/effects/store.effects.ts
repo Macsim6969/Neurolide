@@ -16,7 +16,8 @@ export class AuthEffects {
         ofType(startGetData),
         withLatestFrom(this.store.pipe(select(selectUserId))),
         tap(([action, id]) =>{
-          this.backendService.getMonitoringData(id)
+          this.backendService.getUserProfile(id);
+          this.backendService.getMonitoringData(id);
         })
       )
     ,

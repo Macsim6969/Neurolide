@@ -1,0 +1,8 @@
+<section class="user_action">
+  <div class="user_avatar">
+    <img src="../../../../../../assets/images/profile/avatar.png" alt="Avatar">
+  </div>
+  <div class="user_actions">
+    <button *ngFor="let action of userActions" class="sans {{action.class}}" mat-button>{{action.text}}</button>
+  </div>
+</section>
