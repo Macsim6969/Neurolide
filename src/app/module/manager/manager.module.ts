@@ -14,7 +14,6 @@ const routes: Routes = [
     ManagerComponent
   ],
   imports: [
-    CommonModule,
     ShareModule,
     TranslateModule,
     RouterModule.forChild(routes)

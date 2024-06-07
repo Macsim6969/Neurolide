@@ -27,20 +27,20 @@
   },
   "headerInfo": [
     {
-      "title": "Індекс",
+      "title": "Index",
       "color": "red"
     },
     {
-      "title": "Зачислення",
-      "color": "red"
+      "title": "Enrollment",
+      "color": "yellow"
     },
     {
-      "title": "Бюджет",
-      "color": "red"
+      "title": "Budget",
+      "color": "green"
     },
     {
-      "title": "Сповіщення",
-      "color": "red"
-    } 
+      "title": "Advice",
+      "color": "purple"
+    }
   ]
 }

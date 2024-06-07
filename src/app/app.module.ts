@@ -11,6 +11,8 @@ import { StoreModule } from '@ngrx/store';
 import { storeReducers } from './store/reducers/store.reducers';
 import { BackendService } from './shared/services/backend.service';
 import { AuthGuard } from './shared/services/canActive.guard';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './store/effects/store.effects';
 ;
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -24,6 +26,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({store: storeReducers}),
+    EffectsModule.forRoot([AuthEffects]),
     BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {

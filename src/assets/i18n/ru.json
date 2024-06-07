@@ -32,15 +32,15 @@
     },
     {
       "title": "Зачислення",
-      "color": "red"
+      "color": "yellow"
     },
     {
       "title": "Бюджет",
-      "color": "red"
+      "color": "green"
     },
     {
       "title": "Сповіщення",
-      "color": "red"
-    }
+      "color": "purple"
+    } 
   ]
 }

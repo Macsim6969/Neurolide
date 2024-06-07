@@ -35,6 +35,7 @@ export class AuthService {
     return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`, {
       email: form.email, password: form.password, rules: form.rules, returnSecureToken: true
     }).pipe(tap(resData => {
+      console.log(resData, 'register')
       this.backendService.sendUserProfile({ userID: resData.localId, email: form.email, password: form.password, name: form.name , rules: form.rules})
       this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn, resData.localId);
     }));
@@ -53,8 +54,7 @@ export class AuthService {
     return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDoWSiI1UE0JosMMolT2Mw_kc8dWXPm7vM', {
       email: form.email, password: form.password, returnSecureToken: true
     }).pipe(tap((resData: AuthResponseData) => {
-      this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn, resData.localId);
-      this.store.dispatch(newUserID({ id: resData.idToken }))
+      console.log(resData, 'login')
     }));
   }
 
