@@ -1,7 +1,7 @@
 <section class="header">
   <div *ngFor="let card of headerData" class="card">
     <p class="title">{{card.title}}</p>
-    <p class="info">{{card.data}}</p>
+    <p class="info">{{card.data ? card.data : 0}}</p>
     <div class="line {{card.color}}"></div>
   </div>
 </section>

@@ -5,7 +5,7 @@ export interface UserData{
   password: string
   address?: string
   number?: string
-  image?: string
+  avatar?: string
   rules: string
 }
 

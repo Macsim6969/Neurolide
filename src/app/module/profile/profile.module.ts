@@ -4,6 +4,9 @@ import { ProfileComponent } from './profile.component';
 import { ShareModule } from '../../shared/shared.module';
 import { UserEditComponent } from './@shared/component/user-edit/user-edit.component';
 import { UserActionComponent } from './@shared/component/user-action/user-action.component';
+import { PopupEditeComponent } from './@shared/component/popup-edite/popup-edite.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileServices } from './@shared/services/profile.service';
 
 
 
@@ -11,16 +14,20 @@ import { UserActionComponent } from './@shared/component/user-action/user-action
   declarations: [
     ProfileComponent,
     UserEditComponent,
-    UserActionComponent
+    UserActionComponent,
+    PopupEditeComponent
   ],
   imports: [
     CommonModule,
-    ShareModule
+    ShareModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ProfileComponent,
     UserEditComponent,
     UserActionComponent
-  ]
+  ],
+  providers: [ProfileServices]
 })
 export class ProfileModule { }

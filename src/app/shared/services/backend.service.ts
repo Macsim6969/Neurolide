@@ -14,7 +14,7 @@ export class BackendService {
     private store: Store<{ store: StoreInterface }>,) {
   }
   public sendUserProfile(userData: UserData) {
-    return this.http.post<UserData>(`${this.baseUrl}/users/${userData.userID}/profile.json`, userData).subscribe(() => {
+    return this.http.put<UserData>(`${this.baseUrl}/users/${userData.userID}/profile.json`, userData).subscribe(() => {
       this.store.dispatch(setUserData({ data: true }));
     });
   }
