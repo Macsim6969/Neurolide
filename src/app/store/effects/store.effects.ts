@@ -29,10 +29,11 @@ export class AuthEffects {
   register = createEffect(
     () => this.actions$.pipe(
       ofType(setRegiset),
-      withLatestFrom(this.store.pipe(select(selectStore))),
-      tap(([action, data]) => {
-        console.log(data)
-        this.monitoringService.checkRules(data.idUser, data.userData.rules)
+      tap(() => {
+        const rules = JSON.parse(localStorage.getItem('rules'))
+        const id = JSON.parse(localStorage.getItem('id'))
+        console.log(rules, id)
+        this.monitoringService.checkRules(id, rules)
       })
     ),
     { dispatch: false }

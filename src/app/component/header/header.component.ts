@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { Subscription, combineLatest, combineLatestAll } from 'rxjs';
 import { HeaderInfo, MonitoringData } from '../../shared/interfaces/header.interface';
 import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../store/model/store.model';
@@ -15,47 +15,35 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public monitoringData: MonitoringData = null;
   public headerData: HeaderInfo[] = null;
-  private translateSubscription: Subscription;
-  private selectMonitoringSubscription: Subscription;
+  private combineSubscription: Subscription;
   constructor(
     private translate: TranslateService,
     private store: Store<{ store: StoreInterface }>
   ) { }
 
   ngOnInit(): void {
-    this.initializeMonitoringData();
-    this.initializeHeaderDataFromJSON();
-  }
-
-  private initializeHeaderDataFromJSON() {
-    this.translateSubscription = this.translate.stream('headerInfo').subscribe((data: HeaderInfo[]) => {
-      this.headerData = data;
-      this.updateHeaderData();
+    this.combineSubscription = combineLatest(([this.translate.stream('headerInfo'), this.store.pipe(select(selectMonitoringData))])).subscribe(([text, content]) => {
+      if (Object.keys(content).length > 1) {
+        this.updateHeaderData(text, content)
+      } else {
+        this.updateHeaderData(text, Object.values(content)[0])
+      }
     })
   }
 
-  private initializeMonitoringData() {
-    this.selectMonitoringSubscription = this.store.pipe(select(selectMonitoringData)).subscribe((monitoring: MonitoringData) => {
-      monitoring ? this.monitoringData = Object.values(monitoring)[0] : null;
-      this.updateHeaderData();
-    })
-  }
 
-  private updateHeaderData() {
-    if (this.headerData && this.monitoringData) {
-
-      const categories = Object.keys(this.monitoringData);
-      this.headerData = this.headerData.filter(card => categories.includes(card.title.toLowerCase()))
+  private updateHeaderData(text, content) {
+    if (text && content) {
+      const categories = Object.keys(content);
+      this.headerData = text.filter(card => categories.includes(card.title.toLowerCase()))
         .map(card => ({
           ...card,
-          data: this.monitoringData[card.title.toLowerCase()]
+          data: content[card.title.toLowerCase()]
         }));
     }
   }
 
   ngOnDestroy(): void {
-    this.selectMonitoringSubscription.unsubscribe();
-    this.translateSubscription.unsubscribe();
-
+    this.combineSubscription.unsubscribe();
   }
 }

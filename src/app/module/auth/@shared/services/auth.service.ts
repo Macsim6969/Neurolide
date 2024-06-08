@@ -40,10 +40,14 @@ export class AuthService {
     return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`, {
       email: form.email, password: form.password, rules: form.rules, returnSecureToken: true
     }).pipe(tap(resData => {
+      localStorage.setItem('rules', JSON.stringify(form.rules));
       localStorage.setItem('isRegister', JSON.stringify(true));
       localStorage.setItem('id', JSON.stringify(resData.localId));
       this.backendService.sendUserProfile({ userID: resData.localId, email: form.email, password: form.password, name: form.name, rules: form.rules })
       this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn, resData.localId);
+      setTimeout(() => {
+        this.store.dispatch(setRegiset())
+      }, 1000);
     }));
 
   }
@@ -62,17 +66,11 @@ export class AuthService {
     }).pipe(tap((resData: AuthResponseData) => {
       const id = JSON.parse(localStorage.getItem('id'));
       this.handleAuthentication(resData.email, id, resData.idToken, +resData.expiresIn, id);
-      console.log(resData, 'login')
 
       if (localStorage.getItem('userData')) {
         const id = JSON.parse(localStorage.getItem('userData'))
         this.store.dispatch(newUserID({ id: id.localId }))
-
         this.store.dispatch(startGetData({ data: true }))
-
-        setTimeout(() => {
-          this.store.dispatch(setRegiset())
-        }, 1000);
       }
     }));
   }
