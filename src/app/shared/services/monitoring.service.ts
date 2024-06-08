@@ -10,7 +10,6 @@ export class MonitoringService {
     private backendService: BackendService
   ) { }
   public checkRules(id: string, rule: string) {
-    console.log(rule)
     if (rule === 'manager') {
       this.monitoringForManager(id)
     } else if (rule === 'brand') {
@@ -28,8 +27,6 @@ export class MonitoringService {
       balance: 0,
       advice: 0
     }
-
-    console.log(data)
     this.backendService.setMonitoringData(id, data);
   }
 
@@ -41,8 +38,6 @@ export class MonitoringService {
       balance: 0,
       advice: 0
     }
-
-    console.log(data)
     this.backendService.setMonitoringData(id, data);
   }
 
@@ -54,8 +49,6 @@ export class MonitoringService {
       balance: 0,
       advice: 0
     }
-
-    console.log(data)
     this.backendService.setMonitoringData(id, data);
   }
 }

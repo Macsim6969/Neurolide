@@ -52,7 +52,6 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
       } else {
         this.userInfo = Object.values(data)[0]
       }
-      console.log(this.userInfo, '435')
     })
   }
 

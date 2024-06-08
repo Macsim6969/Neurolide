@@ -6,7 +6,7 @@ import { Store } from "@ngrx/store";
 import { StoreInterface } from "../../store/model/store.model";
 import { MonitoringData } from '../interfaces/header.interface';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 
 export class BackendService {
   private baseUrl = 'https://neuroline-af6a2-default-rtdb.firebaseio.com';
@@ -36,7 +36,6 @@ export class BackendService {
   }
 
   public setMonitoringData(userId: string, data: MonitoringData) {
-    console.log(userId)
     return this.http.post<MonitoringData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/monitoring.json`, data).subscribe((data: MonitoringData) => {
       this.store.dispatch(updatedMonitoringData({ data: data }));
     })

@@ -42,7 +42,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   private initializeMonitoringData() {
     this.store.pipe(select(selectAllUsers)).subscribe((data) => {
-      console.log(Object.values(data))
       this.allUsers = Object.values(data)
       this.mainData = data;
 

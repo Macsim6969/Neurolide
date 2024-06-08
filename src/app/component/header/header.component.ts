@@ -4,7 +4,7 @@ import { Subscription, combineLatest, combineLatestAll } from 'rxjs';
 import { HeaderInfo, MonitoringData } from '../../shared/interfaces/header.interface';
 import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../store/model/store.model';
-import { selectMonitoringData } from '../../store/selectors/store.selectors';
+import { selectMonitoringData, selectUserData } from '../../store/selectors/store.selectors';
 
 @Component({
   selector: 'app-header',
@@ -23,10 +23,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.combineSubscription = combineLatest(([this.translate.stream('headerInfo'), this.store.pipe(select(selectMonitoringData))])).subscribe(([text, content]) => {
-      if (Object.keys(content).length > 1) {
-        this.updateHeaderData(text, content)
-      } else {
-        this.updateHeaderData(text, Object.values(content)[0])
+      if (text && content) {
+  
+        if (Object.keys(content).length > 1) {
+          this.updateHeaderData(text, content)
+        } else {
+          this.updateHeaderData(text, Object.values(content)[0])
+        }
       }
     })
   }

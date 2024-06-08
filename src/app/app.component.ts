@@ -24,7 +24,9 @@ export class AppComponent implements AfterViewInit {
 
   private initializeTranslateLang() {
     if (this.translate.getBrowserLang() === this.choiceLang.find(e => e === this.translate.getBrowserLang())) {
-      this.translate.use(this.translate.getBrowserLang())
+      this.translate.use(this.translate.getBrowserLang());
+    } else {
+      this.translate.use('en');
     }
   }
 

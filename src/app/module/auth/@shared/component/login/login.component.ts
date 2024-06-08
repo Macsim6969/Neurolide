@@ -6,6 +6,11 @@ import { AuthIconsService } from '../../services/authIcon.service';
 import { Router } from '@angular/router';
 import { Rules, Form } from '../../interfaces/auth.interface';
 import { TranslateService } from '@ngx-translate/core';
+import { Store, select } from '@ngrx/store';
+import { StoreInterface } from '../../../../../store/model/store.model';
+import { selectAllUsers, selectUserData } from '../../../../../store/selectors/store.selectors';
+import { BackendService } from '../../../../../shared/services/backend.service';
+import { newUserID } from '../../../../../store/actions/store.actions';
 
 @Component({
   selector: 'app-login',
@@ -24,19 +29,27 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   private translateSubscription: Subscription;
   private dataUser;
   public errorData: string;
+  private allUsers: any[];
   constructor(
     private authService: AuthService,
     private authIconsService: AuthIconsService,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private store: Store<{ store: StoreInterface }>,
+    private backendService: BackendService
   ) { }
   ngOnInit() {
+    this.backendService.getAlluser();
     this.initializeForm();
     this.initializeDataFromJSON();
+
   }
 
   ngAfterViewInit(): void {
     this.initializeStorageDataForm();
+    this.store.pipe(select(selectAllUsers)).subscribe((data) => {
+      this.allUsers = Object.values(data);
+    })
   }
 
   private initializeForm() {
@@ -70,20 +83,26 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public submit() {
-    if (this.isRulesChoise === this.dataUser) {
-      const formData = { ...this.form.value, rules: this.isRulesChoise }
+    this.allUsers.find(e => {
+      if (e.profile.email === this.form.value.email) {
+        this.form.value.email = e.profile.email
+        this.form.value.password = e.profile.password
+        this.dataUser = e.profile.rules;
+        localStorage.setItem('id', JSON.stringify(e.profile.userID))
+        this.store.dispatch(newUserID({ id: e.profile.userID }))
+      }
+      if (this.isRulesChoise === this.dataUser) {
+        const formData = { ...this.form.value, rules: this.isRulesChoise }
+        this.authSubscription = this.authService.login(formData).subscribe((data) => {
+          data ? this.router.navigate(['/manager']).then() : null;
+          if (this.hideRequiredControl && this.form.value) {
+            localStorage.setItem('save', JSON.stringify(formData))
+            this.form.reset()
+          }
+        })
 
-      this.authSubscription = this.authService.login(formData).subscribe((data) => {
-        data ? this.router.navigate(['/manager']).then() : null;
-        if (this.hideRequiredControl && this.form.value) {
-          localStorage.setItem('save', JSON.stringify(formData))
-          this.form.reset()
-        }
-      })
-    } else {
-      this.errorData = 'Account has another rule'
-    }
-
+      }
+    })
   }
 
   ngOnDestroy() {

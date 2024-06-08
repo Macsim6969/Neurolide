@@ -4,7 +4,7 @@ import { tap, withLatestFrom } from "rxjs";
 import { BackendService } from "../../shared/services/backend.service";
 import { Store, select } from "@ngrx/store";
 import { StoreInterface } from "../model/store.model";
-import { selectAllUsers, selectStore, selectUserId } from "../selectors/store.selectors";
+import { selectAllUsers, selectStore, selectUserData, selectUserId } from "../selectors/store.selectors";
 import { Injectable } from "@angular/core";
 import { MonitoringService } from "../../shared/services/monitoring.service";
 
@@ -32,7 +32,6 @@ export class AuthEffects {
       tap(() => {
         const rules = JSON.parse(localStorage.getItem('rules'))
         const id = JSON.parse(localStorage.getItem('id'))
-        console.log(rules, id)
         this.monitoringService.checkRules(id, rules)
       })
     ),

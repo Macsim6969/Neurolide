@@ -81,7 +81,6 @@ export class AuthService {
     const idToken = JSON.parse(localStorage.getItem('userData'))._token;
     const apiKey = environment.apiKey;
 
-    console.log(idToken)
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
