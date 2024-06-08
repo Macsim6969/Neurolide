@@ -1,14 +1,16 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { setUserData, startGetData } from "../actions/store.actions";
+import { setRegiset, setUserData, startGetData } from "../actions/store.actions";
 import { tap, withLatestFrom } from "rxjs";
 import { BackendService } from "../../shared/services/backend.service";
 import { Store, select } from "@ngrx/store";
 import { StoreInterface } from "../model/store.model";
-import { selectUserId } from "../selectors/store.selectors";
+import { selectAllUsers, selectStore, selectUserId } from "../selectors/store.selectors";
 import { Injectable } from "@angular/core";
+import { MonitoringService } from "../../shared/services/monitoring.service";
 
 @Injectable()
 export class AuthEffects {
+
 
   startAuth = createEffect(
     () => this.actions$.pipe(
@@ -24,6 +26,18 @@ export class AuthEffects {
     { dispatch: false }
   );
 
+  register = createEffect(
+    () => this.actions$.pipe(
+      ofType(setRegiset),
+      withLatestFrom(this.store.pipe(select(selectStore))),
+      tap(([action, data]) => {
+        console.log(data)
+        this.monitoringService.checkRules(data.idUser, data.userData.rules)
+      })
+    ),
+    { dispatch: false }
+  )
+
   setUserData = createEffect(
     () => this.actions$.pipe(
       ofType(setUserData),
@@ -37,7 +51,8 @@ export class AuthEffects {
 
   constructor(private actions$: Actions,
     private backendService: BackendService,
-    private store: Store<{ store: StoreInterface }>
+    private store: Store<{ store: StoreInterface }>,
+    private monitoringService: MonitoringService
   ) { }
 
 

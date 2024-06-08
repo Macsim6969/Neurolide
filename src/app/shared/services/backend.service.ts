@@ -6,7 +6,7 @@ import { Store } from "@ngrx/store";
 import { StoreInterface } from "../../store/model/store.model";
 import { MonitoringData } from '../interfaces/header.interface';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 
 export class BackendService {
   private baseUrl = 'https://neuroline-af6a2-default-rtdb.firebaseio.com';
@@ -19,6 +19,10 @@ export class BackendService {
     });
   }
 
+  public removeUser(userId: string) {
+    return this.http.delete<UserData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}.json`).subscribe()
+  }
+
   public getUserProfile(userId: string) {
     return this.http.get<UserData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/profile.json`).subscribe((data: UserData) => {
       this.store.dispatch(newUserData({ data: data }));
@@ -27,6 +31,13 @@ export class BackendService {
 
   public getMonitoringData(userId: string) {
     return this.http.get<MonitoringData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/monitoring.json`).subscribe((data: MonitoringData) => {
+      this.store.dispatch(updatedMonitoringData({ data: data }));
+    })
+  }
+
+  public setMonitoringData(userId: string, data: MonitoringData) {
+    console.log(userId)
+    return this.http.post<MonitoringData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/monitoring.json`, data).subscribe((data: MonitoringData) => {
       this.store.dispatch(updatedMonitoringData({ data: data }));
     })
   }

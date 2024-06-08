@@ -46,7 +46,6 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
   }
 
   private initializeUserDataFromStore() {
-
     this.userDataSubscription = this.store.pipe(select(selectUserData)).subscribe((data) => {
       if (data && Object.keys(data).length > 1) {
         this.userInfo = data;
@@ -55,7 +54,6 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
       }
       console.log(this.userInfo, '435')
     })
-
   }
 
   public submit() {

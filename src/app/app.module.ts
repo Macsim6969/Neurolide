@@ -14,6 +14,7 @@ import { AuthGuard } from './shared/services/canActive.guard';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/store.effects';
 import { AuthService } from './module/auth/@shared/services/auth.service';
+import { MonitoringService } from './shared/services/monitoring.service';
 ;
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -37,7 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [BackendService, AuthGuard, AuthService],
+  providers: [BackendService, AuthGuard, AuthService, MonitoringService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

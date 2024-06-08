@@ -1,7 +1,7 @@
 <div class="profile-edite">
   <div class="popup">
     <h3 class="popup_title sans">Change Profile</h3>
-    <form class="form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="userInfo; else loading">
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="userInfo">
       <div class="column">
         <mat-label class="label sans">Name:</mat-label>
         <input class="sans" placeholder="Name" type="text" formControlName="name">
@@ -27,9 +27,6 @@
         <button type="submit" class="save sans" mat-button>Save Changes</button>
       </div>
     </form>
-    <ng-template #loading>
-      <h1>LOADING</h1>
-    </ng-template>
   </div>
 
 </div>

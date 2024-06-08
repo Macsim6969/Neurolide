@@ -43,12 +43,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private updateHeaderData() {
     if (this.headerData && this.monitoringData) {
-      this.headerData = this.headerData.map(card => {
-        return {
+
+      const categories = Object.keys(this.monitoringData);
+      this.headerData = this.headerData.filter(card => categories.includes(card.title.toLowerCase()))
+        .map(card => ({
           ...card,
           data: this.monitoringData[card.title.toLowerCase()]
-        };
-      });
+        }));
     }
   }
 

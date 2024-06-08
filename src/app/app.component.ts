@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { StoreInterface } from './store/model/store.model';
-import { newUserID, startGetData } from './store/actions/store.actions';
+import { newUserID, setRegiset, startGetData } from './store/actions/store.actions';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +34,7 @@ export class AppComponent implements AfterViewInit {
       this.store.dispatch(newUserID({id: id.localId}))
 
       this.store.dispatch(startGetData({ data: true }))
+     
     }
   }
 }

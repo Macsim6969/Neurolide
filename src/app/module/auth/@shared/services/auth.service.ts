@@ -6,7 +6,7 @@ import { User } from "../auth.model";
 import { BackendService } from "../../../../shared/services/backend.service";
 import { Store } from "@ngrx/store";
 import { StoreInterface } from "../../../../store/model/store.model";
-import { newUserID, startGetData } from "../../../../store/actions/store.actions";
+import { newUserID, setRegiset, startGetData } from "../../../../store/actions/store.actions";
 import { environment } from '../../../../../environment/environment';
 import { Router } from "@angular/router";
 
@@ -40,7 +40,6 @@ export class AuthService {
     return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`, {
       email: form.email, password: form.password, rules: form.rules, returnSecureToken: true
     }).pipe(tap(resData => {
-      console.log(resData, 'register')
       localStorage.setItem('isRegister', JSON.stringify(true));
       localStorage.setItem('id', JSON.stringify(resData.localId));
       this.backendService.sendUserProfile({ userID: resData.localId, email: form.email, password: form.password, name: form.name, rules: form.rules })
@@ -70,11 +69,17 @@ export class AuthService {
         this.store.dispatch(newUserID({ id: id.localId }))
 
         this.store.dispatch(startGetData({ data: true }))
+
+        setTimeout(() => {
+          this.store.dispatch(setRegiset())
+        }, 1000);
       }
     }));
   }
 
   deleteUser() {
+    const id = JSON.parse(localStorage.getItem('id'));
+    this.backendService.removeUser(id)
     const idToken = JSON.parse(localStorage.getItem('userData'))._token;
     const apiKey = environment.apiKey;
 

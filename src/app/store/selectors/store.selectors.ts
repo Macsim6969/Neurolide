@@ -5,3 +5,5 @@ export const selectUserId = (store : {store: StoreInterface}) => store.store.idU
 export const selectUserData = (store: {store: StoreInterface}) => store.store.userData;
 
 export const selectAllUsers = (store: {store: StoreInterface}) => store.store.allUsers;
+
+export const selectStore = (store : {store: StoreInterface}) => store.store;
