@@ -42,7 +42,7 @@
       <small style="color: red">Email or password have incorrect data</small>
     </div>
 
-    <button [disabled]="form.invalid && form.value.password !== form.value.doublePassword && (!this.isRulesChoise)"
+    <button [disabled]="checkToDisable()"
       type="submit" class="register" mat-button [innerHTML]="formData.reg"></button>
   </form>
 

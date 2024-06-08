@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
   public hideRequiredControl = new FormControl(false);
   public hide = true;
   public isRulesChoise: string = null;
+  public isRules: boolean = false;
   public authRules: Rules[];
   public formData: Form;
   private translateSubscription: Subscription;
@@ -70,6 +71,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public choiseRules(rules: string) {
     this.isRulesChoise = rules;
+    this.isRules = true;
   }
 
   public submit() {
@@ -87,6 +89,15 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
 
     })
     this.form.reset()
+  }
+
+  public checkToDisable() {
+    if (!this.isRules || this.form.invalid || this.form.value.password !== this.form.value.doublePassword) {
+      return true
+    } else {
+      return false
+    }
+
   }
 
   ngOnDestroy() {
