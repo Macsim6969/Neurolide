@@ -15,6 +15,7 @@ import { selectUserData } from '../../../../../store/selectors/store.selectors';
 })
 export class UserActionComponent implements OnInit, OnDestroy {
 
+  public rules: 'manager' | 'brand' | 'affiliate';
   public avatar: string;
   public userActions: UserActions[];
   private transalteSubscription: Subscription;
@@ -29,6 +30,7 @@ export class UserActionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initializeUserDataFromJson();
     this.initializeUserDataFromStore();
+    this.rules = JSON.parse(localStorage.getItem('userData'));
   }
 
 

@@ -48,7 +48,9 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.initializeStorageDataForm();
     this.store.pipe(select(selectAllUsers)).subscribe((data) => {
-      this.allUsers = Object.values(data);
+      if (data) {
+        this.allUsers = Object.values(data);
+      }
     })
   }
 
@@ -94,10 +96,12 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
       if (this.isRulesChoise === this.dataUser) {
         const formData = { ...this.form.value, rules: this.isRulesChoise }
         this.authSubscription = this.authService.login(formData).subscribe((data) => {
-          data ? this.router.navigate(['/manager']).then() : null;
-          if (this.hideRequiredControl && this.form.value) {
-            localStorage.setItem('save', JSON.stringify(formData))
-            this.form.reset()
+          if (data) {
+            this.router.navigate([`/${this.dataUser}`]).then();
+            if (this.hideRequiredControl && this.form.value) {
+              localStorage.setItem('save', JSON.stringify(formData))
+              this.form.reset()
+            }
           }
         })
 

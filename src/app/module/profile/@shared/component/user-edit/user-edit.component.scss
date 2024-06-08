@@ -51,6 +51,10 @@
       font-size: 1.6rem;
       line-height: 1.88rem;
 
+      &.hide {
+        display: none;
+      }
+
       &.edit {
         background-color: #2E65F3;
         color: #FFFFFF;

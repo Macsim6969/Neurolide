@@ -13,7 +13,7 @@ import { ProfileServices } from '../../services/profile.service';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit, OnDestroy {
-
+  public rules: 'manager' | 'brand' | 'affiliate';
   public userInfo: UserData[];
   public userActions: UserActions[];
   private transalteSubscription: Subscription;
@@ -27,6 +27,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initializeUserDataFromStore();
     this.initializeUserDataFromJson();
+    this.rules = JSON.parse(localStorage.getItem('userData'));
   }
 
   private initializeUserDataFromJson() {
