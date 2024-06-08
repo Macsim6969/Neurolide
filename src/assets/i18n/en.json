@@ -74,10 +74,6 @@
       {
         "text": "Edit personal data",
         "class": "edit"
-      },
-      {
-        "text": "Save changes",
-        "class": "save"
       }
     ],
     "userLogoutChanges": [
