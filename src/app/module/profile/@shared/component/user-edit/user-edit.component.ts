@@ -38,11 +38,15 @@ export class UserEditComponent implements OnInit, OnDestroy {
 
   private initializeUserDataFromStore() {
     this.userDataSubscription = this.store.pipe(select(selectUserData)).subscribe((data) => {
-      if (Object.keys(data).length > 1) {
-        this.updateHeaderData(data);
-      } else {
-        this.updateHeaderData(Object.values(data)[0]);
+      if (data) {
+        if (Object.keys(data).length > 1) {
+          this.updateHeaderData(data);
+        } else {
+          this.updateHeaderData(Object.values(data)[0]);
+        }
       }
+
+
     })
   }
 
@@ -59,7 +63,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
     }
   }
 
-  public openPopup(){
+  public openPopup() {
     this.profileServices._isPopup = true;
   }
 

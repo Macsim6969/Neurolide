@@ -40,10 +40,12 @@ export class UserActionComponent implements OnInit, OnDestroy {
 
   private initializeUserDataFromStore() {
     this.userDataSubscription = this.store.pipe(select(selectUserData)).subscribe((data) => {
-      if (data && Object.keys(data).length > 1) {
-        this.avatar = data.avatar;
-      } else {
-        this.avatar = Object.values(data)[0].avatar
+      if (data) {
+        if (Object.keys(data).length > 1) {
+          this.avatar = data.avatar;
+        } else {
+          this.avatar = Object.values(data)[0].avatar
+        }
       }
     })
   }

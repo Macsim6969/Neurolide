@@ -30,31 +30,32 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    
-    this.initializeForm();
     this.initializeUserDataFromStore();
-    
+    this.initializeForm();
+
   }
 
   private initializeForm() {
     this.form = new FormGroup<any>({
-      name: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-      number: new FormControl('', [Validators.required]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+      name: new FormControl(this.userInfo.name, [Validators.required]),
+      address: new FormControl(this.userInfo.address, [Validators.required]),
+      number: new FormControl(this.userInfo.number, [Validators.required]),
+      password: new FormControl(this.userInfo.password, [Validators.required, Validators.minLength(8)]),
       avatar: new FormControl('', [Validators.required])
     })
   }
 
   private initializeUserDataFromStore() {
+
     this.userDataSubscription = this.store.pipe(select(selectUserData)).subscribe((data) => {
       if (data && Object.keys(data).length > 1) {
         this.userInfo = data;
       } else {
         this.userInfo = Object.values(data)[0]
       }
-
+      console.log(this.userInfo, '435')
     })
+
   }
 
   public submit() {
@@ -105,6 +106,7 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
     }
 
     this.backendService.sendUserProfile(newUserData);
+    this.form.reset()
   }
 
   public closePopup() {
