@@ -9,6 +9,10 @@
       {
         "data": "Brand",
         "rule": "brand"
+      },
+      {
+        "data": "Manager",
+        "rule": "manager"
       }
     ],
     "form": {

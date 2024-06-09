@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'affiliate', loadChildren: () => import('./module/manager/manager.module').then((m) => m.ManagerModule), canActivate: [RulesGuard] },
   { path: 'brand', loadChildren: () => import('./module/manager/manager.module').then((m) => m.ManagerModule), canActivate: [RulesGuard] },
   { path: 'manager', loadChildren: () => import('./module/manager/manager.module').then((m) => m.ManagerModule), canActivate: [RulesGuard] },
-  { path: 'users', loadChildren: () => import('./module/users/users.module').then((m) => m.UsersModule), canActivate: [RulesGuard] },
+  { path: 'users', loadChildren: () => import('./module/users/users.module').then((m) => m.UsersModule), canActivate: [AuthGuard] },
   { path: '', loadChildren: () => import('./module/auth/auth.module').then((m) => m.AuthModule) },
 ];
 

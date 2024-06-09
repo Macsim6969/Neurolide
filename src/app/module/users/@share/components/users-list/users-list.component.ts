@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { selectAllUsers } from '../../../../../store/selectors/store.selectors';
@@ -19,10 +19,12 @@ export class UsersListComponent implements OnInit, OnDestroy {
   public isUseCard: number = 789;
   public card;
 
+  public userInfo;
   public allUsers;
   public isActiveId: number;
   public isSetting: boolean
   private translateSubscription: Subscription;
+  private selectAllUsersSubscription: Subscription;
   constructor(
     private store: Store<{ store: StoreInterface }>,
     private translate: TranslateService
@@ -41,11 +43,29 @@ export class UsersListComponent implements OnInit, OnDestroy {
   }
 
   private initializeMonitoringData() {
-    this.store.pipe(select(selectAllUsers)).subscribe((data) => {
-      this.allUsers = Object.values(data)
+    this.selectAllUsersSubscription = this.store.pipe(select(selectAllUsers)).subscribe((data) => {
       this.mainData = data;
+      console.log(this.mainData, 'start')
+      if (data) {
+        this.allUsers = Object.values(data);
+        this.userInfo = this.allUsers.reduce((acc, user) => {
+          if (user.profile && user.monitoring && user.profile.rules !== 'manager') {
+            if (user.profile && user.monitoring) {
+              if (Object.keys(user.profile).length > 1) {
+                acc.push({ profile: user.profile, monitoring: user.monitoring });
+              } else {
+                acc.push({ profile: Object.values(user.profile)[0], monitoring: Object.values(user.monitoring)[0] });
+              }
 
-    })
+            }
+          }
+          return acc;
+        }, []);
+
+        console.log(this.userInfo);
+
+      }
+    });
 
   }
 
@@ -68,6 +88,8 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.isSetting = true;
     this.isActiveId = id;
 
+    
+    console.log(Object.values(Object.values(this.mainData)[this.isActiveId]), '324234');
     this.monitoringData = Object.values(this.mainData)[this.isActiveId]['monitoring'];
     this.transaction = Object.values(Object.values(this.mainData)[this.isActiveId]['historyTransactions'])[0];
     this.card = Object.values(Object.values(Object.values(this.mainData)[this.isActiveId]['card'])[0]);
@@ -76,5 +98,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.translateSubscription.unsubscribe();
+    this.selectAllUsersSubscription.unsubscribe();
   }
 }
