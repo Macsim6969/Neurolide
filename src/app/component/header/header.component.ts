@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.updateHeaderData(text, content)
         } else {
           this.updateHeaderData(text, Object.values(content)[0])
-        }
+        } 
       }
     })
   }

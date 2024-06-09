@@ -1,9 +1,9 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../../../../store/model/store.model';
-import { selectAllUsers } from '../../../../../store/selectors/store.selectors';
+import { selectAllUsers, selectMonitoringData } from '../../../../../store/selectors/store.selectors';
 import { HeaderInfo, MonitoringData } from '../../../../../shared/interfaces/header.interface';
-import { Subscription } from 'rxjs';
+import { Subscription, combineLatest } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -13,6 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class UsersListComponent implements OnInit, OnDestroy {
   private mainData: any
+  private textMonitoring: MonitoringData;
   public monitoringData: MonitoringData = null;
   public headerData: HeaderInfo[];
   public transaction: any;
@@ -32,15 +33,12 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initializeMonitoringData();
-    this.initializeHeaderDataFromJSON();
-  }
-
-  private initializeHeaderDataFromJSON() {
-    this.translateSubscription = this.translate.stream('usersList').subscribe((data: HeaderInfo[]) => {
-      this.headerData = data;
-      this.updateHeaderData();
+    this.translateSubscription = this.translate.stream('usersList').subscribe((data) => {
+      this.textMonitoring = data;
     })
   }
+
+
 
   private initializeMonitoringData() {
     this.selectAllUsersSubscription = this.store.pipe(select(selectAllUsers)).subscribe((data) => {
@@ -65,14 +63,31 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   }
 
-  private updateHeaderData() {
-    if (this.headerData && this.monitoringData) {
-      this.headerData = this.headerData.map(card => {
-        return {
+  public openSettings(id: number) {
+    this.isSetting = true;
+    this.isActiveId = id;
+
+
+    this.monitoringData = Object.values(this.mainData)[this.isActiveId]['monitoring'];
+    if (Object.keys(this.monitoringData).length === 1) {
+      this.updateHeaderData(this.textMonitoring, Object.values(this.monitoringData)[0]);
+    } else {
+      this.updateHeaderData(this.textMonitoring, this.monitoringData);
+    }
+
+    // this.card = Object.values(Object.values(Object.values(this.mainData)[this.isActiveId]['card'])[0]);
+    // this.transaction = Object.values(Object.values(this.mainData)[this.isActiveId]['historyTransactions'])[0];
+  }
+
+  private updateHeaderData(text, content) {
+    if (text && content) {
+      const categories = Object.keys(content);
+
+      this.headerData = text.filter(card => categories.includes(card.title.toLowerCase()))
+        .map(card => ({
           ...card,
-          data: Object.values(this.monitoringData)[0][card.title.toLowerCase()]
-        };
-      });
+          data: content[card.title.toLowerCase()]
+        }));  
     }
   }
 
@@ -80,16 +95,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.isUseCard = id;
   }
 
-  public openSettings(id: number) {
-    this.isSetting = true;
-    this.isActiveId = id;
 
-  
-    this.monitoringData = Object.values(this.mainData)[this.isActiveId]['monitoring'];
-    this.transaction = Object.values(Object.values(this.mainData)[this.isActiveId]['historyTransactions'])[0];
-    this.card = Object.values(Object.values(Object.values(this.mainData)[this.isActiveId]['card'])[0]);
-    this.updateHeaderData();
-  }
 
   ngOnDestroy(): void {
     this.translateSubscription.unsubscribe();

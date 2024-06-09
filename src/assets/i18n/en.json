@@ -31,7 +31,7 @@
   },
   "headerInfo": [
     {
-      "title": "Cliques", 
+      "title": "Cliques",
       "color": "red"
     },
     {
@@ -117,12 +117,36 @@
   },
   "usersList": [
     {
+      "title": "Cliques",
+      "color": "red"
+    },
+    {
+      "title": "Index",
+      "color": "red"
+    },
+    {
       "title": "Leads",
       "color": "red"
     },
     {
+      "title": "Hold",
+      "color": "yellow"
+    },
+    {
+      "title": "Accrual",
+      "color": "yellow"
+    },
+    {
       "title": "Disregard",
       "color": "yellow"
+    },
+    {
+      "title": "Enrollment",
+      "color": "yellow"
+    },
+    {
+      "title": "Budget",
+      "color": "green"
     },
     {
       "title": "Approve",
