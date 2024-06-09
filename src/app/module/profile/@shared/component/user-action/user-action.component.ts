@@ -30,7 +30,8 @@ export class UserActionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initializeUserDataFromJson();
     this.initializeUserDataFromStore();
-    this.rules = JSON.parse(localStorage.getItem('userData'));
+    this.rules = JSON.parse(localStorage.getItem('rules'));
+    console.log(this.rules)
   }
 
 

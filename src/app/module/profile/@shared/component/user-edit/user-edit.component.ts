@@ -27,7 +27,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initializeUserDataFromStore();
     this.initializeUserDataFromJson();
-    this.rules = JSON.parse(localStorage.getItem('userData'));
+    this.rules = JSON.parse(localStorage.getItem('rules'));
   }
 
   private initializeUserDataFromJson() {
