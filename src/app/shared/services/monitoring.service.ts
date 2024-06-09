@@ -25,7 +25,8 @@ export class MonitoringService {
       enrollment: 0,
       budget: 0,
       balance: 0,
-      advice: 0
+      advice: 0,
+      transactions: 0
     }
     this.backendService.setMonitoringData(id, data);
   }
@@ -36,7 +37,8 @@ export class MonitoringService {
       disregard: 0,
       approve: 0,
       balance: 0,
-      advice: 0
+      advice: 0,
+      transactions: 0
     }
     this.backendService.setMonitoringData(id, data);
   }
@@ -47,7 +49,8 @@ export class MonitoringService {
       hold: 0,
       accrual: 0,
       balance: 0,
-      advice: 0
+      advice: 0,
+      transactions: 0
     }
     this.backendService.setMonitoringData(id, data);
   }

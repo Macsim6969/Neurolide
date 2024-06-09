@@ -28,6 +28,9 @@
 
       .id {
         width: 89px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .name {
@@ -102,6 +105,17 @@
             font-weight: 700;
             line-height: 3.2rem;
             letter-spacing: -0.02em;
+          }
+
+          .bottom{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            mat-icon{
+              padding-right: 19.50px;
+              cursor: pointer;
+            }
           }
 
           .line {

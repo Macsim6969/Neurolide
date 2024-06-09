@@ -10,12 +10,13 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { storeReducers } from './store/reducers/store.reducers';
 import { BackendService } from './shared/services/backend.service';
-import { AuthGuard } from './shared/services/canActive.guard';
+import { CanActiveGuard } from './shared/services/canActive.guard';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/store.effects';
 import { AuthService } from './module/auth/@shared/services/auth.service';
 import { MonitoringService } from './shared/services/monitoring.service';
 import { RulesGuard } from './shared/services/rules.guard';
+import { AuthGuard } from './shared/services/uath.guard';
 ;
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -28,7 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({store: storeReducers}),
+    StoreModule.forRoot({ store: storeReducers }),
     EffectsModule.forRoot([AuthEffects]),
     BrowserAnimationsModule,
     TranslateModule.forRoot({
@@ -39,7 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [BackendService, AuthGuard, RulesGuard, AuthService, MonitoringService],
+  providers: [BackendService, AuthGuard, CanActiveGuard, RulesGuard, AuthService, MonitoringService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

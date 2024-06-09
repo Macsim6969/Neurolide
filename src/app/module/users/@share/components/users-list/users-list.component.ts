@@ -5,6 +5,7 @@ import { selectAllUsers, selectMonitoringData } from '../../../../../store/selec
 import { HeaderInfo, MonitoringData } from '../../../../../shared/interfaces/header.interface';
 import { Subscription, combineLatest } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { ListIconsService } from '../../services/listIcon.service';
 
 @Component({
   selector: 'app-users-list',
@@ -22,13 +23,16 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   public userInfo;
   public allUsers;
-  public isActiveId: number;
-  public isSetting: boolean
+  public isActiveEmail: string;
+  public isSetting: boolean;
+  public isModeChange: number;
   private translateSubscription: Subscription;
   private selectAllUsersSubscription: Subscription;
   constructor(
     private store: Store<{ store: StoreInterface }>,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private listIconsService: ListIconsService
+
   ) { }
 
   ngOnInit(): void {
@@ -53,49 +57,51 @@ export class UsersListComponent implements OnInit, OnDestroy {
               } else {
                 acc.push({ profile: Object.values(user.profile)[0], monitoring: Object.values(user.monitoring)[0] });
               }
-
             }
           }
           return acc;
         }, []);
       }
     });
-
   }
 
-  public openSettings(id: number) {
+  public openSettings(email: string) {
     this.isSetting = true;
-    this.isActiveId = id;
+    this.isActiveEmail = email;
 
-
-    this.monitoringData = Object.values(this.mainData)[this.isActiveId]['monitoring'];
-    if (Object.keys(this.monitoringData).length === 1) {
-      this.updateHeaderData(this.textMonitoring, Object.values(this.monitoringData)[0]);
-    } else {
-      this.updateHeaderData(this.textMonitoring, this.monitoringData);
+    const userData = this.allUsers.find(user => user.profile.email === this.isActiveEmail);
+    if (userData) {
+      this.monitoringData = userData.monitoring;
+      if (typeof this.monitoringData === 'object') {
+        if (Object.keys(this.monitoringData).length === 1) {
+          this.updateHeaderData(this.textMonitoring, Object.values(this.monitoringData)[0]);
+        } else {
+          this.updateHeaderData(this.textMonitoring, this.monitoringData);
+        }
+      }
     }
-
-    // this.card = Object.values(Object.values(Object.values(this.mainData)[this.isActiveId]['card'])[0]);
-    // this.transaction = Object.values(Object.values(this.mainData)[this.isActiveId]['historyTransactions'])[0];
   }
 
   private updateHeaderData(text, content) {
     if (text && content) {
       const categories = Object.keys(content);
-
-      this.headerData = text.filter(card => categories.includes(card.title.toLowerCase()))
+      this.headerData = text
+        .filter(card => categories.includes(card.title.toLowerCase()))
         .map(card => ({
           ...card,
           data: content[card.title.toLowerCase()]
-        }));  
+        }));
     }
   }
+
 
   public choiceCard(id: number) {
     this.isUseCard = id;
   }
 
-
+  public useEditeMode(i: number) {
+    this.isModeChange = i
+  }
 
   ngOnDestroy(): void {
     this.translateSubscription.unsubscribe();

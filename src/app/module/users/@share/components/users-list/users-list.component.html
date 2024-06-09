@@ -1,18 +1,22 @@
 <div class="users-list">
-  <div class="user" *ngFor="let user of userInfo; index as i">
-    <div class="user_info" (click)="openSettings(i)">
-      <nav class="id sans">{{user?.profile?.userID}}</nav>
-      <nav class="name sans">{{user?.profile?.name}}</nav>
-      <nav class="email sans">{{user?.profile?.email}}</nav>
-      <nav class="balance sans">{{user?.monitoring?.balance}}</nav>
-      <nav class="transaction sans">{{user?.monitoring?.transactions}}</nav>
-      <nav class="status sans">{{user?.profile?.rules}}</nav> 
+  <div class="user" *ngFor="let user of userInfo">
+    <div class="user_info" (click)="openSettings(user.profile.email)">
+      <nav class="id sans">{{ user?.profile?.userID }}</nav>
+      <nav class="name sans">{{ user?.profile?.name }}</nav>
+      <nav class="email sans">{{ user?.profile?.email }}</nav>
+      <nav class="balance sans">{{ user?.monitoring?.balance ? user?.monitoring?.balance : 0 }}</nav>
+      <nav class="transaction sans">{{ user?.monitoring?.transactions ? user?.monitoring?.transactions : 0 }}</nav>
+      <nav class="status sans">{{ user?.profile?.rules }}</nav>
     </div>
-    <div class="user_dop" [ngClass]="{'active': i == isActiveId}">
+    <div class="user_dop" [ngClass]="{ 'active': isActiveEmail === user.profile.email }">
       <div class="main_info">
-        <div *ngFor="let card of headerData" class="card">
+        <div *ngFor="let card of headerData; index as i" class="card">
           <p class="title">{{card.title}}</p>
-          <p class="info">{{card.data}}</p>
+          <div class="bottom">
+            <p *ngIf="isModeChange !== i" class="info">{{card.data}}</p>
+            <input type="text" *ngIf="isModeChange === i">
+            <mat-icon (click)="useEditeMode(i)" svgIcon="edite"></mat-icon>
+          </div>
           <div class="line {{card.color}}"></div>
         </div>
       </div>
