@@ -10,5 +10,6 @@ export class ListIconsService {
               private domSanitizer: DomSanitizer) {
 
     this.matIconRegistry.addSvgIcon('edite', this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/images/profile/edite.svg'));
+    this.matIconRegistry.addSvgIcon('save', this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/images/profile/save.svg'));
   }
 }

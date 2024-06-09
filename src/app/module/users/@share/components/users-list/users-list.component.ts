@@ -6,6 +6,7 @@ import { HeaderInfo, MonitoringData } from '../../../../../shared/interfaces/hea
 import { Subscription, combineLatest } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ListIconsService } from '../../services/listIcon.service';
+import { ChangeMonitoringDataService } from '../../services/changeMonitoringData.service';
 
 @Component({
   selector: 'app-users-list',
@@ -15,7 +16,7 @@ import { ListIconsService } from '../../services/listIcon.service';
 export class UsersListComponent implements OnInit, OnDestroy {
   private mainData: any
   private textMonitoring: MonitoringData;
-  public monitoringData: MonitoringData = null;
+  public monitoringData: MonitoringData;
   public headerData: HeaderInfo[];
   public transaction: any;
   public isUseCard: number = 789;
@@ -26,13 +27,14 @@ export class UsersListComponent implements OnInit, OnDestroy {
   public isActiveEmail: string;
   public isSetting: boolean;
   public isModeChange: number;
+  public monitoringChanges: number;
   private translateSubscription: Subscription;
   private selectAllUsersSubscription: Subscription;
   constructor(
     private store: Store<{ store: StoreInterface }>,
     private translate: TranslateService,
-    private listIconsService: ListIconsService
-
+    private listIconsService: ListIconsService,
+    private changeMonitoringDataService: ChangeMonitoringDataService
   ) { }
 
   ngOnInit(): void {
@@ -43,9 +45,8 @@ export class UsersListComponent implements OnInit, OnDestroy {
   }
 
 
-
   private initializeMonitoringData() {
-    this.selectAllUsersSubscription = this.store.pipe(select(selectAllUsers)).subscribe((data) => {
+    this.selectAllUsersSubscription = this.store.select(selectAllUsers).subscribe((data) => {
       this.mainData = data;
       if (data) {
         this.allUsers = Object.values(data);
@@ -62,24 +63,31 @@ export class UsersListComponent implements OnInit, OnDestroy {
           return acc;
         }, []);
       }
+      this.allUsers ? this.setMonitoringDataOtherUser() : null;
     });
   }
 
   public openSettings(email: string) {
     this.isSetting = true;
     this.isActiveEmail = email;
+    this.setMonitoringDataOtherUser();
+  }
 
-    const userData = this.allUsers.find(user => user.profile.email === this.isActiveEmail);
-    if (userData) {
-      this.monitoringData = userData.monitoring;
-      if (typeof this.monitoringData === 'object') {
-        if (Object.keys(this.monitoringData).length === 1) {
-          this.updateHeaderData(this.textMonitoring, Object.values(this.monitoringData)[0]);
-        } else {
-          this.updateHeaderData(this.textMonitoring, this.monitoringData);
+  private setMonitoringDataOtherUser() {
+    if (this.allUsers) {
+      const userData = this.allUsers.find(user => user.profile.email === this.isActiveEmail);
+      if (userData) {
+        this.monitoringData = userData.monitoring;
+        if (typeof this.monitoringData === 'object') {
+          if (Object.keys(this.monitoringData).length === 1) {
+            this.updateHeaderData(this.textMonitoring, Object.values(this.monitoringData)[0]);
+          } else {
+            this.updateHeaderData(this.textMonitoring, this.monitoringData);
+          }
         }
       }
     }
+
   }
 
   private updateHeaderData(text, content) {
@@ -94,13 +102,19 @@ export class UsersListComponent implements OnInit, OnDestroy {
     }
   }
 
-
   public choiceCard(id: number) {
     this.isUseCard = id;
   }
 
   public useEditeMode(i: number) {
     this.isModeChange = i
+  }
+
+  public saveMonitoringData(index: string, id: string) {
+    console.log(id)
+    this.changeMonitoringDataService.updateMonitoringData(index, this.monitoringChanges, this.monitoringData, id);
+    console.log(this.monitoringData)
+    this.isModeChange = null;
   }
 
   ngOnDestroy(): void {

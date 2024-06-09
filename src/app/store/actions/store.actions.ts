@@ -2,6 +2,7 @@ import { createAction, props } from "@ngrx/store"
 import { UserData } from "../../shared/interfaces/backend.interface"
 import { MonitoringData } from "../../shared/interfaces/header.interface"
 
+export const SETALLUSERS = 'SETALLUSERS'
 export const REGISTER = 'REGISTER'
 export const USERS = 'USERS'
 export const USERID = 'USERID';
@@ -10,6 +11,9 @@ export const MONITORINGDATA = 'MONITORINGDATA';
 export const STARTAFFECT = 'STARTAFFECT';
 export const SETUSERDATA = 'SETUSERDATA';
 
+export const setAllUsers = createAction(
+  SETALLUSERS
+)
 export const setRegiset = createAction(
   REGISTER
 )

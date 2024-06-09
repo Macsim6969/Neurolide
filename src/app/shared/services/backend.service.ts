@@ -1,4 +1,4 @@
-import { allUsers, newUserData, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
+import { allUsers, newUserData, setAllUsers, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { UserData } from "../interfaces/backend.interface";
@@ -36,8 +36,14 @@ export class BackendService {
   }
 
   public setMonitoringData(userId: string, data: MonitoringData) {
-    return this.http.post<MonitoringData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/monitoring.json`, data).subscribe((data: MonitoringData) => {
+    return this.http.put<MonitoringData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/monitoring.json`, data).subscribe((data: MonitoringData) => {
       this.store.dispatch(updatedMonitoringData({ data: data }));
+    })
+  }
+
+  public setMonitoringDataForUser(userId: string, data: MonitoringData) {
+    return this.http.put<MonitoringData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/monitoring.json`, data).subscribe((data: MonitoringData) => {
+      this.getAlluser();
     })
   }
 

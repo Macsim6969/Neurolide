@@ -1,5 +1,5 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { setRegiset, setUserData, startGetData } from "../actions/store.actions";
+import { setAllUsers, setRegiset, setUserData, startGetData } from "../actions/store.actions";
 import { tap, withLatestFrom } from "rxjs";
 import { BackendService } from "../../shared/services/backend.service";
 import { Store, select } from "@ngrx/store";
@@ -47,6 +47,15 @@ export class AuthEffects {
       })
     ),
     { dispatch: false }
+  )
+
+  setAllUser = createEffect(
+    () => this.actions$.pipe(
+      ofType(setAllUsers),
+      tap(() => {
+        this.backendService.getAlluser();
+      })
+    )
   )
 
   constructor(private actions$: Actions,

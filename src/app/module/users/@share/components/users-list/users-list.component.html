@@ -14,8 +14,9 @@
           <p class="title">{{card.title}}</p>
           <div class="bottom">
             <p *ngIf="isModeChange !== i" class="info">{{card.data}}</p>
-            <input type="text" *ngIf="isModeChange === i">
-            <mat-icon (click)="useEditeMode(i)" svgIcon="edite"></mat-icon>
+            <input [(ngModel)]="monitoringChanges" type="number" *ngIf="isModeChange === i">
+            <mat-icon *ngIf="isModeChange !== i" (click)="useEditeMode(i)" svgIcon="edite"></mat-icon>
+            <mat-icon *ngIf="isModeChange === i"  (click)="saveMonitoringData(card.title, user.profile?.userID)" svgIcon="save"></mat-icon>
           </div>
           <div class="line {{card.color}}"></div>
         </div>
