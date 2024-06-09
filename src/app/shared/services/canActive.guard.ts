@@ -7,10 +7,14 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (localStorage.getItem('userData')) {
+    if (JSON.parse(localStorage.getItem('rules')) === 'manager') {
       return true;
+    } else if (JSON.parse(localStorage.getItem('rules')) === 'brand') {
+      return this.router.createUrlTree(['/brand']);
+    } else if (JSON.parse(localStorage.getItem('rules')) === 'affiliate') {
+      return this.router.createUrlTree(['/affiliate']);
     } else {
-      return this.router.createUrlTree(['/register']);
+      return false
     }
   }
 }

@@ -53,18 +53,18 @@
 
     .user_dop {
 
+      background-color: #70A9FF;
+      width: 100%;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
 
+
+      flex-direction: column;
+      padding: 20px 2px 8px 2px;
       display: none;
 
       &.active {
-        background-color: #70A9FF;
-        width: 100%;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-
         display: flex;
-        flex-direction: column;
-        padding: 20px 2px 8px 2px;
       }
 
       .main_info {

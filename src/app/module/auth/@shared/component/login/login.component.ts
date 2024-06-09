@@ -97,6 +97,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
         const formData = { ...this.form.value, rules: this.isRulesChoise }
         this.authSubscription = this.authService.login(formData).subscribe((data) => {
           if (data) {
+            localStorage.setItem('rules', JSON.stringify(this.isRulesChoise));
             this.router.navigate([`/${this.dataUser}`]).then();
             if (this.hideRequiredControl && this.form.value) {
               localStorage.setItem('save', JSON.stringify(formData))

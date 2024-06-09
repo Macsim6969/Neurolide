@@ -45,7 +45,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
   private initializeMonitoringData() {
     this.selectAllUsersSubscription = this.store.pipe(select(selectAllUsers)).subscribe((data) => {
       this.mainData = data;
-      console.log(this.mainData, 'start')
       if (data) {
         this.allUsers = Object.values(data);
         this.userInfo = this.allUsers.reduce((acc, user) => {
@@ -61,9 +60,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
           }
           return acc;
         }, []);
-
-        console.log(this.userInfo);
-
       }
     });
 
@@ -88,8 +84,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.isSetting = true;
     this.isActiveId = id;
 
-    
-    console.log(Object.values(Object.values(this.mainData)[this.isActiveId]), '324234');
+  
     this.monitoringData = Object.values(this.mainData)[this.isActiveId]['monitoring'];
     this.transaction = Object.values(Object.values(this.mainData)[this.isActiveId]['historyTransactions'])[0];
     this.card = Object.values(Object.values(Object.values(this.mainData)[this.isActiveId]['card'])[0]);

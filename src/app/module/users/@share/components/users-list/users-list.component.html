@@ -8,7 +8,7 @@
       <nav class="transaction sans">{{user?.monitoring?.transactions}}</nav>
       <nav class="status sans">{{user?.profile?.rules}}</nav> 
     </div>
-    <!-- <div class="user_dop" [ngClass]="{'active': i == isActiveId}">
+    <div class="user_dop" [ngClass]="{'active': i == isActiveId}">
       <div class="main_info">
         <div *ngFor="let card of headerData" class="card">
           <p class="title">{{card.title}}</p>
@@ -16,7 +16,7 @@
           <div class="line {{card.color}}"></div>
         </div>
       </div>
-      <div class="transaction">
+      <div class="transaction" *ngIf="transaction">
         <div class="history" *ngFor="let history of transaction[isUseCard]">
           <nav class="id sans">{{history?.nomer}}</nav>
           <nav class="name sans">{{history?.data}}</nav>
@@ -35,7 +35,7 @@
           <p>{{card?.number}}</p>
         </div>
       </div>
-    </div> -->
+    </div>
 
   </div>
 </div>

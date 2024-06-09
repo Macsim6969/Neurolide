@@ -66,7 +66,6 @@ export class AuthService {
     }).pipe(tap((resData: AuthResponseData) => {
       const id = JSON.parse(localStorage.getItem('id'));
       this.handleAuthentication(resData.email, id, resData.idToken, +resData.expiresIn, id);
-
       if (localStorage.getItem('userData')) {
         const id = JSON.parse(localStorage.getItem('userData'))
         this.store.dispatch(newUserID({ id: id.localId }))
