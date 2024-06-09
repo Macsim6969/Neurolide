@@ -174,12 +174,22 @@
       }
 
       .allCard {
+        margin-top: 8px;
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 14px;
 
-        .card {}
+        .card_title {
+          border-radius: 20px;
+          background: #F1F4FF;
+          padding: 15px 20px;
+          color: #000000;
+          font-size: 2rem;
+          line-height: 23.5px;
+
+        }
+
       }
     }
 

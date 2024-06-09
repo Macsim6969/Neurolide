@@ -15,14 +15,16 @@
           <div class="bottom">
             <p *ngIf="isModeChange !== i" class="info">{{card.data}}</p>
             <input [(ngModel)]="monitoringChanges" type="number" *ngIf="isModeChange === i">
-            <mat-icon *ngIf="isModeChange !== i" (click)="useEditeMode(i)" svgIcon="edite"></mat-icon>
-            <mat-icon *ngIf="isModeChange === i"  (click)="saveMonitoringData(card.title, user.profile?.userID)" svgIcon="save"></mat-icon>
+            <mat-icon svgIcon="settings" *ngIf="i === 4"></mat-icon>
+            <mat-icon *ngIf="isModeChange !== i && i !== 4" (click)="useEditeMode(i)" svgIcon="edite"></mat-icon>
+            <mat-icon *ngIf="isModeChange === i && i !== 4"
+              (click)="saveMonitoringData(card.title, user.profile?.userID)" svgIcon="save"></mat-icon>
           </div>
           <div class="line {{card.color}}"></div>
         </div>
       </div>
-      <div class="transaction" *ngIf="transaction">
-        <div class="history" *ngFor="let history of transaction[isUseCard]">
+      <div class="transaction" *ngIf="user.transactions">
+        <div class="history" *ngFor="let history of user.transactions">
           <nav class="id sans">{{history?.nomer}}</nav>
           <nav class="name sans">{{history?.data}}</nav>
           <nav class="email sans">{{history?.termin}}</nav>
@@ -33,10 +35,10 @@
         </div>
       </div>
       <div class="allCard">
-        <div>
+        <div class="card_title sans">
           Картки
         </div>
-        <div class="card" *ngFor="let card of card" (click)="choiceCard(card?.cvc)">
+        <div class="card_title" *ngFor="let card of user.card">
           <p>{{card?.number}}</p>
         </div>
       </div>

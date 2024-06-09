@@ -15,12 +15,21 @@ export class ChangeMonitoringDataService {
     const updatedMonitoringData = data;
     const newData = {
       ...updatedMonitoringData,
-      [index.toLocaleLowerCase()]: number
+      [index.toLocaleLowerCase()]: number ? number : 0
     }
-    console.log(newData)
-  this.backendService.setMonitoringDataForUser(id, newData);
+    this.backendService.setMonitoringDataForUser(id, newData);
 
     return newData
+  }
 
+  public setNewUserCard(id: string) {
+
+    const newData = {
+      cvc: "329",
+      data: "2027-09",
+      name: "Tom", 
+      number: "2344826758577455",
+    }
+    this.backendService.setNewUserCard(id, newData)
   }
 }

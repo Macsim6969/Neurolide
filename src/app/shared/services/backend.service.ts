@@ -53,4 +53,10 @@ export class BackendService {
     });
   }
 
+  public setNewUserCard(userId: string, newCard) {
+    return this.http.post<MonitoringData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/card.json`, newCard).subscribe(() => {
+      this.getAlluser();
+    })
+  }
+
 }

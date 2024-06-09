@@ -19,8 +19,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
   public monitoringData: MonitoringData;
   public headerData: HeaderInfo[];
   public transaction: any;
-  public isUseCard: number = 789;
-  public card;
 
   public userInfo;
   public allUsers;
@@ -54,9 +52,9 @@ export class UsersListComponent implements OnInit, OnDestroy {
           if (user.profile && user.monitoring && user.profile.rules !== 'manager') {
             if (user.profile && user.monitoring) {
               if (Object.keys(user.profile).length > 1) {
-                acc.push({ profile: user.profile, monitoring: user.monitoring });
+                acc.push({ profile: user.profile, monitoring: user.monitoring, card: Object.values(user.card), transactions: Object.values(user.transactions) });
               } else {
-                acc.push({ profile: Object.values(user.profile)[0], monitoring: Object.values(user.monitoring)[0] });
+                acc.push({ profile: Object.values(user.profile)[0], monitoring: Object.values(user.monitoring)[0], card: Object.values(user.card), transactions: Object.values(user.transactions) });
               }
             }
           }
@@ -64,6 +62,8 @@ export class UsersListComponent implements OnInit, OnDestroy {
         }, []);
       }
       this.allUsers ? this.setMonitoringDataOtherUser() : null;
+
+      console.log(this.userInfo)
     });
   }
 
@@ -102,19 +102,17 @@ export class UsersListComponent implements OnInit, OnDestroy {
     }
   }
 
-  public choiceCard(id: number) {
-    this.isUseCard = id;
-  }
-
   public useEditeMode(i: number) {
     this.isModeChange = i
   }
 
   public saveMonitoringData(index: string, id: string) {
-    console.log(id)
     this.changeMonitoringDataService.updateMonitoringData(index, this.monitoringChanges, this.monitoringData, id);
-    console.log(this.monitoringData)
     this.isModeChange = null;
+  }
+
+  public setNewCard(id: string) {
+    this.changeMonitoringDataService.setNewUserCard(id)
   }
 
   ngOnDestroy(): void {
