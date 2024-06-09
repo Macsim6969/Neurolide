@@ -15,10 +15,10 @@
           <div class="bottom">
             <p *ngIf="isModeChange !== i" class="info">{{card.data}}</p>
             <input [(ngModel)]="monitoringChanges" type="number" *ngIf="isModeChange === i">
-            <mat-icon svgIcon="settings" *ngIf="i === 4"></mat-icon>
+            <mat-icon svgIcon="settings" (click)="useEditeMode(i)" *ngIf="isModeChange !== i && i === 4"></mat-icon>
             <mat-icon *ngIf="isModeChange !== i && i !== 4" (click)="useEditeMode(i)" svgIcon="edite"></mat-icon>
-            <mat-icon *ngIf="isModeChange === i && i !== 4"
-              (click)="saveMonitoringData(card.title, user.profile?.userID)" svgIcon="save"></mat-icon>
+            <mat-icon *ngIf="isModeChange === i" (click)="saveMonitoringData(card.title, user.profile?.userID)"
+              svgIcon="save"></mat-icon>
           </div>
           <div class="line {{card.color}}"></div>
         </div>
