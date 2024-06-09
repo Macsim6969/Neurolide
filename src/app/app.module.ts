@@ -15,6 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/store.effects';
 import { AuthService } from './module/auth/@shared/services/auth.service';
 import { MonitoringService } from './shared/services/monitoring.service';
+import { RulesGuard } from './shared/services/rules.guard';
 ;
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -38,7 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [BackendService, AuthGuard, AuthService, MonitoringService],
+  providers: [BackendService, AuthGuard, RulesGuard, AuthService, MonitoringService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
