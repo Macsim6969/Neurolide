@@ -119,9 +119,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.isConfirmAttention = true
     this.removeId = id;
     this.removeToken = token;
-
   }
-
 
   public confirme() {
     this.removeUser(this.removeId, this.removeToken)
@@ -131,7 +129,15 @@ export class UsersListComponent implements OnInit, OnDestroy {
     const user = this.userInfo.find(e => e.profile.email === email)
     this.userSerice._isUser = user;
     this.userSerice._isUserPopup = true;
+  }
 
+  public openTransitionPopup(email: string, idNomer: string, id: number, userId: string){
+    const user = this.userInfo.find(e => e.profile.email === email)
+    this.userSerice._transitionData = user.transactions;
+    this.userSerice._isTransitionPopup = true;
+    this.userSerice._activeTransition = idNomer;
+    this.userSerice._activeTransitionId = id;
+    this.userSerice._userId = userId;
   }
 
 

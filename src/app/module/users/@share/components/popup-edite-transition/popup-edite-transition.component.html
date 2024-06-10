@@ -1,0 +1,42 @@
+<div class="profile-edite">
+  <div class="popup">
+    <h3 class="popup_title sans">Внесення коректив платежу</h3>
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="userInfoTransaction">
+      <div class="column">
+        <mat-label class="label sans">Номер</mat-label>
+        <input class="sans" placeholder="Номер" type="text" formControlName="number">
+      </div>
+      <div class="row">
+        <div class="column">
+          <mat-label class="label sans">Дата рахунку</mat-label>
+          <input class="sans" placeholder="Пошта" type="date" formControlName="invoiceData">
+        </div>
+        <div class="column">
+          <mat-label class="label sans">Дата оплати</mat-label>
+          <input class="sans" placeholder="Пошта" type="date" formControlName="dataPayment">
+        </div>
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Статус</mat-label>
+        <input class="sans" placeholder="Статус" type="text" formControlName="status">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Спосіб оплати</mat-label>
+        <input class="sans" placeholder="Спосіб оплати" type="text" formControlName="paymentMethod">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Підписка</mat-label>
+        <input class="sans" placeholder="Підписка" type="text" formControlName="subscribe">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Сума</mat-label>
+        <input class="sans" placeholder="Сума" type="number" formControlName="suma">
+      </div>
+      <div class="action">
+        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
+        <button type="submit" class="save sans" mat-button>Save Changes</button>
+      </div>
+    </form>
+  </div>
+
+</div>

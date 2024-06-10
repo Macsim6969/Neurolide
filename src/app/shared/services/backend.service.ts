@@ -68,4 +68,10 @@ export class BackendService {
     })
   }
 
+  public setUserTransitionHistory(userId: string, newTransactions) {
+    return this.http.put<MonitoringData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/transactions.json`, newTransactions).subscribe(() => {
+      this.getAlluser();
+    })
+  }
+
 }
