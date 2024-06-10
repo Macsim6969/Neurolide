@@ -22,7 +22,9 @@
             <p *ngIf="isModeChange !== i" class="info">{{card.data}}</p>
             <input [(ngModel)]="monitoringChanges" type="number" *ngIf="isModeChange === i">
             <mat-icon svgIcon="settings" (click)="useEditeMode(i)" *ngIf="isModeChange !== i && i === 4"></mat-icon>
-            <mat-icon *ngIf="isModeChange !== i && i !== 4" (click)="useEditeMode(i)" svgIcon="edite"></mat-icon>
+            <img *ngIf="isModeChange !== i && i !== 4" (click)="useEditeMode(i)"
+              src="../../../../../../assets/images/profile/edite.png" alt="">
+            <!-- <mat-icon *ngIf="isModeChange !== i && i !== 4" (click)="useEditeMode(i)" svgIcon="edite"></mat-icon> -->
             <mat-icon *ngIf="isModeChange === i" (click)="saveMonitoringData(card.title, user.profile?.userID)"
               svgIcon="save"></mat-icon>
           </div>
@@ -39,7 +41,9 @@
           <nav class="status sans">{{history?.status}}</nav>
           <nav class="status sans">{{history?.kwota}}</nav>
           <div class="history_actions">
-            <button mat-icon-button (click)="openTransitionPopup(user?.profile?.email, history?.nomer, i, user.profile.userID)"> <mat-icon svgIcon="edite"></mat-icon></button>
+            <button mat-icon-button
+              (click)="openTransitionPopup(user?.profile?.email, history?.nomer, i, user.profile.userID)"> <img
+                src="../../../../../../assets/images/profile/edite.png" alt=""></button>
             <button mat-icon-button> <mat-icon svgIcon="settings"></mat-icon> </button>
             <button mat-icon-button> <mat-icon svgIcon="save"></mat-icon></button>
             <button mat-icon-button> <mat-icon svgIcon="remove"></mat-icon></button>
