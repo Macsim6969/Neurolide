@@ -7,6 +7,7 @@ export interface UserData{
   number?: string
   avatar?: string
   rules: string
+  token: string
 }
 
 export interface PeyementList{

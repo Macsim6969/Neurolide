@@ -15,17 +15,21 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit, OnDestroy {
-  private mainData: any
   private textMonitoring: MonitoringData;
   public monitoringData: MonitoringData;
   public headerData: HeaderInfo[];
 
+  public isConfirmAttention: boolean;
   public userInfo;
   public allUsers;
   public isActiveEmail: string;
   public isSetting: boolean;
   public isModeChange: number;
   public monitoringChanges: number;
+
+  public removeId: string;
+  public removeToken: string;
+
   private translateSubscription: Subscription;
   private selectAllUsersSubscription: Subscription;
   constructor(
@@ -46,21 +50,22 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   private initializeMonitoringData() {
     this.selectAllUsersSubscription = this.store.select(selectAllUsers).subscribe((data) => {
-      this.mainData = data;
-      if (data) {
+      if (data && Object.values(data)) {
         this.allUsers = Object.values(data);
+        console.log(this.allUsers)
         this.userInfo = this.allUsers.reduce((acc, user) => {
           if (user.profile && user.monitoring && user.profile.rules !== 'manager') {
-            if (user.profile && user.monitoring) {
+            if (user && user.profile && user.monitoring) {
               if (Object.keys(user.profile).length > 1) {
-                acc.push({ profile: user.profile, monitoring: user.monitoring, card: Object.values(user.card), transactions: Object.values(user.transactions) });
+                acc.push({ profile: user.profile, monitoring: user.monitoring, transactions: user?.transactions, card: user?.card });
               } else {
-                acc.push({ profile: Object.values(user.profile)[0], monitoring: Object.values(user.monitoring)[0], card: Object.values(user.card), transactions: Object.values(user.transactions) });
+                acc.push({ profile: Object.values(user.profile)[0], monitoring: Object.values(user.monitoring)[0], transactions: Object.values(user.transactions), card: Object.values(user.card), });
               }
             }
           }
           return acc;
         }, []);
+        console.log(this.allUsers)
       }
       this.allUsers ? this.setMonitoringDataOtherUser() : null;
     });
@@ -110,7 +115,19 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.isModeChange = null;
   }
 
-  public openPopupUser(email :string) {
+  public removeUser(id: string, token: string) {
+    this.isConfirmAttention = true
+    this.removeId = id;
+    this.removeToken = token;
+
+  }
+
+
+  public confirme() {
+    this.removeUser(this.removeId, this.removeToken)
+    this.isConfirmAttention = false;
+  }
+  public openPopupUser(email: string) {
     const user = this.userInfo.find(e => e.profile.email === email)
     this.userSerice._isUser = user;
     this.userSerice._isUserPopup = true;

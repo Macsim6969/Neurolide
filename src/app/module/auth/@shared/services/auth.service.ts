@@ -43,7 +43,7 @@ export class AuthService {
       localStorage.setItem('rules', JSON.stringify(form.rules));
       localStorage.setItem('isRegister', JSON.stringify(true));
       localStorage.setItem('id', JSON.stringify(resData.localId));
-      this.backendService.sendUserProfile({ userID: resData.localId, email: form.email, password: form.password, name: form.name, rules: form.rules })
+      this.backendService.sendUserProfile({ userID: resData.localId, email: form.email, password: form.password, name: form.name, rules: form.rules, token: resData.idToken })
       this.handleAuthentication(resData.email, resData.localId, resData.idToken, +resData.expiresIn, resData.localId);
       setTimeout(() => {
         this.store.dispatch(setRegiset())

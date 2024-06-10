@@ -27,7 +27,9 @@ export class BackendService {
   }
 
   public removeUser(userId: string) {
-    return this.http.delete<UserData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}.json`).subscribe()
+    return this.http.delete<UserData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}.json`).subscribe(() =>{
+      this.getAlluser();
+    })
   }
 
   public getUserProfile(userId: string) {
