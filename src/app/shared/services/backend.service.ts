@@ -13,6 +13,13 @@ export class BackendService {
   constructor(private http: HttpClient,
     private store: Store<{ store: StoreInterface }>,) {
   }
+  
+  public updateUserData(userData) {
+    return this.http.put<UserData>(`${this.baseUrl}/users/${userData.profile.userID}.json`, userData).subscribe(() => {
+      this.getAlluser();
+    });
+  }
+  
   public sendUserProfile(userData: UserData) {
     return this.http.put<UserData>(`${this.baseUrl}/users/${userData.userID}/profile.json`, userData).subscribe(() => {
       this.store.dispatch(setUserData({ data: true }));

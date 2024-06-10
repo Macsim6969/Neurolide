@@ -8,6 +8,8 @@ import { ListIconsService } from './@share/services/listIcon.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  ChangeMonitoringDataService } from './@share/services/changeMonitoringData.service';
 import { CardFormatPipe } from './@share/pipe/cardFormat.pipe';
+import { PopupEditeUserComponent } from './@share/components/popup-edite-user/popup-edite-user.component';
+import { UserService } from './@share/services/user.service';
 
 const routes: Routes = [
   { path: '', component: UsersComponent }
@@ -17,7 +19,8 @@ const routes: Routes = [
   declarations: [
     UsersComponent,
     UsersListComponent,
-    CardFormatPipe
+    CardFormatPipe,
+    PopupEditeUserComponent
   ],
   imports: [
     CommonModule,
@@ -29,6 +32,6 @@ const routes: Routes = [
   exports: [
     CardFormatPipe
   ],
-  providers : [ListIconsService, ChangeMonitoringDataService]
+  providers : [ListIconsService, ChangeMonitoringDataService, UserService]
 })
 export class UsersModule { }

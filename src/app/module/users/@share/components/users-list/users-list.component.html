@@ -1,6 +1,6 @@
 <div class="users-list">
   <div class="user" *ngFor="let user of userInfo">
-    <div class="user_info" (click)="openSettings(user.profile.email)">
+    <div [ngClass]="{ 'active': isActiveEmail === user.profile.email }" class="user_info" (click)="openSettings(user.profile.email)">
       <nav class="id sans">{{ user?.profile?.userID }}</nav>
       <nav class="name sans">{{ user?.profile?.name }}</nav>
       <nav class="email sans">{{ user?.profile?.email }}</nav>
@@ -8,8 +8,8 @@
       <nav class="transaction sans">{{ user?.monitoring?.transactions ? user?.monitoring?.transactions : 0 }}</nav>
       <nav class="status sans">{{ user?.profile?.rules }}</nav>
       <div class="history_actions">
-        <button> <mat-icon svgIcon="settings"></mat-icon> </button>
         <button> <mat-icon svgIcon="remove"></mat-icon></button>
+        <button style="z-index: 999;" (click)="openPopupUser(user?.profile?.email)"> <mat-icon svgIcon="settings"></mat-icon> </button>
       </div>
     </div>
     <div class="user_dop" [ngClass]="{ 'active': isActiveEmail === user.profile.email }">

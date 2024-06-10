@@ -1,0 +1,28 @@
+<div class="profile-edite">
+  <div class="popup">
+    <h3 class="popup_title sans">Редагувати данні користувача</h3>
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="userInfo">
+      <div class="column">
+        <mat-label class="label sans">Нікнейм</mat-label>
+        <input class="sans" placeholder="Нікнейм" type="text" formControlName="name">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Пошта</mat-label>
+        <input class="sans" placeholder="Пошта" type="email" formControlName="email">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Баланс</mat-label>
+        <input class="sans" placeholder="Баланс" type="number" formControlName="balance">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Транзакції</mat-label>
+        <input class="sans" placeholder="Транзакції" type="number" formControlName="transactions">
+      </div>
+      <div class="action">
+        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
+        <button type="submit" class="save sans" mat-button>Save Changes</button>
+      </div>
+    </form>
+  </div>
+
+</div>

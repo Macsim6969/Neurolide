@@ -7,6 +7,7 @@ import { Subscription, combineLatest } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ListIconsService } from '../../services/listIcon.service';
 import { ChangeMonitoringDataService } from '../../services/changeMonitoringData.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-users-list',
@@ -31,7 +32,8 @@ export class UsersListComponent implements OnInit, OnDestroy {
     private store: Store<{ store: StoreInterface }>,
     private translate: TranslateService,
     private listIconsService: ListIconsService,
-    private changeMonitoringDataService: ChangeMonitoringDataService
+    private changeMonitoringDataService: ChangeMonitoringDataService,
+    private userSerice: UserService
   ) { }
 
   ngOnInit(): void {
@@ -61,8 +63,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
         }, []);
       }
       this.allUsers ? this.setMonitoringDataOtherUser() : null;
-
-      console.log(this.userInfo)
     });
   }
 
@@ -110,9 +110,13 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.isModeChange = null;
   }
 
-  public setNewCard(id: string) {
-    this.changeMonitoringDataService.setNewUserCard(id)
+  public openPopupUser(email :string) {
+    const user = this.userInfo.find(e => e.profile.email === email)
+    this.userSerice._isUser = user;
+    this.userSerice._isUserPopup = true;
+
   }
+
 
   ngOnDestroy(): void {
     this.translateSubscription.unsubscribe();

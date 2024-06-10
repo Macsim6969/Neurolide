@@ -21,7 +21,6 @@ export class RulesGuard implements CanActivate {
       select(selectUserData),
       take(1),
       map((data) => {
-        console.log('User data:', data);
         const currentUrl = state.url;
         if (data.rules === 'brand' && currentUrl !== '/brand') {
           return this.router.createUrlTree(['/brand']);
