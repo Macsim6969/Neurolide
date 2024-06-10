@@ -18,7 +18,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
   private textMonitoring: MonitoringData;
   public monitoringData: MonitoringData;
   public headerData: HeaderInfo[];
-  public transaction: any;
 
   public userInfo;
   public allUsers;

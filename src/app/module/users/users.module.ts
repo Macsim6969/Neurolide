@@ -7,6 +7,7 @@ import { UsersListComponent } from './@share/components/users-list/users-list.co
 import { ListIconsService } from './@share/services/listIcon.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  ChangeMonitoringDataService } from './@share/services/changeMonitoringData.service';
+import { CardFormatPipe } from './@share/pipe/cardFormat.pipe';
 
 const routes: Routes = [
   { path: '', component: UsersComponent }
@@ -15,7 +16,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     UsersComponent,
-    UsersListComponent
+    UsersListComponent,
+    CardFormatPipe
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,9 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
+  ],
+  exports: [
+    CardFormatPipe
   ],
   providers : [ListIconsService, ChangeMonitoringDataService]
 })

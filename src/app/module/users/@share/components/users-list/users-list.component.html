@@ -7,6 +7,10 @@
       <nav class="balance sans">{{ user?.monitoring?.balance ? user?.monitoring?.balance : 0 }}</nav>
       <nav class="transaction sans">{{ user?.monitoring?.transactions ? user?.monitoring?.transactions : 0 }}</nav>
       <nav class="status sans">{{ user?.profile?.rules }}</nav>
+      <div class="history_actions">
+        <button> <mat-icon svgIcon="settings"></mat-icon> </button>
+        <button> <mat-icon svgIcon="remove"></mat-icon></button>
+      </div>
     </div>
     <div class="user_dop" [ngClass]="{ 'active': isActiveEmail === user.profile.email }">
       <div class="main_info">
@@ -28,10 +32,16 @@
           <nav class="id sans">{{history?.nomer}}</nav>
           <nav class="name sans">{{history?.data}}</nav>
           <nav class="email sans">{{history?.termin}}</nav>
-          <nav class="balance sans">{{history?.subscription}}</nav>
-          <nav class="transaction sans">{{history?.method}}</nav>
+          <nav class="balance sub sans">{{history?.subscription}}</nav>
+          <nav class="transaction sans">{{history?.method|cardFormat:history.subscription}}</nav>
           <nav class="status sans">{{history?.status}}</nav>
           <nav class="status sans">{{history?.kwota}}</nav>
+          <div class="history_actions">
+            <button mat-icon-button> <mat-icon svgIcon="edite"></mat-icon></button>
+            <button mat-icon-button> <mat-icon svgIcon="settings"></mat-icon> </button>
+            <button mat-icon-button> <mat-icon svgIcon="save"></mat-icon></button>
+            <button mat-icon-button> <mat-icon svgIcon="remove"></mat-icon></button>
+          </div>
         </div>
       </div>
       <div class="allCard">
