@@ -14,7 +14,7 @@ import { UserData } from '../../shared/interfaces/backend.interface';
 })
 export class SidebarComponent implements OnInit, OnDestroy {
 
-  p
+  public isLoading: boolean = false;
   public userRule: string;
   public sidebarData: SidebarData[];
   private translateSubscription: Subscription;
@@ -36,7 +36,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   private initialeUserRules() {
     this.store.pipe(select(selectUserData)).subscribe((data: UserData) => {
-      data ? this.userRule = data.rules : null
+      if (data) {
+        this.userRule = data.rules;
+        this.isLoading = true;
+      }
     })
   }
 

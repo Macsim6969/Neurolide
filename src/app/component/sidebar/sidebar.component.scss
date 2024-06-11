@@ -68,4 +68,17 @@
       }
     }
   }
+
+  app-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+
+    ::ng-deep {
+      circle {
+        stroke: rgb(17, 47, 146) !important;
+      }
+    }
+  }
 }
