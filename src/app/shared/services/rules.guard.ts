@@ -17,22 +17,12 @@ export class RulesGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.store.pipe(
-      select(selectUserData),
-      take(1),
-      map((data) => {
-        const currentUrl = state.url;
-        if (data.rules === 'brand' && currentUrl !== '/brand') {
-          return this.router.createUrlTree(['/brand']);
-        } else if (data.rules === 'manager' && currentUrl !== '/manager') {
-          return this.router.createUrlTree(['/manager']);
-        } else if (data.rules === 'affiliate' && currentUrl !== '/affiliate') {
-          return this.router.createUrlTree(['/affiliate']);
-        } else if (!data.rules || ['brand', 'manager', 'affiliate'].indexOf(data.rules) === -1) {
-          return this.router.createUrlTree(['/']);
-        }
-        return true; 
-      })
-    );
+    const userData = localStorage.getItem('userData');
+    const rules = JSON.parse(localStorage.getItem('rules'))
+    if (userData && rules) {
+      return true;
+    } else {
+      return this.router.navigate(['/register']).then();
+    }
   }
 }

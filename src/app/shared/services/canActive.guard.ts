@@ -7,14 +7,14 @@ export class CanActiveGuard implements CanActivate {
   constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (JSON.parse(localStorage.getItem('rules')) === 'manager') {
-      return true;
-    } else if (JSON.parse(localStorage.getItem('rules')) === 'brand') {
-      return this.router.createUrlTree(['/brand']);
-    } else if (JSON.parse(localStorage.getItem('rules')) === 'affiliate') {
-      return this.router.createUrlTree(['/affiliate']);
+    const rules = JSON.parse(localStorage.getItem('rules'))
+    console.log(rules)
+    if (rules === 'brand') {
+      return this.router.navigate(['/brand']).then();
+    } else if (rules === 'affiliate') {
+      return this.router.navigate(['/affiliate']).then();
     } else {
-      return false
+      return this.router.navigate(['/manager']).then();
     }
   }
 }
