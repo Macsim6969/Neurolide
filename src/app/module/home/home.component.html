@@ -1,7 +1,8 @@
-<section class="page">
-  <app-sidebar></app-sidebar>
+<section class="page" [ngClass]="{'mobile': isMobile}">
+  <app-sidebar *ngIf="!isMobile"></app-sidebar>
+  <app-header-sidebar *ngIf="isMobile"></app-header-sidebar>
   <section class="manager right_block">
-    <app-header></app-header>
+    <app-header *ngIf="!isMobile"></app-header>
     <router-outlet></router-outlet>
   </section>
 </section>

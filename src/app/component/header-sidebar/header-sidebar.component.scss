@@ -1,0 +1,76 @@
+mat-toolbar {
+  background: linear-gradient(180deg, #70A9FF 0%, #0149B4 100%, #316EC9 100%);
+  min-height: 100%;
+  height: 52px;
+
+  mat-toolbar-row {
+    z-index: 999;
+    padding: 7px 12px 7px 8px;
+    justify-content: space-between;
+    height: 100%;
+
+    .sidebar_title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+
+      .logo {
+        width: 38px;
+        height: 38px;
+        background-color: #FFFFFF;
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          width: 26px;
+          height: 28px;
+          object-fit: cover;
+        }
+      }
+
+      .title {
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: 26.04px;
+        color: #FFFFFF;
+      }
+    }
+
+    .example-icon {
+      color: #FFFFFF;
+    }
+  }
+
+  .sidebar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 52px;
+    max-width: 220px;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    background: linear-gradient(180deg, #70A9FF 0%, #0149B4 100%, #316EC9 100%);
+
+    animation: open 0.5s ease;
+
+    app-navigation {
+      width: 100%;
+    }
+  }
+}
+
+@keyframes open {
+  from {
+    transform: translateX(-600px);
+  }
+
+  to {
+    transform: translateX(0px);
+  }
+}

@@ -13,13 +13,15 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule } from "@angular/router";
 import { LoadingComponent } from "../component/loading/loading.component";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NavigationComponent } from "../component/navigation/navigation.component";
 
 
 @NgModule({
   declarations: [
     SidebarComponent,
     HeaderComponent,
-    LoadingComponent
+    LoadingComponent,
+    NavigationComponent
   ],
   exports: [
     CommonModule,
@@ -34,6 +36,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     SidebarComponent,
     HeaderComponent,
     LoadingComponent,
+    NavigationComponent,
     MatProgressSpinnerModule
   ],
   imports: [

@@ -1,0 +1,52 @@
+.sidebar_content {
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  nav {
+    &.hide {
+      display: none;
+    }
+  }
+
+  .content_card {
+    text-decoration: none;
+    background-color: #124897;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px 0px #00000040;
+    padding: 20px 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+
+
+    p {
+      font-family: "Public Sans", sans-serif;
+      font-size: 1.6rem;
+      line-height: 18.8px;
+      color: #FFFFFF;
+    }
+
+    &.active {
+      background-color: #092145;
+    }
+  }
+}
+
+app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+
+  ::ng-deep {
+    circle {
+      stroke: rgb(17, 47, 146) !important;
+    }
+  }
+}

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { ShareModule } from '../../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
+import { HeaderSidebarComponent } from '../../component/header-sidebar/header-sidebar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 const routes: Routes = [
   {
@@ -17,11 +19,13 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    HeaderSidebarComponent,
   ],
   imports: [
     CommonModule,
     ShareModule,
+    MatToolbarModule,
     RouterModule.forChild(routes)
   ]
 })
