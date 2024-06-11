@@ -14,6 +14,7 @@ import { UserData } from '../../shared/interfaces/backend.interface';
 })
 export class SidebarComponent implements OnInit, OnDestroy {
 
+  p
   public userRule: string;
   public sidebarData: SidebarData[];
   private translateSubscription: Subscription;
