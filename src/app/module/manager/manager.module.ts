@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShareModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProfileModule } from '../profile/profile.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   imports: [
     ShareModule,
     ProfileModule,
+    HttpClientModule,
     TranslateModule,
     RouterModule.forChild(routes)
   ],

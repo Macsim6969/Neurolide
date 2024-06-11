@@ -10,6 +10,7 @@ import { SidebarComponent } from "../component/sidebar/sidebar.component";
 import { HeaderComponent } from "../component/header/header.component";
 import { CommonModule } from "@angular/common";
 import {MatListModule} from '@angular/material/list';
+import { RouterModule } from "@angular/router";
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {MatListModule} from '@angular/material/list';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    RouterModule
   ]
 })
 

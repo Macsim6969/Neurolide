@@ -1,2 +1,24 @@
 <div class="sidebar">
+  <div class="sidebar_title">
+    <img class="img" src="../../../assets/images/auth/auth_logo.png" alt="Neuroline">
+    <h1 class="title">Neurolide</h1>
+  </div>
+  <div class="sidebar_content">
+    <nav *ngFor="let page of sidebarData" [ngClass]="{
+      'hide': (userRule === 'manager' && (page.title === 'Brand' || page.title === 'Affiliate')) ||
+              (userRule === 'brand' && (page.title === 'Manager' || page.title === 'Affiliate')) ||
+              (userRule === 'affiliate' && (page.title === 'Manager' || page.title === 'Brand'))
+    }">
+      <a routerLinkActive="active" [routerLink]="[page.url]" class="content_card"
+        *ngIf="(userRule !== 'manager' || (userRule === 'manager' && page.title !== 'Brand' && page.title !== 'Affiliate')) 
+              && (userRule !== 'brand' || (userRule === 'brand' && page.title !== 'Manager' && page.title !== 'Affiliate'))
+              && (userRule !== 'affiliate' || (userRule === 'affiliate' && page.title !== 'Manager' && page.title !== 'Brand'))">
+        <img [src]="page.icon" alt="{{page.title}}">
+        <p>{{page.title}}</p>
+      </a>
+    </nav>
+  </div>
+
+
+
 </div>

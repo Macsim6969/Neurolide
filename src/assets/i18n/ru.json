@@ -41,7 +41,7 @@
     {
       "title": "Сповіщення",
       "color": "purple"
-    } 
+    }
   ],
   "user": {
     "userInfo": [
@@ -90,5 +90,52 @@
         "class": "remove"
       }
     ]
-  }
+  },
+  "sidebar": [
+    {
+      "icon": "./assets/images/sidebar/manager.svg",
+      "title": "Менеджер",
+      "url": "/manager"
+    },
+    {
+      "icon": "./assets/images/sidebar/manager.svg",
+      "title": "Бренд",
+      "url": "/brand"
+    },
+    {
+      "icon": "./assets/images/sidebar/manager.svg",
+      "title": "Партнер",
+      "url": "/affiliate"
+    },
+    {
+      "icon": "./assets/images/sidebar/users.svg",
+      "title": "Пользователи",
+      "url": "/users"
+    },
+    {
+      "icon": "./assets/images/sidebar/media-canal.png",
+      "title": "Медиа каналы",
+      "url": "/media-channels"
+    },
+    {
+      "icon": "./assets/images/sidebar/offer.png",
+      "title": "Офери",
+      "url": "/offers"
+    },
+    {
+      "icon": "./assets/images/sidebar/profile.png",
+      "title": "Профиль",
+      "url": "/profile"
+    },
+    {
+      "icon": "./assets/images/sidebar/balance.png",
+      "title": "Баланс",
+      "url": "/balance"
+    },
+    {
+      "icon": "./assets/images/sidebar/support.png",
+      "title": "Техническая поддержка",
+      "url": "/support"
+    }
+  ]
 }
