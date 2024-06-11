@@ -11,6 +11,7 @@ import { CardFormatPipe } from './@share/pipe/cardFormat.pipe';
 import { PopupEditeUserComponent } from './@share/components/popup-edite-user/popup-edite-user.component';
 import { UserService } from './@share/services/user.service';
 import { PopupEditetTransitionComponent } from './@share/components/popup-edite-transition/popup-edite-transition.component';
+import { UserHeaderComponent } from './@share/components/user-header/user-header.component';
 
 const routes: Routes = [
   { path: '', component: UsersComponent }
@@ -22,7 +23,8 @@ const routes: Routes = [
     UsersListComponent,
     CardFormatPipe,
     PopupEditeUserComponent,
-    PopupEditetTransitionComponent
+    PopupEditetTransitionComponent,
+    UserHeaderComponent
   ],
   imports: [
     CommonModule,

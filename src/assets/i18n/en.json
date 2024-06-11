@@ -72,6 +72,26 @@
     }
   ],
   "user": {
+    "userSearch": [
+      {
+        "title": "UID"
+      },
+      {
+        "title": "Nickname"
+      },
+      {
+        "title": "Mail"
+      },
+      {
+        "title": "Balance"
+      },
+      {
+        "title": "Transactions"
+      },
+      {
+        "title": "Status"
+      }
+    ],
     "userInfo": [
       {
         "key": "userID",

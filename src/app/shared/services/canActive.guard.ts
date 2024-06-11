@@ -8,7 +8,6 @@ export class CanActiveGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const rules = JSON.parse(localStorage.getItem('rules'))
-    console.log(rules)
     if (rules === 'brand') {
       return this.router.navigate(['/brand']).then();
     } else if (rules === 'affiliate') {

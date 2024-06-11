@@ -1,0 +1,40 @@
+.user-header-search {
+  margin-top: 32px;
+  display: flex;
+  padding: 30px 21.3px;
+  background: linear-gradient(180deg, #70A9FF 0%, #0149B4 100%, #316EC9 100%);
+  border-radius: 20px;
+  justify-content: space-between;
+
+  .header_content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+
+    &.nickname {
+      width: 240px;
+    }
+
+    p {
+      font-family: "Public Sans", sans-serif;
+      font-size: 2rem;
+      line-height: 23.5px;
+      color: #FFFFFF;
+    }
+
+    mat-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      ::ng-deep {
+        svg {
+          width: 12px;
+          height: 6px;
+        }
+      }
+    }
+  }
+}

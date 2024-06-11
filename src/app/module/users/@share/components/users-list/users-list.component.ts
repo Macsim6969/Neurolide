@@ -52,7 +52,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.selectAllUsersSubscription = this.store.select(selectAllUsers).subscribe((data) => {
       if (data && Object.values(data)) {
         this.allUsers = Object.values(data);
-        console.log(this.allUsers)
         this.userInfo = this.allUsers.reduce((acc, user) => {
           if (user.profile && user.monitoring && user.profile.rules !== 'manager') {
             if (user && user.profile && user.monitoring) {
@@ -65,7 +64,6 @@ export class UsersListComponent implements OnInit, OnDestroy {
           }
           return acc;
         }, []);
-        console.log(this.allUsers)
       }
       this.allUsers ? this.setMonitoringDataOtherUser() : null;
     });

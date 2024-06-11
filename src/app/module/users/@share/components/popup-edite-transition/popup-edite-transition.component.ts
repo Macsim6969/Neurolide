@@ -41,7 +41,6 @@ export class PopupEditetTransitionComponent {
       this.key = key;
       this.userId = userId;
       this.transactionData = this.userInfoTransaction.find(e => e.nomer === activeId)
-      console.log(this.transactionData);
     });
 
   }
@@ -86,7 +85,6 @@ export class PopupEditetTransitionComponent {
 
 
   private setDataToStore() {
-    console.log()
     const newUserData: UserData = {
       ...this.userInfoTransaction,
       [this.key]: {
@@ -99,8 +97,6 @@ export class PopupEditetTransitionComponent {
         kwota: this.form.value.suma
       }
     }
-
-    console.log(newUserData)
 
     this.backendService.setUserTransitionHistory(this.userId, newUserData);
     this.form.reset()

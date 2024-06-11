@@ -40,7 +40,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private initializeUserData() {
     this.storeSubscription = this.store.select(selectUserData).subscribe((data) => {
-      console.log(data.rules)
       if (data.rules) {
         this.router.navigate([`/${data.rules}`]).then()
       }
