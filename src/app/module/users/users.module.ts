@@ -12,6 +12,7 @@ import { PopupEditeUserComponent } from './@share/components/popup-edite-user/po
 import { UserService } from './@share/services/user.service';
 import { PopupEditetTransitionComponent } from './@share/components/popup-edite-transition/popup-edite-transition.component';
 import { UserHeaderComponent } from './@share/components/user-header/user-header.component';
+import { UserSearchService } from './@share/services/userSearch.service';
 
 const routes: Routes = [
   { path: '', component: UsersComponent }
@@ -36,6 +37,6 @@ const routes: Routes = [
   exports: [
     CardFormatPipe
   ],
-  providers : [ListIconsService, ChangeMonitoringDataService, UserService]
+  providers : [ListIconsService, ChangeMonitoringDataService, UserService, UserSearchService]
 })
 export class UsersModule { }

@@ -13,6 +13,7 @@
     align-items: center;
     cursor: pointer;
 
+
     &.nickname {
       width: 240px;
     }
@@ -28,6 +29,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      &.active {
+
+        transform: rotateX(180deg);
+
+      }
 
       ::ng-deep {
         svg {

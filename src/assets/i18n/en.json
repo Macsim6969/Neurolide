@@ -74,22 +74,28 @@
   "user": {
     "userSearch": [
       {
-        "title": "UID"
+        "title": "UID",
+        "tag": "userID"
       },
       {
-        "title": "Nickname"
+        "title": "Nickname",
+        "tag": "name"
       },
       {
-        "title": "Mail"
+        "title": "Mail",
+        "tag": "email"
       },
       {
-        "title": "Balance"
+        "title": "Balance",
+        "tag": "balance"
       },
       {
-        "title": "Transactions"
+        "title": "Transactions",
+        "tag": "transactions"
       },
       {
-        "title": "Status"
+        "title": "Status",
+        "tag": "rules"
       }
     ],
     "userInfo": [

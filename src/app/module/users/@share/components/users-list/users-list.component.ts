@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ListIconsService } from '../../services/listIcon.service';
 import { ChangeMonitoringDataService } from '../../services/changeMonitoringData.service';
 import { UserService } from '../../services/user.service';
+import { UserSearchService } from '../../services/userSearch.service';
 
 @Component({
   selector: 'app-users-list',
@@ -37,15 +38,55 @@ export class UsersListComponent implements OnInit, OnDestroy {
     private translate: TranslateService,
     private listIconsService: ListIconsService,
     private changeMonitoringDataService: ChangeMonitoringDataService,
-    private userSerice: UserService
+    private userSerice: UserService,
+    private userSearchService: UserSearchService
   ) { }
 
   ngOnInit(): void {
     this.initializeMonitoringData();
+  
+    // Subscription to translation stream
     this.translateSubscription = this.translate.stream('usersList').subscribe((data) => {
       this.textMonitoring = data;
-    })
+    });
+  
+    // Subscription to search data stream
+    this.userSearchService._searchData$.subscribe((selectedField) => {
+      this.userInfo.sort((a, b) => {
+        let fieldA = this.getFieldValue(a, selectedField);
+        let fieldB = this.getFieldValue(b, selectedField);
+  
+        if (typeof fieldA === 'string' && typeof fieldB === 'string') {
+          return fieldA.localeCompare(fieldB);
+        } else if (typeof fieldA === 'number' && typeof fieldB === 'number') {
+          return fieldA - fieldB;
+        } else {
+          // Handle other types if necessary, or return 0 to leave order unchanged
+          return 0;
+        }
+      });
+    });
   }
+  
+  private getFieldValue(user: any, field: string): any {
+    switch (field) {
+      case 'email':
+        return user.profile?.email || '';
+      case 'userID':
+        return user.profile?.userID || '';
+      case 'name':
+        return user.profile?.name || '';
+      case 'balance':
+        return user.monitoring?.balance ? parseFloat(user.monitoring.balance) : 0;
+      case 'transactions':
+        return user.monitoring?.transactions ? user.monitoring.transactions.length : 0;
+      case 'rules':
+        return user.profile?.rules || ''; // Assuming rules is a string or other comparable type
+      default:
+        return null;
+    }
+  }
+  
 
 
   private initializeMonitoringData() {
@@ -129,7 +170,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.userSerice._isUserPopup = true;
   }
 
-  public openTransitionPopup(email: string, idNomer: string, id: number, userId: string){
+  public openTransitionPopup(email: string, idNomer: string, id: number, userId: string) {
     const user = this.userInfo.find(e => e.profile.email === email)
     this.userSerice._transitionData = user.transactions;
     this.userSerice._isTransitionPopup = true;
