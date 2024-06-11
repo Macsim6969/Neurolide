@@ -31,6 +31,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
   public removeId: string;
   public removeToken: string;
 
+  private searchDataSubscription: Subscription;
   private translateSubscription: Subscription;
   private selectAllUsersSubscription: Subscription;
   constructor(
@@ -44,30 +45,34 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initializeMonitoringData();
-  
-    // Subscription to translation stream
+    this.streamUserListData();
+    this.streamSearchFilterData();
+  }
+
+  private streamUserListData() {
     this.translateSubscription = this.translate.stream('usersList').subscribe((data) => {
       this.textMonitoring = data;
     });
-  
-    // Subscription to search data stream
-    this.userSearchService._searchData$.subscribe((selectedField) => {
+  }
+
+  private streamSearchFilterData() {
+    this.searchDataSubscription = this.userSearchService._searchData$.subscribe((selectedField) => {
       this.userInfo.sort((a, b) => {
         let fieldA = this.getFieldValue(a, selectedField);
         let fieldB = this.getFieldValue(b, selectedField);
-  
+
         if (typeof fieldA === 'string' && typeof fieldB === 'string') {
           return fieldA.localeCompare(fieldB);
         } else if (typeof fieldA === 'number' && typeof fieldB === 'number') {
           return fieldA - fieldB;
         } else {
-          // Handle other types if necessary, or return 0 to leave order unchanged
+
           return 0;
         }
       });
     });
   }
-  
+
   private getFieldValue(user: any, field: string): any {
     switch (field) {
       case 'email':
@@ -86,7 +91,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
         return null;
     }
   }
-  
+
 
 
   private initializeMonitoringData() {
@@ -181,6 +186,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
+    this.searchDataSubscription.unsubscribe();
     this.translateSubscription.unsubscribe();
     this.selectAllUsersSubscription.unsubscribe();
   }

@@ -2,6 +2,6 @@
   <nav class="header_content {{search['title'].toLocaleLowerCase()}}" (click)="toogleFilter(i, search.tag)"
     *ngFor="let search of userHead;index as i">
     <p>{{search.title}}</p>
-    <mat-icon svgIcon="arrow"></mat-icon>
+    <mat-icon [ngClass]="{'active': i === active}" svgIcon="arrow"></mat-icon>
   </nav>
 </div>

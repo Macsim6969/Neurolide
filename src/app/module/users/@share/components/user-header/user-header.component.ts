@@ -44,6 +44,7 @@ export class UserHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   public toogleFilter(i: number, tag: string) {
     this.isActive = []
     if (i === this.active) {
+      this.active = null;
       this.isActive[i] = false;
       this.userSearch._searchData = '';
     } else {
