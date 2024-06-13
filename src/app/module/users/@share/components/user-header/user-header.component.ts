@@ -34,11 +34,10 @@ export class UserHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private initializeDataFromJSON() {
     this.translateSubscription = this.translate.stream('user.userSearch').subscribe((data: UserSearch[]) => {
-      if (data) {
-        this.userHead = data;
-      }
+      data ? this.userHead = data: null
+
     })
-    console.log(this.userHead)
+
   }
 
   public toogleFilter(i: number, tag: string) {

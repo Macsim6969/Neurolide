@@ -6,5 +6,6 @@
   <div class="user_actions">
     <button [ngClass]="{'hide': rules === 'affiliate' || rules === 'brand'}" (click)="actionsLogout(action.class)"
       *ngFor="let action of userActions" class="sans {{action.class}}" mat-button>{{action.text}}</button>
+      
   </div>
 </section>

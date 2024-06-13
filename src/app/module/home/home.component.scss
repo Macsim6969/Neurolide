@@ -1,3 +1,16 @@
-.mobile{
+.mobile {
   flex-direction: column;
+}
+
+app-header-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.right_block {
+  @media (max-width: 1124px) {
+    background: unset;
+    padding: 0;
+  }
 }

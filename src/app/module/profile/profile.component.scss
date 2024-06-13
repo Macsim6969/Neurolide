@@ -1,7 +1,12 @@
-.profile{
+.profile {
   margin-top: 29px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-left: 158px;
+
+  position: relative;
+  @media (max-width: 1124px) {
+    padding: 0 26px;
+  }
 }

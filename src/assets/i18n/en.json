@@ -138,6 +138,10 @@
       {
         "text": "Delete profile",
         "class": "remove"
+      },
+      {
+        "text": "Delete",
+        "class": "remove-mobile"
       }
     ]
   },

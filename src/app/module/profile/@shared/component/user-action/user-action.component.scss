@@ -6,9 +6,19 @@
   max-width: 769px;
   width: 100%;
 
+  @media (max-width: 1124px) {
+
+    flex-direction: column;
+  }
+
   .user_avatar {
     max-width: 282px;
     max-height: 272px;
+
+    @media (max-width: 1124px) {
+      max-width: 114px;
+      min-width: 114px;
+    }
 
     img {
       border: 4px solid #FFFFFF;
@@ -24,6 +34,11 @@
     flex-direction: row;
     gap: 20px;
 
+    @media (max-width: 1124px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
     button {
       height: 100%;
       min-height: 100%;
@@ -35,12 +50,34 @@
       font-size: 1.6rem;
       line-height: 1.88rem;
 
+      @media (max-width: 1124px) {
+        background: linear-gradient(90deg, #70A9FF 0%, #316EC9 57%, #0149B4 100%);
+        color: #FFFFFF !important;
+        padding: 10px 35px;
+        width: 100%;
+      }
+
       &.remove {
         background-color: #2E65F3;
         color: #FFFFFF;
 
         &.hide {
           display: none;
+        }
+
+        @media (max-width: 1124px) {
+          display: none;
+        }
+
+
+      }
+
+      &.remove-mobile {
+        display: none;
+
+        @media (max-width: 1124px) {
+          display: flex;
+          padding: 10px 18px;
         }
       }
 
