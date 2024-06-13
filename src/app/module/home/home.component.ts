@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private initilizeWidthPage() {
-    if (innerWidth < 1024) {
+    if (innerWidth < 1124) {
       this.isMobile = true;
     } else {
       this.isMobile = false;

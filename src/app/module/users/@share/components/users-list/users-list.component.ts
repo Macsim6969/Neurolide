@@ -147,6 +147,8 @@ export class UsersListComponent implements OnInit, OnDestroy {
           ...card,
           data: content[card.title.toLowerCase()]
         }));
+
+        console.log(this.headerData)
     }
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from './@share/services/user.service';
 import { Subscription } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit, OnDestroy {
-
+  public isMobile: boolean;
   public isUserPopup: boolean;
   public isTransitionPopup: boolean;
   private isTransitionPopupSubscription: Subscription;
@@ -17,9 +17,23 @@ export class UsersComponent implements OnInit, OnDestroy {
     private userService: UserService
   ) { }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.initializeIsMobilePage();
+  }
+
   ngOnInit(): void {
+    this.initializeIsMobilePage();
     this.initializeUserPopupData();
     this.initializeTransitionPopupData();
+  }
+
+  private initializeIsMobilePage() {
+    if (innerWidth < 1124) {
+      this.isMobile = true;
+    } else {
+      this.isMobile = false;
+    }
   }
 
   private initializeUserPopupData() {

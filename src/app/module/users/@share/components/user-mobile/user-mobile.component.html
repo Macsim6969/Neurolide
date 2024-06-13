@@ -1,0 +1,58 @@
+<section class="user-mobile">
+  <div class="user" (click)="openCard(user.profile.email)" *ngFor="let user of userInfo;index as i" [ngClass]="{'active': isActiveSlide === i, 'open': isOpen}">
+    <div class="user_header">
+      <div class="header_main">
+        <div class="header_main_top">
+          <nav class="id">{{user.profile.userID}}</nav>
+          <nav class="status">Status</nav>
+        </div>
+        <div class="header_main">
+          <nav>{{user.profile.rules}}</nav>
+        </div>
+      </div>
+      <div class="actions">
+        <button> <mat-icon svgIcon="settings"></mat-icon> </button>
+        <button> <mat-icon svgIcon="remove"></mat-icon></button>
+      </div>
+    </div>
+    <div class="user_content">
+      <nav class="content_head">Нікнейм</nav>
+      <nav class="content_desription">{{user.profile.name}}</nav>
+    </div>
+    <div class="user_content">
+      <nav class="content_head">Пошта</nav>
+      <nav class="content_desription">{{user.profile.email}}</nav>
+    </div>
+    <div class="user_content">
+      <nav class="content_head">Баланс</nav>
+      <nav class="content_desription">${{user.monitoring.balance}}</nav>
+    </div>
+    <div class="user_content">
+      <nav class="content_head">Транзакції</nav>
+      <nav class="content_desription">${{user.monitoring.transactions}}</nav>
+    </div>
+    <div class="dop_content" [ngClass]="{'open': isOpen}">
+      <div class="main_info">
+        <div *ngFor="let card of headerData; index as i" class="card">
+          <p class="title">{{card.title}}</p>
+          <div class="bottom">
+            <p *ngIf="isModeChange !== i" class="info">{{card.data}}</p>
+            <input [(ngModel)]="monitoringChanges" type="number" *ngIf="isModeChange === i">
+            <mat-icon svgIcon="settings" (click)="useEditeMode(i)" *ngIf="isModeChange !== i && i === 4"></mat-icon>
+            <img *ngIf="isModeChange !== i && i !== 4" (click)="useEditeMode(i)"
+              src="../../../../../../assets/images/profile/edite.png" alt="">
+            <mat-icon *ngIf="isModeChange === i" (click)="saveMonitoringData(card.title, user.profile?.userID)"
+              svgIcon="save"></mat-icon>
+          </div>
+          <div class="line {{card.color}}"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="left">
+  <button (click)="left()">Left</button>
+</div>
+<div class="right">
+  <button (click)="right()">Right</button>
+</div>
