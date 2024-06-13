@@ -6,6 +6,7 @@ import { SidebarData } from '../../shared/interfaces/sidebar.interface';
 import { StoreInterface } from '../../store/model/store.model';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { SidebarService } from '../../shared/services/sidebarService';
 
 @Component({
   selector: 'app-navigation',
@@ -20,7 +21,8 @@ export class NavigationComponent implements OnInit, OnDestroy {
   private translateSubscription: Subscription;
   constructor(
     private translate: TranslateService,
-    private store: Store<{ store: StoreInterface }>
+    private store: Store<{ store: StoreInterface }>,
+    private sidebarService: SidebarService
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
         this.isLoading = true;
       }
     })
+  }
+
+  public removePopup() {
+    this.sidebarService._isSidebarMobile = false;
   }
 
   ngOnDestroy(): void {

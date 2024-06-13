@@ -4,7 +4,7 @@
             (userRule === 'brand' && (page.title === 'Manager' || page.title === 'Affiliate')) ||
             (userRule === 'affiliate' && (page.title === 'Manager' || page.title === 'Brand'))
   }">
-    <a routerLinkActive="active" [routerLink]="[page.url]" class="content_card"
+    <a routerLinkActive="active" [routerLink]="[page.url]" (click)="removePopup()" class="content_card"
       *ngIf="(userRule !== 'manager' || (userRule === 'manager' && page.title !== 'Brand' && page.title !== 'Affiliate')) 
             && (userRule !== 'brand' || (userRule === 'brand' && page.title !== 'Manager' && page.title !== 'Affiliate'))
             && (userRule !== 'affiliate' || (userRule === 'affiliate' && page.title !== 'Manager' && page.title !== 'Affiliate'))">
