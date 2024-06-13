@@ -23,7 +23,12 @@
     justify-content: center;
     gap: 10px;
 
-
+    @media (max-width: 1124px) {
+      padding: 20px;
+      background-color: transparent;
+      box-shadow: none;
+      justify-content: flex-start;
+    }
 
     p {
       font-family: "Public Sans", sans-serif;
