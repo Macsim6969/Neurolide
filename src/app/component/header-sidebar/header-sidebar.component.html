@@ -14,6 +14,9 @@
     <app-navigation></app-navigation>
   </div>
 </mat-toolbar>
-<div class="title_route">
+<div class="title_route" *ngIf="activeTitle">
+
+    <img src="{{activeTitle.icon}}" alt="{{activeTitle.title}}">
+    <p>{{activeTitle.title}}</p>
 
 </div>

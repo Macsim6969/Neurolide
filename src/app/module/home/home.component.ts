@@ -2,8 +2,8 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { StoreInterface } from '../../store/model/store.model';
 import { Store } from '@ngrx/store';
 import { selectUserData } from '../../store/selectors/store.selectors';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { Subscription, filter } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initilizeWidthPage()
-    this.initializeUserData();
+    this.streamActiveRoute();
   }
 
   private initilizeWidthPage() {
@@ -38,12 +38,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  private initializeUserData() {
-    // this.storeSubscription = this.store.select(selectUserData).subscribe((data) => {
-    //   if (data) {
-    //     this.router.navigate([`/${data.rules}`]).then()
-    //   }
-    // })
+  private streamActiveRoute() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      console.log(event.url);
+    });
   }
 
   ngOnDestroy(): void {
