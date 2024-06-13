@@ -39,11 +39,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private initializeUserData() {
-    this.storeSubscription = this.store.select(selectUserData).subscribe((data) => {
-      if (data) {
-        this.router.navigate([`/${data.rules}`]).then()
-      }
-    })
+    // this.storeSubscription = this.store.select(selectUserData).subscribe((data) => {
+    //   if (data) {
+    //     this.router.navigate([`/${data.rules}`]).then()
+    //   }
+    // })
   }
 
   ngOnDestroy(): void {

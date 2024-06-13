@@ -10,7 +10,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { storeReducers } from './store/reducers/store.reducers';
 import { BackendService } from './shared/services/backend.service';
-import { CanActiveGuard } from './shared/services/canActive.guard';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/store.effects';
 import { AuthService } from './module/auth/@shared/services/auth.service';
@@ -40,7 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [BackendService, AuthGuard, CanActiveGuard, RulesGuard, AuthService, MonitoringService],
+  providers: [BackendService, AuthGuard, RulesGuard, AuthService, MonitoringService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

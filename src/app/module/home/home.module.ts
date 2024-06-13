@@ -9,10 +9,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 const routes: Routes = [
   {
     path: '', component: HomeComponent, children: [
+      { path: 'users', loadChildren: () => import('../../module/users/users.module').then((m) => m.UsersModule) },
       { path: 'affiliate', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'brand', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'manager', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
-      { path: 'users', loadChildren: () => import('../../module/users/users.module').then((m) => m.UsersModule) },
     ]
   }
 ]

@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './@shared/component/register/register.component';
 import { ShareModule } from '../../shared/shared.module';
-import { AuthService } from './@shared/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthIconsService } from './@shared/services/authIcon.service';
 import { LoginComponent } from './@shared/component/login/login.component';

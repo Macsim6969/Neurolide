@@ -14,16 +14,9 @@ export class AuthGuard implements CanActivate {
     if (!userData) {
       return true
     } else {
-      const rules = JSON.parse(localStorage.getItem('rules'));
-      if (rules === 'manager') {
-        return this.router.createUrlTree(['/manager']);
-      } else if (rules === 'brand') {
-        return this.router.createUrlTree(['/brand']);
-      } else if (rules === 'affiliate') {
-        return this.router.createUrlTree(['/affiliate']);
-      } else {
-        return false;
-      }
+
+      return false;
+
     }
   }
 }

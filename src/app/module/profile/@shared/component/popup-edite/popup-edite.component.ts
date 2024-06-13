@@ -102,8 +102,12 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
       avatar: this.form.value.avatar
     }
 
+    if (this.form.value.password !== this.userInfo.password) {
+      this.changePassword()
+    }
     this.backendService.sendUserProfile(newUserData);
     this.form.reset()
+    this.profileService._isPopup = false;
   }
 
   public closePopup() {
