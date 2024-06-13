@@ -95,7 +95,7 @@ export class AuthService {
       localStorage.removeItem('save');
       localStorage.removeItem('isRegister');
       localStorage.removeItem('id');
-      this.router.navigate(['/register']).then();
+      this.router.navigate(['/auth/register']).then();
     })
   }
 

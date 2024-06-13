@@ -81,7 +81,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
 
       this.popupInfoService._isAlert = true;
       timer(300).pipe(take(1)).subscribe(() => {
-        data ? this.router.navigate(['/login']).then() : null;
+        data ? this.router.navigate(['/auth/login']).then() : null;
         if (this.hideRequiredControl && this.form.value) {
           localStorage.setItem('save', JSON.stringify(formData))
         }

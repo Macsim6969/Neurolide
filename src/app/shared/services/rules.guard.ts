@@ -20,7 +20,7 @@ export class RulesGuard implements CanActivate {
     if (userData && rules) {
       return true
     } else {
-      return false
+      return this.router.createUrlTree(['/auth/register'])
     }
   }
 }

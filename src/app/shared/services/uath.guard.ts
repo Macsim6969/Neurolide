@@ -12,9 +12,8 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const userData = localStorage.getItem('userData');
     if (!userData) {
-      return true
+      return true;
     } else {
-
       return false;
 
     }
