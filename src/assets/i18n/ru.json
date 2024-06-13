@@ -1,49 +1,103 @@
 {
-  "logo": "Нейролид",
+  "logo": "Neurolide",
   "auth": {
     "rules": [
       {
-        "data": "Партнер",
-        "rule": "afiiliat"
+        "data": "Affiliate",
+        "rule": "affiliate"
       },
       {
-        "data": "Бренд",
+        "data": "Brand",
         "rule": "brand"
+      },
+      {
+        "data": "Manager",
+        "rule": "manager"
       }
     ],
     "form": {
-      "registration": "Регистрация",
-      "name": "Имя",
-      "email": "Электронная почта",
-      "password": "Пароль",
-      "repeatPassword": "Повторите пароль",
-      "rememberData": "Запомнить данные",
-      "formDescription": "Интерфейс горизонта. Все права защищены. Сделано с любовью компанией Simmmple!",
-      "reg": "Зарегистрироваться",
-      "login": "Войти",
-      "loginAccount": "Войти в аккаунт",
-      "loginDescription": "Введите адрес электронной почты и пароль для входа в аккаунт!"
+      "registration": "Registration",
+      "name": "Name",
+      "email": "E-mail",
+      "password": "Password",
+      "repeatPassword": "Repeat the password",
+      "rememberData": "Remember data",
+      "formDescription": "Horizon UI. All Rights Reserved. Made with love by Simmmple!",
+      "reg": "Sign up",
+      "login": "Sign in",
+      "loginAccount": "Login to the account",
+      "loginDescription": "Enter e-mail and password to log in to the account!"
     }
   },
   "headerInfo": [
     {
-      "title": "Індекс",
+      "title": "Cliques",
       "color": "red"
     },
     {
-      "title": "Зачислення",
+      "title": "Index",
+      "color": "red"
+    },
+    {
+      "title": "Leads",
+      "color": "red"
+    },
+    {
+      "title": "Hold",
       "color": "yellow"
     },
     {
-      "title": "Бюджет",
+      "title": "Accrual",
       "color": "green"
     },
     {
-      "title": "Сповіщення",
+      "title": "Disregard",
+      "color": "yellow"
+    },
+    {
+      "title": "Enrollment",
+      "color": "yellow"
+    },
+    {
+      "title": "Budget",
+      "color": "green"
+    },
+    {
+      "title": "Approve",
+      "color": "green"
+    },
+    {
+      "title": "Advice",
       "color": "purple"
     }
   ],
   "user": {
+    "userSearch": [
+      {
+        "title": "UID",
+        "tag": "userID"
+      },
+      {
+        "title": "Nickname",
+        "tag": "name"
+      },
+      {
+        "title": "Mail",
+        "tag": "email"
+      },
+      {
+        "title": "Balance",
+        "tag": "balance"
+      },
+      {
+        "title": "Transactions",
+        "tag": "transactions"
+      },
+      {
+        "title": "Status",
+        "tag": "rules"
+      }
+    ],
     "userInfo": [
       {
         "key": "userID",
@@ -51,90 +105,136 @@
       },
       {
         "key": "name",
-        "text": "Имя:"
+        "text": "Name:"
       },
       {
         "key": "address",
-        "text": "Адрес:"
+        "text": "Address:"
       },
       {
         "key": "number",
-        "text": "Номер телефона:"
+        "text": "Number phone:"
       },
       {
         "key": "email",
-        "text": "Электронная почта:"
+        "text": "E-mail:"
       },
       {
         "key": "password",
-        "text": "Пароль:"
+        "text": "Password:"
       }
     ],
     "userActions": [
       {
-        "text": "Редактировать личные данные",
+        "text": "Edit personal data",
         "class": "edit"
-      },
-      {
-        "text": "Сохранить изменения",
-        "class": "save"
       }
     ],
     "userLogoutChanges": [
       {
-        "text": "Выход",
+        "text": "Exit",
         "class": "logout"
       },
       {
-        "text": "Удалить профиль",
+        "text": "Delete profile",
         "class": "remove"
+      },
+      {
+        "text": "Delete",
+        "class": "remove-mobile"
       }
     ]
   },
+  "usersList": [
+    {
+      "title": "Cliques",
+      "color": "red"
+    },
+    {
+      "title": "Index",
+      "color": "red"
+    },
+    {
+      "title": "Leads",
+      "color": "red"
+    },
+    {
+      "title": "Hold",
+      "color": "yellow"
+    },
+    {
+      "title": "Accrual",
+      "color": "green"
+    },
+    {
+      "title": "Disregard",
+      "color": "yellow"
+    },
+    {
+      "title": "Enrollment",
+      "color": "yellow"
+    },
+    {
+      "title": "Budget",
+      "color": "green"
+    },
+    {
+      "title": "Approve",
+      "color": "green"
+    },
+    {
+      "title": "Advice",
+      "color": "purple"
+    },
+    {
+      "title": "Balance",
+      "color": "purple"
+    }
+  ],
   "sidebar": [
     {
       "icon": "./assets/images/sidebar/manager.svg",
-      "title": "Менеджер",
+      "title": "Manager",
       "url": "/manager"
     },
     {
       "icon": "./assets/images/sidebar/manager.svg",
-      "title": "Бренд",
+      "title": "Brand",
       "url": "/brand"
     },
     {
       "icon": "./assets/images/sidebar/manager.svg",
-      "title": "Партнер",
+      "title": "Affiliate",
       "url": "/affiliate"
     },
     {
       "icon": "./assets/images/sidebar/users.svg",
-      "title": "Пользователи",
+      "title": "Users",
       "url": "/users"
     },
     {
       "icon": "./assets/images/sidebar/media-canal.png",
-      "title": "Медиа каналы",
+      "title": "Media channels",
       "url": "/media-channels"
     },
     {
       "icon": "./assets/images/sidebar/offer.png",
-      "title": "Офери",
+      "title": "Offers",
       "url": "/offers"
     },
     {
       "icon": "./assets/images/sidebar/profile.png",
-      "title": "Профиль",
+      "title": "Profile",
       "url": "/profile"
     },
     {
       "icon": "./assets/images/sidebar/balance.png",
-      "title": "Баланс",
+      "title": "Balance",
       "url": "/balance"
     },
     {
       "icon": "./assets/images/sidebar/support.png",
-      "title": "Техническая поддержка",
+      "title": "Support",
       "url": "/support"
     }
   ]
