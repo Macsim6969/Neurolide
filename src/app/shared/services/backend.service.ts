@@ -1,7 +1,7 @@
-import { allUsers, newUserData, setAllUsers, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
+import { allUsers, newUserData, setAllUsers, setCardsPayment, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { UserData } from "../interfaces/backend.interface";
+import { CardsPayment, UserData } from "../interfaces/backend.interface";
 import { Store } from "@ngrx/store";
 import { StoreInterface } from "../../store/model/store.model";
 import { MonitoringData } from '../interfaces/header.interface';
@@ -13,13 +13,13 @@ export class BackendService {
   constructor(private http: HttpClient,
     private store: Store<{ store: StoreInterface }>,) {
   }
-  
+
   public updateUserData(userData) {
     return this.http.put<UserData>(`${this.baseUrl}/users/${userData.profile.userID}.json`, userData).subscribe(() => {
       this.getAlluser();
     });
   }
-  
+
   public sendUserProfile(userData: UserData) {
     return this.http.put<UserData>(`${this.baseUrl}/users/${userData.userID}/profile.json`, userData).subscribe(() => {
       this.store.dispatch(setUserData({ data: true }));
@@ -27,7 +27,7 @@ export class BackendService {
   }
 
   public removeUser(userId: string) {
-    return this.http.delete<UserData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}.json`).subscribe(() =>{
+    return this.http.delete<UserData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}.json`).subscribe(() => {
       this.getAlluser();
     })
   }
@@ -74,4 +74,16 @@ export class BackendService {
     })
   }
 
+  public getCardsPayment(userId: string) {
+    return this.http.get<CardsPayment[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/card.json`).subscribe((data: CardsPayment[]) => {
+      this.store.dispatch(setCardsPayment({ data: data }));
+    })
+  }
+
+  public setCardsPayment(userId: string, newCard: CardsPayment) {
+    console.log(newCard)
+    return this.http.post<CardsPayment[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/card.json`, newCard).subscribe(() => {
+      this.getCardsPayment(userId);
+    })
+  }
 }

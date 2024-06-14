@@ -7,3 +7,5 @@ export const selectUserData = (store: {store: StoreInterface}) => store.store.us
 export const selectAllUsers = (store: {store: StoreInterface}) => store.store.allUsers;
 
 export const selectStore = (store : {store: StoreInterface}) => store.store;
+
+export const selectCardsPayments = (store : {store: StoreInterface}) => store.store.cardsPayment;

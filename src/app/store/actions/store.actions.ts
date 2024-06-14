@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store"
-import { UserData } from "../../shared/interfaces/backend.interface"
+import { CardsPayment, UserData } from "../../shared/interfaces/backend.interface"
 import { MonitoringData } from "../../shared/interfaces/header.interface"
 
 export const SETALLUSERS = 'SETALLUSERS'
@@ -10,6 +10,7 @@ export const USERDATA = 'USERDATA';
 export const MONITORINGDATA = 'MONITORINGDATA';
 export const STARTAFFECT = 'STARTAFFECT';
 export const SETUSERDATA = 'SETUSERDATA';
+export const CARDSPAYMENT = 'CARDSPAYMENT'
 
 export const setAllUsers = createAction(
   SETALLUSERS
@@ -46,4 +47,9 @@ export const startGetData = createAction(
 export const setUserData = createAction(
   SETUSERDATA,
   props<{ data: boolean }>()
+)
+
+export const setCardsPayment = createAction(
+  CARDSPAYMENT,
+  props<{data: CardsPayment[]}>()
 )

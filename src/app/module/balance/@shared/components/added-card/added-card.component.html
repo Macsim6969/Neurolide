@@ -1,0 +1,35 @@
+<div class="profile-edite">
+  <div class="popup">
+    <h3 class="popup_title sans">Додати нову карту</h3>
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="column">
+        <mat-label class="label sans">Номер карти:</mat-label>
+        <input class="sans" placeholder="Номер карти" type="text" formControlName="numberCard" maxlength="19"
+          (input)="onCardNumberInputChange($event)" [value]="form.get('numberCard').value | creditCardFormatter">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Ініціали, вказані на карті:</mat-label>
+        <input class="sans" placeholder="Ініціали, вказані на карті" type="text" formControlName="name">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Number Phone:</mat-label>
+        <input class="sans" placeholder="Number Phone" type="number" formControlName="number">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">CVC</mat-label>
+        <input class="sans" placeholder="CVC" type="number" max (input)="onInputChange($event, 3)"
+          formControlName="cvc">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Дата завершення</mat-label>
+        <input class="sans" type="datetime" (input)="onDateInputChange($event)" placeholder="MM/YY"
+          formControlName="data">
+      </div>
+      <div class="action">
+        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
+        <button type="submit" class="save sans" mat-button>Save Changes</button>
+      </div>
+    </form>
+  </div>
+
+</div>

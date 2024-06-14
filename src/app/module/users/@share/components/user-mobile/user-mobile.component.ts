@@ -67,7 +67,6 @@ export class UserMobileComponent implements OnInit, OnDestroy {
           return acc;
         }, []);
       }
-      console.log(this.userInfo)
       this.userInfo ? this.setMonitoringDataOtherUser() : null;
     });
   }
@@ -77,7 +76,6 @@ export class UserMobileComponent implements OnInit, OnDestroy {
       const userData = this.allUsers.find(user => user.profile.email === this.isActiveEmail);
       if (userData) {
         this.monitoringData = userData.monitoring;
-        console.log(this.monitoringData, '342324')
         if (typeof this.monitoringData === 'object') {
           if (Object.keys(this.monitoringData).length === 1) {
             this.updateHeaderData(this.textMonitoring, Object.values(this.monitoringData)[0]);
@@ -100,7 +98,6 @@ export class UserMobileComponent implements OnInit, OnDestroy {
           data: content[card.title.toLowerCase()]
         }));
 
-      console.log(this.headerData)
     }
   }
 

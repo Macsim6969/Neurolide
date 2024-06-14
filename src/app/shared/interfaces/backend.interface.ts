@@ -1,4 +1,4 @@
-export interface UserData{
+export interface UserData {
   name: string
   userID?: string
   email: string
@@ -10,7 +10,7 @@ export interface UserData{
   token: string
 }
 
-export interface PeyementList{
+export interface PeyementList {
   UI_id: number
   name: string
   country: string
@@ -21,4 +21,14 @@ export interface PeyementList{
   oscillate?: number
   status?: string
 
+}
+
+export interface CardsPayment {
+  cvc: number
+  data: number
+  name: string
+  number: number
+  type: string
+  balance: number
+  numberPhone: number
 }

@@ -14,6 +14,8 @@ import { RouterModule } from "@angular/router";
 import { LoadingComponent } from "../component/loading/loading.component";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NavigationComponent } from "../component/navigation/navigation.component";
+import { CardsPaymentComponent } from "../component/cards-payment/cards-payment.component";
+import { FormatCardNumberPipe } from "./pipe/formatCardNumber.pipe";
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { NavigationComponent } from "../component/navigation/navigation.componen
     SidebarComponent,
     HeaderComponent,
     LoadingComponent,
-    NavigationComponent
+    CardsPaymentComponent,
+    NavigationComponent,
+    FormatCardNumberPipe
   ],
   exports: [
     CommonModule,
@@ -37,7 +41,9 @@ import { NavigationComponent } from "../component/navigation/navigation.componen
     HeaderComponent,
     LoadingComponent,
     NavigationComponent,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CardsPaymentComponent,
+    FormatCardNumberPipe
   ],
   imports: [
     CommonModule,

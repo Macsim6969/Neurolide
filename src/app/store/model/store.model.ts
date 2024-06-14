@@ -1,4 +1,4 @@
-import { UserData } from "../../shared/interfaces/backend.interface"
+import { CardsPayment, UserData } from "../../shared/interfaces/backend.interface"
 import { MonitoringData } from "../../shared/interfaces/header.interface"
 
 export interface StoreInterface {
@@ -6,4 +6,5 @@ export interface StoreInterface {
   idUser: string
   userData: UserData
   monitoringData: MonitoringData
+  cardsPayment: CardsPayment[]
 }
