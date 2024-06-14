@@ -44,9 +44,7 @@
             <button mat-icon-button
               (click)="openTransitionPopup(user?.profile?.email, history?.nomer, i, user.profile.userID)"> <img
                 src="../../../../../../assets/images/profile/edite.png" alt=""></button>
-            <button mat-icon-button> <mat-icon svgIcon="settings"></mat-icon> </button>
-            <button mat-icon-button> <mat-icon svgIcon="save"></mat-icon></button>
-            <button mat-icon-button> <mat-icon svgIcon="remove"></mat-icon></button>
+            <button (click)="removeTransition(user.profile.email, user.profile.userID, history?.nomer)" mat-icon-button> <mat-icon svgIcon="remove"></mat-icon></button>
           </div>
         </div>
       </div>

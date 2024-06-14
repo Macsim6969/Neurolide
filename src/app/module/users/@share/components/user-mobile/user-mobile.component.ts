@@ -129,6 +129,12 @@ export class UserMobileComponent implements OnInit, OnDestroy {
     this.removeToken = token;
   }
 
+  public removeTransition(email: string, idUser: string, id: string) {
+    const user = this.userInfo.find(e => e.profile.email == email);
+    const newTransactions = user.transactions.filter(t => t.nomer !== id)
+    this.userSerice.removeTransactions(newTransactions, idUser);
+  }
+
   public confirme() {
     this.removeUser(this.removeId, this.removeToken)
     this.isConfirmAttention = false;

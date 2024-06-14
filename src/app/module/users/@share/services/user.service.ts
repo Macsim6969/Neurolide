@@ -95,4 +95,8 @@ export class UserService {
       this.backendService.removeUser(id)
     })
   }
+
+  public removeTransactions(data, userId: string){
+    this.backendService.setUserTransitionHistory(userId, data)
+  }
 }

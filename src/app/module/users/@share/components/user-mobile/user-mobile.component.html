@@ -55,9 +55,8 @@
             <div class="payments_actions">
               <button (click)="openTransitionPopup(user?.profile?.email, history?.nomer, i, user.profile.userID)"> <img
                   src="../../../../../../assets/images/profile/edite.png" alt=""></button>
-              <button> <mat-icon svgIcon="settings"></mat-icon> </button>
-              <button> <mat-icon svgIcon="save"></mat-icon></button>
-              <button> <mat-icon svgIcon="remove"></mat-icon></button>
+             
+              <button (click)="removeTransition(user.profile.email, user.profile.userID, history?.nomer)"> <mat-icon svgIcon="remove"></mat-icon></button>
               <button> <mat-icon [ngClass]="{'active': isOpenPayments === i}" class="arrow"
                   svgIcon="arrow_mobile"></mat-icon></button>
             </div>

@@ -49,13 +49,13 @@ export class UsersListComponent implements OnInit, OnDestroy {
   }
 
   private streamUserListData() {
-   this.translate.stream('usersList').pipe(takeUntil(this.destroy$)).subscribe((data) => {
+    this.translate.stream('usersList').pipe(takeUntil(this.destroy$)).subscribe((data) => {
       this.textMonitoring = data;
     });
   }
 
   private streamSearchFilterData() {
-   this.userSearchService._searchData$.pipe(takeUntil(this.destroy$)).subscribe((selectedField) => {
+    this.userSearchService._searchData$.pipe(takeUntil(this.destroy$)).subscribe((selectedField) => {
       this.userInfo.sort((a, b) => {
         let fieldA = this.getFieldValue(a, selectedField);
         let fieldB = this.getFieldValue(b, selectedField);
@@ -94,7 +94,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
 
   private initializeMonitoringData() {
-   this.store.select(selectAllUsers).pipe(takeUntil(this.destroy$)).subscribe((data) => {
+    this.store.select(selectAllUsers).pipe(takeUntil(this.destroy$)).subscribe((data) => {
       if (data && Object.values(data)) {
         this.allUsers = Object.values(data);
         this.userInfo = this.allUsers.reduce((acc, user) => {
@@ -147,7 +147,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
           data: content[card.title.toLowerCase()]
         }));
 
-        console.log(this.headerData)
+      console.log(this.headerData)
     }
   }
 
@@ -174,6 +174,12 @@ export class UsersListComponent implements OnInit, OnDestroy {
     const user = this.userInfo.find(e => e.profile.email === email)
     this.userSerice._isUser = user;
     this.userSerice._isUserPopup = true;
+  }
+
+  public removeTransition(email: string, idUser: string, id: string) {
+    const user = this.userInfo.find(e => e.profile.email == email);
+    const newTransactions = user.transactions.filter(t => t.nomer !== id)
+    this.userSerice.removeTransactions(newTransactions, idUser);
   }
 
   public openTransitionPopup(email: string, idNomer: string, id: number, userId: string) {
