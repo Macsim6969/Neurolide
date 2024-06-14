@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BackendService } from '../../../../../shared/services/backend.service';
-import { Subscription, combineLatest } from 'rxjs';
+import { Subject, Subscription, combineLatest, takeUntil } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserData } from '../../../../../shared/interfaces/backend.interface';
 import { UserService } from '../../services/user.service';
@@ -10,14 +10,14 @@ import { UserService } from '../../services/user.service';
   templateUrl: './popup-edite-transition.component.html',
   styleUrls: ['./popup-edite-transition.component.scss']
 })
-export class PopupEditetTransitionComponent {
+export class PopupEditetTransitionComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   public transactionData: any;
   public userInfoTransaction: any;
   public activeId: string;
   public key: number;
   public userId: string;
   public form: FormGroup;
-  private userDataSubscription: Subscription;
 
   constructor(
     private backendService: BackendService,
@@ -30,12 +30,12 @@ export class PopupEditetTransitionComponent {
   }
 
   private initializeUserDataFromStore() {
-    this.userDataSubscription = combineLatest([
+    combineLatest([
       this.userService._transitionData$,
       this.userService._activeTransition$,
       this.userService._activeTransitionId$,
       this.userService._userId$
-    ]).subscribe(([data, activeId, key, userId]) => {
+    ]).pipe(takeUntil(this.destroy$)).subscribe(([data, activeId, key, userId]) => {
       this.userInfoTransaction = data;
       this.activeId = activeId;
       this.key = key;
@@ -111,7 +111,7 @@ export class PopupEditetTransitionComponent {
   }
 
   ngOnDestroy(): void {
-    this.userDataSubscription.unsubscribe();
-
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

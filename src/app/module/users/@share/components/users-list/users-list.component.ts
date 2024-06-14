@@ -3,7 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { selectAllUsers, selectMonitoringData } from '../../../../../store/selectors/store.selectors';
 import { HeaderInfo, MonitoringData } from '../../../../../shared/interfaces/header.interface';
-import { Subscription, combineLatest } from 'rxjs';
+import { Subject, Subscription, combineLatest, takeUntil } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ListIconsService } from '../../services/listIcon.service';
 import { ChangeMonitoringDataService } from '../../services/changeMonitoringData.service';
@@ -16,6 +16,7 @@ import { UserSearchService } from '../../services/userSearch.service';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   private textMonitoring: MonitoringData;
   public monitoringData: MonitoringData;
   public headerData: HeaderInfo[];
@@ -31,9 +32,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
   public removeId: string;
   public removeToken: string;
 
-  private searchDataSubscription: Subscription;
-  private translateSubscription: Subscription;
-  private selectAllUsersSubscription: Subscription;
+
   constructor(
     private store: Store<{ store: StoreInterface }>,
     private translate: TranslateService,
@@ -50,13 +49,13 @@ export class UsersListComponent implements OnInit, OnDestroy {
   }
 
   private streamUserListData() {
-    this.translateSubscription = this.translate.stream('usersList').subscribe((data) => {
+   this.translate.stream('usersList').pipe(takeUntil(this.destroy$)).subscribe((data) => {
       this.textMonitoring = data;
     });
   }
 
   private streamSearchFilterData() {
-    this.searchDataSubscription = this.userSearchService._searchData$.subscribe((selectedField) => {
+   this.userSearchService._searchData$.pipe(takeUntil(this.destroy$)).subscribe((selectedField) => {
       this.userInfo.sort((a, b) => {
         let fieldA = this.getFieldValue(a, selectedField);
         let fieldB = this.getFieldValue(b, selectedField);
@@ -95,7 +94,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
 
   private initializeMonitoringData() {
-    this.selectAllUsersSubscription = this.store.select(selectAllUsers).subscribe((data) => {
+   this.store.select(selectAllUsers).pipe(takeUntil(this.destroy$)).subscribe((data) => {
       if (data && Object.values(data)) {
         this.allUsers = Object.values(data);
         this.userInfo = this.allUsers.reduce((acc, user) => {
@@ -188,8 +187,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    this.searchDataSubscription.unsubscribe();
-    this.translateSubscription.unsubscribe();
-    this.selectAllUsersSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

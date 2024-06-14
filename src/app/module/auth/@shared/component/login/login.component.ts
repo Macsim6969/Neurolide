@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { AuthIconsService } from '../../services/authIcon.service';
 import { Router } from '@angular/router';
@@ -18,6 +18,7 @@ import { newUserID } from '../../../../../store/actions/store.actions';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   public data: Date = new Date();
   public form: FormGroup;
   public hideRequiredControl = new FormControl(false);
@@ -25,8 +26,6 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   public isRulesChoise: string = null;
   public authRules: Rules[];
   public formData: Form;
-  private authSubscription: Subscription;
-  private translateSubscription: Subscription;
   private dataUser;
   public errorData: string;
   private allUsers: any[];
@@ -47,7 +46,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.initializeStorageDataForm();
-    this.store.pipe(select(selectAllUsers)).subscribe((data) => {
+    this.store.pipe(select(selectAllUsers), takeUntil(this.destroy$)).subscribe((data) => {
       if (data) {
         this.allUsers = Object.values(data);
       }
@@ -62,7 +61,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initializeDataFromJSON() {
-    this.translateSubscription = this.translate.stream('auth').subscribe((data) => {
+    this.translate.stream('auth').pipe(takeUntil(this.destroy$)).subscribe((data) => {
       this.authRules = data.rules;
       this.formData = data.form;
     })
@@ -95,7 +94,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
       }
       if (this.isRulesChoise === this.dataUser) {
         const formData = { ...this.form.value, rules: this.isRulesChoise }
-        this.authSubscription = this.authService.login(formData).subscribe((data) => {
+        this.authService.login(formData).pipe(takeUntil(this.destroy$)).subscribe((data) => {
           if (data) {
             localStorage.setItem('rules', JSON.stringify(this.isRulesChoise));
             this.router.navigate([`/${this.dataUser}`]).then();
@@ -111,7 +110,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.authSubscription.unsubscribe();
-    this.translateSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

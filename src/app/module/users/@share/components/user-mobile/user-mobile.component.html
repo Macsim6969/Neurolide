@@ -1,5 +1,5 @@
 <section class="user-mobile">
-  <div class="user" (click)="openCard(user.profile.email)" *ngFor="let user of userInfo;index as i"
+  <div class="user" *ngFor="let user of userInfo;index as i"
     [ngClass]="{'active': isActiveSlide === i, 'open': isOpen}">
     <div class="user_header">
       <div class="header_main">
@@ -12,8 +12,9 @@
         </div>
       </div>
       <div class="actions">
-        <button> <mat-icon svgIcon="settings"></mat-icon> </button>
-        <button> <mat-icon svgIcon="remove"></mat-icon></button>
+        <button> <mat-icon svgIcon="settings" (click)="openPopupUser(user?.profile?.email)"></mat-icon> </button>
+        <button> <mat-icon svgIcon="remove"
+            (click)="removeUser(user.profile?.userID, user.profile?.token)"></mat-icon></button>
       </div>
     </div>
     <div class="user_content">
@@ -100,11 +101,14 @@
         </div>
       </div>
     </div>
+    <div class="footer">
+      <button (click)="openCard(user.profile.email)" mat-button>{{!isOpen? 'Розгорнути' : 'Згорнути'}}</button>
+    </div>
   </div>
 </section>
 <div class="left">
-  <button (click)="left()">Left</button>
+  <button (click)="left()"><mat-icon svgIcon="arrow_slide"></mat-icon></button>
 </div>
 <div class="right">
-  <button (click)="right()">Right</button>
+  <button (click)="right()"><mat-icon svgIcon="arrow_slide"></mat-icon></button>
 </div>

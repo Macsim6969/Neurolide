@@ -22,6 +22,7 @@ $Neuroline-theme: mat.define-light-theme((color: (primary: $Neuroline-primary,
 /* You can add global styles to this file, and also import other style files */
 
 @import url('./style/mobile.scss');
+
 p,
 h1,
 h2,
@@ -36,6 +37,7 @@ html,
 body {
   height: 100%;
   font-size: 10px;
+  font-family: "Public Sans", sans-serif !important;
 
 }
 
@@ -46,7 +48,6 @@ body {
 body {
   margin: 0;
   // font-family: "DM Sans", sans-serif;
-  font-family: "Public Sans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }

@@ -1,6 +1,6 @@
-import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { ListIconsService } from '../../services/listIcon.service';
 import { UserSearch } from '../../interfaces/user.interface';
 import { UserSearchService } from '../../services/userSearch.service';
@@ -11,12 +11,10 @@ import { UserSearchService } from '../../services/userSearch.service';
   styleUrls: ['./user-header.component.scss']
 })
 export class UserHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
-
-
+  private destroy$ = new Subject<void>();
   public active: number = 0;
   public isActive: boolean[];
   public userHead: UserSearch[];
-  private translateSubscription: Subscription;
   constructor(
     private translate: TranslateService,
     private listIcon: ListIconsService,
@@ -33,11 +31,9 @@ export class UserHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initializeDataFromJSON() {
-    this.translateSubscription = this.translate.stream('user.userSearch').subscribe((data: UserSearch[]) => {
-      data ? this.userHead = data: null
-
+    this.translate.stream('user.userSearch').pipe(takeUntil(this.destroy$)).subscribe((data: UserSearch[]) => {
+      data ? this.userHead = data : null
     })
-
   }
 
   public toogleFilter(i: number, tag: string) {
@@ -55,7 +51,8 @@ export class UserHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.translateSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

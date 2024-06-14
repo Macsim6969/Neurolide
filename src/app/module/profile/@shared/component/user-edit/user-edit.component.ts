@@ -2,7 +2,7 @@ import { User, UserActions, UserData } from '../../interfaces/profile.interface'
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, combineLatest, takeUntil } from 'rxjs';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { selectUserData } from '../../../../../store/selectors/store.selectors';
 import { ProfileServices } from '../../services/profile.service';
@@ -13,11 +13,10 @@ import { ProfileServices } from '../../services/profile.service';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   public rules: 'manager' | 'brand' | 'affiliate';
   public userInfo: UserData[];
   public userActions: UserActions[];
-  private transalteSubscription: Subscription;
-  private userDataSubscription: Subscription;
   constructor(
     private translate: TranslateService,
     private store: Store<{ store: StoreInterface }>,
@@ -25,31 +24,27 @@ export class UserEditComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.initializeUserDataFromJson();
-    this.initializeUserDataFromStore();
+    this.initializeUserDataFromJsonAndStore();
     this.rules = JSON.parse(localStorage.getItem('rules'));
   }
 
-  private initializeUserDataFromJson() {
-    this.transalteSubscription = this.translate.stream('user').subscribe((data: User) => {
-      this.userActions = data.userActions;
-      this.userInfo = data.userInfo;
-    })
-  }
+  private initializeUserDataFromJsonAndStore() {
+    combineLatest(([this.translate.stream('user'), this.store.pipe(select(selectUserData))])).pipe(takeUntil(this.destroy$)).subscribe(([translateData, storeData]) => {
+      this.userActions = translateData.userActions;
+      this.userInfo = translateData.userInfo;
 
-  private initializeUserDataFromStore() {
-    this.userDataSubscription = this.store.pipe(select(selectUserData)).subscribe((data) => {
-      if (data) {
-        if (Object.keys(data).length > 1) {
-          this.updateHeaderData(data);
+      if (storeData) {
+        if (Object.keys(storeData).length > 1) {
+          this.updateHeaderData(storeData);
         } else {
-          this.updateHeaderData(Object.values(data)[0]);
+          this.updateHeaderData(Object.values(storeData)[0]);
         }
       }
-
-
     })
+
   }
+
+
 
   private updateHeaderData(data: any) {
     if (this.userInfo && data) {
@@ -69,8 +64,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.transalteSubscription.unsubscribe();
-    this.userDataSubscription.unsubscribe();
-
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

@@ -3,21 +3,15 @@ import { StoreInterface } from '../../store/model/store.model';
 import { Store } from '@ngrx/store';
 import { selectUserData } from '../../store/selectors/store.selectors';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { Subscription, filter } from 'rxjs';
+import { Subject, Subscription, filter, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
-
+export class HomeComponent implements OnInit {
   public isMobile: boolean;
-  private storeSubscription: Subscription;
-  constructor(
-    private store: Store<{ store: StoreInterface }>,
-    private router: Router
-  ) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -27,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initilizeWidthPage()
-    this.streamActiveRoute();
+   
   }
 
   private initilizeWidthPage() {
@@ -38,16 +32,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  private streamActiveRoute() {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      console.log(event.url);
-    });
-  }
 
-  ngOnDestroy(): void {
-    this.storeSubscription.unsubscribe();
-  }
 
 }

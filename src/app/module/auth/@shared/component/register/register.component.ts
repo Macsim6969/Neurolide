@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription, take, timer } from 'rxjs';
+import { Subject, Subscription, take, takeUntil, timer } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { AuthIconsService } from '../../services/authIcon.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,6 +14,7 @@ import { PopupInfoService } from '../../services/popupInfo.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   public data: Date = new Date();
   public form: FormGroup;
   public hideRequiredControl = new FormControl(false);
@@ -22,8 +23,6 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
   public isRules: boolean = false;
   public authRules: Rules[];
   public formData: Form;
-  private translateSubscription: Subscription;
-  private authSubscription: Subscription;
   constructor(
     private authService: AuthService,
     private authIconsService: AuthIconsService,
@@ -52,7 +51,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initializeDataFromJSON() {
-    this.translateSubscription = this.translate.stream('auth').subscribe((data) => {
+    this.translate.stream('auth').pipe(takeUntil(this.destroy$)).subscribe((data) => {
       this.authRules = data.rules;
       this.formData = data.form;
     })
@@ -77,7 +76,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
   public submit() {
     const formData = { ...this.form.value, rules: this.isRulesChoise }
 
-    this.authSubscription = this.authService.sigUp(formData).subscribe((data) => {
+    this.authService.sigUp(formData).pipe(takeUntil(this.destroy$)).subscribe((data) => {
 
       this.popupInfoService._isAlert = true;
       timer(300).pipe(take(1)).subscribe(() => {
@@ -101,7 +100,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.authSubscription.unsubscribe();
-    this.translateSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

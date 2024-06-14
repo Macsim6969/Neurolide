@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { selectUserData } from '../../../../../store/selectors/store.selectors';
 import { AuthService } from '../../../../auth/@shared/services/auth.service';
@@ -15,11 +15,10 @@ import { ProfileServices } from '../../services/profile.service';
   styleUrls: ['./popup-edite.component.scss']
 })
 export class PopupEditeComponent implements OnInit, OnDestroy {
-
+  private destroy$ = new Subject<void>();
   public userInfo: UserData
   public form: FormGroup;
-  private userDataSubscription: Subscription;
-  selectedFile: File | null = null;
+  public selectedFile: File | null = null;
 
   constructor(
     private store: Store<{ store: StoreInterface }>,
@@ -46,7 +45,7 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
   }
 
   private initializeUserDataFromStore() {
-    this.userDataSubscription = this.store.pipe(select(selectUserData)).subscribe((data) => {
+    this.store.pipe(select(selectUserData)).pipe(takeUntil(this.destroy$)).subscribe((data) => {
       if (data && Object.keys(data).length > 1) {
         this.userInfo = data;
       } else {
@@ -116,7 +115,7 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.userDataSubscription.unsubscribe();
-
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

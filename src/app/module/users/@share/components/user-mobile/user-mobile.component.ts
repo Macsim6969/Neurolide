@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ListIconsService } from '../../services/listIcon.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { selectAllUsers } from '../../../../../store/selectors/store.selectors';
@@ -15,7 +15,11 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./user-mobile.component.scss']
 })
 export class UserMobileComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   public userInfo;
+  public isConfirmAttention: boolean;
+  public removeId: string;
+  public removeToken: string;
   public allUsers;
   public isActiveEmail: string;
   public headerData: HeaderInfo[];
@@ -27,8 +31,6 @@ export class UserMobileComponent implements OnInit, OnDestroy {
   public monitoringChanges: number;
   public isOpenPayments: number;
 
-  private translateSubscription: Subscription;
-  private selectAllUsersSubscription: Subscription;
   constructor(
     private listIconsService: ListIconsService,
     private store: Store<{ store: StoreInterface }>,
@@ -43,13 +45,13 @@ export class UserMobileComponent implements OnInit, OnDestroy {
   }
 
   private streamUserListData() {
-    this.translateSubscription = this.translate.stream('usersList').subscribe((data) => {
+    this.translate.stream('usersList').pipe(takeUntil(this.destroy$)).subscribe((data) => {
       this.textMonitoring = data;
     });
   }
 
   private initializeMonitoringData() {
-    this.selectAllUsersSubscription = this.store.select(selectAllUsers).subscribe((data) => {
+    this.store.select(selectAllUsers).pipe(takeUntil(this.destroy$)).subscribe((data) => {
       if (data && Object.values(data)) {
         this.allUsers = Object.values(data);
         this.userInfo = this.allUsers.reduce((acc, user) => {
@@ -103,7 +105,7 @@ export class UserMobileComponent implements OnInit, OnDestroy {
   }
 
   public openCard(email: string) {
-    this.isOpen = true
+    this.isOpen = !this.isOpen;
     this.isActiveEmail = email;
     this.setMonitoringDataOtherUser();
   }
@@ -119,6 +121,23 @@ export class UserMobileComponent implements OnInit, OnDestroy {
 
   public checkPayments(index: number) {
     this.isOpenPayments = index;
+  }
+
+  public removeUser(id: string, token: string) {
+    this.isConfirmAttention = true
+    this.removeId = id;
+    this.removeToken = token;
+  }
+
+  public confirme() {
+    this.removeUser(this.removeId, this.removeToken)
+    this.isConfirmAttention = false;
+  }
+
+  public openPopupUser(email: string) {
+    const user = this.userInfo.find(e => e.profile.email === email)
+    this.userSerice._isUser = user;
+    this.userSerice._isUserPopup = true;
   }
 
   public left() {
@@ -150,7 +169,7 @@ export class UserMobileComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    this.translateSubscription ? this.translateSubscription.unsubscribe() : null;
-    this.selectAllUsersSubscription ? this.selectAllUsersSubscription.unsubscribe() : null;
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

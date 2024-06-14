@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProfileServices } from './@shared/services/profile.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  private isPopupSubscription: Subscription;
+  private destroy$ = new Subject<void>();
   public isPopup: boolean;
   constructor(
     private profileService: ProfileServices
@@ -19,13 +19,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   private initializeIsPopupOpen() {
-    this.isPopupSubscription = this.profileService._isPopup$.subscribe((data: boolean) => {
+    this.profileService._isPopup$.pipe(takeUntil(this.destroy$)).subscribe((data: boolean) => {
       this.isPopup = data
     })
   }
 
   ngOnDestroy(): void {
-    this.isPopupSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription, combineLatest, combineLatestAll } from 'rxjs';
+import { Subject, combineLatest, takeUntil } from 'rxjs';
 import { HeaderInfo, MonitoringData } from '../../shared/interfaces/header.interface';
 import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../store/model/store.model';
-import { selectMonitoringData, selectUserData } from '../../store/selectors/store.selectors';
+import { selectMonitoringData } from '../../store/selectors/store.selectors';
 
 @Component({
   selector: 'app-header',
@@ -12,24 +12,27 @@ import { selectMonitoringData, selectUserData } from '../../store/selectors/stor
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-
+  private destroy$ = new Subject<void>();
   public monitoringData: MonitoringData = null;
   public headerData: HeaderInfo[] = null;
-  private combineSubscription: Subscription;
   constructor(
     private translate: TranslateService,
     private store: Store<{ store: StoreInterface }>
   ) { }
 
   ngOnInit(): void {
-    this.combineSubscription = combineLatest(([this.translate.stream('headerInfo'), this.store.pipe(select(selectMonitoringData))])).subscribe(([text, content]) => {
+    this.initializeMonitoringDataFromStoreAndJSON();
+  }
+
+  private initializeMonitoringDataFromStoreAndJSON() {
+    combineLatest(([this.translate.stream('headerInfo'), this.store.pipe(select(selectMonitoringData))])).pipe(takeUntil(this.destroy$)).subscribe(([text, content]) => {
       if (text && content) {
-  
+
         if (Object.keys(content).length > 1) {
           this.updateHeaderData(text, content)
         } else {
           this.updateHeaderData(text, Object.values(content)[0])
-        } 
+        }
       }
     })
   }
@@ -47,6 +50,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.combineSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

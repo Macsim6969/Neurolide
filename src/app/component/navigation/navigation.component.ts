@@ -5,7 +5,7 @@ import { UserData } from '../../shared/interfaces/backend.interface';
 import { SidebarData } from '../../shared/interfaces/sidebar.interface';
 import { StoreInterface } from '../../store/model/store.model';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { SidebarService } from '../../shared/services/sidebarService';
 
 @Component({
@@ -14,11 +14,10 @@ import { SidebarService } from '../../shared/services/sidebarService';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit, OnDestroy {
-
+  private destroy$ = new Subject<void>();
   public isLoading: boolean = false;
   public userRule: string;
   public sidebarData: SidebarData[];
-  private translateSubscription: Subscription;
   constructor(
     private translate: TranslateService,
     private store: Store<{ store: StoreInterface }>,
@@ -31,13 +30,13 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   private initializeSidebarDataFromJSON() {
-    this.translateSubscription = this.translate.stream('sidebar').subscribe((data: SidebarData[]) => {
+    this.translate.stream('sidebar').pipe(takeUntil(this.destroy$)).subscribe((data: SidebarData[]) => {
       this.sidebarData = data;
     })
   }
 
   private initialeUserRules() {
-    this.store.pipe(select(selectUserData)).subscribe((data: UserData) => {
+    this.store.pipe(select(selectUserData)).pipe(takeUntil(this.destroy$)).subscribe((data: UserData) => {
       if (data) {
         this.userRule = data.rules;
         this.isLoading = true;
@@ -50,7 +49,8 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.translateSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

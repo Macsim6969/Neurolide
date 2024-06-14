@@ -23,6 +23,12 @@
     align-items: center;
     gap: 30px;
 
+    @media (max-width: 520px) {
+      margin: 0 8px;
+      padding: 20px 14px 14px;
+      gap: 20px;
+    }
+
     .popup_title {
       font-size: 2rem;
       font-weight: 400;
@@ -35,6 +41,11 @@
       flex-direction: column;
       gap: 30px;
       width: 100%;
+
+      @media (max-width: 520px) {
+        
+        gap: 14px;
+      }
 
       .column {
         display: flex;
@@ -84,6 +95,18 @@
           &.save {
             background: linear-gradient(90deg, #70A9FF 0%, #316EC9 57%, #0149B4 100%);
             color: #FFFFFF;
+
+            @media (max-width: 520px) {
+              display: none;
+            }
+          }
+
+          &.mobile {
+            display: none;
+
+            @media (max-width: 520px) {
+              display: flex;
+            }
           }
         }
       }

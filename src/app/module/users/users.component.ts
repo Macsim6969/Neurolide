@@ -1,6 +1,6 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from './@share/services/user.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, combineLatest, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -8,11 +8,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   public isMobile: boolean;
   public isUserPopup: boolean;
   public isTransitionPopup: boolean;
-  private isTransitionPopupSubscription: Subscription;
-  private isUserPopupSubscription: Subscription;
   constructor(
     private userService: UserService
   ) { }
@@ -24,8 +23,8 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initializeIsMobilePage();
-    this.initializeUserPopupData();
-    this.initializeTransitionPopupData();
+    this.initializeUserPopupDataAndTransitionData();
+
   }
 
   private initializeIsMobilePage() {
@@ -36,20 +35,16 @@ export class UsersComponent implements OnInit, OnDestroy {
     }
   }
 
-  private initializeUserPopupData() {
-    this.isUserPopupSubscription = this.userService._isUserPopup$.subscribe((data: boolean) => {
-      this.isUserPopup = data
+  private initializeUserPopupDataAndTransitionData() {
+    combineLatest(([this.userService._isUserPopup$, this.userService._isTransitionPopup$])).pipe(takeUntil(this.destroy$)).subscribe(([userData, transitionData]) =>{
+      this.isUserPopup = userData;
+      this.isTransitionPopup = transitionData;
     })
   }
-
-  private initializeTransitionPopupData() {
-    this.isTransitionPopupSubscription = this.userService._isTransitionPopup$.subscribe((data: boolean) => {
-      this.isTransitionPopup = data
-    })
-  }
+  
 
   ngOnDestroy(): void {
-    this.isUserPopupSubscription.unsubscribe();
-    this.isTransitionPopupSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

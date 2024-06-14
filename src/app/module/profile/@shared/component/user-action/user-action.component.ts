@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, combineLatest, takeUntil } from 'rxjs';
 import { User, UserActions } from '../../interfaces/profile.interface';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../../../auth/@shared/services/auth.service';
@@ -14,12 +14,11 @@ import { selectUserData } from '../../../../../store/selectors/store.selectors';
   styleUrls: ['./user-action.component.scss']
 })
 export class UserActionComponent implements OnInit, OnDestroy {
-
+  private destroy$ = new Subject<void>();
   public rules: 'manager' | 'brand' | 'affiliate';
   public avatar: string;
   public userActions: UserActions[];
-  private transalteSubscription: Subscription;
-  private userDataSubscription: Subscription;
+
   constructor(
     private translate: TranslateService,
     private authService: AuthService,
@@ -29,19 +28,13 @@ export class UserActionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initializeUserDataFromJson();
-    this.initializeUserDataFromStore();
     this.rules = JSON.parse(localStorage.getItem('rules'));
   }
 
 
   private initializeUserDataFromJson() {
-    this.transalteSubscription = this.translate.stream('user').subscribe((data: User) => {
-      this.userActions = data.userLogoutChanges;
-    })
-  }
-
-  private initializeUserDataFromStore() {
-    this.userDataSubscription = this.store.pipe(select(selectUserData)).subscribe((data) => {
+    combineLatest(([this.translate.stream('user'), this.store.pipe(select(selectUserData))])).pipe(takeUntil(this.destroy$)).subscribe(([dataActions, data]) => {
+      this.userActions = dataActions.userLogoutChanges;
       if (data) {
         if (Object.keys(data).length > 1) {
           this.avatar = data.avatar;
@@ -51,6 +44,8 @@ export class UserActionComponent implements OnInit, OnDestroy {
       }
     })
   }
+
+
 
   public actionsLogout(action: string) {
     if (action === 'logout') {
@@ -63,8 +58,8 @@ export class UserActionComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.transalteSubscription.unsubscribe();
-    this.userDataSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

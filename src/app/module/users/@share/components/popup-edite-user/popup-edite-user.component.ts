@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../../../../../shared/services/backend.service';
-import { Subscription } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserData } from '../../../../../shared/interfaces/backend.interface';
-import { AuthService } from '../../../../auth/@shared/services/auth.service';
-import { Store, select } from '@ngrx/store';
-import { StoreInterface } from '../../../../../store/model/store.model';
-import { selectUserData } from '../../../../../store/selectors/store.selectors';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -15,13 +11,11 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./popup-edite-user.component.scss']
 })
 export class PopupEditeUserComponent {
+  private destroy$ = new Subject<void>();
   public userInfo: any;
   public form: FormGroup;
-  private userDataSubscription: Subscription;
 
   constructor(
-    private store: Store<{ store: StoreInterface }>,
-    private authService: AuthService,
     private backendService: BackendService,
     private userService: UserService
   ) { }
@@ -33,7 +27,7 @@ export class PopupEditeUserComponent {
   }
 
   private initializeUserDataFromStore() {
-    this.userDataSubscription = this.userService._isUser$.subscribe((data) => {
+    this.userService._isUser$.pipe(takeUntil(this.destroy$)).subscribe((data) => {
       this.userInfo = data;
     })
   }
@@ -93,7 +87,7 @@ export class PopupEditeUserComponent {
   }
 
   ngOnDestroy(): void {
-    this.userDataSubscription.unsubscribe();
-
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
