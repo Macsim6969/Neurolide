@@ -1,16 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
 import { CardsPayment } from '../../../../../shared/interfaces/backend.interface';
+import { Subject } from 'rxjs';
 import { BalanceCardService } from '../../services/balanceCard.service';
 import { DateInputFormatPipe } from '../../pipe/dateInputFormat.pipe';
 
 @Component({
-  selector: 'app-added-card',
-  templateUrl: './added-card.component.html',
-  styleUrls: ['./added-card.component.scss']
+  selector: 'app-take-out-popup',
+  templateUrl: './take-out-popup.component.html',
+  styleUrls: ['./take-out-popup.component.scss']
 })
-export class AddedCardComponent implements OnInit, OnDestroy {
+export class TakeOutPopupComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
   public cardInfo: CardsPayment;

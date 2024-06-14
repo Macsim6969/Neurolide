@@ -1,5 +1,5 @@
 <section class="cards_payment">
-  <p class="cards_payment_title">Платіжний метод</p>
+  <p class="cards_payment_title" [innerHTML]="'balance.method'|translate"></p>
   <div class="content">
     <mat-card class="content-cards" *ngFor="let card of cards;index as i" (click)="choiceCard(card.cvc, i)"
       [ngClass]="{'active': this.activeCard === i}">

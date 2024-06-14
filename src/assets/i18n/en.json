@@ -239,7 +239,9 @@
     }
   ],
   "balance":{
+    "method": "Payment method",
     "balanceInfoTitle": "Balance",
+    "history": "Payment history",
     "balanceData": [
       {
         "title": "Personal balance",

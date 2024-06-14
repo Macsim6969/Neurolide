@@ -237,5 +237,24 @@
       "title": "Support",
       "url": "/support"
     }
-  ]
+  ],
+  "balance": {
+    "method": "Платежный метод",
+    "balanceInfoTitle": "Баланс",
+    "history": "История платежей",
+    "balanceData": [
+      {
+        "title": "Личный баланс",
+        "tage": ""
+      },
+      {
+        "title": "Поповнити баланс",
+        "tage": "top-up"
+      },
+      {
+        "title": "Вивести баланс",
+        "tage": "take-out"
+      }
+    ]
+  }
 }

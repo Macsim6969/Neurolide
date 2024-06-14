@@ -16,6 +16,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NavigationComponent } from "../component/navigation/navigation.component";
 import { CardsPaymentComponent } from "../component/cards-payment/cards-payment.component";
 import { FormatCardNumberPipe } from "./pipe/formatCardNumber.pipe";
+import { TranslateModule } from "@ngx-translate/core";
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { FormatCardNumberPipe } from "./pipe/formatCardNumber.pipe";
     MatInputModule,
     MatCheckboxModule,
     RouterModule,
+    TranslateModule,
     MatProgressSpinnerModule
   ]
 })

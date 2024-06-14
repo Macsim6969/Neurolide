@@ -6,6 +6,7 @@ import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { selectCardsPayments } from '../../../../../store/selectors/store.selectors';
 import { CardsPayment } from '../../../../../shared/interfaces/backend.interface';
+import { BalanceActionService } from '../../services/balanceAction.service';
 
 @Component({
   selector: 'app-balance-card',
@@ -19,7 +20,8 @@ export class BalanceCardComponent implements OnInit, OnDestroy {
 
   constructor(
     private translate: TranslateService,
-    private store: Store<{ store: StoreInterface }>
+    private store: Store<{ store: StoreInterface }>,
+    private balanceActionService: BalanceActionService
   ) { }
 
   ngOnInit(): void {
@@ -45,9 +47,8 @@ export class BalanceCardComponent implements OnInit, OnDestroy {
 
   public openPopup(tage: string) {
     if (tage === 'top-up') {
-
+      this.balanceActionService._isAddedMoney = true;
     } else if (tage === 'take-out') {
-
     }
   }
 
