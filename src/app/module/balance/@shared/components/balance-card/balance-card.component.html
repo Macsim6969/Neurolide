@@ -1,0 +1,12 @@
+<div class="balance">
+  <div class="balane_header">
+    <nav *ngFor="let content of balanceData" class="title {{content.tage}}" (click)="openPopup(content.tage)">
+      {{content.title}}
+    </nav>
+  </div>
+  <div class="balance_info">
+    <p class="balance_info_title" [innerHTML]="'balance.balanceInfoTitle' | translate"></p>
+    <p class="balance_info_suma">${{totalBalance ? totalBalance : 0}}</p>
+  </div>
+
+</div>

@@ -32,6 +32,7 @@ export class UserHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private initializeDataFromJSON() {
     this.translate.stream('user.userSearch').pipe(takeUntil(this.destroy$)).subscribe((data: UserSearch[]) => {
+      console.log(data)
       data ? this.userHead = data : null
     })
   }

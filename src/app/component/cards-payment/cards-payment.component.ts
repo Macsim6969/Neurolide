@@ -28,7 +28,9 @@ export class CardsPaymentComponent implements OnInit, OnDestroy {
 
   private initializeUserCardsPayment() {
     this.store.pipe(select(selectCardsPayments), takeUntil(this.destroy$)).subscribe((data: CardsPayment[]) => {
-      this.cards = Object.values(data);
+      if (data) {
+        this.cards = Object.values(data);
+      }
     })
   }
 

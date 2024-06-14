@@ -237,5 +237,22 @@
       "title": "Support",
       "url": "/support"
     }
-  ]
+  ],
+  "balance":{
+    "balanceInfoTitle": "Balance",
+    "balanceData": [
+      {
+        "title": "Personal balance",
+         "tage": ""
+      },
+      {
+        "title": "Top up the balance",
+         "tage": "top-up"
+      },
+      {
+        "title": "Take out the balance",
+         "tage": "take-out"
+      }
+    ]
+  }
 }

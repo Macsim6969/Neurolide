@@ -10,6 +10,7 @@ import { BalanceCardService } from './@shared/services/balanceCard.service';
 import { AddedCardComponent } from './@shared/components/added-card/added-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreditCardFormatterPipe } from './@shared/pipe/creditCardFormatter.pipe';
+import { BalanceCardComponent } from './@shared/components/balance-card/balance-card.component';
 
 const routes: Routes = [
   { path: '', component: BalanceComponent }
@@ -19,7 +20,8 @@ const routes: Routes = [
   declarations: [
     BalanceComponent,
     AddedCardComponent,
-    CreditCardFormatterPipe
+    CreditCardFormatterPipe,
+    BalanceCardComponent
   ],
   imports: [
     CommonModule,

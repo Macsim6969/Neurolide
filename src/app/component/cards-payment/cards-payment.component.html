@@ -29,6 +29,7 @@
         </div>
       </mat-card-content>
     </mat-card>
+    
     <mat-card class="added-card" (click)="openCardPopup()">
       <mat-card-content class="added-card-content">
         <mat-icon svgIcon="plus"></mat-icon>
@@ -36,5 +37,9 @@
       </mat-card-content>
     </mat-card>
   </div>
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+  
 
 </section>
