@@ -21,6 +21,7 @@ $Neuroline-theme: mat.define-light-theme((color: (primary: $Neuroline-primary,
 
 /* You can add global styles to this file, and also import other style files */
 
+@import url('./style/mobile.scss');
 p,
 h1,
 h2,

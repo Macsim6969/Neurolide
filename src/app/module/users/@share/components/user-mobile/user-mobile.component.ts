@@ -7,6 +7,7 @@ import { selectAllUsers } from '../../../../../store/selectors/store.selectors';
 import { HeaderInfo, MonitoringData } from '../../../../../shared/interfaces/header.interface';
 import { TranslateService } from '@ngx-translate/core';
 import { ChangeMonitoringDataService } from '../../services/changeMonitoringData.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-mobile',
@@ -24,6 +25,7 @@ export class UserMobileComponent implements OnInit, OnDestroy {
   public isOpen: boolean;
   public isModeChange: number;
   public monitoringChanges: number;
+  public isOpenPayments: number;
 
   private translateSubscription: Subscription;
   private selectAllUsersSubscription: Subscription;
@@ -31,7 +33,8 @@ export class UserMobileComponent implements OnInit, OnDestroy {
     private listIconsService: ListIconsService,
     private store: Store<{ store: StoreInterface }>,
     private translate: TranslateService,
-    private changeMonitoringDataService: ChangeMonitoringDataService
+    private changeMonitoringDataService: ChangeMonitoringDataService,
+    private userSerice: UserService
   ) { }
 
   ngOnInit(): void {
@@ -95,14 +98,27 @@ export class UserMobileComponent implements OnInit, OnDestroy {
           data: content[card.title.toLowerCase()]
         }));
 
-        console.log(this.headerData)
+      console.log(this.headerData)
     }
   }
 
-  public openCard(email: string){
+  public openCard(email: string) {
     this.isOpen = true
     this.isActiveEmail = email;
     this.setMonitoringDataOtherUser();
+  }
+
+  public openTransitionPopup(email: string, idNomer: string, id: number, userId: string) {
+    const user = this.userInfo.find(e => e.profile.email === email)
+    this.userSerice._transitionData = user.transactions;
+    this.userSerice._isTransitionPopup = true;
+    this.userSerice._activeTransition = idNomer;
+    this.userSerice._activeTransitionId = id;
+    this.userSerice._userId = userId;
+  }
+
+  public checkPayments(index: number) {
+    this.isOpenPayments = index;
   }
 
   public left() {
@@ -111,6 +127,7 @@ export class UserMobileComponent implements OnInit, OnDestroy {
     } else {
       this.isActiveSlide--;
     }
+    this.isOpen = false;
   }
 
   public right() {
@@ -119,6 +136,7 @@ export class UserMobileComponent implements OnInit, OnDestroy {
     } else {
       this.isActiveSlide++;
     }
+    this.isOpen = false;
   }
 
   public useEditeMode(i: number) {
