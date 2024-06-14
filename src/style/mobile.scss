@@ -1,4 +1,6 @@
 app-users {
-  display: block;
-  height: calc(100% + 52px);
+  @media (max-width: 520px) {
+    display: block;
+    height: calc(100% + 52px);
+  }
 }

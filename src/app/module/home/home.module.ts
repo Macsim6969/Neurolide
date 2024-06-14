@@ -13,6 +13,8 @@ const routes: Routes = [
       { path: 'affiliate', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'brand', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'manager', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
+      { path: 'profile', loadChildren: () => import('../../module/profile-page/profile-page.module').then((m) => m.ProfilePageModule) },
+      { path: 'balance', loadChildren: () => import('../../module/balance/balance.module').then((m) => m.BalanceModule) },
     ]
   }
 ]
