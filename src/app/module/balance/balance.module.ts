@@ -15,6 +15,8 @@ import { BalanceActionService } from './@shared/services/balanceAction.service';
 import { TopUpPopupComponent } from './@shared/components/top-up-popup/top-up-popup.component';
 import { TakeOutPopupComponent } from './@shared/components/take-out-popup/take-out-popup.component';
 import { DateInputFormatPipe } from './@shared/pipe/dateInputFormat.pipe';
+import { HistoryPaymentComponent } from './@shared/components/history-payment/history-payment.component';
+import { PhoneFormatPipe } from './@shared/pipe/phoneFormat.pipe';
 
 const routes: Routes = [
   { path: '', component: BalanceComponent }
@@ -28,7 +30,9 @@ const routes: Routes = [
     DateInputFormatPipe,
     BalanceCardComponent,
     TopUpPopupComponent,
-    TakeOutPopupComponent
+    TakeOutPopupComponent,
+    HistoryPaymentComponent,
+    PhoneFormatPipe
   ],
   imports: [
     CommonModule,
@@ -42,7 +46,8 @@ const routes: Routes = [
   exports: [
     CreditCardFormatterPipe,
     DateInputFormatPipe,
-    AddedCardComponent
+    AddedCardComponent,
+    PhoneFormatPipe
   ],
   providers: [CardsconService, BalanceCardService, BalanceActionService]
 })

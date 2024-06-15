@@ -4,6 +4,7 @@ import { CardsPayment } from '../../../../../shared/interfaces/backend.interface
 import { Subject } from 'rxjs';
 import { BalanceCardService } from '../../services/balanceCard.service';
 import { DateInputFormatPipe } from '../../pipe/dateInputFormat.pipe';
+import { BalanceActionService } from '../../services/balanceAction.service';
 
 @Component({
   selector: 'app-top-up-popup',
@@ -17,7 +18,7 @@ export class TopUpPopupComponent implements OnInit, OnDestroy {
   public form: FormGroup;
   dateInputFormatPipe = new DateInputFormatPipe();
   constructor(
-    private balanceCardService: BalanceCardService
+    private balanceActionService: BalanceActionService
   ) { }
 
   ngOnInit(): void {
@@ -28,13 +29,15 @@ export class TopUpPopupComponent implements OnInit, OnDestroy {
   private initializeForm() {
     this.form = new FormGroup<any>({
       numberCard: new FormControl('', [Validators.required, Validators.maxLength(19)]),
-      name: new FormControl('', [Validators.required]),
-      number: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-      cvc: new FormControl('', [Validators.required, Validators.maxLength(3)]),
       data: new FormControl('', [
         Validators.required,
         Validators.pattern('(0[1-9]|1[0-2])/([0-9]{2})') // Pattern for MM/YY
-      ])
+      ]),
+      cvc: new FormControl('', [Validators.required, Validators.maxLength(3)]),
+      name: new FormControl('', [Validators.required]),
+      number: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      suma: new FormControl('', [Validators.required])
     })
   }
 
@@ -54,13 +57,13 @@ export class TopUpPopupComponent implements OnInit, OnDestroy {
   }
 
   public submit() {
-    this.balanceCardService.setNewCard(this.form.value)
+    this.balanceActionService.addMoneyToCard(this.form.value)
     this.closePopup();
   }
 
   public closePopup() {
     this.form.reset();
-    this.balanceCardService._isAddCard = false;
+    this.balanceActionService._isAddedMoney = false;
   }
 
   ngOnDestroy(): void {

@@ -1,30 +1,39 @@
 <div class="profile-edite">
   <div class="popup">
-    <h3 class="popup_title sans">Додати нову карту</h3>
+    <h3 class="popup_title sans">Поповнення балансу</h3>
     <form class="form" [formGroup]="form" (ngSubmit)="submit()">
       <div class="column">
         <mat-label class="label sans">Номер карти:</mat-label>
-        <input class="sans" placeholder="Номер карти" type="text" formControlName="numberCard" maxlength="19"
-          [value]="form.get('numberCard').value | creditCardFormatter">
+        <input class="sans" placeholder="...." type="text" formControlName="numberCard" maxlength="19"
+        [value]="form.get('numberCard').value | creditCardFormatter">
+      </div>
+      <div class="row">
+        <div class="column">
+          <mat-label class="label sans">Термін дії</mat-label>
+          <input class="sans" type="text" (input)="onDateInputChange($event)" placeholder="MM/YY"
+            formControlName="data">
+        </div>
+        <div class="column">
+          <mat-label class="label sans">CVV2</mat-label>
+          <input class="sans" (input)="onInputChange($event, 3)" placeholder="...." type="text" formControlName="cvc">
+        </div>
       </div>
       <div class="column">
-        <mat-label class="label sans">Ініціали, вказані на карті:</mat-label>
-        <input class="sans" placeholder="Ініціали, вказані на карті" type="text" formControlName="name">
+        <mat-label class="label sans">ПІБ власника</mat-label>
+        <input class="sans" placeholder="...." type="text" formControlName="name">
       </div>
       <div class="column">
-        <mat-label class="label sans">Number Phone:</mat-label>
-        <input class="sans" placeholder="Number Phone" type="number" formControlName="number">
+        <mat-label class="label sans">Номер телефону</mat-label>
+        <input matInput class="sans" placeholder="+380" type="text" formControlName="number" maxlength="16"
+          [value]="form.get('number').value | phoneFormat">
       </div>
       <div class="column">
-        <mat-label class="label sans">CVC</mat-label>
-        <input class="sans" placeholder="CVC" type="number" max (input)="onInputChange($event, 3)"
-          formControlName="cvc">
+        <mat-label class="label sans">Email</mat-label>
+        <input class="sans" placeholder="Email" type="email" formControlName="email">
       </div>
       <div class="column">
-        <mat-label class="label sans">Дата завершення</mat-label>
-        <input class="sans" type="text"
-      (input)="onDateInputChange($event)"
-      placeholder="MM/YY" formControlName="data">
+        <mat-label class="label sans">Сума поповнення</mat-label>
+        <input class="sans" type="number" placeholder="Сума поповнення" formControlName="suma">
       </div>
       <div class="action">
         <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>

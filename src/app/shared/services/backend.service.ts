@@ -5,6 +5,7 @@ import { CardsPayment, UserData } from "../interfaces/backend.interface";
 import { Store } from "@ngrx/store";
 import { StoreInterface } from "../../store/model/store.model";
 import { MonitoringData } from '../interfaces/header.interface';
+import { TransactionInterface } from '../../module/balance/@shared/interface/transactions.interface';
 
 @Injectable({ providedIn: 'root' })
 
@@ -84,6 +85,19 @@ export class BackendService {
     console.log(newCard)
     return this.http.post<CardsPayment[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/card.json`, newCard).subscribe(() => {
       this.getCardsPayment(userId);
+    })
+  }
+
+  public updateCardsPayment(userId: string, idKey: string , newCard: CardsPayment) {
+    console.log(newCard)
+    return this.http.put<CardsPayment[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/card/${idKey}.json`, newCard).subscribe(() => {
+      this.getCardsPayment(userId);
+    })
+  }
+
+  public setCardsTransactions(userId:string, data: TransactionInterface){
+    return this.http.post<TransactionInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/cardTransaction.json`, data).subscribe((data: TransactionInterface) => {
+      // this.store.dispatch(setCardsTransaction({ data: data }));
     })
   }
 }

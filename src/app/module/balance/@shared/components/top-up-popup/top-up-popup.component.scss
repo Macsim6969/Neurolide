@@ -41,6 +41,17 @@
       gap: 30px;
       width: 100%;
 
+      .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .column {
+          max-width: 171px;
+        }
+      }
+
       .column {
         display: flex;
         flex-direction: column;
@@ -72,6 +83,7 @@
         @media (max-width: 400px) {
           flex-direction: column;
           gap: 10px;
+
           button {
             padding: 10px 34px;
           }
