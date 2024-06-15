@@ -4,6 +4,8 @@ import { CardsPayment } from '../../../../../shared/interfaces/backend.interface
 import { Subject } from 'rxjs';
 import { BalanceCardService } from '../../services/balanceCard.service';
 import { DateInputFormatPipe } from '../../pipe/dateInputFormat.pipe';
+import { BalanceActionService } from '../../services/balanceAction.service';
+import { TakeOutMoney } from '../../interface/form.interface';
 
 @Component({
   selector: 'app-take-out-popup',
@@ -17,7 +19,7 @@ export class TakeOutPopupComponent implements OnInit, OnDestroy {
   public form: FormGroup;
   dateInputFormatPipe = new DateInputFormatPipe();
   constructor(
-    private balanceCardService: BalanceCardService
+    private balanceActionService: BalanceActionService
   ) { }
 
   ngOnInit(): void {
@@ -26,41 +28,22 @@ export class TakeOutPopupComponent implements OnInit, OnDestroy {
   }
 
   private initializeForm() {
-    this.form = new FormGroup<any>({
-      numberCard: new FormControl('', [Validators.required, Validators.maxLength(19)]),
+    this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      number: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-      cvc: new FormControl('', [Validators.required, Validators.maxLength(3)]),
-      data: new FormControl('', [
-        Validators.required,
-        Validators.pattern('(0[1-9]|1[0-2])/([0-9]{2})') // Pattern for MM/YY
-      ])
+      numberCard: new FormControl('', [Validators.required, Validators.maxLength(19)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      suma: new FormControl('', [Validators.required])
     })
   }
 
-  public onInputChange(event: any, maxLength: number): void {
-    const input = event.target;
-    if (input.value.length > maxLength) {
-      input.value = input.value.slice(0, maxLength);
-      this.form.get(input.getAttribute('formControlName')).setValue(input.value);
-    }
-  }
-
-  public onDateInputChange(event: any): void {
-    const input = event.target;
-    let value = input.value;
-    value = this.dateInputFormatPipe.transform(value);
-    this.form.get('data').setValue(value);
-  }
-
   public submit() {
-    this.balanceCardService.setNewCard(this.form.value)
+    this.balanceActionService.takeOutMoneyFromCard(this.form.value)
     this.closePopup();
   }
 
   public closePopup() {
     this.form.reset();
-    this.balanceCardService._isAddCard = false;
+    this.balanceActionService._isTakeOutdMoney = false;
   }
 
   ngOnDestroy(): void {

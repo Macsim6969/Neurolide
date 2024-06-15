@@ -39,8 +39,9 @@ export class BalanceCardComponent implements OnInit, OnDestroy {
     this.store.pipe(select(selectCardsPayments), takeUntil(this.destroy$)).subscribe((data: CardsPayment[]) => {
       if (data) {
         this.totalBalance = Object.values(data).reduce((acc, data) => acc + +data.balance, 0);
+        this.totalBalance = +this.totalBalance.toFixed(2);
+        console.log(this.totalBalance);
       }
-      console.log(this.totalBalance)
     });
   }
 
@@ -49,6 +50,7 @@ export class BalanceCardComponent implements OnInit, OnDestroy {
     if (tage === 'top-up') {
       this.balanceActionService._isAddedMoney = true;
     } else if (tage === 'take-out') {
+      this.balanceActionService._isTakeOutdMoney = true;
     }
   }
 

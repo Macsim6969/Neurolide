@@ -6,6 +6,7 @@ import { TransactionInterface } from "../interface/transactions.interface";
 import { Store, select } from "@ngrx/store";
 import { StoreInterface } from "../../../../store/model/store.model";
 import { selectCardsPayments } from "../../../../store/selectors/store.selectors";
+import { AddMoneyToCard, TakeOutMoney } from "../interface/form.interface";
 
 
 @Injectable()
@@ -36,7 +37,27 @@ export class BalanceActionService {
     return this.isTakeOutMoneyPopupSubject;
   }
 
-  public addMoneyToCard(form) {
+  public takeOutMoneyFromCard(form: TakeOutMoney) {
+    let cards: CardsPayment;
+    const id = JSON.parse(localStorage.getItem('id'))
+    this.store.pipe(take(1), select(selectCardsPayments)).subscribe((data: CardsPayment[]) => {
+      cards = Object.values(data).find(card => card.number === form.numberCard && card.name === form.name);
+      if (cards) {
+        const key = Object.keys(data).find(key => data[key] === cards);
+        const newCard: CardsPayment = {
+          ...cards,
+          balance: cards.balance - form.suma
+        }
+
+        this.backendService.updateCardsPayment(id, key, newCard);
+      }
+
+
+    })
+
+  }
+
+  public addMoneyToCard(form: AddMoneyToCard) {
     let cards: CardsPayment;
     const id = JSON.parse(localStorage.getItem('id'))
     this.store.pipe(take(1), select(selectCardsPayments)).subscribe((data: CardsPayment[]) => {
