@@ -78,7 +78,7 @@ export class BalanceActionService {
 
         const newCard: CardsPayment = {
           ...cards,
-          balance: form.suma
+          balance: cards.balance + form.suma 
         }
 
         console.log(newCard)
