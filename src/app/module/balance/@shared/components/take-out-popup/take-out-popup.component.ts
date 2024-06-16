@@ -30,4 +30,8 @@ export class TakeOutPopupComponent extends BasePopupComponent {
     this.balanceActionService.takeOutMoneyFromCard(this.form.value);
     this.closePopup();
   }
+
+  public override closePopup(): void {
+    this.balanceActionService._isTakeOutdMoney = false;
+  }
 }

@@ -39,56 +39,48 @@ export class BalanceActionService {
 
   public takeOutMoneyFromCard(form: TakeOutMoney) {
     let cards: CardsPayment;
-    const id = JSON.parse(localStorage.getItem('id'))
     this.store.pipe(take(1), select(selectCardsPayments)).subscribe((data: CardsPayment[]) => {
       cards = Object.values(data).find(card => card.number === form.numberCard && card.name === form.name);
       if (cards) {
-        const key = Object.keys(data).find(key => data[key] === cards);
-        const newCard: CardsPayment = {
-          ...cards,
-          balance: cards.balance - form.suma
-        }
-
-        this.backendService.updateCardsPayment(id, key, newCard);
+        this.setData(form, data, cards)
       }
-
-
     })
 
   }
 
   public addMoneyToCard(form: AddMoneyToCard) {
     let cards: CardsPayment;
-    const id = JSON.parse(localStorage.getItem('id'))
     this.store.pipe(take(1), select(selectCardsPayments)).subscribe((data: CardsPayment[]) => {
       cards = Object.values(data).find(card => card.cvc === form.cvc && card.number === form.numberCard && card.name === form.name && card.data === form.data && card.numberPhone === form.number);
 
       if (cards) {
-
-        const key = Object.keys(data).find(key => data[key] === cards);
-        const newTransaction: TransactionInterface = {
-          numberCode: this.generateUniqueId(6),
-          dataCard: form.data,
-          dataHistory: this.formatDate(new Date()),
-          status: 'Straight to',
-          card: form.numberCard,
-          subscribe: 'Bonus (annual)',
-          suma: form.suma
-        }
-
-        const newCard: CardsPayment = {
-          ...cards,
-          balance: cards.balance + form.suma 
-        }
-
-        console.log(newCard)
-        this.backendService.setCardsTransactions(id, newTransaction);
-        this.backendService.updateCardsPayment(id, key, newCard);
+        this.setData(form, data, cards);
       }
-
     })
 
 
+  }
+
+  private setData(form, data, cards) {
+    const id = JSON.parse(localStorage.getItem('id'))
+    const key = Object.keys(data).find(key => data[key] === cards);
+    const newTransaction: TransactionInterface = {
+      numberCode: this.generateUniqueId(6),
+      dataCard: cards.data,
+      dataHistory: this.formatDate(new Date()),
+      status: 'Straight to',
+      card: form.numberCard,
+      subscribe: 'Bonus (annual)',
+      suma: form.suma
+    }
+    console.log(newTransaction)
+    const newCard: CardsPayment = {
+      ...cards,
+      balance: cards.balance - form.suma
+    }
+    this.backendService.setCardsTransactions(id, newTransaction);
+    this.backendService.updateCardsPayment(id, key, newCard);
+    console.log(newCard, newTransaction)
   }
 
   private generateUniqueId(length: number): string {

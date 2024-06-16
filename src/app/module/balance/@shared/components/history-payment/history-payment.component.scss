@@ -33,6 +33,7 @@
         width: 160px;
         font-size: 1.4rem;
         line-height: 16.45px;
+        color: #434343;
       }
     }
 
@@ -52,6 +53,14 @@
           width: 160px;
           font-size: 1.4rem;
           line-height: 16.45px;
+
+          &.check{
+            background-color: #D8E1FF;
+            padding: 5px 20px;
+            color: #2E65F3;
+            text-align: center;
+            border-radius: 20px;
+          }
         }
 
       }
