@@ -19,7 +19,42 @@
     border-radius: 20px;
     box-shadow: 0px 4px 20px 0px #00000040;
     background-color: #F1F4FF;
-    width: 1205px;
-    height: 300px;
+    max-width: 1205px;
+    width: 100%;
+    padding: 20px;
+
+    .info_header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      nav {
+        width: 160px;
+        font-size: 1.4rem;
+        line-height: 16.45px;
+      }
+    }
+
+    .info_content {
+      margin-top: 43.25px;
+      display: flex;
+      flex-direction: column;
+      gap: 43.25px;
+
+      .history {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        nav {
+          width: 160px;
+          font-size: 1.4rem;
+          line-height: 16.45px;
+        }
+
+      }
+    }
   }
 }

@@ -32,6 +32,7 @@ export class BalanceComponent implements OnInit, OnDestroy {
   private getCardsPaymentDataFromStore() {
     const userId = JSON.parse(localStorage.getItem('id'))
     this.backendService.getCardsPayment(userId);
+    this.backendService.getCardsTransactions(userId);
   }
 
   private streamOpenPopup() {

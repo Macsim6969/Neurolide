@@ -256,5 +256,14 @@
          "tage": "take-out"
       }
     ]
+  },
+  "transactions": {
+    "number": "Number",
+    "invoiceData": "Invoice date",
+    "dataPayment": "Date of payment",
+    "status": "Status",
+    "payment": "Payment method",
+    "subscription": "Subscription",
+    "amount": "Amount"
   }
 }

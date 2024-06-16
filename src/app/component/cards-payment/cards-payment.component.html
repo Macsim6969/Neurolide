@@ -14,7 +14,7 @@
           </div>
           <div class="card-payment-content">
             <div class="card-payment-content-left">
-              <p class="number">{{ card.number| formatCardNumber}}</p>
+              <p class="number">{{ card.number| formatCardNumber:'start'}}</p>
               <mat-icon svgIcon="copy" (click)="copyToClipboard(card.number)"></mat-icon>
             </div>
             <div class="card-payment-content-right">

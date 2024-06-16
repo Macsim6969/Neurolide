@@ -7,3 +7,13 @@ export interface TransactionInterface {
   subscribe: string
   suma: number
 }
+
+export interface TransactionsData{
+  number: string
+  invoiceData: string
+  dataPayment: string
+  status: string
+  payment: string
+  subscription: string
+  amount: string
+}

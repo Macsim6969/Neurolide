@@ -1,4 +1,4 @@
-import { allUsers, newUserData, setAllUsers, setCardsPayment, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
+import { allUsers, newUserData, setAllUsers, setCardsPayment, setCardsTransaction, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { CardsPayment, UserData } from "../interfaces/backend.interface";
@@ -97,7 +97,13 @@ export class BackendService {
 
   public setCardsTransactions(userId:string, data: TransactionInterface){
     return this.http.post<TransactionInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/cardTransaction.json`, data).subscribe((data: TransactionInterface) => {
-      // this.store.dispatch(setCardsTransaction({ data: data }));
+      this.getCardsTransactions(userId);
+    })
+  }
+
+  public getCardsTransactions(userId:string){
+    return this.http.get<TransactionInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/cardTransaction.json`).subscribe((data: TransactionInterface[]) => {
+     this.store.dispatch(setCardsTransaction({data: data}))
     })
   }
 }
