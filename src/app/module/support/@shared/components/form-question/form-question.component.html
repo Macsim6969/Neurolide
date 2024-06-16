@@ -1,0 +1,25 @@
+<div class="form_question">
+  <h1>Зворотній зв’язок </h1>
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="column">
+      <mat-label class="label sans">Ім'я:</mat-label>
+      <input class="sans" placeholder="...." type="text" formControlName="name">
+    </div>
+    <div class="column">
+      <mat-label class="label sans">Номер картки</mat-label>
+      <input class="sans" placeholder="...." type="text" formControlName="numberCard" maxlength="19">
+    </div>
+
+    <div class="column">
+      <mat-label class="label sans">Email</mat-label>
+      <input class="sans" placeholder="Email" type="email" formControlName="email">
+    </div>
+    <div class="column">
+      <mat-label class="label sans">Вивести суму</mat-label>
+      <input class="sans" type="number" placeholder="Сума поповнення" formControlName="suma">
+    </div>
+    <div class="action">
+      <button type="submit" class="save sans" mat-button>Вивести</button>
+    </div>
+  </form>
+</div>

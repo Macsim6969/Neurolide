@@ -15,6 +15,7 @@ const routes: Routes = [
       { path: 'manager', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'profile', loadChildren: () => import('../../module/profile-page/profile-page.module').then((m) => m.ProfilePageModule) },
       { path: 'balance', loadChildren: () => import('../../module/balance/balance.module').then((m) => m.BalanceModule) },
+      { path: 'support', loadChildren: () => import('../../module/support/support.module').then((m) => m.SupportModule) },
     ]
   }
 ]

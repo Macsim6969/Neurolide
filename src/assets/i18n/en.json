@@ -265,5 +265,39 @@
     "payment": "Payment method",
     "subscription": "Subscription",
     "amount": "Amount"
+  },
+  "support": {
+    "questions": [
+      {
+        "icon": "books",
+        "title": "Can I add or edit more than one user at a time?",
+        "description": "Lorem ipsum is a classic version of conditional, meaningless text that is inserted into the page layout (in the slang of designers, such text is called 'fish')."
+      },
+      {
+        "icon": "albert",
+        "title": "How to edit the data of an existing user?",
+        "description": "There are many other variants of Lorem ipsum, often very far from the original."
+      },
+      {
+        "icon": "paint",
+        "title": "What «additional data» can be selected?",
+        "description": "Lorem ipsum is a twisted passage from Cicero's philosophical treatise On the Limits of Good and Evil, written in Latin in 45 BC."
+      },
+      {
+        "icon": "pansile",
+        "title": "How do I create and define permissions for a role?",
+        "description": "Sometimes they contain additional letters such as k, w, and z—which did not exist or were rarely used in Latin—and nonsensical words such as zzril, takimata, and gubergren added to the original text."
+      },
+      {
+        "icon": "rocket",
+        "title": "What administrative features are now available for RapidLite?",
+        "description": "From the point of view of ease of perception of printed texts, Lorem ipsum shows that Latin graphics are most suitable for writing works in Latin (the frequency of use of symbols with remote elements such as g, l, h, p is taken into account here)."
+      },
+      {
+        "icon": "diagram",
+        "title": "How to use the PSAP tab?",
+        "description": "In Microsoft Word 2007 and PowerPoint 2007 (and in later versions) there is a function lorem (=lorem(parameter1,parameter2), where parameter1 is the number of paragraphs, parameter2 is the number of sentences in a paragraph). It is necessary to type, for example =lorem(2,7) (and press Enter), after which the text will appear in the document."
+      }
+    ]
   }
 }

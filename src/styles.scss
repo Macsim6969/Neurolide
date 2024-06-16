@@ -53,10 +53,17 @@ body {
   font-style: normal;
 }
 
+::ng-deep {
+  .right_block:has(app-support) {
+    background: unset;
+  }
+}
+
 .page {
   display: flex;
   flex-direction: row;
   gap: 42px;
+  height: 100%;
 
   @media (max-width:1124px) {
     gap: 8px;

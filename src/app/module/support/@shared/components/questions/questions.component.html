@@ -1,0 +1,12 @@
+<div class="question">
+  <div class="question_block" *ngFor="let question of questionsData">
+    <div class="question_block_icon">
+      <mat-icon [svgIcon]="question.icon"></mat-icon>
+    </div>
+    <div class="question_block_header"> 
+      <p class="title">{{question.title}}</p>
+      <p class="description">{{question.description}}</p>
+    </div>
+  </div>
+</div>
+
