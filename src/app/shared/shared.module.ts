@@ -18,6 +18,7 @@ import { CardsPaymentComponent } from "../component/cards-payment/cards-payment.
 import { FormatCardNumberPipe } from "./pipe/formatCardNumber.pipe";
 import { TranslateModule } from "@ngx-translate/core";
 import { BalanceCardComponent } from "../component/balance-card/balance-card.component";
+import { CardsPaymentMobileComponent } from "../component/cards-payment-mobile/cards-payment-mobile.component";
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { BalanceCardComponent } from "../component/balance-card/balance-card.com
     HeaderComponent,
     LoadingComponent,
     CardsPaymentComponent,
+    CardsPaymentMobileComponent,
     BalanceCardComponent,
     NavigationComponent,
     FormatCardNumberPipe
@@ -47,7 +49,8 @@ import { BalanceCardComponent } from "../component/balance-card/balance-card.com
     MatProgressSpinnerModule,
     CardsPaymentComponent,
     FormatCardNumberPipe,
-    BalanceCardComponent
+    BalanceCardComponent,
+    CardsPaymentMobileComponent
   ],
   imports: [
     CommonModule,

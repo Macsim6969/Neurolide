@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeaderSidebarComponent } from '../../component/header-sidebar/header-sidebar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { IsMobileGuard } from '../../shared/services/isMobileGuard.guard';
+import { GlobalIconsService } from '../../shared/services/globalIcon.service';
 
 const routes: Routes = [
   {
@@ -33,6 +34,6 @@ const routes: Routes = [
     MatToolbarModule,
     RouterModule.forChild(routes)
   ],
-  providers: [IsMobileGuard]
+  providers: [IsMobileGuard, GlobalIconsService]
 })
 export class HomeModule { }

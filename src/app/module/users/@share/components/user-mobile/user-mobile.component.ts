@@ -8,6 +8,7 @@ import { HeaderInfo, MonitoringData } from '../../../../../shared/interfaces/hea
 import { TranslateService } from '@ngx-translate/core';
 import { ChangeMonitoringDataService } from '../../services/changeMonitoringData.service';
 import { UserService } from '../../services/user.service';
+import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 
 @Component({
   selector: 'app-user-mobile',
@@ -32,6 +33,7 @@ export class UserMobileComponent implements OnInit, OnDestroy {
   public isOpenPayments: number;
 
   constructor(
+    private globalIconsService: GlobalIconsService,
     private listIconsService: ListIconsService,
     private store: Store<{ store: StoreInterface }>,
     private translate: TranslateService,

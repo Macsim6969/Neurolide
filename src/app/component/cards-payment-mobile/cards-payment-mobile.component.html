@@ -1,6 +1,8 @@
 <section class="cards_payment">
   <div class="cards_payment_header">
     <p class="cards_payment_title" [innerHTML]="'balance.method'|translate"></p>
+    <button class="card-added" (click)="openCardPopup()" mat-button
+      [innerHTML]="'balance.addedCard'| translate"></button>
   </div>
   <div class="content">
     <mat-card class="content-cards" *ngFor="let card of cards;index as i" (click)="choiceCard(card.cvc, i)"
@@ -31,17 +33,17 @@
         </div>
       </mat-card-content>
     </mat-card>
-
-    <mat-card class="added-card" (click)="openCardPopup()">
-      <mat-card-content class="added-card-content">
-        <mat-icon svgIcon="plus"></mat-icon>
-        <p class="txt">Add new card</p>
-      </mat-card-content>
-    </mat-card>
+   
+      <div class="left">
+        <button [disabled]="isLeft" [hidden]="isLeft" (click)="left()"><mat-icon svgIcon="arrow_slide"></mat-icon></button>
+      </div>
+      <div class="right">
+        <button [disabled]="isRight" [hidden]="isRight" (click)="right()"><mat-icon svgIcon="arrow_slide"></mat-icon></button>
+      </div>
+   
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
   </div>
-  <ng-template #loading>
-    <app-loading></app-loading>
-  </ng-template>
-
 
 </section>
