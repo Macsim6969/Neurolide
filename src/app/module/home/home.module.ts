@@ -4,11 +4,13 @@ import { HomeComponent } from './home.component';
 import { ShareModule } from '../../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderSidebarComponent } from '../../component/header-sidebar/header-sidebar.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { IsMobileGuard } from '../../shared/services/isMobileGuard.guard';
 
 const routes: Routes = [
   {
     path: '', component: HomeComponent, children: [
+      { path: 'home', loadChildren: () => import('../../module/main-mobile-page/main-mobile-page.module').then((m) => m.MainMobilePageModule), canActivate: [IsMobileGuard] },
       { path: 'users', loadChildren: () => import('../../module/users/users.module').then((m) => m.UsersModule) },
       { path: 'affiliate', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'brand', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
@@ -30,6 +32,7 @@ const routes: Routes = [
     ShareModule,
     MatToolbarModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  providers: [IsMobileGuard]
 })
 export class HomeModule { }

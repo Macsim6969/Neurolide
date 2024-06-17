@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
-import { BalanceData } from '../../interface/balance.interface';
 import { Store, select } from '@ngrx/store';
-import { StoreInterface } from '../../../../../store/model/store.model';
-import { selectCardsPayments } from '../../../../../store/selectors/store.selectors';
-import { CardsPayment } from '../../../../../shared/interfaces/backend.interface';
-import { BalanceActionService } from '../../services/balanceAction.service';
+import { BalanceData } from '../../module/balance/@shared/interface/balance.interface';
+import { StoreInterface } from '../../store/model/store.model';
+import { BalanceActionService } from '../../shared/services/balance/balanceAction.service';
+import { selectCardsPayments } from '../../store/selectors/store.selectors';
+import { CardsPayment } from '../../shared/interfaces/backend.interface';
 
 @Component({
   selector: 'app-balance-card',
@@ -40,7 +40,6 @@ export class BalanceCardComponent implements OnInit, OnDestroy {
       if (data) {
         this.totalBalance = Object.values(data).reduce((acc, data) => acc + +data.balance, 0);
         this.totalBalance = +this.totalBalance.toFixed(2);
-        console.log(this.totalBalance);
       }
     });
   }

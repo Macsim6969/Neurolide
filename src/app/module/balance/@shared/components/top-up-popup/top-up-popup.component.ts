@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { BalanceActionService } from '../../services/balanceAction.service';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BasePopupComponent } from '../../form';
+import { BalanceActionService } from '../../../../../shared/services/balance/balanceAction.service';
 
 
 @Component({

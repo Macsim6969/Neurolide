@@ -193,6 +193,11 @@
   ],
   "sidebar": [
     {
+      "icon": "./assets/images/sidebar/main.svg",
+      "title": "Main",
+      "url": "/home"
+    },
+    {
       "icon": "./assets/images/sidebar/manager.svg",
       "title": "Manager",
       "url": "/manager"
@@ -239,6 +244,7 @@
     }
   ],
   "balance":{
+    "addedCard": "Add a map",
     "method": "Payment method",
     "balanceInfoTitle": "Balance",
     "history": "Payment history",

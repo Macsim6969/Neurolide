@@ -17,6 +17,7 @@ import { NavigationComponent } from "../component/navigation/navigation.componen
 import { CardsPaymentComponent } from "../component/cards-payment/cards-payment.component";
 import { FormatCardNumberPipe } from "./pipe/formatCardNumber.pipe";
 import { TranslateModule } from "@ngx-translate/core";
+import { BalanceCardComponent } from "../component/balance-card/balance-card.component";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { TranslateModule } from "@ngx-translate/core";
     HeaderComponent,
     LoadingComponent,
     CardsPaymentComponent,
+    BalanceCardComponent,
     NavigationComponent,
     FormatCardNumberPipe
   ],
@@ -44,7 +46,8 @@ import { TranslateModule } from "@ngx-translate/core";
     NavigationComponent,
     MatProgressSpinnerModule,
     CardsPaymentComponent,
-    FormatCardNumberPipe
+    FormatCardNumberPipe,
+    BalanceCardComponent
   ],
   imports: [
     CommonModule,

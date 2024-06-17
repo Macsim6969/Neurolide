@@ -1,0 +1,22 @@
+.main-mobile{
+margin:  0 0 56px 0;
+  padding: 0 12px;
+  ::ng-deep{
+    app-cards-payment{
+      .cards_payment{
+        .content{
+          width: 100%;
+          overflow: hidden;
+          flex-wrap: nowrap;
+
+          .content-cards{
+            display: none;
+            &.hide{
+              display: flex;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BackendService } from '../../shared/services/backend.service';
-import { CardsconService } from './@shared/services/cardsIcon.service';
-import { BalanceCardService } from './@shared/services/balanceCard.service';
 import { Subject, combineLatest, takeUntil } from 'rxjs';
-import { BalanceActionService } from './@shared/services/balanceAction.service';
+import { BalanceCardService } from '../../shared/services/balance/balanceCard.service';
+import { CardsconService } from '../../shared/services/balance/cardsIcon.service';
+import { BalanceActionService } from '../../shared/services/balance/balanceAction.service';
 
 @Component({
   selector: 'app-balance',
@@ -25,15 +25,10 @@ export class BalanceComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.getCardsPaymentDataFromStore();
     this.streamOpenPopup();
   }
 
-  private getCardsPaymentDataFromStore() {
-    const userId = JSON.parse(localStorage.getItem('id'))
-    this.backendService.getCardsPayment(userId);
-    this.backendService.getCardsTransactions(userId);
-  }
+
 
   private streamOpenPopup() {
     combineLatest(([this.balanceCard._isAddCard$, this.balanceAction._isAddedMoney$, this.balanceAction._isTakeOutdMoney$]))

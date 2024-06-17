@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { CardsPayment } from '../../../../../shared/interfaces/backend.interface';
-import { BalanceCardService } from '../../services/balanceCard.service';
 import { DateInputFormatPipe } from '../../pipe/dateInputFormat.pipe';
+import { BalanceCardService } from '../../../../../shared/services/balance/balanceCard.service';
 
 @Component({
   selector: 'app-added-card',

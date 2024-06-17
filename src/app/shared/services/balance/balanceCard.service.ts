@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { CardsPayment } from "../../../../shared/interfaces/backend.interface";
-import { BackendService } from "../../../../shared/services/backend.service";
+import { BackendService } from "../backend.service";
+import { CardsPayment } from "../../interfaces/backend.interface";
 
 
 @Injectable()

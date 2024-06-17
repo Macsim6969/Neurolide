@@ -4,7 +4,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { StoreInterface } from '../../store/model/store.model';
 import { selectCardsPayments } from '../../store/selectors/store.selectors';
 import { CardsPayment } from '../../shared/interfaces/backend.interface';
-import { BalanceCardService } from '../../module/balance/@shared/services/balanceCard.service';
+import { BalanceCardService } from '../../shared/services/balance/balanceCard.service';
 
 @Component({
   selector: 'app-cards-payment',

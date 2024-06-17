@@ -20,6 +20,8 @@ export class AuthEffects {
         this.backendService.getUserProfile(id);
         this.backendService.getMonitoringData(id);
         this.backendService.getAlluser();
+        this.backendService.getCardsPayment(id);
+        this.backendService.getCardsTransactions(id);
       })
     )
     ,

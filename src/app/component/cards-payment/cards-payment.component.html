@@ -1,5 +1,8 @@
 <section class="cards_payment">
-  <p class="cards_payment_title" [innerHTML]="'balance.method'|translate"></p>
+  <div class="cards_payment_header">
+    <p class="cards_payment_title" [innerHTML]="'balance.method'|translate"></p>
+    <button class="card-added" (click)="openCardPopup()" mat-button [innerHTML]="'balance.addedCard'| translate"></button>
+  </div>
   <div class="content">
     <mat-card class="content-cards" *ngFor="let card of cards;index as i" (click)="choiceCard(card.cvc, i)"
       [ngClass]="{'active': this.activeCard === i}">
@@ -29,7 +32,7 @@
         </div>
       </mat-card-content>
     </mat-card>
-    
+
     <mat-card class="added-card" (click)="openCardPopup()">
       <mat-card-content class="added-card-content">
         <mat-icon svgIcon="plus"></mat-icon>
@@ -40,6 +43,6 @@
   <ng-template #loading>
     <app-loading></app-loading>
   </ng-template>
-  
+
 
 </section>

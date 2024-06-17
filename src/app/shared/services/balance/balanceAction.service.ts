@@ -1,12 +1,16 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, take } from "rxjs";
-import { CardsPayment } from "../../../../shared/interfaces/backend.interface";
-import { BackendService } from "../../../../shared/services/backend.service";
-import { TransactionInterface } from "../interface/transactions.interface";
+
 import { Store, select } from "@ngrx/store";
-import { StoreInterface } from "../../../../store/model/store.model";
-import { selectCardsPayments } from "../../../../store/selectors/store.selectors";
-import { AddMoneyToCard, TakeOutMoney } from "../interface/form.interface";
+
+
+
+import { BackendService } from "../backend.service";
+import { CardsPayment } from "../../interfaces/backend.interface";
+import { AddMoneyToCard, TakeOutMoney } from "../../../module/balance/@shared/interface/form.interface";
+import { StoreInterface } from "../../../store/model/store.model";
+import { selectCardsPayments } from "../../../store/selectors/store.selectors";
+import { TransactionInterface } from "../../../module/balance/@shared/interface/transactions.interface";
 
 
 @Injectable()
