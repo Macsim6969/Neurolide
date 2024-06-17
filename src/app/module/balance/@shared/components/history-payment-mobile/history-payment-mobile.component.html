@@ -1,0 +1,19 @@
+<section class="history">
+  <p class="title" [innerHTML]="'balance.history' | translate"></p>
+  <div class="block_info">
+    <div class="info_header">
+      <nav *ngFor="let title of transactionHeader" class="{{title}}">{{title}}</nav>
+    </div>
+    <div class="info_content">
+      <div class="history" *ngFor="let title of transactions">
+        <nav [ngClass]="{'check': title.status === 'Straight to'}" class="">{{title.status}}</nav>
+        <nav class="">{{title.numberCode}}</nav>
+        <nav class="">{{title.dataCard}}</nav>
+        <nav class="">{{title.dataHistory}}</nav>
+        <nav class="">{{title.card| formatCardNumber:'center'}}</nav>
+        <nav class="">{{title.subscribe}}</nav>
+        <nav class="">{{title.suma}}</nav>
+      </div>
+    </div>
+  </div>
+</section>

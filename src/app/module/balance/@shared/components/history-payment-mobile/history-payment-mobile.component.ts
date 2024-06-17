@@ -5,11 +5,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { HistoryClass } from '../../history';
 
 @Component({
-  selector: 'app-history-payment',
-  templateUrl: './history-payment.component.html',
-  styleUrls: ['./history-payment.component.scss']
+  selector: 'app-history-payment-mobile',
+  templateUrl: './history-payment-mobile.component.html',
+  styleUrls: ['./history-payment-mobile.component.scss']
 })
-export class HistoryPaymentComponent extends HistoryClass {
+export class HistoryPaymentMobileComponent extends HistoryClass {
 
 
   constructor(
@@ -18,5 +18,7 @@ export class HistoryPaymentComponent extends HistoryClass {
   ) {
     super(store, translate)
   }
+
+
 
 }

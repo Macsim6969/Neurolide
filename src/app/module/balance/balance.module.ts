@@ -12,6 +12,7 @@ import { DateInputFormatPipe } from './@shared/pipe/dateInputFormat.pipe';
 import { HistoryPaymentComponent } from './@shared/components/history-payment/history-payment.component';
 import { PhoneFormatPipe } from './@shared/pipe/phoneFormat.pipe';
 import { BalanceServiceModule } from '../../shared/services/balance/balanceService.module';
+import { HistoryPaymentMobileComponent } from './@shared/components/history-payment-mobile/history-payment-mobile.component';
 
 const routes: Routes = [
   { path: '', component: BalanceComponent }
@@ -21,6 +22,7 @@ const routes: Routes = [
   declarations: [
     BalanceComponent,
     HistoryPaymentComponent,
+    HistoryPaymentMobileComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   exports: [
-    AddedCardComponent
+    AddedCardComponent,
+    HistoryPaymentMobileComponent
   ]
 })
 export class BalanceModule { }

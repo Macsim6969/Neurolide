@@ -67,7 +67,7 @@ export class UsersListComponent extends UserClass {
       case 'transactions':
         return user.monitoring?.transactions ? user.monitoring.transactions.length : 0;
       case 'rules':
-        return user.profile?.rules || ''; // Assuming rules is a string or other comparable type
+        return user.profile?.rules || ''; 
       default:
         return null;
     }
