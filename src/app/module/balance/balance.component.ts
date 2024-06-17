@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BackendService } from '../../shared/services/backend.service';
 import { Subject, combineLatest, takeUntil } from 'rxjs';
 import { BalanceCardService } from '../../shared/services/balance/balanceCard.service';
 import { CardsconService } from '../../shared/services/balance/cardsIcon.service';
@@ -18,7 +17,6 @@ export class BalanceComponent implements OnInit, OnDestroy {
   public isTakeOutMoney: boolean;
 
   constructor(
-    private backendService: BackendService,
     private cardsIconService: CardsconService,
     private balanceCard: BalanceCardService,
     private balanceAction: BalanceActionService
