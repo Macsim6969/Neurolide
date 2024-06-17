@@ -7,6 +7,7 @@ import { UserActionComponent } from './@shared/component/user-action/user-action
 import { PopupEditeComponent } from './@shared/component/popup-edite/popup-edite.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileServices } from './@shared/services/profile.service';
+import { BalanceServiceModule } from '../../shared/services/balance/balanceService.module';
 
 
 
@@ -21,6 +22,7 @@ import { ProfileServices } from './@shared/services/profile.service';
     CommonModule,
     ShareModule,
     FormsModule,
+    BalanceServiceModule,
     ReactiveFormsModule
   ],
   exports: [

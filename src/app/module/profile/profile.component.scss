@@ -1,5 +1,5 @@
 .profile {
-  margin-top: 29px;
+  margin: 29px 0 54px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -8,5 +8,6 @@
   position: relative;
   @media (max-width: 1124px) {
     padding: 0 26px;
+    position: unset;
   }
 }
