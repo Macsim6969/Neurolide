@@ -63,7 +63,7 @@ body {
   display: flex;
   flex-direction: row;
   gap: 42px;
-  height: 100%;
+  height: calc(100vh - 40px);
 
   @media (max-width:1124px) {
     gap: 8px;

@@ -1,25 +1,26 @@
-<div class="form_question">
-  <h1>Зворотній зв’язок </h1>
+<div class="form_question" *ngIf="formData">
+  <h1>{{formData.file}}</h1>
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
-    <div class="column">
-      <mat-label class="label sans">Ім'я:</mat-label>
-      <input class="sans" placeholder="...." type="text" formControlName="name">
+    <div class="row">
+      <div class="column">
+        <mat-label class="label sans">{{formData.name}}</mat-label>
+        <input class="sans" placeholder="...." type="text" formControlName="name">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">{{formData.email}}</mat-label>
+        <input class="sans" placeholder="...." type="email" formControlName="email">
+      </div>
     </div>
     <div class="column">
-      <mat-label class="label sans">Номер картки</mat-label>
-      <input class="sans" placeholder="...." type="text" formControlName="numberCard" maxlength="19">
+      <mat-label class="label sans">{{formData.textArea}}</mat-label>
+      <textarea formControlName="text" rows="3"></textarea>
     </div>
-
-    <div class="column">
-      <mat-label class="label sans">Email</mat-label>
-      <input class="sans" placeholder="Email" type="email" formControlName="email">
-    </div>
-    <div class="column">
-      <mat-label class="label sans">Вивести суму</mat-label>
-      <input class="sans" type="number" placeholder="Сума поповнення" formControlName="suma">
+    <div class="column file">
+      <label >{{formData.file}}</label>
+      <input class="select_file" type="file" (change)="onFileSelected($event)">
     </div>
     <div class="action">
-      <button type="submit" class="save sans" mat-button>Вивести</button>
+      <button  type="submit" class="save sans" mat-button>{{formData.send}}</button>
     </div>
   </form>
 </div>

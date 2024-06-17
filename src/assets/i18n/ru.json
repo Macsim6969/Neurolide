@@ -298,6 +298,14 @@
         "title": "Як користуватися вкладкою PSAP?",
         "description": "В Microsoft Word 2007 і PowerPoint 2007 (і в більш пізніх версіях) є функція lorem (=lorem(параметр1,параметр2), де параметр1 — число абзаців, параметр2 — число речень в абзаці). Необхідно набрати, наприклад =lorem(2,7) (і натиснути Enter), після чого в документі з'явиться текст."
       }
-    ]
+    ],
+    "form": {
+      "title": "Feedback",
+      "name": "Enter a name",
+      "email": "E-mail for communication",
+      "textArea": "Message",
+      "file":"Add file",
+      "send": "Send"
+    }
   }
 }

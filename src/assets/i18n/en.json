@@ -298,6 +298,14 @@
         "title": "How to use the PSAP tab?",
         "description": "In Microsoft Word 2007 and PowerPoint 2007 (and in later versions) there is a function lorem (=lorem(parameter1,parameter2), where parameter1 is the number of paragraphs, parameter2 is the number of sentences in a paragraph). It is necessary to type, for example =lorem(2,7) (and press Enter), after which the text will appear in the document."
       }
-    ]
+    ],
+    "form": {
+      "title": "Feedback",
+      "name": "Enter a name",
+      "email": "E-mail for communication",
+      "textArea": "Message",
+      "file":"Add file",
+      "send": "Send"
+    }
   }
 }
