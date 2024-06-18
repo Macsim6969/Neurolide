@@ -243,7 +243,7 @@
       "url": "/support"
     }
   ],
-  "balance":{
+  "balance": {
     "addedCard": "Add a map",
     "method": "Payment method",
     "balanceInfoTitle": "Balance",
@@ -251,15 +251,15 @@
     "balanceData": [
       {
         "title": "Personal balance",
-         "tage": ""
+        "tage": ""
       },
       {
         "title": "Top up the balance",
-         "tage": "top-up"
+        "tage": "top-up"
       },
       {
         "title": "Take out the balance",
-         "tage": "take-out"
+        "tage": "take-out"
       }
     ]
   },
@@ -310,8 +310,13 @@
       "name": "Enter a name",
       "email": "E-mail for communication",
       "textArea": "Message",
-      "file":"Add file",
+      "file": "Add file",
       "send": "Send"
     }
+  },
+  "media": {
+    "headerTitle": "Media channels",
+    "search": "Search",
+    "addedOffer": "Add an offer"
   }
 }
