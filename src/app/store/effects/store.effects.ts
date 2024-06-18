@@ -4,7 +4,7 @@ import { tap, withLatestFrom } from "rxjs";
 import { BackendService } from "../../shared/services/backend.service";
 import { Store, select } from "@ngrx/store";
 import { StoreInterface } from "../model/store.model";
-import { selectAllUsers, selectStore, selectUserData, selectUserId } from "../selectors/store.selectors";
+import { selectUserId } from "../selectors/store.selectors";
 import { Injectable } from "@angular/core";
 import { MonitoringService } from "../../shared/services/monitoring.service";
 

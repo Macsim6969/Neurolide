@@ -33,8 +33,6 @@ export abstract class HistoryClass {
       .subscribe(([jsonData, storeData]) => {
         this.transactionHeader = Object.values(jsonData);
         this.transactions = Object.values(storeData);
-        console.log(Object.values(storeData))
-
       });
   }
 

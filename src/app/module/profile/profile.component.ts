@@ -1,42 +1,31 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProfileServices } from './@shared/services/profile.service';
 import { Subject, takeUntil } from 'rxjs';
 import { CardsconService } from '../../shared/services/balance/cardsIcon.service';
 import { BalanceCardService } from '../../shared/services/balance/balanceCard.service';
+import { IsMobilePage } from '../../shared/abstract/mobilePage/mobilePage';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit, OnDestroy {
+export class ProfileComponent extends IsMobilePage implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   public isPopup: boolean;
-  public isMobile: boolean;
   public addedCardPopup: boolean;
   constructor(
     private profileService: ProfileServices,
     private cardsconService: CardsconService,
     private balanceCard: BalanceCardService
-  ) { }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.initializeIsMobilePage();
+  ) {
+    super()
   }
 
-  ngOnInit(): void {
-    this.initializeIsMobilePage();
+  override ngOnInit(): void {
+    super.ngOnInit();
     this.initializeIsPopupOpen();
     this.streamOpenPopup();
-  }
-
-  private initializeIsMobilePage() {
-    if (innerWidth < 1124) {
-      this.isMobile = true;
-    } else {
-      this.isMobile = false;
-    }
   }
 
   private initializeIsPopupOpen() {

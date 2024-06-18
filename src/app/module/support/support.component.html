@@ -1,2 +1,3 @@
-<app-questions></app-questions>
+<app-questions *ngIf="!isMobile"></app-questions>
+<app-questions-mobile *ngIf="isMobile"></app-questions-mobile>
 <app-form-question></app-form-question>

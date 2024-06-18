@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SupportIconService } from './@shared/services/supportIcon.service';
 import { QuestionsComponent } from './@shared/components/questions/questions.component';
 import { FormQuestionComponent } from './@shared/components/form-question/form-question.component';
+import { QuestionsMobileComponent } from './@shared/components/questions-mobile/questions-mobile.component';
 
 const routes: Routes = [
   {path: '', component: SupportComponent}
@@ -17,7 +18,8 @@ const routes: Routes = [
   declarations: [
     SupportComponent,
     QuestionsComponent,
-    FormQuestionComponent
+    FormQuestionComponent,
+    QuestionsMobileComponent
   ],
   imports: [
     CommonModule,

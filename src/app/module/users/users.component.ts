@@ -1,47 +1,38 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from './@share/services/user.service';
-import { Subject, Subscription, combineLatest, takeUntil } from 'rxjs';
+import { Subject, combineLatest, takeUntil } from 'rxjs';
+import { IsMobilePage } from '../../shared/abstract/mobilePage/mobilePage';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit, OnDestroy {
+export class UsersComponent extends IsMobilePage implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
-  public isMobile: boolean;
+
   public isUserPopup: boolean;
   public isTransitionPopup: boolean;
+
   constructor(
     private userService: UserService
-  ) { }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.initializeIsMobilePage();
+  ) {
+    super()
   }
 
-  ngOnInit(): void {
-    this.initializeIsMobilePage();
+  override ngOnInit(): void {
+    super.ngOnInit()
     this.initializeUserPopupDataAndTransitionData();
 
   }
 
-  private initializeIsMobilePage() {
-    if (innerWidth < 1124) {
-      this.isMobile = true;
-    } else {
-      this.isMobile = false;
-    }
-  }
-
   private initializeUserPopupDataAndTransitionData() {
-    combineLatest(([this.userService._isUserPopup$, this.userService._isTransitionPopup$])).pipe(takeUntil(this.destroy$)).subscribe(([userData, transitionData]) =>{
+    combineLatest(([this.userService._isUserPopup$, this.userService._isTransitionPopup$])).pipe(takeUntil(this.destroy$)).subscribe(([userData, transitionData]) => {
       this.isUserPopup = userData;
       this.isTransitionPopup = transitionData;
     })
   }
-  
+
 
   ngOnDestroy(): void {
     this.destroy$.next();

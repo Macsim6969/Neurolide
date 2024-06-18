@@ -43,7 +43,7 @@ export class FormQuestionComponent implements OnInit, OnDestroy {
   }
 
   public submit() { 
-    console.log(this.form.value)
+    
   }
 
   ngOnDestroy(): void {

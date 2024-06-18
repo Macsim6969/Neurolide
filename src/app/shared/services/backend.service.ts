@@ -82,14 +82,12 @@ export class BackendService {
   }
 
   public setCardsPayment(userId: string, newCard: CardsPayment) {
-    console.log(newCard)
     return this.http.post<CardsPayment[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/card.json`, newCard).subscribe(() => {
       this.getCardsPayment(userId);
     })
   }
 
   public updateCardsPayment(userId: string, idKey: string , newCard: CardsPayment) {
-    console.log(newCard)
     return this.http.put<CardsPayment[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/card/${idKey}.json`, newCard).subscribe(() => {
       this.getCardsPayment(userId);
     })

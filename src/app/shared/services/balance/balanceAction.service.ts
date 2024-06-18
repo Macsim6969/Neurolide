@@ -77,14 +77,14 @@ export class BalanceActionService {
       subscribe: 'Bonus (annual)',
       suma: form.suma
     }
-    console.log(newTransaction)
+
     const newCard: CardsPayment = {
       ...cards,
       balance: cards.balance - form.suma
     }
     this.backendService.setCardsTransactions(id, newTransaction);
     this.backendService.updateCardsPayment(id, key, newCard);
-    console.log(newCard, newTransaction)
+
   }
 
   private generateUniqueId(length: number): string {
