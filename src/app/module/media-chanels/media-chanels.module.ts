@@ -5,6 +5,7 @@ import { ShareModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MediaHeaderComponent } from './@shared/components/media-header/media-header.component';
+import { MediaListComponent } from './@shared/components/media-list/media-list.component';
 
 const routes: Routes = [
   { path: '', component: MediaChanelsComponent }
@@ -13,7 +14,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     MediaChanelsComponent,
-    MediaHeaderComponent
+    MediaHeaderComponent,
+    MediaListComponent
   ],
   imports: [
     CommonModule,

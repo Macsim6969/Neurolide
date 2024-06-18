@@ -7,11 +7,14 @@ import { GlobalIconsService } from '../../../../../shared/services/globalIcon.se
   templateUrl: './media-header.component.html',
   styleUrls: ['./media-header.component.scss', '../../../../../shared/abstract/header_search/header_search.scss']
 })
-export class MediaHeaderComponent extends HeaderSearchClass{
+export class MediaHeaderComponent extends HeaderSearchClass {
+  
 
   constructor(
-    override globalIcon: GlobalIconsService
-  ){
-    super(globalIcon)
+    override globalIcon: GlobalIconsService,
+  ) {
+    super(globalIcon);
   }
+
+ 
 }
