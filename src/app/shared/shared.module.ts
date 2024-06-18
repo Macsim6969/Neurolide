@@ -19,6 +19,7 @@ import { FormatCardNumberPipe } from "./pipe/formatCardNumber.pipe";
 import { TranslateModule } from "@ngx-translate/core";
 import { BalanceCardComponent } from "../component/balance-card/balance-card.component";
 import { CardsPaymentMobileComponent } from "../component/cards-payment-mobile/cards-payment-mobile.component";
+import { ActionSlideComponent } from "./components/action-slide/action-slide.component";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CardsPaymentMobileComponent } from "../component/cards-payment-mobile/c
     CardsPaymentMobileComponent,
     BalanceCardComponent,
     NavigationComponent,
-    FormatCardNumberPipe
+    FormatCardNumberPipe,
+    ActionSlideComponent
   ],
   exports: [
     CommonModule,
@@ -50,7 +52,8 @@ import { CardsPaymentMobileComponent } from "../component/cards-payment-mobile/c
     CardsPaymentComponent,
     FormatCardNumberPipe,
     BalanceCardComponent,
-    CardsPaymentMobileComponent
+    CardsPaymentMobileComponent,
+    ActionSlideComponent
   ],
   imports: [
     CommonModule,

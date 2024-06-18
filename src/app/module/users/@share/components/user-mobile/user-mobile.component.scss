@@ -345,32 +345,3 @@
     }
   }
 }
-
-.left,
-.right {
-  position: absolute;
-
-  top: 0;
-  bottom: 0;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  z-index: 60;
-
-  button{
-    outline: none;
-    border: none;
-    background-color: transparent;
-  }
-}
-
-.left {
-  left: 0;
-  button{
-    transform: rotate(180deg);
-  }
-}
-
-.right {
-  right: 0;
-}

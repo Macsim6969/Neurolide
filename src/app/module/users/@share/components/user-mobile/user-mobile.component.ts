@@ -16,8 +16,6 @@ import { StoreInterface } from '../../../../../store/model/store.model';
 })
 export class UserMobileComponent extends UserClass {
 
-
-
   public isActiveSlide: number = 0;
   public isOpen: boolean;
   public isOpenPayments: number;
@@ -33,42 +31,19 @@ export class UserMobileComponent extends UserClass {
     super(store, translate, changeMonitoringDataService, userSerice, globalIconsService, listIconsService)
   }
 
-
-
-
-
   public openCard(email: string) {
     this.isOpen = !this.isOpen;
     this.isActiveEmail = email;
-    
+
     this.setMonitoringDataOtherUser();
   }
 
+  public changeActiveCard(id: number) {
+    this.isActiveSlide = id;
+  }
 
   public checkPayments(index: number) {
     this.isOpenPayments = index;
   }
-
-
-
-  public left() {
-    if (this.isActiveSlide === 0) {
-      return
-    } else {
-      this.isActiveSlide--;
-    }
-    this.isOpen = false;
-  }
-
-  public right() {
-    if (this.isActiveSlide === this.userInfo.length - 1) {
-      return
-    } else {
-      this.isActiveSlide++;
-    }
-    this.isOpen = false;
-  }
-
-
 
 }

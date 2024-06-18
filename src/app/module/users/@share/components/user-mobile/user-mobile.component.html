@@ -105,9 +105,4 @@
     </div>
   </div>
 </section>
-<div class="left">
-  <button (click)="left()"><mat-icon svgIcon="arrow_slide"></mat-icon></button>
-</div>
-<div class="right">
-  <button (click)="right()"><mat-icon svgIcon="arrow_slide"></mat-icon></button>
-</div>
+<app-action-slide (activeId)="changeActiveCard($event)" [activeCard]="isActiveSlide" [slider]="userInfo"></app-action-slide>

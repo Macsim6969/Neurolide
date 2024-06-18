@@ -11,8 +11,6 @@ import { GlobalIconsService } from '../../shared/services/globalIcon.service';
   styleUrls: ['./cards-payment-mobile.component.scss', '../../shared/abstract/payment/payment.scss']
 })
 export class CardsPaymentMobileComponent extends BasePaymentComponent {
-  public isLeft: boolean;
-  public isRight: boolean;
   public override activeCard: number;
   constructor(
     override store: Store<{ store: StoreInterface }>,
@@ -22,28 +20,8 @@ export class CardsPaymentMobileComponent extends BasePaymentComponent {
     super(store, balanceCard);
   }
 
-  public left() {
-    if (this.activeCard === 0) {
-      this.isLeft = true;
-      this.isRight = false;
-      return
-    } else {
-      this.isRight = false;
-      this.isLeft = false;
-      this.activeCard--;
-    }
-  }
-
-  public right() {
-    if (this.activeCard === this.cards.length - 1) {
-      this.isRight = true;
-      this.isLeft = false;
-      return
-    } else {
-      this.isLeft = false;
-      this.isRight = false;
-      this.activeCard++
-    }
+  changeActiveCard(id: number){
+    this.activeCard = id;
   }
 
   public choiceCard(id: number, idCard: number) {

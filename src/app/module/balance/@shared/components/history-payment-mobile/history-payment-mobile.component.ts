@@ -10,7 +10,7 @@ import { HistoryClass } from '../../history';
   styleUrls: ['./history-payment-mobile.component.scss']
 })
 export class HistoryPaymentMobileComponent extends HistoryClass {
-
+  
   public activeCard: number = 0;
   public isLeft: boolean;
   public isRight: boolean;
@@ -22,28 +22,8 @@ export class HistoryPaymentMobileComponent extends HistoryClass {
     super(store, translate)
   }
 
-  public left() {
-    if (this.activeCard === 0) {
-      this.isLeft = true;
-      this.isRight = false;
-      return
-    } else {
-      this.isRight = false;
-      this.isLeft = false;
-      this.activeCard--;
-    }
-  }
-
-  public right() {
-    if (this.activeCard === this.transactions.length - 1) {
-      this.isRight = true;
-      this.isLeft = false;
-      return
-    } else {
-      this.isLeft = false;
-      this.isRight = false;
-      this.activeCard++
-    }
+  changeActiveCard(id: number){
+    this.activeCard = id;
   }
 
 

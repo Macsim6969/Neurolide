@@ -32,29 +32,4 @@
       }
     }
   }
-
-  .right,
-  .left {
-    position: absolute;
-    cursor: pointer;
-    z-index: 50;
-
-    button {
-      outline: none;
-      border: none;
-      background: transparent;
-    }
-  }
-
-  .left {
-    left: 0;
-
-    button {
-      transform: rotate(180deg);
-    }
-  }
-
-  .right {
-    right: 0;
-  }
 }
