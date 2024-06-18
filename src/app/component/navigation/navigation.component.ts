@@ -7,13 +7,14 @@ import { StoreInterface } from '../../store/model/store.model';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 import { SidebarService } from '../../shared/services/sidebarService';
+import { IsMobilePage } from '../../shared/abstract/mobilePage/mobilePage';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit, OnDestroy {
+export class NavigationComponent extends IsMobilePage implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   public isLoading: boolean = false;
   public userRule: string;
@@ -22,9 +23,12 @@ export class NavigationComponent implements OnInit, OnDestroy {
     private translate: TranslateService,
     private store: Store<{ store: StoreInterface }>,
     private sidebarService: SidebarService
-  ) { }
+  ) {
+    super()
+  }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
+    super.ngOnInit();
     this.initialeUserRules();
     this.initializeSidebarDataFromJSON()
   }
