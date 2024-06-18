@@ -4,6 +4,10 @@
   gap: 30px;
   margin-top: 30px;
 
+  @media (max-width: 1124px) {
+    padding: 0 8px;
+  }
+
   .balane_header {
     display: flex;
     flex-direction: row;

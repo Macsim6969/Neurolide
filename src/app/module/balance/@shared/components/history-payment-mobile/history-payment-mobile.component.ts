@@ -11,6 +11,7 @@ import { HistoryClass } from '../../history';
 })
 export class HistoryPaymentMobileComponent extends HistoryClass {
 
+  public isActiveSlide: number = 0;
 
   constructor(
     override store: Store<{ store: StoreInterface }>,

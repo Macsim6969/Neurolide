@@ -1,67 +1,74 @@
 .history {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-top: 50px;
+  margin: 50px 0;
+  padding: 0 8px;
 
   .title {
-    font-size: 2rem;
-    line-height: 23.5px;
-
-    padding: 15px 20px;
-    border-radius: 20px;
+    font-size: 1.6rem;
+    max-width: max-content;
+    line-height: 32px;
+    padding: 6px 10px;
+    border-radius: 13px;
     background: #F1F4FF;
     box-shadow: 0px 4px 10px 0px #00000040;
   }
 
   .block_info {
-    margin-top: 30px;
+    margin-top: 8px;
     border-radius: 20px;
     box-shadow: 0px 4px 20px 0px #00000040;
     background-color: #F1F4FF;
-    max-width: 1205px;
-    width: 100%;
-    padding: 20px;
-
-    .info_header {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-
-      nav {
-        width: 160px;
-        font-size: 1.4rem;
-        line-height: 16.45px;
-        color: #434343;
-      }
-    }
+    padding: 18px 20px;
 
     .info_content {
-      margin-top: 43.25px;
       display: flex;
       flex-direction: column;
-      gap: 43.25px;
 
       .history {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+        display: none;
+        gap: 20px;
 
-        nav {
-          width: 160px;
-          font-size: 1.4rem;
-          line-height: 16.45px;
+        &.active {
+          display: flex;
+        }
 
-          &.check{
-            background-color: #D8E1FF;
-            padding: 5px 20px;
-            color: #2E65F3;
-            text-align: center;
-            border-radius: 20px;
+        .row {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .column {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .row,
+        .column {
+          nav {
+            font-size: 2.2rem;
+            line-height: 25.85px;
+
+            &.check {
+              background-color: #D8E1FF;
+              padding: 5px 20px;
+              color: #2E65F3;
+              font-size: 1.4rem;
+              line-height: 16.45px;
+              text-align: center;
+              border-radius: 20px;
+            }
           }
         }
+
+
 
       }
     }
