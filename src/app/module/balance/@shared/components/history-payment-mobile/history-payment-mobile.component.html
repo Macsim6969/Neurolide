@@ -2,7 +2,7 @@
   <p class="title" [innerHTML]="'balance.history' | translate"></p>
   <div class="block_info">
     <div class="info_content">
-      <div [ngClass]="{'active': isActiveSlide === i}" class="history" *ngFor="let title of transactions; index as i">
+      <div [ngClass]="{'active': activeCard === i}" class="history" *ngFor="let title of transactions; index as i">
         <div class="row">
           <nav>Status</nav>
           <nav [ngClass]="{'check': title.status === 'Straight to'}">{{title.status}}</nav>
@@ -31,8 +31,14 @@
           <nav>Сума</nav>
           <nav class="">${{title.suma}}</nav>
         </div>
-
-       
+      </div>
+      <div class="left">
+        <button [disabled]="isLeft" [hidden]="isLeft" (click)="left()"><mat-icon
+            svgIcon="arrow_slide"></mat-icon></button>
+      </div>
+      <div class="right">
+        <button [disabled]="isRight" [hidden]="isRight" (click)="right()"><mat-icon
+            svgIcon="arrow_slide"></mat-icon></button>
       </div>
     </div>
   </div>

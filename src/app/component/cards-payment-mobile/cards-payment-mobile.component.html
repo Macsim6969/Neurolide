@@ -33,14 +33,16 @@
         </div>
       </mat-card-content>
     </mat-card>
-   
-      <div class="left">
-        <button [disabled]="isLeft" [hidden]="isLeft" (click)="left()"><mat-icon svgIcon="arrow_slide"></mat-icon></button>
-      </div>
-      <div class="right">
-        <button [disabled]="isRight" [hidden]="isRight" (click)="right()"><mat-icon svgIcon="arrow_slide"></mat-icon></button>
-      </div>
-   
+
+    <div class="left">
+      <button [disabled]="isLeft" [hidden]="isLeft" (click)="left()"><mat-icon
+          svgIcon="arrow_slide"></mat-icon></button>
+    </div>
+    <div class="right">
+      <button [disabled]="isRight" [hidden]="isRight" (click)="right()"><mat-icon
+          svgIcon="arrow_slide"></mat-icon></button>
+    </div>
+
     <ng-template #loading>
       <app-loading></app-loading>
     </ng-template>

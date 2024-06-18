@@ -11,13 +11,39 @@ import { HistoryClass } from '../../history';
 })
 export class HistoryPaymentMobileComponent extends HistoryClass {
 
-  public isActiveSlide: number = 0;
+  public activeCard: number = 0;
+  public isLeft: boolean;
+  public isRight: boolean;
 
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override translate: TranslateService
   ) {
     super(store, translate)
+  }
+
+  public left() {
+    if (this.activeCard === 0) {
+      this.isLeft = true;
+      this.isRight = false;
+      return
+    } else {
+      this.isRight = false;
+      this.isLeft = false;
+      this.activeCard--;
+    }
+  }
+
+  public right() {
+    if (this.activeCard === this.transactions.length - 1) {
+      this.isRight = true;
+      this.isLeft = false;
+      return
+    } else {
+      this.isLeft = false;
+      this.isRight = false;
+      this.activeCard++
+    }
   }
 
 
