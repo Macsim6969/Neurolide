@@ -8,7 +8,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { ChangeMonitoringDataService } from '../../services/changeMonitoringData.service';
 import { UserService } from '../../services/user.service';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
-import { ListIconsService } from '../../services/listIcon.service';
 
 @Component({
   selector: 'app-users-list',
@@ -25,10 +24,9 @@ export class UsersListComponent extends UserClass {
     override translate: TranslateService,
     override changeMonitoringDataService: ChangeMonitoringDataService,
     override userSerice: UserService,
-    override globalIconsService: GlobalIconsService,
-    override listIconsService: ListIconsService,
+    override globalIconsService: GlobalIconsService
   ) {
-    super(store, translate, changeMonitoringDataService, userSerice, globalIconsService, listIconsService)
+    super(store, translate, changeMonitoringDataService, userSerice, globalIconsService)
   }
 
   override ngOnInit(): void {

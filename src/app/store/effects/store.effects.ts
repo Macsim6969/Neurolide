@@ -22,6 +22,7 @@ export class AuthEffects {
         this.backendService.getAlluser();
         this.backendService.getCardsPayment(id);
         this.backendService.getCardsTransactions(id);
+        this.backendService.getMediaChannels(id);
       })
     )
     ,

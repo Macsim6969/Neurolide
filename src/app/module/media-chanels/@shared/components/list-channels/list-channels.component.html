@@ -1,6 +1,18 @@
-
 <div class="media-channel">
-  <div class="channel">
-    <nav class="id"></nav>
+  <div [ngClass]="{'active': activeChannel === i}" class="channel" *ngFor="let channel of mediaChannels;index as i"
+    (click)="selectChannel(i)">
+    <nav class="id">{{channel.id}}</nav>
+    <nav class="name">{{channel.name}}</nav>
+    <nav class="link">{{channel.link}}</nav>
+    <nav class="subscribe">{{channel.subscribe}}</nav>
+    <nav class="stream">{{channel.stream}}</nav>
+    <nav class="payout">{{channel.payout}}</nav>
+    <nav class="price">{{channel.price}} $</nav>
+    <nav class="status">
+      <button type="button" class="remove " ><mat-icon svgIcon="remove"></mat-icon></button>
+      <button type="submit" class="save " ><mat-icon svgIcon="confirme"></mat-icon></button>
+      <button type="submit" class="vip " ><mat-icon svgIcon="vip"></mat-icon></button>
+
+    </nav>
   </div>
 </div>

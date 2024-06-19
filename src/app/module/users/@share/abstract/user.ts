@@ -34,8 +34,7 @@ export abstract class UserClass implements OnInit, OnDestroy{
     protected translate: TranslateService,
     protected changeMonitoringDataService: ChangeMonitoringDataService,
     protected userSerice: UserService, 
-    protected globalIconsService: GlobalIconsService,
-    protected listIconsService: ListIconsService,
+    protected globalIconsService: GlobalIconsService
   ){}
 
   ngOnInit(): void {

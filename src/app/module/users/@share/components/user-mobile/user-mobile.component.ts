@@ -25,10 +25,9 @@ export class UserMobileComponent extends UserClass {
     override translate: TranslateService,
     override changeMonitoringDataService: ChangeMonitoringDataService,
     override userSerice: UserService,
-    override globalIconsService: GlobalIconsService,
-    override listIconsService: ListIconsService,
+    override globalIconsService: GlobalIconsService
   ) {
-    super(store, translate, changeMonitoringDataService, userSerice, globalIconsService, listIconsService)
+    super(store, translate, changeMonitoringDataService, userSerice, globalIconsService)
   }
 
   public openCard(email: string) {
