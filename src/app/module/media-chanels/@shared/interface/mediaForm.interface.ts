@@ -6,4 +6,5 @@ export interface MediaFormInterface {
   payout: 'CPM' |'CPH'
   stream: number
   price: number
+  vip: boolean
 }

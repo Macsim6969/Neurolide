@@ -106,8 +106,15 @@ export class BackendService {
     })
   }
 
-  public setMediaChannels(userId: string, data: MediaFormInterface){
+  public setNewMediaChannels(userId: string, data: MediaFormInterface){
     return this.http.post<MediaFormInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels.json`, data).subscribe(() => {
+      this.getMediaChannels(userId);
+    })
+  }
+
+  public setMediaChannels(userId: string, user: string, data: MediaFormInterface){
+    console.log(user);
+    return this.http.put<MediaFormInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels/${user}.json`, data).subscribe(() => {
       this.getMediaChannels(userId);
     })
   }

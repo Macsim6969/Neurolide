@@ -9,7 +9,7 @@
     <button class="payout" (click)="openPayout(i)">
       <nav>{{activePayout && activePayout[i] ? activePayout[i ] : channel?.payout}}</nav>
       <mat-icon svgIcon="arrow"></mat-icon>
-      <div class="dropdown" [ngClass]="{'active': isOpen}" *ngIf="isOpen && isOpenDropdown[i]">
+      <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown}">
         <nav (click)="choicePayout(i, 'CPM')" [ngClass]="{'active': activePayout[i ] === 'CPM'}">CPM</nav>
         <nav (click)="choicePayout(i, 'CPH')" [ngClass]="{'active': activePayout[i ] === 'CPH'}">CPH</nav>
         <mat-icon svgIcon="arrow"></mat-icon>
@@ -18,9 +18,10 @@
 
     <nav class="price">{{channel.price}} $</nav>
     <nav class="status">
-      <button (click)="removeMedia(channel.id)" type="button" class="remove "><mat-icon svgIcon="remove"></mat-icon></button>
+      <button (click)="removeMedia(channel.id)" type="button" class="remove "><mat-icon
+          svgIcon="remove"></mat-icon></button>
       <button type="submit" class="save "><mat-icon svgIcon="confirme"></mat-icon></button>
-      <button type="submit" class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
+      <button (click)="setVipStatus(channel.id)" type="submit" [ngClass]="{'active': channel.vip}" class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
     </nav>
   </div>
 </div>

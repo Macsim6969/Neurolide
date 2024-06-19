@@ -47,23 +47,24 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
 
   public openPayout(index: number) {
     this.isOpenDropdown = [];
-    this.isOpen = true;
+    this.isOpen = !this.isOpen;
     this.isOpenDropdown[index] = true;
   }
 
   public choicePayout(index: number, value: 'CPM' | 'CPH') {
     if (!this.activePayout[index]) {
       this.activePayout[index] = '';
-      this.isOpenDropdown = [];
-      this.isOpen = false;
     }
     this.activePayout[index] = value;
-    this.isOpenDropdown = [];
-    this.isOpen = false;
+    this.isOpenDropdown = null;
   }
 
   public removeMedia(id: string) {
     this.mediaChannelService.removeMedia(this.mediaChannels, this.mainData, id)
+  }
+
+  public setVipStatus(id: string){
+    this.mediaChannelService.setVipStatus(this.mediaChannels, this.mainData, id)
   }
 
   ngOnDestroy(): void {

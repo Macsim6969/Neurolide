@@ -17,4 +17,15 @@ export class MediaChannelService {
     const blockId = Object.keys(mainData).find(key => mainData[key] === media)
     this.backendService.removeMediaChannels(userId, blockId);
   }
+
+  public setVipStatus(mediaChannels: MediaFormInterface[], mainData: MediaFormInterface[], id: string) {
+    const userId = JSON.parse(localStorage.getItem('id'))
+    const media = mediaChannels.find((e: MediaFormInterface) => e.id === id)
+    const blockId = Object.keys(mainData).find(key => mainData[key] === media)
+    const newData: MediaFormInterface = {
+      ...media,
+      vip: !media.vip
+    }
+    this.backendService.setMediaChannels(userId, blockId, newData);
+  }
 }

@@ -90,7 +90,7 @@
 
     .dropdown {
       position: absolute;
-    
+
       bottom: 20px;
       background-color: #FFFFFF;
       border-radius: 20px;
@@ -99,7 +99,7 @@
       flex-direction: column;
       align-items: center;
 
-      &.active{
+      &.active {
         display: flex;
       }
 
@@ -181,6 +181,13 @@
             }
           }
         }
+
+        &.vip {
+          &.active {
+            background-color: #e8f8ca;
+          }
+        }
+
       }
     }
   }

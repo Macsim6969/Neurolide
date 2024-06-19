@@ -31,9 +31,10 @@ export class MediaFormService {
       subscribe: newForm.subscribe,
       stream: newForm.stream,
       payout: 'CPM',
-      price: newForm.price
+      price: newForm.price,
+      vip: false
     }
 
-    this.backendService.setMediaChannels(id, newMediaChannels)
+    this.backendService.setNewMediaChannels(id, newMediaChannels)
   }
 }
