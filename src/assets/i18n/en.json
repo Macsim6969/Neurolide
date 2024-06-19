@@ -317,6 +317,40 @@
   "media": {
     "headerTitle": "Media channels",
     "search": "Search",
-    "addedOffer": "Add an offer"
+    "addedOffer": "Add an offer",
+    "mediaSearch": [
+      {
+        "title": "UID",
+        "tag": "userID"
+      },
+      {
+        "title": "Nickname",
+        "tag": "name"
+      },
+      {
+        "title": "Link",
+        "tag": "link"
+      },
+      {
+        "title": "Subscribers",
+        "tag": "subscribers"
+      },
+      {
+        "title": "CTR",
+        "tag": "stream"
+      },
+      {
+        "title": "Payout",
+        "tag": "payout"
+      },
+      {
+        "title": "Price",
+        "tag": "price"
+      },
+      {
+        "title": "Status",
+        "tag": "vip"
+      }
+    ]
   }
 }

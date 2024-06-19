@@ -17,6 +17,7 @@ import { MonitoringService } from './shared/services/monitoring.service';
 import { RulesGuard } from './shared/services/rules.guard';
 import { AuthGuard } from './shared/services/uath.guard';
 import { SidebarService } from './shared/services/sidebarService';
+import { UserSearchService } from './shared/services/userSearch.service';
 ;
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -40,7 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [BackendService, AuthGuard, RulesGuard, AuthService, MonitoringService, SidebarService],
+  providers: [BackendService, AuthGuard, UserSearchService, RulesGuard, AuthService, MonitoringService, SidebarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

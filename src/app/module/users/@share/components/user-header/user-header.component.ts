@@ -1,10 +1,10 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
-import { ListIconsService } from '../../services/listIcon.service';
 import { UserSearch } from '../../interfaces/user.interface';
-import { UserSearchService } from '../../services/userSearch.service';
+
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
+import { UserSearchService } from '../../../../../shared/services/userSearch.service';
 
 @Component({
   selector: 'app-user-header',
@@ -19,6 +19,7 @@ export class UserHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private translate: TranslateService,
     private globaIcon: GlobalIconsService,
+    private userSearch: UserSearchService,
     private cd: ChangeDetectorRef
   ) { }
 
@@ -41,11 +42,11 @@ export class UserHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     if (i === this.active) {
       this.active = null;
       this.isActive[i] = false;
-      // this.userSearch._searchData = '';
+      this.userSearch._searchData = '';
     } else {
       this.active = i;
       this.isActive[i] = true;
-      // this.userSearch._searchData = tag;
+      this.userSearch._searchData = tag;
     }
 
   }

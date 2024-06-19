@@ -36,13 +36,13 @@ export class BackendService {
 
   public getUserProfile(userId: string) {
     return this.http.get<UserData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/profile.json`).subscribe((data: UserData) => {
-      this.store.dispatch(newUserData({ data: data }));
+      data ? this.store.dispatch(newUserData({ data: data })) : null
     });
   }
 
   public getMonitoringData(userId: string) {
     return this.http.get<MonitoringData>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/monitoring.json`).subscribe((data: MonitoringData) => {
-      this.store.dispatch(updatedMonitoringData({ data: data }));
+      data ? this.store.dispatch(updatedMonitoringData({ data: data })) : null;
     })
   }
 
@@ -60,7 +60,7 @@ export class BackendService {
 
   public getAlluser() {
     return this.http.get<any>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users.json`).subscribe((data: UserData) => {
-      this.store.dispatch(allUsers({ data: data }));
+      data ? this.store.dispatch(allUsers({ data: data })) : null;
     });
   }
 
@@ -78,7 +78,7 @@ export class BackendService {
 
   public getCardsPayment(userId: string) {
     return this.http.get<CardsPayment[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/card.json`).subscribe((data: CardsPayment[]) => {
-      this.store.dispatch(setCardsPayment({ data: data }));
+      data ? this.store.dispatch(setCardsPayment({ data: data })) : null
     })
   }
 
@@ -88,46 +88,45 @@ export class BackendService {
     })
   }
 
-  public updateCardsPayment(userId: string, idKey: string , newCard: CardsPayment) {
+  public updateCardsPayment(userId: string, idKey: string, newCard: CardsPayment) {
     return this.http.put<CardsPayment[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/card/${idKey}.json`, newCard).subscribe(() => {
       this.getCardsPayment(userId);
     })
   }
 
-  public setCardsTransactions(userId:string, data: TransactionInterface){
+  public setCardsTransactions(userId: string, data: TransactionInterface) {
     return this.http.post<TransactionInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/cardTransaction.json`, data).subscribe(() => {
       this.getCardsTransactions(userId);
     })
   }
 
-  public getCardsTransactions(userId:string){
+  public getCardsTransactions(userId: string) {
     return this.http.get<TransactionInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/cardTransaction.json`).subscribe((data: TransactionInterface[]) => {
-     this.store.dispatch(setCardsTransaction({data: data}))
+      data ? this.store.dispatch(setCardsTransaction({ data: data })) : null;
     })
   }
 
-  public setNewMediaChannels(userId: string, data: MediaFormInterface){
+  public setNewMediaChannels(userId: string, data: MediaFormInterface) {
     return this.http.post<MediaFormInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels.json`, data).subscribe(() => {
       this.getMediaChannels(userId);
     })
   }
 
-  public setMediaChannels(userId: string, user: string, data: MediaFormInterface){
-    console.log(user);
+  public setMediaChannels(userId: string, user: string, data: MediaFormInterface) {
     return this.http.put<MediaFormInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels/${user}.json`, data).subscribe(() => {
       this.getMediaChannels(userId);
     })
   }
 
-  public getMediaChannels(userId:string){
+  public getMediaChannels(userId: string) {
     return this.http.get<MediaFormInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels.json`).subscribe((data: MediaFormInterface[]) => {
-     this.store.dispatch(setMediaChannelsData({data: data}))
+      data ? this.store.dispatch(setMediaChannelsData({ data: data })) : null;
     })
   }
 
-  public removeMediaChannels(userId:string, user: string){
+  public removeMediaChannels(userId: string, user: string) {
     return this.http.delete<MediaFormInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels/${user}.json`).subscribe((data: MediaFormInterface[]) => {
-     this.getMediaChannels(userId)
+      this.getMediaChannels(userId)
     })
   }
 }

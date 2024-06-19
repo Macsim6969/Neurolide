@@ -1,6 +1,5 @@
 import { Component, } from '@angular/core';
 import { takeUntil } from 'rxjs';
-import { UserSearchService } from '../../services/userSearch.service';
 import { UserClass } from '../../abstract/user';
 import { Store } from '@ngrx/store';
 import { StoreInterface } from '../../../../../store/model/store.model';
@@ -8,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ChangeMonitoringDataService } from '../../services/changeMonitoringData.service';
 import { UserService } from '../../services/user.service';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
+import { UserSearchService } from '../../../../../shared/services/userSearch.service';
 
 @Component({
   selector: 'app-users-list',
