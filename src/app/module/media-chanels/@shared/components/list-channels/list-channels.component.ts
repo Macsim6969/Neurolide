@@ -1,51 +1,42 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subject, takeUntil } from 'rxjs';
+import { takeUntil } from 'rxjs';
 import { StoreInterface } from '../../../../../store/model/store.model';
-import { selectMediaChannels } from '../../../../../store/selectors/store.selectors';
+
 import { MediaFormInterface } from '../../interface/mediaForm.interface';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { MediaChannelService } from '../../services/mediaChannel.service';
 import { SearchMediaChannelService } from '../../services/searchMediaChannel.service';
 import { UserSearchService } from '../../../../../shared/services/userSearch.service';
+import { MediaChannelsDataClass } from '../../abstract/mediaChannelsData';
 
 @Component({
   selector: 'app-list-channels',
   templateUrl: './list-channels.component.html',
   styleUrls: ['./list-channels.component.scss']
 })
-export class ListChannelsComponent implements OnInit, OnDestroy {
-  private destroy$: Subject<void> = new Subject<void>();
-  public mediaChannels: MediaFormInterface[];
+export class ListChannelsComponent extends MediaChannelsDataClass {
+
   public isOpenDropdown: boolean[] = [];
   public isOpen: boolean = false;
   public activeChannel: number;
-  public activePayout: string[] = [];
 
-  private mainData: MediaFormInterface[];
   constructor(
-    private store: Store<{ store: StoreInterface }>,
-    private globalIconsService: GlobalIconsService,
-    private mediaChannelService: MediaChannelService,
+    override store: Store<{ store: StoreInterface }>,
+    override globalIconsService: GlobalIconsService,
+    override mediaChannelService: MediaChannelService,
     private searchMediaChannel: SearchMediaChannelService,
     private userSearchService: UserSearchService
-  ) { }
+  ) {
+    super(store, globalIconsService, mediaChannelService);
+    super.ngOnInit();
+  }
 
-  ngOnInit(): void {
-    this.streamMediaChannelsDataFromStore();
+  override ngOnInit(): void {
     this.streamSearchData();
     this.streamSearchFilterData();
   }
 
-  private streamMediaChannelsDataFromStore() {
-    this.store.select(selectMediaChannels).pipe(takeUntil(this.destroy$))
-      .subscribe((data: MediaFormInterface[]) => {
-        if (data) {
-          this.mainData = data;
-          this.mediaChannels = Object.values(data);
-        }
-      });
-  }
 
   private streamSearchData() {
     this.searchMediaChannel._searchText$.pipe(takeUntil(this.destroy$)).subscribe((data: string) => {
@@ -63,7 +54,7 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
       this.mediaChannels.sort((a, b) => {
         let fieldA = this.getFieldValue(a, selectedField);
         let fieldB = this.getFieldValue(b, selectedField);
-  
+
         let comparison = 0;
         if (typeof fieldA === 'string' && typeof fieldB === 'string') {
           comparison = fieldA.localeCompare(fieldB);
@@ -72,34 +63,34 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
         } else if (typeof fieldA === 'boolean' && typeof fieldB === 'boolean') {
           comparison = (fieldA === fieldB) ? 0 : fieldA ? -1 : 1;
         }
-  
+
         return sortDirection ? comparison : -comparison;
       });
     });
   }
 
   private getFieldValue(user: MediaFormInterface, field: string): any {
-  switch (field) {
-    case 'name':
-      return user.name || '';
-    case 'userID':
-      return user.id || '';
-    case 'link':
-      return user.link || '';
-    case 'subscribers':
-      return user.subscribe || 0; // Ensure numeric comparison
-    case 'stream':
-      return user.stream || 0; // Ensure numeric comparison
-    case 'payout':
-      return user.payout || 0;  // Ensure numeric comparison
-    case 'price':
-      return user.price || 0;  // Ensure numeric comparison
-    case 'vip':
-      return user.vip;  // Ensure boolean comparison
-    default:
-      return null;
-  }
-}F
+    switch (field) {
+      case 'name':
+        return user.name || '';
+      case 'userID':
+        return user.id || '';
+      case 'link':
+        return user.link || '';
+      case 'subscribers':
+        return user.subscribe || 0; // Ensure numeric comparison
+      case 'stream':
+        return user.stream || 0; // Ensure numeric comparison
+      case 'payout':
+        return user.payout || 0;  // Ensure numeric comparison
+      case 'price':
+        return user.price || 0;  // Ensure numeric comparison
+      case 'vip':
+        return user.vip;  // Ensure boolean comparison
+      default:
+        return null;
+    }
+  } F
 
   public selectChannel(index: number) {
     this.activeChannel = index;
@@ -119,21 +110,4 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
     this.isOpenDropdown = null;
   }
 
-  public removeMedia(id: string) {
-    this.mediaChannelService.removeMedia(this.mediaChannels, this.mainData, id)
-  }
-
-  public setNewChanges(id: string, idChannel: number) {
-    this.mediaChannelService.setNewChanges(this.mediaChannels, this.mainData, id, this.activePayout[idChannel])
-
-  }
-
-  public setVipStatus(id: string) {
-    this.mediaChannelService.setVipStatus(this.mediaChannels, this.mainData, id)
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
 }

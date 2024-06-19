@@ -351,6 +351,10 @@
         "title": "Status",
         "tag": "vip"
       }
-    ]
+    ],
+    "mediaMobile": {
+      "status": "Статус",
+      "name": "Назва"
+    }
   }
 }

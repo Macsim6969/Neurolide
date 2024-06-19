@@ -11,6 +11,7 @@ import { ListHeaderComponent } from './@shared/components/list-header/list-heade
 import { ListChannelsComponent } from './@shared/components/list-channels/list-channels.component';
 import { MediaChannelService } from './@shared/services/mediaChannel.service';
 import { SearchMediaChannelService } from './@shared/services/searchMediaChannel.service';
+import { ListMobileComponent } from './@shared/components/list-mobile/list-mobile.component';
 
 const routes: Routes = [
   { path: '', component: MediaChanelsComponent }
@@ -22,7 +23,8 @@ const routes: Routes = [
     MediaHeaderComponent,
     MediaListComponent,
     ListHeaderComponent,
-    ListChannelsComponent
+    ListChannelsComponent,
+    ListMobileComponent
   ],
   imports: [
     CommonModule,
