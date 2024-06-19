@@ -63,7 +63,12 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
     this.mediaChannelService.removeMedia(this.mediaChannels, this.mainData, id)
   }
 
-  public setVipStatus(id: string){
+  public setNewChanges(id: string, idChannel: number) {
+    this.mediaChannelService.setNewChanges(this.mediaChannels, this.mainData, id, this.activePayout[idChannel])
+
+  }
+
+  public setVipStatus(id: string) {
     this.mediaChannelService.setVipStatus(this.mediaChannels, this.mainData, id)
   }
 

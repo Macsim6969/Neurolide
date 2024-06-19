@@ -3,7 +3,7 @@ export interface MediaFormInterface {
   name: string
   link: string
   subscribe: number
-  payout: 'CPM' |'CPH'
+  payout: string
   stream: number
   price: number
   vip: boolean
