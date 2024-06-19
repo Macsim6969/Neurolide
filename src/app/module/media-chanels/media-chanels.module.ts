@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MediaHeaderComponent } from './@shared/components/media-header/media-header.component';
 import { MediaListComponent } from './@shared/components/media-list/media-list.component';
+import { MediaFormService } from './@shared/services/mediaForm.service';
 
 const routes: Routes = [
   { path: '', component: MediaChanelsComponent }
@@ -22,6 +23,7 @@ const routes: Routes = [
     ShareModule,
     TranslateModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  providers: [MediaFormService]
 })
 export class MediaChanelsModule { }

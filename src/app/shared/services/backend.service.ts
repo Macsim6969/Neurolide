@@ -6,6 +6,7 @@ import { Store } from "@ngrx/store";
 import { StoreInterface } from "../../store/model/store.model";
 import { MonitoringData } from '../interfaces/header.interface';
 import { TransactionInterface } from '../../module/balance/@shared/interface/transactions.interface';
+import { MediaFormInterface } from '../../module/media-chanels/@shared/interface/mediaForm.interface';
 
 @Injectable({ providedIn: 'root' })
 
@@ -94,7 +95,7 @@ export class BackendService {
   }
 
   public setCardsTransactions(userId:string, data: TransactionInterface){
-    return this.http.post<TransactionInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/cardTransaction.json`, data).subscribe((data: TransactionInterface) => {
+    return this.http.post<TransactionInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/cardTransaction.json`, data).subscribe(() => {
       this.getCardsTransactions(userId);
     })
   }
@@ -104,4 +105,16 @@ export class BackendService {
      this.store.dispatch(setCardsTransaction({data: data}))
     })
   }
+
+  public setMediaChannels(userId: string, data: MediaFormInterface){
+    return this.http.post<MediaFormInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels.json`, data).subscribe(() => {
+      // this.getMediaChannels(userId);
+    })
+  }
+
+  // public getMediaChannels(userId:string){
+  //   return this.http.get<MediaFormInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels.json`).subscribe((data: MediaFormInterface[]) => {
+  //    this.store.dispatch(setCardsTransaction({data: data}))
+  //   })
+  // }
 }

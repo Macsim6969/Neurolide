@@ -20,6 +20,8 @@ import { TranslateModule } from "@ngx-translate/core";
 import { BalanceCardComponent } from "../component/balance-card/balance-card.component";
 import { CardsPaymentMobileComponent } from "../component/cards-payment-mobile/cards-payment-mobile.component";
 import { ActionSlideComponent } from "./components/action-slide/action-slide.component";
+import { FormMediaComponent } from './components/form-media/form-media.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { ActionSlideComponent } from "./components/action-slide/action-slide.com
     BalanceCardComponent,
     NavigationComponent,
     FormatCardNumberPipe,
-    ActionSlideComponent
+    ActionSlideComponent,
+    FormMediaComponent
   ],
   exports: [
     CommonModule,
@@ -53,7 +56,8 @@ import { ActionSlideComponent } from "./components/action-slide/action-slide.com
     FormatCardNumberPipe,
     BalanceCardComponent,
     CardsPaymentMobileComponent,
-    ActionSlideComponent
+    ActionSlideComponent,
+    FormMediaComponent
   ],
   imports: [
     CommonModule,
@@ -66,6 +70,8 @@ import { ActionSlideComponent } from "./components/action-slide/action-slide.com
     MatInputModule,
     MatCheckboxModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     TranslateModule,
     MatProgressSpinnerModule
   ]
