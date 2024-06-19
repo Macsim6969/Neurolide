@@ -1,4 +1,4 @@
-import { allUsers, newUserData, setAllUsers, setCardsPayment, setCardsTransaction, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
+import { allUsers, newUserData, setAllUsers, setCardsPayment, setCardsTransaction, setMediaChannelsData, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { CardsPayment, UserData } from "../interfaces/backend.interface";
@@ -108,13 +108,13 @@ export class BackendService {
 
   public setMediaChannels(userId: string, data: MediaFormInterface){
     return this.http.post<MediaFormInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels.json`, data).subscribe(() => {
-      // this.getMediaChannels(userId);
+      this.getMediaChannels(userId);
     })
   }
 
-  // public getMediaChannels(userId:string){
-  //   return this.http.get<MediaFormInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels.json`).subscribe((data: MediaFormInterface[]) => {
-  //    this.store.dispatch(setCardsTransaction({data: data}))
-  //   })
-  // }
+  public getMediaChannels(userId:string){
+    return this.http.get<MediaFormInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels.json`).subscribe((data: MediaFormInterface[]) => {
+     this.store.dispatch(setMediaChannelsData({data: data}))
+    })
+  }
 }

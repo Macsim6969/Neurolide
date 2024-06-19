@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { StoreInterface } from "../model/store.model";
-import { allUsers, newUserData, newUserID, setCardsPayment, setCardsTransaction, updatedMonitoringData } from "../actions/store.actions";
+import { allUsers, newUserData, newUserID, setCardsPayment, setCardsTransaction, setMediaChannelsData, updatedMonitoringData } from "../actions/store.actions";
 
 
 export const store: StoreInterface = {
@@ -9,7 +9,8 @@ export const store: StoreInterface = {
   userData: null,
   monitoringData: null,
   cardsPayment: null,
-  cardsTransactions: null
+  cardsTransactions: null,
+  mediaChannels: null
 }
 
 export const storeReducers = createReducer(store,
@@ -30,6 +31,9 @@ export const storeReducers = createReducer(store,
   }),
   on(setCardsTransaction, (state, action) => {
     return { ...state, cardsTransactions: action.data }
+  }),
+  on(setMediaChannelsData, (state, action) =>{
+    return {...state, mediaChannels: action.data}
   })
 )
 

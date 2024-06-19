@@ -2,6 +2,7 @@ import { createAction, props } from "@ngrx/store"
 import { CardsPayment, UserData } from "../../shared/interfaces/backend.interface"
 import { MonitoringData } from "../../shared/interfaces/header.interface"
 import { TransactionInterface } from "../../module/balance/@shared/interface/transactions.interface"
+import { MediaFormInterface } from "../../module/media-chanels/@shared/interface/mediaForm.interface"
 
 export const SETALLUSERS = 'SETALLUSERS'
 export const REGISTER = 'REGISTER'
@@ -13,6 +14,7 @@ export const STARTAFFECT = 'STARTAFFECT';
 export const SETUSERDATA = 'SETUSERDATA';
 export const CARDSPAYMENT = 'CARDSPAYMENT';
 export const CARDSTRANSACTIONS = 'CARDSTRANSACTIONS';
+export const SETMEDIACHANNELSDATA = 'SETMEDIACHANNELSDATA'
 
 export const setAllUsers = createAction(
   SETALLUSERS
@@ -59,4 +61,9 @@ export const setCardsPayment = createAction(
 export const setCardsTransaction = createAction(
   CARDSTRANSACTIONS,
   props<{data: TransactionInterface[]}>()
+)
+
+export const setMediaChannelsData = createAction(
+  SETMEDIACHANNELSDATA,
+  props<{data: MediaFormInterface[]}>()
 )

@@ -10,3 +10,4 @@ export const selectStore = (store : {store: StoreInterface}) => store.store;
 
 export const selectCardsPayments = (store : {store: StoreInterface}) => store.store.cardsPayment;
 export const selectCardTransactions = (store: {store: StoreInterface}) => store.store.cardsTransactions;
+export const selectMediaChannels = (store: {store: StoreInterface}) => store.store.mediaChannels;

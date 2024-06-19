@@ -7,6 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { MediaHeaderComponent } from './@shared/components/media-header/media-header.component';
 import { MediaListComponent } from './@shared/components/media-list/media-list.component';
 import { MediaFormService } from './@shared/services/mediaForm.service';
+import { ListHeaderComponent } from './@shared/components/list-header/list-header.component';
+import { ListChannelsComponent } from './@shared/components/list-channels/list-channels.component';
 
 const routes: Routes = [
   { path: '', component: MediaChanelsComponent }
@@ -16,7 +18,9 @@ const routes: Routes = [
   declarations: [
     MediaChanelsComponent,
     MediaHeaderComponent,
-    MediaListComponent
+    MediaListComponent,
+    ListHeaderComponent,
+    ListChannelsComponent
   ],
   imports: [
     CommonModule,

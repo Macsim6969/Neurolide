@@ -1,24 +1,22 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
-import { ListIconsService } from '../../services/listIcon.service';
-import { UserSearch } from '../../interfaces/user.interface';
-import { UserSearchService } from '../../services/userSearch.service';
+import { UserSearch } from '../../../../users/@share/interfaces/user.interface';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 
 @Component({
-  selector: 'app-user-header',
-  templateUrl: './user-header.component.html',
-  styleUrls: ['./user-header.component.scss']
+  selector: 'app-list-header',
+  templateUrl: './list-header.component.html',
+  styleUrls: ['./list-header.component.scss']
 })
-export class UserHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ListHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   private destroy$ = new Subject<void>();
   public active: number = 0;
   public isActive: boolean[];
   public userHead: UserSearch[];
   constructor(
     private translate: TranslateService,
-    private globaIcon: GlobalIconsService,
+    private globalIcon: GlobalIconsService,
     private cd: ChangeDetectorRef
   ) { }
 
@@ -36,23 +34,8 @@ export class UserHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
-  public toogleFilter(i: number, tag: string) {
-    this.isActive = []
-    if (i === this.active) {
-      this.active = null;
-      this.isActive[i] = false;
-      // this.userSearch._searchData = '';
-    } else {
-      this.active = i;
-      this.isActive[i] = true;
-      // this.userSearch._searchData = tag;
-    }
-
-  }
-
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
 }
