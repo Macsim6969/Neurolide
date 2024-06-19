@@ -5,6 +5,7 @@ import { StoreInterface } from '../../../../../store/model/store.model';
 import { selectMediaChannels } from '../../../../../store/selectors/store.selectors';
 import { MediaFormInterface } from '../../interface/mediaForm.interface';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
+import { MediaChannelService } from '../../services/mediaChannel.service';
 
 @Component({
   selector: 'app-list-channels',
@@ -19,9 +20,11 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
   public activeChannel: number;
   public activePayout: string[] = [];
 
+  private mainData: MediaFormInterface[];
   constructor(
     private store: Store<{ store: StoreInterface }>,
-    private globalIconsService: GlobalIconsService
+    private globalIconsService: GlobalIconsService,
+    private mediaChannelService: MediaChannelService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +35,7 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
     this.store.select(selectMediaChannels).pipe(takeUntil(this.destroy$))
       .subscribe((data: MediaFormInterface[]) => {
         if (data) {
+          this.mainData = data;
           this.mediaChannels = Object.values(data);
         }
       });
@@ -56,6 +60,10 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
     this.activePayout[index] = value;
     this.isOpenDropdown = [];
     this.isOpen = false;
+  }
+
+  public removeMedia(id: string) {
+    this.mediaChannelService.removeMedia(this.mediaChannels, this.mainData, id)
   }
 
   ngOnDestroy(): void {

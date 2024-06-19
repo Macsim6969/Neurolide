@@ -18,7 +18,7 @@
 
     <nav class="price">{{channel.price}} $</nav>
     <nav class="status">
-      <button type="button" class="remove "><mat-icon svgIcon="remove"></mat-icon></button>
+      <button (click)="removeMedia(channel.id)" type="button" class="remove "><mat-icon svgIcon="remove"></mat-icon></button>
       <button type="submit" class="save "><mat-icon svgIcon="confirme"></mat-icon></button>
       <button type="submit" class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
     </nav>

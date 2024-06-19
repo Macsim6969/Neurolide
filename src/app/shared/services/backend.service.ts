@@ -117,4 +117,10 @@ export class BackendService {
      this.store.dispatch(setMediaChannelsData({data: data}))
     })
   }
+
+  public removeMediaChannels(userId:string, user: string){
+    return this.http.delete<MediaFormInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels/${user}.json`).subscribe((data: MediaFormInterface[]) => {
+     this.getMediaChannels(userId)
+    })
+  }
 }
