@@ -6,6 +6,7 @@ import { selectMediaChannels } from '../../../../../store/selectors/store.select
 import { MediaFormInterface } from '../../interface/mediaForm.interface';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { MediaChannelService } from '../../services/mediaChannel.service';
+import { SearchMediaChannelService } from '../../services/searchMediaChannel.service';
 
 @Component({
   selector: 'app-list-channels',
@@ -24,11 +25,14 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<{ store: StoreInterface }>,
     private globalIconsService: GlobalIconsService,
-    private mediaChannelService: MediaChannelService
+    private mediaChannelService: MediaChannelService,
+    private searchMediaChannel: SearchMediaChannelService
   ) { }
 
   ngOnInit(): void {
     this.streamMediaChannelsDataFromStore();
+    this.streamSearchData();
+
   }
 
   private streamMediaChannelsDataFromStore() {
@@ -39,6 +43,16 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
           this.mediaChannels = Object.values(data);
         }
       });
+  }
+
+  private streamSearchData() {
+    this.searchMediaChannel._searchText$.pipe(takeUntil(this.destroy$)).subscribe((data: string) => {
+      if (data) {
+        this.mediaChannels = Object.values(this.mainData).filter((e: MediaFormInterface) => e.name.toLocaleLowerCase().includes(data))
+      } else {
+        this.mediaChannels = Object.values(this.mainData);
+      }
+    })
   }
 
   public selectChannel(index: number) {

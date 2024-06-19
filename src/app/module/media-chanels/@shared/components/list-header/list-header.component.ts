@@ -34,6 +34,8 @@ export class ListHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
+  
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
