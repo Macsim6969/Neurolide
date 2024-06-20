@@ -1,0 +1,10 @@
+.media_header_left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+
+  .id {
+    height: 100% !important;
+  }
+}

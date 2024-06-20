@@ -9,6 +9,7 @@ import { OffersFilterComponent } from './@shared/components/offers-filter/offers
 import { OfferFormService } from './@shared/services/offersForms.service';
 import { OffersListComponent } from './@shared/components/offers-list/offers-list.component';
 import { OffersService } from './@shared/services/offers.service';
+import { OffersMobileComponent } from './@shared/components/offers-mobile/offers-mobile.component';
 
 const routes: Routes = [
   {path: '', component: OffersComponent}
@@ -19,7 +20,8 @@ const routes: Routes = [
     OffersComponent,
     OffersHeaderComponent,
     OffersFilterComponent,
-    OffersListComponent
+    OffersListComponent,
+    OffersMobileComponent
   ],
   imports: [
     CommonModule,

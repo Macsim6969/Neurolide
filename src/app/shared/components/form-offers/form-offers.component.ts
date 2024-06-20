@@ -33,7 +33,7 @@ export class FormOffersComponent extends BasePopupComponent {
       name: new FormControl('', [Validators.required]),
       link: new FormControl('', [Validators.required]),
       brand: new FormControl('', [Validators.required]),
-      payout: new FormControl(null, [Validators.required]),
+      payments: new FormControl(null, [Validators.required]),
       balance: new FormControl(null, [Validators.required])
     })
   }

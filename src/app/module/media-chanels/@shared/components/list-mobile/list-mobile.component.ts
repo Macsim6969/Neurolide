@@ -9,7 +9,7 @@ import { MediaFormService } from '../../services/mediaForm.service';
 @Component({
   selector: 'app-list-mobile',
   templateUrl: './list-mobile.component.html',
-  styleUrls: ['./list-mobile.component.scss']
+  styleUrls: ['./list-mobile.component.scss', '../../../../../../style/offers&channels.scss']
 })
 export class ListMobileComponent extends MediaChannelsDataClass {
   public activeSlide: number = 0;

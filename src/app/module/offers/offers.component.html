@@ -1,6 +1,7 @@
-<section class="offers">
+<section *ngIf="!isMobile" class="offers">
   <app-offers-header></app-offers-header>
   <app-offers-filter></app-offers-filter>
   <app-offers-list></app-offers-list>
 </section>
+<app-offers-mobile *ngIf="isMobile"></app-offers-mobile>
 <app-form-offers *ngIf="isOpenForm"></app-form-offers>
