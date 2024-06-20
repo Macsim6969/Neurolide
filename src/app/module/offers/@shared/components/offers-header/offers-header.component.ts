@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { OfferFormService } from '../../services/offersForms.service';
+import { SearchMediaChannelAndOffersService } from '../../../../../shared/services/searchMediaChannelAndOffers.service';
 
 @Component({
   selector: 'app-offers-header',
@@ -11,7 +12,8 @@ export class OffersHeaderComponent {
 
   constructor(
     private globalIcon: GlobalIconsService,
-    private offerFormService: OfferFormService
+    private offerFormService: OfferFormService,
+    private searchMediaChannelAndOffers: SearchMediaChannelAndOffersService
   ){}
 
   public openForm() {
@@ -19,6 +21,6 @@ export class OffersHeaderComponent {
   }
 
   public changeData(event: any) {
-    // this.offerFormService._searchText = event.target.value;
+    this.searchMediaChannelAndOffers._searchText = event.target.value;
   }
 }

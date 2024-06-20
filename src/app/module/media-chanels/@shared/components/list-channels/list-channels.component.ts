@@ -6,9 +6,9 @@ import { StoreInterface } from '../../../../../store/model/store.model';
 import { MediaFormInterface } from '../../interface/mediaForm.interface';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { MediaChannelService } from '../../services/mediaChannel.service';
-import { SearchMediaChannelService } from '../../services/searchMediaChannel.service';
 import { UserSearchService } from '../../../../../shared/services/userSearch.service';
 import { MediaChannelsDataClass } from '../../abstract/mediaChannelsData';
+import { SearchMediaChannelAndOffersService } from '../../../../../shared/services/searchMediaChannelAndOffers.service';
 
 @Component({
   selector: 'app-list-channels',
@@ -25,7 +25,7 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
     override mediaChannelService: MediaChannelService,
-    private searchMediaChannel: SearchMediaChannelService,
+    private searchMediaChannelAndOffers: SearchMediaChannelAndOffersService,
     private userSearchService: UserSearchService
   ) {
     super(store, globalIconsService, mediaChannelService);
@@ -39,7 +39,7 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
 
 
   private streamSearchData() {
-    this.searchMediaChannel._searchText$.pipe(takeUntil(this.destroy$)).subscribe((data: string) => {
+    this.searchMediaChannelAndOffers._searchText$.pipe(takeUntil(this.destroy$)).subscribe((data: string) => {
       if (data && this.mainData) {
         this.mediaChannels = Object.values(this.mainData).filter((e: MediaFormInterface) => e.name.toLocaleLowerCase().includes(data.toLocaleLowerCase()))
       } else if (this.mainData) {

@@ -4,7 +4,7 @@ import { BehaviorSubject } from "rxjs";
 
 @Injectable()
 
-export class SearchMediaChannelService{
+export class SearchMediaChannelAndOffersService{
 
   private searchTextSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 

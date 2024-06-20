@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { MediaFormService } from '../../services/mediaForm.service';
-import { SearchMediaChannelService } from '../../services/searchMediaChannel.service';
 import { Subject } from 'rxjs';
 import { UserSearchService } from '../../../../../shared/services/userSearch.service';
+import { SearchMediaChannelAndOffersService } from '../../../../../shared/services/searchMediaChannelAndOffers.service';
 
 @Component({
   selector: 'app-media-header',
@@ -18,7 +18,7 @@ export class MediaHeaderComponent implements OnInit, OnDestroy {
   constructor(
     private globalIcon: GlobalIconsService,
     private mediaFormService: MediaFormService,
-    private searchMediaChannel: SearchMediaChannelService,
+    private searchMediaChannelAndOffers: SearchMediaChannelAndOffersService,
     private userSearch: UserSearchService
   ) { }
 
@@ -45,7 +45,7 @@ export class MediaHeaderComponent implements OnInit, OnDestroy {
   }
 
   public changeData(event: any) {
-    this.searchMediaChannel._searchText = event.target.value;
+    this.searchMediaChannelAndOffers._searchText = event.target.value;
   }
 
   ngOnDestroy(): void {

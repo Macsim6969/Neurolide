@@ -10,7 +10,6 @@ import { MediaFormService } from './@shared/services/mediaForm.service';
 import { ListHeaderComponent } from './@shared/components/list-header/list-header.component';
 import { ListChannelsComponent } from './@shared/components/list-channels/list-channels.component';
 import { MediaChannelService } from './@shared/services/mediaChannel.service';
-import { SearchMediaChannelService } from './@shared/services/searchMediaChannel.service';
 import { ListMobileComponent } from './@shared/components/list-mobile/list-mobile.component';
 
 const routes: Routes = [
@@ -32,6 +31,6 @@ const routes: Routes = [
     TranslateModule,
     RouterModule.forChild(routes)
   ],
-  providers: [MediaFormService, MediaChannelService, SearchMediaChannelService]
+  providers: [MediaFormService, MediaChannelService]
 })
 export class MediaChanelsModule { }

@@ -8,6 +8,7 @@ import { OffersHeaderComponent } from './@shared/components/offers-header/offers
 import { OffersFilterComponent } from './@shared/components/offers-filter/offers-filter.component';
 import { OfferFormService } from './@shared/services/offersForms.service';
 import { OffersListComponent } from './@shared/components/offers-list/offers-list.component';
+import { OffersService } from './@shared/services/offers.service';
 
 const routes: Routes = [
   {path: '', component: OffersComponent}
@@ -26,6 +27,6 @@ const routes: Routes = [
     TranslateModule,
     RouterModule.forChild(routes)
   ],
-  providers: [OfferFormService]
+  providers: [OfferFormService, OffersService]
 })
 export class OffersModule { }

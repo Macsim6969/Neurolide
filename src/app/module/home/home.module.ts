@@ -7,6 +7,7 @@ import { HeaderSidebarComponent } from '../../component/header-sidebar/header-si
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { IsMobileGuard } from '../../shared/services/isMobileGuard.guard';
 import { GlobalIconsService } from '../../shared/services/globalIcon.service';
+import { SearchMediaChannelAndOffersService } from '../../shared/services/searchMediaChannelAndOffers.service';
 
 const routes: Routes = [
   {
@@ -36,6 +37,6 @@ const routes: Routes = [
     MatToolbarModule,
     RouterModule.forChild(routes)
   ],
-  providers: [IsMobileGuard, GlobalIconsService]
+  providers: [IsMobileGuard, GlobalIconsService, SearchMediaChannelAndOffersService]
 })
 export class HomeModule { }
