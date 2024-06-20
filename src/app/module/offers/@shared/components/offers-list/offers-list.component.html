@@ -10,11 +10,10 @@
       <nav>{{activePayout && activePayout[i] ? activePayout[i] : channel?.payout}}</nav>
       <mat-icon svgIcon="arrow"></mat-icon>
       <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown[i]}">
-        <nav (click)="choicePayout(i, 'CPM')" [ngClass]="{'active': activePayout[i ] === 'CPM' || channel?.payout === 'CPM'}">CPM</nav>
-        <nav (click)="choicePayout(i, 'CPH')" [ngClass]="{'active': activePayout[i ] === 'CPH' || channel?.payout === 'CPH'}">CPH</nav>
+        <nav *ngFor="let methode of modelPayment" (click)="choicePayout(i, methode.title)" [ngClass]="{'active': activePayout[i ] === methode.title || channel?.payout === methode.title}">{{methode.title}}</nav>
         <mat-icon svgIcon="arrow"></mat-icon>
       </div>
-    </button>
+    </button> 
 
     <nav class="price">{{channel.balance}} $</nav>
     <nav class="status">

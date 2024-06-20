@@ -8,6 +8,8 @@ import { SearchMediaChannelAndOffersService } from '../../../../../shared/servic
 import { takeUntil } from 'rxjs';
 import { OfferInterface } from '../../interface/offer.interface';
 import { UserSearchService } from '../../../../../shared/services/userSearch.service';
+import { TranslateService } from '@ngx-translate/core';
+import { ModelPaymentInterface } from '../../interface/model.interface';
 
 @Component({
   selector: 'app-offers-list',
@@ -18,21 +20,30 @@ export class OffersListComponent extends OffersDataClass {
   public isOpenDropdown: boolean[] = [];
   public isOpen: boolean = false;
   public activeChannel: number;
+  public modelPayment: ModelPaymentInterface[];
 
-  constructor(
+  constructor( 
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
     override offersService: OffersService,
     private searchMediaChannelAndOffers: SearchMediaChannelAndOffersService,
-    private userSearchService: UserSearchService
+    private userSearchService: UserSearchService,
+    private translate: TranslateService
   ) {
     super(store, globalIconsService, offersService);
     super.ngOnInit();
   }
 
   override ngOnInit(): void {
+    this.streamModelPaymentFromJson();
     this.streamSearchData();
     this.streamSearchFilterData();
+  }
+
+  private streamModelPaymentFromJson() {
+    this.translate.stream('offers.offerModel').pipe(takeUntil(this.destroy$)).subscribe((data: ModelPaymentInterface[]) => {
+      this.modelPayment = data;
+    })
   }
 
   private streamSearchData() {
@@ -99,7 +110,7 @@ export class OffersListComponent extends OffersDataClass {
     this.isOpenDropdown[index] = true;
   }
 
-  public choicePayout(index: number, value: 'CPM' | 'CPH') {
+  public choicePayout(index: number, value: string) {
     if (!this.activePayout[index]) {
       this.activePayout[index] = '';
     }
