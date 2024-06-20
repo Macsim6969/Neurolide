@@ -40,9 +40,9 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
 
   private streamSearchData() {
     this.searchMediaChannel._searchText$.pipe(takeUntil(this.destroy$)).subscribe((data: string) => {
-      if (data) {
+      if (data && this.mainData) {
         this.mediaChannels = Object.values(this.mainData).filter((e: MediaFormInterface) => e.name.toLocaleLowerCase().includes(data.toLocaleLowerCase()))
-      } else {
+      } else if (this.mainData) {
         this.mediaChannels = Object.values(this.mainData);
       }
     })

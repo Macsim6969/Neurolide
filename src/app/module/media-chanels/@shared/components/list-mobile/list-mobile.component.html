@@ -1,7 +1,7 @@
 <section class="list-mobile">
   <div class="media" *ngFor="let channel of mediaChannels; index as i" [ngClass]="{'active': activeSlide === i}">
     <div class="media_header">
-      <nav class="status">Status</nav>
+      <nav class="status">Status</nav> 
       <div class="action">
         <button (click)="removeMedia(channel.id)" type="button" class="remove "><mat-icon
             svgIcon="remove"></mat-icon></button>
@@ -11,7 +11,7 @@
           class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
       </div>
     </div>
-    <div>
+    <div class="id">
       <nav>{{channel.id}}</nav>
     </div>
     <div class="column">
@@ -38,3 +38,6 @@
 
 </section>
 <app-action-slide (activeId)="changeActiveCard($event)" [activeCard]="activeSlide" [slider]="mediaChannels"></app-action-slide>
+<div class="add" (click)="openForm()">
+  <mat-icon svgIcon="add"></mat-icon>
+</div>
