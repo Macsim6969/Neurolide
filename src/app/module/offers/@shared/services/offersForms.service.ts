@@ -25,7 +25,7 @@ export class OfferFormService {
   public sendMediaChannelsData(newForm: OfferInterface, choiceMethod: string) {
     const id = JSON.parse(localStorage.getItem('id'))
     const newOffers: OfferInterface = {
-      id: this.generateUniqueId(10),
+      id: this.generateUniqueId(6),
       name: newForm.name,
       link: newForm.link,
       brand: newForm.brand,

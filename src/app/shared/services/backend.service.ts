@@ -134,13 +134,13 @@ export class BackendService {
   
   public setNewOffers(userId: string,  data: OfferInterface) {
     return this.http.post<OfferInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/offers.json`, data).subscribe(() => {
-      this.getMediaChannels(userId);
+      this.getOffers(userId);
     })
   }
 
   public updateOffers(userId: string, user: string, data: OfferInterface) {
     return this.http.put<OfferInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/offers/${user}.json`, data).subscribe(() => {
-      this.getMediaChannels(userId);
+      this.getOffers(userId);
     })
   }
 

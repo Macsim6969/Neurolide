@@ -7,6 +7,7 @@ import { OffersComponent } from './offers.component';
 import { OffersHeaderComponent } from './@shared/components/offers-header/offers-header.component';
 import { OffersFilterComponent } from './@shared/components/offers-filter/offers-filter.component';
 import { OfferFormService } from './@shared/services/offersForms.service';
+import { OffersListComponent } from './@shared/components/offers-list/offers-list.component';
 
 const routes: Routes = [
   {path: '', component: OffersComponent}
@@ -16,7 +17,8 @@ const routes: Routes = [
   declarations: [
     OffersComponent,
     OffersHeaderComponent,
-    OffersFilterComponent
+    OffersFilterComponent,
+    OffersListComponent
   ],
   imports: [
     CommonModule,

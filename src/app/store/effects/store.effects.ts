@@ -23,6 +23,7 @@ export class AuthEffects {
         this.backendService.getCardsPayment(id);
         this.backendService.getCardsTransactions(id);
         this.backendService.getMediaChannels(id);
+        this.backendService.getOffers(id);
       })
     )
     ,
