@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileModule } from '../profile/profile.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
+import { MediaModuleClass } from '../media-chanels/@shared/module/media.module';
 
 const routes: Routes = [
   { path: '', component: ProfilePageComponent }
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     ShareModule,
     ProfileModule,
+    MediaModuleClass,
     HttpClientModule,
     TranslateModule,
     RouterModule.forChild(routes)
