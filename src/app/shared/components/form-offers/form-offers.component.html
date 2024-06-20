@@ -1,0 +1,39 @@
+<div class="profile-edite">
+  <div class="popup">
+    <h3 class="popup_title sans">Додати офер</h3>
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="column">
+        <mat-label class="label sans">Назва</mat-label>
+        <input class="sans" placeholder="...." type="text" formControlName="name">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Посилання</mat-label>
+        <input class="sans" placeholder="...." type="text" formControlName="link">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Бренд</mat-label>
+        <input class="sans" placeholder="...." type="text" formControlName="brand">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Виплати</mat-label>
+        <input class="sans" placeholder="...." type="number" formControlName="payout">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Баланс</mat-label>
+        <input class="sans" placeholder="...." type="number" formControlName="balance">
+      </div>
+      <div class="column">
+        <mat-label class="label sans">Модель оплати</mat-label>
+        <div class="methode">
+          <button type="button" [ngClass]="{'active': method.title === activeMethod}" (click)="choiceMethod(method.title)"
+            *ngFor="let method of modelPayment;index as i">{{method.title}}</button>
+        </div>
+      </div>
+      <div class="action">
+        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
+        <button type="submit" class="save sans" mat-button>Save Changes</button>
+      </div>
+    </form>
+  </div>
+
+</div>

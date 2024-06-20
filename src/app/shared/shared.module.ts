@@ -22,6 +22,7 @@ import { CardsPaymentMobileComponent } from "../component/cards-payment-mobile/c
 import { ActionSlideComponent } from "./components/action-slide/action-slide.component";
 import { FormMediaComponent } from './components/form-media/form-media.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormOffersComponent } from "./components/form-offers/form-offers.component";
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     NavigationComponent,
     FormatCardNumberPipe,
     ActionSlideComponent,
-    FormMediaComponent
+    FormMediaComponent,
+    FormOffersComponent
   ],
   exports: [
     CommonModule,
@@ -57,7 +59,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     BalanceCardComponent,
     CardsPaymentMobileComponent,
     ActionSlideComponent,
-    FormMediaComponent
+    FormMediaComponent,
+    FormOffersComponent
   ],
   imports: [
     CommonModule,

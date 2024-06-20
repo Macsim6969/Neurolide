@@ -3,6 +3,7 @@ import { CardsPayment, UserData } from "../../shared/interfaces/backend.interfac
 import { MonitoringData } from "../../shared/interfaces/header.interface"
 import { TransactionInterface } from "../../module/balance/@shared/interface/transactions.interface"
 import { MediaFormInterface } from "../../module/media-chanels/@shared/interface/mediaForm.interface"
+import { OfferInterface } from "../../module/offers/@shared/interface/offer.interface"
 
 export const SETALLUSERS = 'SETALLUSERS'
 export const REGISTER = 'REGISTER'
@@ -15,6 +16,7 @@ export const SETUSERDATA = 'SETUSERDATA';
 export const CARDSPAYMENT = 'CARDSPAYMENT';
 export const CARDSTRANSACTIONS = 'CARDSTRANSACTIONS';
 export const SETMEDIACHANNELSDATA = 'SETMEDIACHANNELSDATA'
+export const SETOFFERSDATA = 'SETOFFERSDATA'
 
 export const setAllUsers = createAction(
   SETALLUSERS
@@ -66,4 +68,9 @@ export const setCardsTransaction = createAction(
 export const setMediaChannelsData = createAction(
   SETMEDIACHANNELSDATA,
   props<{data: MediaFormInterface[]}>()
+)
+
+export const setOffersData = createAction(
+  SETOFFERSDATA,
+  props<{data: OfferInterface[]}>()
 )

@@ -1,4 +1,4 @@
-import { allUsers, newUserData, setAllUsers, setCardsPayment, setCardsTransaction, setMediaChannelsData, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
+import { allUsers, newUserData, setAllUsers, setCardsPayment, setCardsTransaction, setMediaChannelsData, setOffersData, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { CardsPayment, UserData } from "../interfaces/backend.interface";
@@ -7,6 +7,7 @@ import { StoreInterface } from "../../store/model/store.model";
 import { MonitoringData } from '../interfaces/header.interface';
 import { TransactionInterface } from '../../module/balance/@shared/interface/transactions.interface';
 import { MediaFormInterface } from '../../module/media-chanels/@shared/interface/mediaForm.interface';
+import { OfferInterface } from '../../module/offers/@shared/interface/offer.interface';
 
 @Injectable({ providedIn: 'root' })
 
@@ -127,6 +128,31 @@ export class BackendService {
   public removeMediaChannels(userId: string, user: string) {
     return this.http.delete<MediaFormInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels/${user}.json`).subscribe((data: MediaFormInterface[]) => {
       this.getMediaChannels(userId)
+    })
+  }
+
+  
+  public setNewOffers(userId: string,  data: OfferInterface) {
+    return this.http.post<OfferInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/offers.json`, data).subscribe(() => {
+      this.getMediaChannels(userId);
+    })
+  }
+
+  public updateOffers(userId: string, user: string, data: OfferInterface) {
+    return this.http.put<OfferInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/offers/${user}.json`, data).subscribe(() => {
+      this.getMediaChannels(userId);
+    })
+  }
+
+  public getOffers(userId: string) {
+    return this.http.get<OfferInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/offers.json`).subscribe((data: OfferInterface[]) => {
+      data ? this.store.dispatch(setOffersData({ data: data })) : null;
+    })
+  }
+
+  public removeOffers(userId: string, user: string) {
+    return this.http.delete<OfferInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/offers/${user}.json`).subscribe((data: OfferInterface[]) => {
+      this.getOffers(userId)
     })
   }
 }

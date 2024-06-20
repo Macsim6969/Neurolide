@@ -356,5 +356,65 @@
       "status": "Статус",
       "name": "Назва"
     }
+  },
+  "offers": {
+    "headerTitle": "Offer up",
+    "search": "Search",
+    "addedOffer": "Add an offer",
+    "offerSearch": [
+      {
+        "title": "UID",
+        "tag": "userID"
+      },
+      {
+        "title": "Nickname",
+        "tag": "name"
+      },
+      {
+        "title": "Link",
+        "tag": "link"
+      },
+      {
+        "title": "Subscribers",
+        "tag": "subscribers"
+      },
+      {
+        "title": "CTR",
+        "tag": "stream"
+      },
+      {
+        "title": "Payout",
+        "tag": "payout"
+      },
+      {
+        "title": "Price",
+        "tag": "price"
+      },
+      {
+        "title": "Status",
+        "tag": "vip"
+      }
+    ],
+    "offerMobile": {
+      "status": "Статус",
+      "name": "Назва"
+    },
+    "offerModel": [
+      {
+        "title": "RevShare"
+      },
+      {
+        "title": "CPL"
+      },
+      {
+        "title": "CPC"
+      },
+      {
+        "title": "CPM"
+      },
+      {
+        "title": "CPH"
+      }
+    ]
   }
 }
