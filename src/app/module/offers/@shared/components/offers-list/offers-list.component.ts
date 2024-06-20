@@ -22,7 +22,7 @@ export class OffersListComponent extends OffersDataClass {
   public activeChannel: number;
   public modelPayment: ModelPaymentInterface[];
 
-  constructor( 
+  constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
     override offersService: OffersService,
@@ -59,7 +59,7 @@ export class OffersListComponent extends OffersDataClass {
   private streamSearchFilterData() {
     this.userSearchService._searchData$.pipe(takeUntil(this.destroy$)).subscribe((selectedField) => {
       const sortDirection = this.userSearchService.getSortDirection(selectedField);
-      this.offers.sort((a, b) => {
+      this.offers ? this.offers.sort((a, b) => {
         let fieldA = this.getFieldValue(a, selectedField);
         let fieldB = this.getFieldValue(b, selectedField);
 
@@ -73,7 +73,7 @@ export class OffersListComponent extends OffersDataClass {
         }
 
         return sortDirection ? comparison : -comparison;
-      });
+      }) : null;
     });
   }
 
@@ -98,7 +98,7 @@ export class OffersListComponent extends OffersDataClass {
       default:
         return null;
     }
-  } 
+  }
 
   public selectChannel(index: number) {
     this.activeChannel = index;
