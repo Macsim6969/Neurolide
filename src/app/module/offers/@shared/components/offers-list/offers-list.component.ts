@@ -7,6 +7,7 @@ import { OffersService } from '../../services/offers.service';
 import { SearchMediaChannelAndOffersService } from '../../../../../shared/services/searchMediaChannelAndOffers.service';
 import { takeUntil } from 'rxjs';
 import { OfferInterface } from '../../interface/offer.interface';
+import { UserSearchService } from '../../../../../shared/services/userSearch.service';
 
 @Component({
   selector: 'app-offers-list',
@@ -22,7 +23,8 @@ export class OffersListComponent extends OffersDataClass {
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
     override offersService: OffersService,
-    private searchMediaChannelAndOffers: SearchMediaChannelAndOffersService
+    private searchMediaChannelAndOffers: SearchMediaChannelAndOffersService,
+    private userSearchService: UserSearchService
   ) {
     super(store, globalIconsService, offersService);
     super.ngOnInit();
@@ -30,6 +32,7 @@ export class OffersListComponent extends OffersDataClass {
 
   override ngOnInit(): void {
     this.streamSearchData();
+    this.streamSearchFilterData();
   }
 
   private streamSearchData() {
@@ -41,6 +44,50 @@ export class OffersListComponent extends OffersDataClass {
       }
     })
   }
+
+  private streamSearchFilterData() {
+    this.userSearchService._searchData$.pipe(takeUntil(this.destroy$)).subscribe((selectedField) => {
+      const sortDirection = this.userSearchService.getSortDirection(selectedField);
+      this.offers.sort((a, b) => {
+        let fieldA = this.getFieldValue(a, selectedField);
+        let fieldB = this.getFieldValue(b, selectedField);
+
+        let comparison = 0;
+        if (typeof fieldA === 'string' && typeof fieldB === 'string') {
+          comparison = fieldA.localeCompare(fieldB);
+        } else if (typeof fieldA === 'number' && typeof fieldB === 'number') {
+          comparison = fieldA - fieldB;
+        } else if (typeof fieldA === 'boolean' && typeof fieldB === 'boolean') {
+          comparison = (fieldA === fieldB) ? 0 : fieldA ? -1 : 1;
+        }
+
+        return sortDirection ? comparison : -comparison;
+      });
+    });
+  }
+
+  private getFieldValue(user: OfferInterface, field: string): any {
+    switch (field) {
+      case 'name':
+        return user.name || '';
+      case 'userID':
+        return user.id || '';
+      case 'link':
+        return user.link || '';
+      case 'subscribers':
+        return user.brand || ''; // Ensure numeric comparison
+      case 'stream':
+        return user.payments || 0; // Ensure numeric comparison
+      case 'payout':
+        return user.balance || 0;  // Ensure numeric comparison
+      case 'price':
+        return user.payout || 0;  // Ensure numeric comparison
+      case 'vip':
+        return user.vip;  // Ensure boolean comparison
+      default:
+        return null;
+    }
+  } 
 
   public selectChannel(index: number) {
     this.activeChannel = index;

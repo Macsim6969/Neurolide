@@ -90,7 +90,7 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
       default:
         return null;
     }
-  } F
+  } 
 
   public selectChannel(index: number) {
     this.activeChannel = index;
