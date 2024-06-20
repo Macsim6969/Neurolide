@@ -12,6 +12,7 @@ import { SearchMediaChannelAndOffersService } from '../../shared/services/search
 const routes: Routes = [
   {
     path: '', component: HomeComponent, children: [
+      { path: '', loadChildren: () => import('../../module/main-mobile-page/main-mobile-page.module').then((m) => m.MainMobilePageModule), canActivate: [IsMobileGuard] },
       { path: 'manager', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'brand', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'affiliate', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
@@ -21,7 +22,6 @@ const routes: Routes = [
       { path: 'profile', loadChildren: () => import('../../module/profile-page/profile-page.module').then((m) => m.ProfilePageModule) },
       { path: 'balance', loadChildren: () => import('../../module/balance/balance.module').then((m) => m.BalanceModule) },
       { path: 'support', loadChildren: () => import('../../module/support/support.module').then((m) => m.SupportModule) },
-      { path: 'home', loadChildren: () => import('../../module/main-mobile-page/main-mobile-page.module').then((m) => m.MainMobilePageModule), canActivate: [IsMobileGuard] },
     ]
   }
 ]
