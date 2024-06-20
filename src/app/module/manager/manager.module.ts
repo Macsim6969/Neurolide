@@ -5,6 +5,7 @@ import { ShareModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProfileModule } from '../profile/profile.module';
 import { HttpClientModule } from '@angular/common/http';
+import { OffersBlockModule } from '../offers/@shared/module/offersBlock.module';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   imports: [
     ShareModule,
     ProfileModule,
+    OffersBlockModule,
     HttpClientModule,
     TranslateModule,
     RouterModule.forChild(routes)
