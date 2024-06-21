@@ -1,14 +1,15 @@
 <div class="sidebar_content" *ngIf="isLoading;else loading">
   <nav id="{{i}}" *ngFor="let page of sidebarData; index as i" [ngClass]="{
 
-    'hide': (userRule === 'manager' && (page.title === 'Brand' || page.title === 'Affiliate')) ||
-            (userRule === 'brand' && (page.title === 'Manager' || page.title === 'Affiliate')) ||
-            (userRule === 'affiliate' && (page.title === 'Manager' || page.title === 'Brand')) || (i === 0 && !isMobile)
+    'hide': (userRule === 'manager' && (page.url === '/brand' || page.url === '/affiliate')) ||
+            (userRule === 'brand' && (page.url === '/manager' || page.url === '/affiliate')) ||
+            (userRule === 'affiliate' && (page.url === '/manager' || page.url === '/brand')) || (i === 0 && !isMobile) ||
+            (userRule === 'brand' && (page.url === '/users'))
   }">
     <a routerLinkActive="active" [routerLink]="[page.url]" (click)="removePopup()" class="content_card"
-      *ngIf="(userRule !== 'manager' || (userRule === 'manager' && page.title !== 'Brand' && page.title !== 'Affiliate')) 
-            && (userRule !== 'brand' || (userRule === 'brand' && page.title !== 'Manager' && page.title !== 'Affiliate'))
-            && (userRule !== 'affiliate' || (userRule === 'affiliate' && page.title !== 'Manager' && page.title !== 'Affiliate')) ||  (i === 0 && !isMobile)">
+      *ngIf="(userRule !== 'manager' || (userRule === 'manager' && page.url !== '/brand' && page.url !== '/affiliate')) 
+            && (userRule !== 'brand' || (userRule === 'brand' && page.url !== '/manager' && page.url !== '/affiliate'))
+            && (userRule !== 'affiliate' || (userRule === 'affiliate' && page.url !== '/manager' && page.url !== '/affiliate')) ||  (i === 0 && !isMobile)">
       <img [src]="page.icon" alt="{{page.title}}">
       <p>{{page.title}}</p>
     </a>

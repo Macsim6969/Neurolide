@@ -218,6 +218,11 @@
       "url": "/users"
     },
     {
+      "icon": "./assets/images/sidebar/users.svg",
+      "title": "Added offers",
+      "url": "/added-offers"
+    },
+    {
       "icon": "./assets/images/sidebar/media-canal.png",
       "title": "Media channels",
       "url": "/media-channels"
@@ -359,6 +364,7 @@
   },
   "offers": {
     "addedTitle": "Added offers",
+    "activeOffers": "Active offers",
     "headerTitle": "Offer up",
     "search": "Search",
     "addedOffer": "Add an offer",

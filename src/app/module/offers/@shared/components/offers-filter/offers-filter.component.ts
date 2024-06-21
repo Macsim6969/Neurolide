@@ -11,12 +11,12 @@ import { UserSearchService } from '../../../../../shared/services/userSearch.ser
   styleUrls: ['./offers-filter.component.scss']
 })
 export class OffersFilterComponent implements OnInit, AfterViewInit, OnDestroy {
-  @Input() statusPage: string;
   private destroy$ = new Subject<void>();
+  public rules: string;
   public active: number = 0;
   public isActive: boolean[];
   public userHead: UserSearch[];
-  public sortDirections: { [key: string]: boolean } = { };
+  public sortDirections: { [key: string]: boolean } = {};
   constructor(
     private translate: TranslateService,
     private globalIcon: GlobalIconsService,
@@ -25,11 +25,16 @@ export class OffersFilterComponent implements OnInit, AfterViewInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.checkRulesUser();
     this.initializeDataFromJSON();
   }
 
   ngAfterViewInit(): void {
     this.cd.detectChanges();
+  }
+
+  private checkRulesUser() {
+    this.rules = JSON.parse(localStorage.getItem('rules'));
   }
 
   private initializeDataFromJSON() {

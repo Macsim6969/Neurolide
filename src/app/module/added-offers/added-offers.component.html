@@ -1,8 +1,7 @@
-<app-profile></app-profile>
 <section *ngIf="!isMobile" class="offers">
-  <app-offers-header [header]="'offers.addedTitle'| translate"></app-offers-header>
+  <app-offers-header [header]="'offers.addedOffer'| translate"></app-offers-header>
   <app-offers-filter></app-offers-filter>
-  <app-offers-list [statusPage]="'manager'"></app-offers-list>
+  <app-offers-list [statusPage]="'offers'"></app-offers-list>
 </section>
 <app-offers-mobile *ngIf="isMobile"></app-offers-mobile>
 <app-form-offers *ngIf="isOpenForm"></app-form-offers>

@@ -53,7 +53,7 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
   private streamSearchFilterData() {
     this.userSearchService._searchData$.pipe(takeUntil(this.destroy$)).subscribe((selectedField) => {
       const sortDirection = this.userSearchService.getSortDirection(selectedField);
-      this.mediaChannels.sort((a, b) => {
+      this.mediaChannels ? this.mediaChannels.sort((a, b) => {
         let fieldA = this.getFieldValue(a, selectedField);
         let fieldB = this.getFieldValue(b, selectedField);
 
@@ -67,7 +67,7 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
         }
 
         return sortDirection ? comparison : -comparison;
-      });
+      }) : null;
     });
   }
 

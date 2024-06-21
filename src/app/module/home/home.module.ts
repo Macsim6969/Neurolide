@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: 'affiliate', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'users', loadChildren: () => import('../../module/users/users.module').then((m) => m.UsersModule) },
       { path: 'media-channels', loadChildren: () => import('../../module/media-chanels/media-chanels.module').then((m) => m.MediaChanelsModule) },
+      { path: 'added-offers', loadChildren: () => import('../../module/added-offers/added-offers.module').then((m) => m.AddedOffersModule) },
       { path: 'offers', loadChildren: () => import('../../module/offers/offers.module').then((m) => m.OffersModule) },
       { path: 'profile', loadChildren: () => import('../../module/profile-page/profile-page.module').then((m) => m.ProfilePageModule) },
       { path: 'balance', loadChildren: () => import('../../module/balance/balance.module').then((m) => m.BalanceModule) },
