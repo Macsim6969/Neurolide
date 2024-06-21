@@ -44,6 +44,10 @@
 
     .subscribe {
       width: 143px;
+
+      &.manager {
+        width: 85px !important;
+      }
     }
 
     .stream {
@@ -178,6 +182,19 @@
           }
         }
 
+      }
+    }
+
+    .settings {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+
+      button {
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background-color: transparent;
       }
     }
   }

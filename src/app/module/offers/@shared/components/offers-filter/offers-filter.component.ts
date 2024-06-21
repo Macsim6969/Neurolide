@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { UserSearch } from '../../../../users/@share/interfaces/user.interface';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,6 +11,7 @@ import { UserSearchService } from '../../../../../shared/services/userSearch.ser
   styleUrls: ['./offers-filter.component.scss']
 })
 export class OffersFilterComponent implements OnInit, AfterViewInit, OnDestroy {
+  @Input() statusPage: string;
   private destroy$ = new Subject<void>();
   public active: number = 0;
   public isActive: boolean[];
@@ -32,7 +33,7 @@ export class OffersFilterComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initializeDataFromJSON() {
-    this.translate.stream('media.mediaSearch').pipe(takeUntil(this.destroy$)).subscribe((data: UserSearch[]) => {
+    this.translate.stream('offers.offerSearch').pipe(takeUntil(this.destroy$)).subscribe((data: UserSearch[]) => {
       data ? this.userHead = data : null
     })
   }

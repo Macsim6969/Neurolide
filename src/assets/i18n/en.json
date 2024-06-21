@@ -358,6 +358,7 @@
     }
   },
   "offers": {
+    "addedTitle": "Added offers",
     "headerTitle": "Offer up",
     "search": "Search",
     "addedOffer": "Add an offer",
@@ -375,24 +376,28 @@
         "tag": "link"
       },
       {
-        "title": "Subscribers",
-        "tag": "subscribers"
+        "title": "Brand",
+        "tag": "brand"
       },
       {
-        "title": "CTR",
-        "tag": "stream"
+        "title": "Payments",
+        "tag": "payments"
+      },
+      {
+        "title": "Balance",
+        "tag": "balance"
       },
       {
         "title": "Payout",
         "tag": "payout"
       },
       {
-        "title": "Price",
-        "tag": "price"
-      },
-      {
         "title": "Status",
         "tag": "vip"
+      },
+      {
+        "title": "Settings",
+        "tag": "setting"
       }
     ],
     "offerMobile": {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { OffersDataClass } from '../../abstract/offersData';
 import { Store } from '@ngrx/store';
 import { StoreInterface } from '../../../../../store/model/store.model';
@@ -17,6 +17,7 @@ import { ModelPaymentInterface } from '../../interface/model.interface';
   styleUrls: ['./offers-list.component.scss']
 })
 export class OffersListComponent extends OffersDataClass {
+  @Input() statusPage: string;
   public isOpenDropdown: boolean[] = [];
   public isOpen: boolean = false;
   public activeChannel: number;
