@@ -46,6 +46,47 @@
         flex-direction: column;
         gap: 10px;
 
+        .model {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+
+          button {
+            padding: 10px 12px;
+            border-radius: 20px;
+            background-color: #FFFFFF;
+            box-shadow: 0px 4px 20px 0px #00000040;
+
+            width: 57px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+
+            &.active {
+              background-color: #4777F2;
+
+              p {
+                color: #FFFFFF !important;
+              }
+            }
+
+            p {
+              font-size: 1.6rem;
+              line-height: 18.8px;
+              color: #434343;
+            }
+
+            input {
+              width: 100%;
+              padding: 0;
+              font-size: 1rem;
+              border: 1px solid #ADB6D6;
+              border-radius: 5px;
+            }
+          }
+        }
+
         .label {
           font-size: 1.6rem;
           line-height: 1.88rem;
@@ -72,6 +113,7 @@
         @media (max-width: 400px) {
           flex-direction: column;
           gap: 10px;
+
           button {
             padding: 10px 34px;
           }

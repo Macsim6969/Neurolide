@@ -39,4 +39,10 @@ export class MediaChannelService {
     }
     this.backendService.setMediaChannels(userId, blockId, newData);
   }
+
+  public setNewChangesFromForm(mediaChannels: MediaFormInterface, mainData: MediaFormInterface[]) {
+    const userId = JSON.parse(localStorage.getItem('id'));
+    const blockId = Object.keys(mainData).find(key => mainData[key].id === mediaChannels.id);
+    this.backendService.setMediaChannels(userId, blockId, mediaChannels);
+  }
 }

@@ -9,6 +9,7 @@ import { MediaChannelService } from '../../services/mediaChannel.service';
 import { UserSearchService } from '../../../../../shared/services/userSearch.service';
 import { MediaChannelsDataClass } from '../../abstract/mediaChannelsData';
 import { SearchMediaChannelAndOffersService } from '../../../../../shared/services/searchMediaChannelAndOffers.service';
+import { MediaFormService } from '../../services/mediaForm.service';
 
 @Component({
   selector: 'app-list-channels',
@@ -26,7 +27,8 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
     override globalIconsService: GlobalIconsService,
     override mediaChannelService: MediaChannelService,
     private searchMediaChannelAndOffers: SearchMediaChannelAndOffersService,
-    private userSearchService: UserSearchService
+    private userSearchService: UserSearchService,
+    private mediaFormService: MediaFormService
   ) {
     super(store, globalIconsService, mediaChannelService);
     super.ngOnInit();
@@ -92,6 +94,13 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
     }
   }
 
+  public changeMedia(index: string) {
+    const media = this.mediaChannels.find((e: MediaFormInterface) => e.id === index)
+    this.mediaFormService._mediaData = media;
+    this.mediaFormService._statusMOde = 'edite'
+    this.mediaFormService._isMediaForm = true;
+
+  }
   public selectChannel(index: number) {
     this.activeChannel = index;
   }

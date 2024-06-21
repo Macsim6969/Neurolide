@@ -9,7 +9,8 @@ import { BackendService } from "../../../../shared/services/backend.service";
 export class MediaFormService {
   private usedIds: Set<string> = new Set();
   private isMediaFormSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
+  private mediaFormDataSubject: BehaviorSubject<MediaFormInterface> = new BehaviorSubject<MediaFormInterface>(null);
+  private statusModeSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
   constructor(
     private backendService: BackendService
   ) { }
@@ -22,15 +23,31 @@ export class MediaFormService {
     return this.isMediaFormSubject;
   }
 
-  public sendMediaChannelsData(newForm: MediaFormInterface) {
+  set _mediaData(value: MediaFormInterface) {
+    this.mediaFormDataSubject.next(value);
+  }
+
+  get _mediaData$() {
+    return this.mediaFormDataSubject;
+  }
+
+  set _statusMOde(value: string) {
+    this.statusModeSubject.next(value);
+  }
+
+  get _statusMOde$() {
+    return this.statusModeSubject;
+  }
+
+  public sendMediaChannelsData(newForm: MediaFormInterface, payment: string) {
     const id = JSON.parse(localStorage.getItem('id'))
     const newMediaChannels: MediaFormInterface = {
       id: this.generateUniqueId(6),
       name: newForm.name,
-      link: '',
+      link: newForm.link,
       subscribe: newForm.subscribe,
       stream: newForm.stream,
-      payout: 'CPM',
+      payout: payment,
       price: newForm.price,
       vip: false
     }
