@@ -23,7 +23,7 @@
     <nav class="status" *ngIf="statusPage === 'offers'">
       <button (click)="removeOffers(channel.id)" type="button" class="remove "><mat-icon
           svgIcon="cancel"></mat-icon></button>
-      <button  type="submit" class="save "><mat-icon
+      <button (click)="setToActiveOffer(channel.id)"  type="submit" class="save "><mat-icon
           svgIcon="confirme"></mat-icon></button>
       <button (click)="setVipStatus(channel.id)" type="submit" [ngClass]="{'active': channel.vip}"
         class="vip "><mat-icon svgIcon="vip"></mat-icon></button>

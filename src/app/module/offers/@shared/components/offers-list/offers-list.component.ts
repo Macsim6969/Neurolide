@@ -1,3 +1,4 @@
+import { OfferInterface } from './../../interface/offer.interface';
 import { Component, Input } from '@angular/core';
 import { OffersDataClass } from '../../abstract/offersData';
 import { Store } from '@ngrx/store';
@@ -6,7 +7,6 @@ import { GlobalIconsService } from '../../../../../shared/services/globalIcon.se
 import { OffersService } from '../../services/offers.service';
 import { SearchMediaChannelAndOffersService } from '../../../../../shared/services/searchMediaChannelAndOffers.service';
 import { takeUntil } from 'rxjs';
-import { OfferInterface } from '../../interface/offer.interface';
 import { UserSearchService } from '../../../../../shared/services/userSearch.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ModelPaymentInterface } from '../../interface/model.interface';
@@ -127,6 +127,10 @@ export class OffersListComponent extends OffersDataClass {
     this.activePayout[index] = value;
     this.isOpenDropdown = null;
     this.setNewChanges(idOffer, value);
+  }
+
+  public setToActiveOffer(idOffer: number){
+    this.offersService.setOfferToActiveData(idOffer, this.mainData, this.offers);
   }
 
 
