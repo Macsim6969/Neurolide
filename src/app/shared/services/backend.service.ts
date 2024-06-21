@@ -131,28 +131,34 @@ export class BackendService {
     })
   }
 
-  
-  public setNewOffers(userId: string,  data: OfferInterface) {
-    return this.http.post<OfferInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/offers.json`, data).subscribe(() => {
-      this.getOffers(userId);
+
+  public setNewOffers(data: OfferInterface) {
+    return this.http.post<OfferInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/offers.json`, data).subscribe(() => {
+      this.getOffers();
     })
   }
 
-  public updateOffers(userId: string, user: string, data: OfferInterface) {
-    return this.http.put<OfferInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/offers/${user}.json`, data).subscribe(() => {
-      this.getOffers(userId);
-    })
-  }
-
-  public getOffers(userId: string) {
-    return this.http.get<OfferInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/offers.json`).subscribe((data: OfferInterface[]) => {
+  public getOffers() {
+    return this.http.get<OfferInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/offers.json`).subscribe((data: OfferInterface[]) => {
       data ? this.store.dispatch(setOffersData({ data: data })) : null;
     })
   }
 
-  public removeOffers(userId: string, user: string) {
-    return this.http.delete<OfferInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/offers/${user}.json`).subscribe((data: OfferInterface[]) => {
-      this.getOffers(userId)
+  public updateOffers(user: string, data: OfferInterface) {
+    return this.http.put<OfferInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/offers/${user}.json`, data).subscribe(() => {
+      this.getOffers();
+    })
+  }
+
+  public removeOffers(user: string) {
+    return this.http.delete<OfferInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/offers/${user}.json`).subscribe((data: OfferInterface[]) => {
+      this.getOffers()
+    })
+  }
+
+  public setToActiveOffer(data: OfferInterface) {
+    return this.http.post<OfferInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/active-offers.json`, data).subscribe(() => {
+      
     })
   }
 }

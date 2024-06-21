@@ -53,7 +53,7 @@ export class OfferFormService {
       vip: false,
     }
 
-    this.backendService.setNewOffers(id, newOffers)
+    this.backendService.setNewOffers(newOffers)
   }
 
   private generateUniqueId(length: number): number {

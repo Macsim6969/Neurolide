@@ -13,37 +13,33 @@ export class OffersService {
   ) { }
 
   public removeOffers(mediaChannels: OfferInterface[], mainData: OfferInterface[], id: number) {
-    const userId = JSON.parse(localStorage.getItem('id'))
     const media = mediaChannels.find((e: OfferInterface) => e.id === id)
     const blockId = Object.keys(mainData).find(key => mainData[key] === media)
-    this.backendService.removeOffers(userId, blockId);
+    this.backendService.removeOffers(blockId);
   }
 
   public setVipStatus(mediaChannels: OfferInterface[], mainData: OfferInterface[], id: number) {
-    const userId = JSON.parse(localStorage.getItem('id'))
     const media = mediaChannels.find((e: OfferInterface) => e.id === id)
     const blockId = Object.keys(mainData).find(key => mainData[key] === media)
     const newData: OfferInterface = {
       ...media,
       vip: !media.vip
     }
-    this.backendService.updateOffers(userId, blockId, newData);
+    this.backendService.updateOffers(blockId, newData);
   }
 
   public setNewChanges(mediaChannels: OfferInterface[], mainData: OfferInterface[], id: number, newStatus: string) {
-    const userId = JSON.parse(localStorage.getItem('id'));
     const media = mediaChannels.find((e: OfferInterface) => e.id === id);
     const blockId = Object.keys(mainData).find(key => mainData[key] === media);
     const newData: OfferInterface = {
       ...media,
       payout: newStatus
     }
-    this.backendService.updateOffers(userId, blockId, newData);
+    this.backendService.updateOffers(blockId, newData);
   }
 
   public setNewChangesFromForm(mediaChannels: OfferInterface, mainData: OfferInterface[]) {
-    const userId = JSON.parse(localStorage.getItem('id'));
     const blockId = Object.keys(mainData).find(key => mainData[key].id === mediaChannels.id);
-    this.backendService.updateOffers(userId, blockId, mediaChannels);
+    this.backendService.updateOffers(blockId, mediaChannels);
   }
 }
