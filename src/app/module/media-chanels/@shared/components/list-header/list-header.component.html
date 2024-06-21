@@ -1,5 +1,5 @@
 <div class="user-header-search" *ngIf="userHead">
-  <nav class="header_content {{search['title'].toLocaleLowerCase()}}" (click)="toogleFilter(i, search.tag)"
+  <nav [ngClass]="{'hide': search['tag'] === 'payout' && statusPage === 'profile'}" class="header_content {{search['title'].toLocaleLowerCase()}}" (click)="toogleFilter(i, search.tag)"
     *ngFor="let search of userHead; index as i">
     <p>{{search.title}}</p>
     <mat-icon [ngClass]="{'active': i === active}" svgIcon="arrow"></mat-icon>

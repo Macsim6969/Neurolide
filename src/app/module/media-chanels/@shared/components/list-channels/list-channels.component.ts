@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs';
 import { StoreInterface } from '../../../../../store/model/store.model';
@@ -16,7 +16,7 @@ import { SearchMediaChannelAndOffersService } from '../../../../../shared/servic
   styleUrls: ['./list-channels.component.scss']
 })
 export class ListChannelsComponent extends MediaChannelsDataClass {
-
+  @Input() statusPage: string;
   public isOpenDropdown: boolean[] = [];
   public isOpen: boolean = false;
   public activeChannel: number;
@@ -90,7 +90,7 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
       default:
         return null;
     }
-  } 
+  }
 
   public selectChannel(index: number) {
     this.activeChannel = index;

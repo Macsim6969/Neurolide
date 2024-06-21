@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { MediaFormService } from '../../services/mediaForm.service';

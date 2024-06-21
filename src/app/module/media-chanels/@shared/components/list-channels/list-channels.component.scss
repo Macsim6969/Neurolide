@@ -156,7 +156,7 @@
         background-color: transparent;
         cursor: pointer;
 
-       
+
         &.save {
           background-color: #D1F5E4;
           display: flex;
@@ -178,6 +178,20 @@
           }
         }
 
+      }
+    }
+
+    .settings {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 30px;
+
+      button {
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background-color: transparent;
       }
     }
   }

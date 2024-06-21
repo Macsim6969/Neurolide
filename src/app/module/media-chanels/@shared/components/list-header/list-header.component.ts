@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject, takeUntil } from 'rxjs';
 import { UserSearch } from '../../../../users/@share/interfaces/user.interface';
@@ -11,6 +11,7 @@ import { UserSearchService } from '../../../../../shared/services/userSearch.ser
   styleUrls: ['./list-header.component.scss']
 })
 export class ListHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
+  @Input() statusPage: string;
   private destroy$ = new Subject<void>();
   public active: number = 0;
   public isActive: boolean[];
