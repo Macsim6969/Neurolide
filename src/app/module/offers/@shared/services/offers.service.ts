@@ -35,6 +35,7 @@ export class OffersService {
       ...media,
       payout: newStatus
     }
+
     this.backendService.updateOffers(blockId, newData);
   }
 

@@ -14,7 +14,7 @@
       <nav>{{activePayout && activePayout[i] ? activePayout[i] : channel?.payout}}</nav>
       <mat-icon svgIcon="arrow"></mat-icon>
       <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown[i]}">
-        <nav *ngFor="let methode of modelPayment" (click)="choicePayout(i, methode.title)"
+        <nav *ngFor="let methode of modelPayment;index as m" (click)="choicePayout(i, methode?.title, channel?.id)"
           [ngClass]="{'active': activePayout[i ] === methode.title || channel?.payout === methode.title}">
           {{methode.title}}</nav>
         <mat-icon svgIcon="arrow"></mat-icon>
@@ -23,7 +23,7 @@
     <nav class="status" *ngIf="statusPage === 'offers'">
       <button (click)="removeOffers(channel.id)" type="button" class="remove "><mat-icon
           svgIcon="cancel"></mat-icon></button>
-      <button (click)="setNewChanges(channel.id, i)" type="submit" class="save "><mat-icon
+      <button  type="submit" class="save "><mat-icon
           svgIcon="confirme"></mat-icon></button>
       <button (click)="setVipStatus(channel.id)" type="submit" [ngClass]="{'active': channel.vip}"
         class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
@@ -35,7 +35,7 @@
       <nav>{{activePayout && activePayout[i] ? activePayout[i] : channel?.payout}}</nav>
       <mat-icon svgIcon="arrow"></mat-icon>
       <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown[i]}">
-        <nav *ngFor="let methode of modelPayment" (click)="choicePayout(i, methode.title)"
+        <nav *ngFor="let methode of modelPayment; index as m" (click)="choicePayout(i, methode.title, channel.id)"
           [ngClass]="{'active': activePayout[i ] === methode.title || channel?.payout === methode.title}">
           {{methode.title}}</nav>
         <mat-icon svgIcon="arrow"></mat-icon>

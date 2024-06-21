@@ -120,12 +120,14 @@ export class OffersListComponent extends OffersDataClass {
     this.isOpenDropdown[index] = true;
   }
 
-  public choicePayout(index: number, value: string) {
+  public choicePayout(index: number, value: string, idOffer: number,) {
     if (!this.activePayout[index]) {
       this.activePayout[index] = '';
     }
     this.activePayout[index] = value;
     this.isOpenDropdown = null;
+    this.setNewChanges(idOffer, value);
   }
+
 
 }

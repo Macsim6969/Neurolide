@@ -40,9 +40,8 @@ export abstract class OffersDataClass implements OnInit, OnDestroy {
     this.offersService.removeOffers(this.offers, this.mainData, id)
   }
 
-  public setNewChanges(id: number, idChannel: number) {
-    this.offersService.setNewChanges(this.offers, this.mainData, id, this.activePayout[idChannel])
-
+  public setNewChanges(id: number, activePayout: string) {
+    this.offersService.setNewChanges(this.offers, this.mainData, id, activePayout)
   }
 
   public setVipStatus(id: number) {
