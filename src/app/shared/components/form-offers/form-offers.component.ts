@@ -41,6 +41,7 @@ export class FormOffersComponent extends BasePopupComponent {
     combineLatest(([this.offerFormService._offerData$, this.offerFormService._statusMOde$])).pipe(takeUntil(this.destroy$))
     .subscribe(([dataValue, dataMode]) =>{
       this.offerData = dataValue;
+      this.activeMethod = dataValue.payout;
       if (dataValue && dataMode === 'edite') {
         this.initializeForm(dataValue);
         this.statusEdite = dataMode;
