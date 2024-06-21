@@ -31,13 +31,19 @@ export class OffersService {
   }
 
   public setNewChanges(mediaChannels: OfferInterface[], mainData: OfferInterface[], id: number, newStatus: string) {
-    const userId = JSON.parse(localStorage.getItem('id'))
-    const media = mediaChannels.find((e: OfferInterface) => e.id === id)
-    const blockId = Object.keys(mainData).find(key => mainData[key] === media)
+    const userId = JSON.parse(localStorage.getItem('id'));
+    const media = mediaChannels.find((e: OfferInterface) => e.id === id);
+    const blockId = Object.keys(mainData).find(key => mainData[key] === media);
     const newData: OfferInterface = {
       ...media,
       payout: newStatus
     }
     this.backendService.updateOffers(userId, blockId, newData);
+  }
+
+  public setNewChangesFromForm(mediaChannels: OfferInterface, mainData: OfferInterface[]) {
+    const userId = JSON.parse(localStorage.getItem('id'));
+    const blockId = Object.keys(mainData).find(key => mainData[key].id === mediaChannels.id);
+    this.backendService.updateOffers(userId, blockId, mediaChannels);
   }
 }

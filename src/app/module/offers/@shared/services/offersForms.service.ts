@@ -9,6 +9,8 @@ import { OfferInterface } from "../interface/offer.interface";
 export class OfferFormService {
   private usedIds: Set<string> = new Set();
   private isOffersFormSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private offerFormDataSubject: BehaviorSubject<OfferInterface> = new BehaviorSubject<OfferInterface>(null);
+  private statusModeSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
   constructor(
     private backendService: BackendService,
@@ -20,6 +22,22 @@ export class OfferFormService {
 
   get _isOfferForm$() {
     return this.isOffersFormSubject;
+  }
+
+  set _offerData(value: OfferInterface) {
+    this.offerFormDataSubject.next(value);
+  }
+
+  get _offerData$() {
+    return this.offerFormDataSubject;
+  }
+
+  set _statusMOde(value: string) {
+    this.statusModeSubject.next(value);
+  }
+
+  get _statusMOde$() {
+    return this.statusModeSubject;
   }
 
   public sendMediaChannelsData(newForm: OfferInterface, choiceMethod: string) {

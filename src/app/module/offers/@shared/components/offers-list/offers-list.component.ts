@@ -10,6 +10,7 @@ import { OfferInterface } from '../../interface/offer.interface';
 import { UserSearchService } from '../../../../../shared/services/userSearch.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ModelPaymentInterface } from '../../interface/model.interface';
+import { OfferFormService } from '../../services/offersForms.service';
 
 @Component({
   selector: 'app-offers-list',
@@ -27,6 +28,7 @@ export class OffersListComponent extends OffersDataClass {
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
     override offersService: OffersService,
+    private offersFormService: OfferFormService,
     private searchMediaChannelAndOffers: SearchMediaChannelAndOffersService,
     private userSearchService: UserSearchService,
     private translate: TranslateService
@@ -87,18 +89,25 @@ export class OffersListComponent extends OffersDataClass {
       case 'link':
         return user.link || '';
       case 'subscribers':
-        return user.brand || ''; // Ensure numeric comparison
+        return user.brand || '';
       case 'stream':
-        return user.payments || 0; // Ensure numeric comparison
+        return user.payments || 0;
       case 'payout':
-        return user.balance || 0;  // Ensure numeric comparison
+        return user.balance || 0;
       case 'price':
-        return user.payout || 0;  // Ensure numeric comparison
+        return user.payout || 0;
       case 'vip':
-        return user.vip;  // Ensure boolean comparison
+        return user.vip;
       default:
         return null;
     }
+  }
+
+  public changeOffers(index: number) {
+    const media = this.offers.find((e: OfferInterface) => e.id === index)
+    this.offersFormService._offerData = media;
+    this.offersFormService._statusMOde = 'edite'
+    this.offersFormService._isOfferForm = true;
   }
 
   public selectChannel(index: number) {

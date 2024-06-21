@@ -43,7 +43,7 @@
     </button>
     <nav *ngIf="statusPage === 'manager'" class="manager subscribe">${{channel.payments ? channel.payments : 0}}</nav>
     <nav *ngIf="statusPage === 'manager'" class="settings">
-      <button type="submit" class="save "><mat-icon svgIcon="settings"></mat-icon></button>
+      <button (click)="changeOffers(channel.id)" type="submit" class="save "><mat-icon svgIcon="settings"></mat-icon></button>
       <button (click)="removeOffers(channel.id)" type="button" class="remove "><mat-icon
           svgIcon="remove"></mat-icon></button>
     </nav>

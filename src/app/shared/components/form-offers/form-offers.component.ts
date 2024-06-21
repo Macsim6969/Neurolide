@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { OfferInterface } from './../../../module/offers/@shared/interface/offer.interface';
+import { Component, Input } from '@angular/core';
 import { BasePopupComponent } from '../../../module/balance/@shared/form';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OfferFormService } from '../../../module/offers/@shared/services/offersForms.service';
 import { TranslateService } from '@ngx-translate/core';
-import { takeUntil } from 'rxjs';
+import { combineLatest, take, takeUntil } from 'rxjs';
 import { ModelPaymentInterface } from '../../../module/offers/@shared/interface/model.interface';
+import { OffersService } from '../../../module/offers/@shared/services/offers.service';
+import { Store, select } from '@ngrx/store';
+import { StoreInterface } from '../../../store/model/store.model';
+import { selectOffersData } from '../../../store/selectors/store.selectors';
 
 @Component({
   selector: 'app-form-offers',
@@ -12,11 +17,15 @@ import { ModelPaymentInterface } from '../../../module/offers/@shared/interface/
   styleUrls: ['./form-offers.component.scss']
 })
 export class FormOffersComponent extends BasePopupComponent {
-
+  public statusEdite: string;
+  private offersData: OfferInterface[];
+  public offerData: OfferInterface;
   public modelPayment: ModelPaymentInterface[];
   public activeMethod: string;
   constructor(
+    private store: Store<{store: StoreInterface}>,
     private offerFormService: OfferFormService,
+    private offersService: OffersService,
     private translate: TranslateService
   ) {
     super();
@@ -24,17 +33,30 @@ export class FormOffersComponent extends BasePopupComponent {
   }
 
   override ngOnInit(): void {
-    this.initializeForm();
+    this.streamOffersData();
     this.streamModelPaymentFromJson();
   }
 
-  protected override initializeForm(): void {
+  private streamOffersData() {
+    combineLatest(([this.offerFormService._offerData$, this.offerFormService._statusMOde$])).pipe(takeUntil(this.destroy$))
+    .subscribe(([dataValue, dataMode]) =>{
+      this.offerData = dataValue;
+      if (dataValue && dataMode === 'edite') {
+        this.initializeForm(dataValue);
+        this.statusEdite = dataMode;
+      } else if(dataMode !== 'edite') {
+        this.initializeForm();
+      }
+    })
+  }
+
+  protected override initializeForm(data?: OfferInterface): void {
     this.form = new FormGroup<any>({
-      name: new FormControl('', [Validators.required]),
-      link: new FormControl('', [Validators.required]),
-      brand: new FormControl('', [Validators.required]),
-      payments: new FormControl(null, [Validators.required]),
-      balance: new FormControl(null, [Validators.required])
+      name: new FormControl(data?.name ? data?.name : null, [Validators.required]),
+      link: new FormControl(data?.link ? data?.link : null, [Validators.required]),
+      brand: new FormControl(data?.brand ? data?.brand : null, [Validators.required]),
+      payments: new FormControl(data?.payments ? data?.payments : null, [Validators.required]),
+      balance: new FormControl(data?.balance ? data?.balance : null, [Validators.required])
     })
   }
 
@@ -49,8 +71,27 @@ export class FormOffersComponent extends BasePopupComponent {
   }
 
   public override submit(): void {
-    this.offerFormService.sendMediaChannelsData(this.form.value, this.activeMethod);
+    if(this.statusEdite !== 'edite'){
+      this.offerFormService.sendMediaChannelsData(this.form.value, this.activeMethod);
+    } else {
+      this.getAllOffersData();
+    }
     this.closePopup()
+  }
+
+  private getAllOffersData(){
+    this.store.pipe(take(1), select(selectOffersData), takeUntil(this.destroy$)).subscribe((data) =>{
+      this.offersData = data;
+      const newOffers: OfferInterface = {
+        ...this.offerData,
+        name: this.form.value.name,
+        link: this.form.value.link,
+        brand: this.form.value.brand,
+        payments: this.form.value.payments,
+        balance: this.form.value.balance
+      }
+      this.offersService.setNewChangesFromForm(newOffers, this.offersData)
+    })
   }
 
   public override closePopup(): void {
