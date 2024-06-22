@@ -102,8 +102,9 @@ export abstract class OffersList extends OffersDataClass {
     }
   }
 
-  public changeOffers(index: number) {
-    const media = this.offers.find((e: OfferInterface) => e.id === index)
+  public changeOffers(index: number, rules: string) {
+    
+    const media = this.offers?.find((e: OfferInterface) => e.id === index);
     this.offersFormService._offerData = media;
     this.offersFormService._statusMOde = 'edite'
     this.offersFormService._isOfferForm = true;
@@ -128,7 +129,7 @@ export abstract class OffersList extends OffersDataClass {
     this.setNewChanges(idOffer, value);
   }
 
-  public setToActiveOffer(idOffer: number){
+  public setToActiveOffer(idOffer: number) {
     this.offersService.setOfferToActiveData(idOffer, this.mainData, this.offers);
   }
 }

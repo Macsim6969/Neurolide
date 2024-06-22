@@ -17,8 +17,7 @@ export const CARDSPAYMENT = 'CARDSPAYMENT';
 export const CARDSTRANSACTIONS = 'CARDSTRANSACTIONS';
 export const SETMEDIACHANNELSDATA = 'SETMEDIACHANNELSDATA';
 export const SETOFFERSDATA = 'SETOFFERSDATA';
-export const SETACTIVEOFFERS = 'SETACTIVEOFFER';
-export const SETTOADDEDOFFRS = 'SETTOADDEDOFFRS';
+export const SETACTIVEOFFERS = 'SETACTIVEOFFERS';
 
 export const setAllUsers = createAction(
   SETALLUSERS
@@ -80,9 +79,4 @@ export const setOffersData = createAction(
 export const setToActiveOffer = createAction(
   SETACTIVEOFFERS,
   props<{ offer: OfferInterface[] }>()
-);
-
-export const setToAddedOffer = createAction(
-  SETTOADDEDOFFRS,
-  props<{ data: OfferInterface[] }>()
 );

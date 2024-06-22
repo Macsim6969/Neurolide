@@ -14,5 +14,4 @@ export interface StoreInterface {
   mediaChannels: MediaFormInterface[]
   offers: OfferInterface[]
   activeOffers: OfferInterface[]
-  addedOffers: OfferInterface[]
 }

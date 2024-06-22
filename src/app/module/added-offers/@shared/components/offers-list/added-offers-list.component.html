@@ -1,29 +1,18 @@
-<div class="media-channel" *ngIf="addedOffers;else loading">
-  <div [ngClass]="{'active': activeChannel === i}" class="channel" *ngFor="let channel of addedOffers;index as i"
+<div class="media-channel" *ngIf="addedOffer;else loading">
+  <div [ngClass]="{'active': activeChannel === i}" class="channel" *ngFor="let channel of addedOffer;index as i"
     (click)="selectChannel(i)">
     <nav class="id">{{channel.id}}</nav>
     <nav class="name">{{channel.name}}</nav>
     <nav class="link">{{channel.link}}</nav>
     <nav class="stream">{{channel.brand}}</nav>
     <nav class="subscribe">${{channel.payments ? channel.payments : 0}}</nav>
+
     <nav class="price">${{channel.balance ? channel.balance : 0}}</nav>
-    <button class="payout" (click)="openPayout(i)">
-      <nav>{{activePayout && activePayout[i] ? activePayout[i] : channel?.payout}}</nav>
-      <mat-icon svgIcon="arrow"></mat-icon>
-      <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown[i]}">
-        <nav *ngFor="let methode of modelPayment;index as m" (click)="choicePayout(i, methode?.title, channel?.id)"
-          [ngClass]="{'active': activePayout[i ] === methode.title || channel?.payout === methode.title}">
-          {{methode.title}}</nav>
-        <mat-icon svgIcon="arrow"></mat-icon>
-      </div>
-    </button>
-    <nav class="status">
-      <button (click)="removeOffers(channel.id)" type="button" class="remove "><mat-icon
-          svgIcon="cancel"></mat-icon></button>
-      <button (click)="setToActiveOffer(channel.id)" type="submit" class="save "><mat-icon
-          svgIcon="confirme"></mat-icon></button>
-      <button (click)="setVipStatus(channel.id)" type="submit" [ngClass]="{'active': channel.vip}"
-        class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
+    <nav class="settings">
+      <button (click)="changeOffers(channel?.id,'added')" type="submit" class="save "><mat-icon
+          svgIcon="settings"></mat-icon></button>
+      <button (click)="removeOffers(channel?.id)" type="button" class="remove "><mat-icon
+          svgIcon="remove"></mat-icon></button>
     </nav>
   </div>
 </div>

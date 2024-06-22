@@ -23,7 +23,7 @@ export class FormOffersComponent extends BasePopupComponent {
   public modelPayment: ModelPaymentInterface[];
   public activeMethod: string;
   constructor(
-    private store: Store<{store: StoreInterface}>,
+    private store: Store<{ store: StoreInterface }>,
     private offerFormService: OfferFormService,
     private offersService: OffersService,
     private translate: TranslateService
@@ -39,16 +39,16 @@ export class FormOffersComponent extends BasePopupComponent {
 
   private streamOffersData() {
     combineLatest(([this.offerFormService._offerData$, this.offerFormService._statusMOde$])).pipe(takeUntil(this.destroy$))
-    .subscribe(([dataValue, dataMode]) =>{
-      this.offerData = dataValue;
-      this.activeMethod = dataValue.payout;
-      if (dataValue && dataMode === 'edite') {
-        this.initializeForm(dataValue);
-        this.statusEdite = dataMode;
-      } else if(dataMode !== 'edite') {
-        this.initializeForm();
-      }
-    })
+      .subscribe(([dataValue, dataMode]) => {
+        this.offerData = dataValue;
+        this.activeMethod = dataValue.payout;
+        if (dataValue && dataMode === 'edite') {
+          this.initializeForm(dataValue);
+          this.statusEdite = dataMode;
+        } else if (dataMode !== 'edite') {
+          this.initializeForm();
+        }
+      })
   }
 
   protected override initializeForm(data?: OfferInterface): void {
@@ -72,7 +72,7 @@ export class FormOffersComponent extends BasePopupComponent {
   }
 
   public override submit(): void {
-    if(this.statusEdite !== 'edite'){
+    if (this.statusEdite !== 'edite') {
       this.offerFormService.sendMediaChannelsData(this.form.value, this.activeMethod);
     } else {
       this.getAllOffersData();
@@ -80,8 +80,8 @@ export class FormOffersComponent extends BasePopupComponent {
     this.closePopup()
   }
 
-  private getAllOffersData(){
-    this.store.pipe(take(1), select(selectOffersData), takeUntil(this.destroy$)).subscribe((data) =>{
+  private getAllOffersData() {
+    this.store.pipe(take(1), select(selectOffersData), takeUntil(this.destroy$)).subscribe((data) => {
       this.offersData = data;
       const newOffers: OfferInterface = {
         ...this.offerData,

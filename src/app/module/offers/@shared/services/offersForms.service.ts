@@ -10,7 +10,6 @@ import { selectOffersData } from "../../../../store/selectors/store.selectors";
 @Injectable()
 
 export class OfferFormService {
-  private usedIds: Set<string> = new Set();
   private isOffersFormSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private offerFormDataSubject: BehaviorSubject<OfferInterface> = new BehaviorSubject<OfferInterface>(null);
   private statusModeSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
@@ -23,6 +22,10 @@ export class OfferFormService {
 
   set _rulesOffer(value: string) {
     this.rulesOfferMode.next(value);
+  }
+
+  get _rulesOffer() {
+    return this.rulesOfferMode.getValue();
   }
 
   set _isOfferForm(value: boolean) {
@@ -60,13 +63,10 @@ export class OfferFormService {
       payout: choiceMethod,
       balance: newForm.balance,
       vip: false,
+      statusOffer: this.rulesOfferMode.getValue()
     }
-    if (this.rulesOfferMode.getValue() === 'offers') {
-      this.backendService.setNewOffers(newOffers);
-    } else {
-      this.backendService.setToAddedOffer(newOffers);
-      this.backendService.setNewOffers(newOffers);
-    }
+    this.backendService.setNewOffers(newOffers);
+
   }
 
   private setUnikeID(): number {

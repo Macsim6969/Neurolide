@@ -25,10 +25,6 @@ export class AuthEffects {
         this.backendService.getCardsTransactions(id);
         this.backendService.getMediaChannels(id);
         this.backendService.getOffers();
-        console.log(rules)
-        if(rules === 'brand'){
-          this.backendService.getFromAddedOffer();
-        }
       })
     )
     ,

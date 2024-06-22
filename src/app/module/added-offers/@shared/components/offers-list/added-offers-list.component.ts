@@ -1,5 +1,4 @@
-import { selectAddedOffers } from './../../../../../store/selectors/store.selectors';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
@@ -19,6 +18,7 @@ import { OfferInterface } from '../../../../offers/@shared/interface/offer.inter
 })
 export class AddedOffersListComponent extends OffersList {
   public addedOffers: OfferInterface[];
+  public allAddedOffers: OfferInterface[];
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
@@ -32,9 +32,4 @@ export class AddedOffersListComponent extends OffersList {
     super.ngOnInit();
   }
 
-  protected override streamOffersDataFromStore(): void {
-    this.store.pipe(select(selectAddedOffers), takeUntil(this.destroy$)).subscribe((data) => {
-      data ? this.addedOffers = Object.values(data) : null;
-    })
-  }
 }

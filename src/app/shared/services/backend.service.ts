@@ -1,4 +1,4 @@
-import { allUsers, newUserData, setCardsPayment, setCardsTransaction, setMediaChannelsData, setOffersData, setToActiveOffer, setToAddedOffer, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
+import { allUsers, newUserData, setCardsPayment, setCardsTransaction, setMediaChannelsData, setOffersData, setToActiveOffer, setUserData, updatedMonitoringData } from './../../store/actions/store.actions';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { CardsPayment, UserData } from "../interfaces/backend.interface";
@@ -168,15 +168,4 @@ export class BackendService {
     })
   }
 
-  public setToAddedOffer(data: OfferInterface) {
-    return this.http.post<OfferInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/added-offers.json`, data).subscribe(() => {
-      this.getFromAddedOffer();
-    })
-  }
-
-  public getFromAddedOffer() {
-    return this.http.get<OfferInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/added-offers.json`).subscribe((data: OfferInterface[]) => {
-      this.store.dispatch(setToAddedOffer({ data: data }));
-    })
-  }
 }
