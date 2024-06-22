@@ -19,7 +19,8 @@
     </button>
 
     <nav class="price">{{channel.price}} $</nav>
-    <nav *ngIf="statusPage !== 'profile'" class="status">
+    <nav *ngIf="rules ==='brand'" class="stream">{{channel.vip ? "VIP" : ''}}</nav>
+    <nav *ngIf="statusPage !== 'profile' && rules === 'manager'" class="status">
       <button (click)="removeMedia(channel.id)" type="button" class="remove "><mat-icon
           svgIcon="cancel"></mat-icon></button>
       <button (click)="setNewChanges(channel.id, i)" type="submit" class="save "><mat-icon

@@ -18,6 +18,7 @@ import { MediaFormService } from '../../services/mediaForm.service';
 })
 export class ListChannelsComponent extends MediaChannelsDataClass {
   @Input() statusPage: string;
+  public rules: string;
   public isOpenDropdown: boolean[] = [];
   public isOpen: boolean = false;
   public activeChannel: number;
@@ -35,10 +36,14 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
   }
 
   override ngOnInit(): void {
+    this.checkRulesUser();
     this.streamSearchData();
     this.streamSearchFilterData();
   }
 
+  private checkRulesUser() {
+    this.rules = JSON.parse(localStorage.getItem('rules'));
+  }
 
   private streamSearchData() {
     this.searchMediaChannelAndOffers._searchText$.pipe(takeUntil(this.destroy$)).subscribe((data: string) => {
