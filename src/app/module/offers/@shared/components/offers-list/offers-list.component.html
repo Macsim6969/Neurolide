@@ -8,9 +8,9 @@
 
 
     <!-- Offers PAGE -->
-    <nav *ngIf="statusPage === 'offers'" class="subscribe">${{channel.payments ? channel.payments : 0}}</nav>
-    <nav *ngIf="statusPage === 'offers'" class="price">${{channel.balance ? channel.balance : 0}}</nav>
-    <button *ngIf="statusPage === 'offers'" class="payout" (click)="openPayout(i)">
+    <nav *ngIf="statusPage === 'offers' && rules === 'manager'" class="subscribe">${{channel.payments ? channel.payments : 0}}</nav>
+    <nav *ngIf="statusPage === 'offers' && rules === 'manager'" class="price">${{channel.balance ? channel.balance : 0}}</nav>
+    <button *ngIf="statusPage === 'offers' && rules === 'manager'" class="payout" (click)="openPayout(i)">
       <nav>{{activePayout && activePayout[i] ? activePayout[i] : channel?.payout}}</nav>
       <mat-icon svgIcon="arrow"></mat-icon>
       <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown[i]}">
@@ -20,7 +20,7 @@
         <mat-icon svgIcon="arrow"></mat-icon>
       </div>
     </button>
-    <nav class="status" *ngIf="statusPage === 'offers'">
+    <nav class="status" *ngIf="statusPage === 'offers' && rules === 'manager'">
       <button (click)="removeOffers(channel.id)" type="button" class="remove "><mat-icon
           svgIcon="cancel"></mat-icon></button>
       <button (click)="setToActiveOffer(channel.id)"  type="submit" class="save "><mat-icon
@@ -30,23 +30,9 @@
     </nav>
 
     <!-- MANAGER PAGE -->
-    <nav *ngIf="statusPage === 'manager'" class="price">${{channel.balance ? channel.balance : 0}}</nav>
-    <button *ngIf="statusPage === 'manager'" class="payout" (click)="openPayout(i)">
-      <nav>{{activePayout && activePayout[i] ? activePayout[i] : channel?.payout}}</nav>
-      <mat-icon svgIcon="arrow"></mat-icon>
-      <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown[i]}">
-        <nav *ngFor="let methode of modelPayment; index as m" (click)="choicePayout(i, methode.title, channel.id)"
-          [ngClass]="{'active': activePayout[i ] === methode.title || channel?.payout === methode.title}">
-          {{methode.title}}</nav>
-        <mat-icon svgIcon="arrow"></mat-icon>
-      </div>
-    </button>
-    <nav *ngIf="statusPage === 'manager'" class="manager subscribe">${{channel.payments ? channel.payments : 0}}</nav>
-    <nav *ngIf="statusPage === 'manager'" class="settings">
-      <button (click)="changeOffers(channel.id)" type="submit" class="save "><mat-icon svgIcon="settings"></mat-icon></button>
-      <button (click)="removeOffers(channel.id)" type="button" class="remove "><mat-icon
-          svgIcon="remove"></mat-icon></button>
-    </nav>
+    <nav *ngIf="rules === 'brand'" class="price">${{channel.balance ? channel.balance : 0}}</nav>    
+    <nav *ngIf="rules === 'brand'" class="manager subscribe">${{channel.payments ? channel.payments : 0}}</nav>
+    <nav *ngIf="rules === 'brand'" class="status">{{channel.vip ? 'VIP' : ''}}</nav>
   </div>
 </div>
 
