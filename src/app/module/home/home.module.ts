@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '', component: HomeComponent, children: [
       { path: '', loadChildren: () => import('../../module/main-mobile-page/main-mobile-page.module').then((m) => m.MainMobilePageModule), canActivate: [IsMobileGuard] },
       { path: 'manager', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
-      { path: 'brand', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
+      { path: 'brand', loadChildren: () => import('../../module/brand/brand.module').then((m) => m.BrandModule) },
       { path: 'affiliate', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'users', loadChildren: () => import('../../module/users/users.module').then((m) => m.UsersModule) },
       { path: 'media-channels', loadChildren: () => import('../../module/media-chanels/media-chanels.module').then((m) => m.MediaChanelsModule) },
