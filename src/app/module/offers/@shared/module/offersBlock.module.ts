@@ -9,6 +9,7 @@ import { ShareModule } from "../../../../shared/shared.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { OfferFormService } from "../services/offersForms.service";
 import { OffersService } from "../services/offers.service";
+import { ActiveOfferService } from "../services/activeOffer.service";
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { OffersService } from "../services/offers.service";
     ShareModule,
     TranslateModule,
   ],
-  providers: [OfferFormService, OffersService]
+  providers: [OfferFormService, OffersService, ActiveOfferService]
 })
 
 export class OffersBlockModule {}

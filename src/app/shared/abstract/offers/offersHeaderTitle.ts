@@ -24,7 +24,7 @@ export abstract class OfferHeaderTitle implements OnInit {
     this.rules = JSON.parse(localStorage.getItem('rules'))
   }
 
-  public openForm(rules: 'added' | 'offers') {
+  public openForm(rules: 'added' | 'offers' | 'active') {
     this.offerFormService._isOfferForm = true;
     this.offerFormService._rulesOffer = rules;
   }

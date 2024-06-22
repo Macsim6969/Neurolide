@@ -6,6 +6,7 @@ import { ShareModule } from '../../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileModule } from '../profile/profile.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ActiveOffersModule } from '../active-offers/active-offers.module';
 
 const routes: Routes = [
   {path: '', component: BrandComponent}
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     ShareModule,
     ProfileModule,
+    ActiveOffersModule,
     HttpClientModule,
     TranslateModule,
     RouterModule.forChild(routes)

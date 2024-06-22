@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { OffersList } from '../../../../../shared/abstract/offers/offersList';
 import { takeUntil } from 'rxjs';
 import { OfferInterface } from '../../../../offers/@shared/interface/offer.interface';
+import { ActiveOfferService } from '../../../../offers/@shared/services/activeOffer.service';
 
 @Component({
   selector: 'app-added-offers-list',
@@ -26,9 +27,10 @@ export class AddedOffersListComponent extends OffersList {
     override offersFormService: OfferFormService,
     override searchMediaChannelAndOffers: SearchMediaChannelAndOffersService,
     override userSearchService: UserSearchService,
-    override translate: TranslateService
+    override translate: TranslateService,
+    override activeOfferService: ActiveOfferService
   ) {
-    super(store, globalIconsService, offersService, offersFormService, searchMediaChannelAndOffers, userSearchService, translate);
+    super(store, globalIconsService, offersService, offersFormService, searchMediaChannelAndOffers, userSearchService, translate, activeOfferService);
     super.ngOnInit();
   }
 

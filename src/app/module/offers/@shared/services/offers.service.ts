@@ -49,5 +49,11 @@ export class OffersService {
     this.backendService.setToActiveOffer(offer).add(() => {
       this.removeOffers(offers, allOffers, idOffer)
     });
+
+  }
+
+  public setNewChangesOfferActive(activeOffers: OfferInterface, mainActiveOffers: OfferInterface[]) {
+    const blockId = Object.keys(mainActiveOffers).find(key => mainActiveOffers[key].id === activeOffers.id);
+    this.backendService.updateActiveOffers(blockId, activeOffers);
   }
 }

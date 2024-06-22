@@ -11,6 +11,7 @@ import { takeUntil } from "rxjs";
 import { ModelPaymentInterface } from "../../../module/offers/@shared/interface/model.interface";
 import { OfferInterface } from "../../../module/offers/@shared/interface/offer.interface";
 import { Component, Input } from "@angular/core";
+import { ActiveOfferService } from "../../../module/offers/@shared/services/activeOffer.service";
 
 @Component({
   template: ''
@@ -30,7 +31,8 @@ export abstract class OffersList extends OffersDataClass {
     protected offersFormService: OfferFormService,
     protected searchMediaChannelAndOffers: SearchMediaChannelAndOffersService,
     protected userSearchService: UserSearchService,
-    protected translate: TranslateService
+    protected translate: TranslateService,
+    protected activeOfferService: ActiveOfferService
   ) {
     super(store, globalIconsService, offersService);
     super.ngOnInit();
@@ -103,10 +105,17 @@ export abstract class OffersList extends OffersDataClass {
   }
 
   public changeOffers(index: number, rules: string) {
-    
-    const media = this.offers?.find((e: OfferInterface) => e.id === index);
-    this.offersFormService._offerData = media;
-    this.offersFormService._statusMOde = 'edite'
+    if (rules === 'active') {
+      const activeOffers = Object.values(this.activeOfferService._activeOfferData)
+      const media = activeOffers.find((e: OfferInterface) => e.id === index);
+      this.offersFormService._offerData = media;
+      this.offersFormService._statusOffer = 'active';
+    } else {
+      const media = this.offers?.find((e: OfferInterface) => e.id === index);
+      this.offersFormService._offerData = media;
+      this.offersFormService._statusOffer = '';
+    }
+    this.offersFormService._statusMOde = 'edite';
     this.offersFormService._isOfferForm = true;
   }
 

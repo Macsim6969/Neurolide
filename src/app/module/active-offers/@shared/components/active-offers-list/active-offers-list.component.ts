@@ -10,6 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { OffersList } from '../../../../../shared/abstract/offers/offersList';
 import { takeUntil } from 'rxjs';
 import { OfferInterface } from '../../../../offers/@shared/interface/offer.interface';
+import { selectActiveOffers } from '../../../../../store/selectors/store.selectors';
+import { ActiveOfferService } from '../../../../offers/@shared/services/activeOffer.service';
 
 @Component({
   selector: 'app-active-offers-list',
@@ -17,8 +19,7 @@ import { OfferInterface } from '../../../../offers/@shared/interface/offer.inter
   styleUrls: ['./active-offers-list.component.scss']
 })
 export class ActiveOffersListComponent extends OffersList {
-  public addedOffers: OfferInterface[];
-  public allAddedOffers: OfferInterface[];
+  public activeOffers: OfferInterface[];
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
@@ -26,10 +27,17 @@ export class ActiveOffersListComponent extends OffersList {
     override offersFormService: OfferFormService,
     override searchMediaChannelAndOffers: SearchMediaChannelAndOffersService,
     override userSearchService: UserSearchService,
-    override translate: TranslateService
+    override translate: TranslateService,
+    override activeOfferService: ActiveOfferService
   ) {
-    super(store, globalIconsService, offersService, offersFormService, searchMediaChannelAndOffers, userSearchService, translate);
+    super(store, globalIconsService, offersService, offersFormService, searchMediaChannelAndOffers, userSearchService, translate, activeOfferService);
     super.ngOnInit();
   }
 
+  protected override streamOffersDataFromStore(): void {
+    this.store.pipe(select(selectActiveOffers)).subscribe((data) => {
+      this.activeOffers = Object.values(data);
+      this.activeOfferService._activeOfferData = data;
+    })
+  }
 }

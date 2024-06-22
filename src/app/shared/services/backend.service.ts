@@ -168,4 +168,11 @@ export class BackendService {
     })
   }
 
+  public updateActiveOffers(user: string, data: OfferInterface){
+    console.log(1)
+    return this.http.put<OfferInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/active-offers/${user}.json`, data).subscribe(() => {
+      this.getFromActiveOffer();
+    })
+  }
+
 }
