@@ -1,8 +1,8 @@
-import { User, UserActions, UserData } from '../../interfaces/profile.interface';
+import { UserActions, UserData } from '../../interfaces/profile.interface';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { Subject, Subscription, combineLatest, takeUntil } from 'rxjs';
+import { Subject, combineLatest, takeUntil } from 'rxjs';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { selectUserData } from '../../../../../store/selectors/store.selectors';
 import { ProfileServices } from '../../services/profile.service';
@@ -15,6 +15,7 @@ import { ProfileServices } from '../../services/profile.service';
 export class UserEditComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   public rules: 'manager' | 'brand' | 'affiliate';
+  public url: string;
   public userInfo: UserData[];
   public userActions: UserActions[];
   constructor(
@@ -26,6 +27,8 @@ export class UserEditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initializeUserDataFromJsonAndStore();
     this.rules = JSON.parse(localStorage.getItem('rules'));
+    this.url = localStorage.getItem('currentRoute');
+    console.log(this.url, this.rules)
   }
 
   private initializeUserDataFromJsonAndStore() {

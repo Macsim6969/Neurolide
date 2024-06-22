@@ -16,6 +16,7 @@ import { selectUserData } from '../../../../../store/selectors/store.selectors';
 export class UserActionComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   public rules: 'manager' | 'brand' | 'affiliate';
+  public url: string;
   public avatar: string;
   public userActions: UserActions[];
 
@@ -29,8 +30,8 @@ export class UserActionComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initializeUserDataFromJson();
     this.rules = JSON.parse(localStorage.getItem('rules'));
+    this.url = localStorage.getItem('currentRoute');
   }
-
 
   private initializeUserDataFromJson() {
     combineLatest(([this.translate.stream('user'), this.store.pipe(select(selectUserData))])).pipe(takeUntil(this.destroy$)).subscribe(([dataActions, data]) => {

@@ -20,10 +20,10 @@ export class ProfileComponent extends IsMobilePage implements OnInit, OnDestroy 
     private balanceCard: BalanceCardService
   ) {
     super()
+    super.ngOnInit();
   }
 
   override ngOnInit(): void {
-    super.ngOnInit();
     this.initializeIsPopupOpen();
     this.streamOpenPopup();
   }
