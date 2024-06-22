@@ -1,5 +1,6 @@
+import { selectAddedOffers } from './../../../../../store/selectors/store.selectors';
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { OffersService } from '../../../../offers/@shared/services/offers.service';
@@ -8,6 +9,8 @@ import { SearchMediaChannelAndOffersService } from '../../../../../shared/servic
 import { UserSearchService } from '../../../../../shared/services/userSearch.service';
 import { TranslateService } from '@ngx-translate/core';
 import { OffersList } from '../../../../../shared/abstract/offers/offersList';
+import { takeUntil } from 'rxjs';
+import { OfferInterface } from '../../../../offers/@shared/interface/offer.interface';
 
 @Component({
   selector: 'app-added-offers-list',
@@ -15,7 +18,7 @@ import { OffersList } from '../../../../../shared/abstract/offers/offersList';
   styleUrls: ['./added-offers-list.component.scss']
 })
 export class AddedOffersListComponent extends OffersList {
-
+  public addedOffers: OfferInterface[];
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
@@ -29,4 +32,9 @@ export class AddedOffersListComponent extends OffersList {
     super.ngOnInit();
   }
 
+  protected override streamOffersDataFromStore(): void {
+    this.store.pipe(select(selectAddedOffers), takeUntil(this.destroy$)).subscribe((data) => {
+      data ? this.addedOffers = Object.values(data) : null;
+    })
+  }
 }

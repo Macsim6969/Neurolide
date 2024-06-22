@@ -26,7 +26,7 @@ export abstract class OffersDataClass implements OnInit, OnDestroy {
     this.streamOffersDataFromStore();
   }
 
-  private streamOffersDataFromStore() {
+  protected streamOffersDataFromStore() {
     this.store.select(selectOffersData).pipe(takeUntil(this.destroy$))
       .subscribe((data: OfferInterface[]) => {
         if (data) {

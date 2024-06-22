@@ -4,7 +4,7 @@ import { tap, withLatestFrom } from "rxjs";
 import { BackendService } from "../../shared/services/backend.service";
 import { Store, select } from "@ngrx/store";
 import { StoreInterface } from "../model/store.model";
-import { selectUserId } from "../selectors/store.selectors";
+import { selectUserData, selectUserId } from "../selectors/store.selectors";
 import { Injectable } from "@angular/core";
 import { MonitoringService } from "../../shared/services/monitoring.service";
 
@@ -17,6 +17,7 @@ export class AuthEffects {
       ofType(startGetData),
       withLatestFrom(this.store.pipe(select(selectUserId))),
       tap(([action, id]) => {
+        const rules = JSON.parse(localStorage.getItem('rules'))
         this.backendService.getUserProfile(id);
         this.backendService.getMonitoringData(id);
         this.backendService.getAlluser();
@@ -24,6 +25,10 @@ export class AuthEffects {
         this.backendService.getCardsTransactions(id);
         this.backendService.getMediaChannels(id);
         this.backendService.getOffers();
+        console.log(rules)
+        if(rules === 'brand'){
+          this.backendService.getFromAddedOffer();
+        }
       })
     )
     ,
