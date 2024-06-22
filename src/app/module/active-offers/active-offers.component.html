@@ -1,0 +1,8 @@
+<section *ngIf="!isMobile" class="added-offers">
+  <app-active-offers-header [header]="'offers.activeOffers'| translate"></app-active-offers-header>
+  <app-active-offers-filter></app-active-offers-filter>
+  <app-active-offers-list></app-active-offers-list>
+
+</section>
+<!-- <app-offers-mobile *ngIf="isMobile"></app-offers-mobile> -->
+<app-form-offers *ngIf="isOpenForm"></app-form-offers>
