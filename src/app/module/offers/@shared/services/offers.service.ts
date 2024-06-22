@@ -51,9 +51,4 @@ export class OffersService {
     });
 
   }
-
-  public setNewChangesOfferActive(activeOffers: OfferInterface, mainActiveOffers: OfferInterface[]) {
-    const blockId = Object.keys(mainActiveOffers).find(key => mainActiveOffers[key].id === activeOffers.id);
-    this.backendService.updateActiveOffers(blockId, activeOffers);
-  }
 }

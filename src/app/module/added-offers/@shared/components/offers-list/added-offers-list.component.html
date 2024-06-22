@@ -9,7 +9,7 @@
 
     <nav class="price">${{channel.balance ? channel.balance : 0}}</nav>
     <nav class="settings">
-      <button (click)="changeOffers(channel?.id,'added')" type="submit" class="save "><mat-icon
+      <button (click)="changeOffers(channel?.id)" type="submit" class="save "><mat-icon
           svgIcon="settings"></mat-icon></button>
       <button (click)="removeOffers(channel?.id)" type="button" class="remove "><mat-icon
           svgIcon="remove"></mat-icon></button>

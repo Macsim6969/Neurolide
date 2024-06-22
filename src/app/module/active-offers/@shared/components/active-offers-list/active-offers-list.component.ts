@@ -8,10 +8,10 @@ import { SearchMediaChannelAndOffersService } from '../../../../../shared/servic
 import { UserSearchService } from '../../../../../shared/services/userSearch.service';
 import { TranslateService } from '@ngx-translate/core';
 import { OffersList } from '../../../../../shared/abstract/offers/offersList';
-import { takeUntil } from 'rxjs';
 import { OfferInterface } from '../../../../offers/@shared/interface/offer.interface';
 import { selectActiveOffers } from '../../../../../store/selectors/store.selectors';
 import { ActiveOfferService } from '../../../../offers/@shared/services/activeOffer.service';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-active-offers-list',
@@ -35,7 +35,7 @@ export class ActiveOffersListComponent extends OffersList {
   }
 
   protected override streamOffersDataFromStore(): void {
-    this.store.pipe(select(selectActiveOffers)).subscribe((data) => {
+    this.store.pipe(select(selectActiveOffers), takeUntil(this.destroy$)).subscribe((data) => {
       this.activeOffers = Object.values(data);
       this.activeOfferService._activeOfferData = data;
     })

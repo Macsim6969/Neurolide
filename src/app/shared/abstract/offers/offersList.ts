@@ -104,17 +104,9 @@ export abstract class OffersList extends OffersDataClass {
     }
   }
 
-  public changeOffers(index: number, rules: string) {
-    if (rules === 'active') {
-      const activeOffers = Object.values(this.activeOfferService._activeOfferData)
-      const media = activeOffers.find((e: OfferInterface) => e.id === index);
-      this.offersFormService._offerData = media;
-      this.offersFormService._statusOffer = 'active';
-    } else {
-      const media = this.offers?.find((e: OfferInterface) => e.id === index);
-      this.offersFormService._offerData = media;
-      this.offersFormService._statusOffer = '';
-    }
+  public changeOffers(index: number) {
+    const media = this.offers?.find((e: OfferInterface) => e.id === index);
+    this.offersFormService._offerData = media;
     this.offersFormService._statusMOde = 'edite';
     this.offersFormService._isOfferForm = true;
   }

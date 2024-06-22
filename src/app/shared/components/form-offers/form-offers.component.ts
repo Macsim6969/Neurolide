@@ -1,5 +1,5 @@
 import { OfferInterface } from './../../../module/offers/@shared/interface/offer.interface';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { BasePopupComponent } from '../../../module/balance/@shared/form';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OfferFormService } from '../../../module/offers/@shared/services/offersForms.service';
@@ -9,7 +9,7 @@ import { ModelPaymentInterface } from '../../../module/offers/@shared/interface/
 import { OffersService } from '../../../module/offers/@shared/services/offers.service';
 import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../../store/model/store.model';
-import { selectActiveOffers, selectOffersData } from '../../../store/selectors/store.selectors';
+import { selectOffersData } from '../../../store/selectors/store.selectors';
 
 @Component({
   selector: 'app-form-offers',
@@ -81,35 +81,18 @@ export class FormOffersComponent extends BasePopupComponent {
   }
 
   private getAllOffersData() {
-    if (this.offerFormService._statusOffer !== 'active') {
-      this.store.pipe(take(1), select(selectOffersData), takeUntil(this.destroy$)).subscribe((data) => {
-        this.offersData = data;
-        const newOffers: OfferInterface = {
-          ...this.offerData,
-          name: this.form.value.name,
-          link: this.form.value.link,
-          brand: this.form.value.brand,
-          payments: this.form.value.payments,
-          balance: this.form.value.balance
-        }
-
-        this.offersService.setNewChangesFromForm(newOffers, this.offersData);
-      })
-    } else {
-      this.store.pipe(take(1), select(selectActiveOffers), takeUntil(this.destroy$)).subscribe((data) => {
-        this.offersData = data;
-        const newOffers: OfferInterface = {
-          ...this.offerData,
-          name: this.form.value.name,
-          link: this.form.value.link,
-          brand: this.form.value.brand,
-          payments: this.form.value.payments,
-          balance: this.form.value.balance
-        }
-        this.offersService.setNewChangesOfferActive(newOffers, this.offersData);
-      })
-    }
-
+    this.store.pipe(take(1), select(selectOffersData), takeUntil(this.destroy$)).subscribe((data) => {
+      this.offersData = data;
+      const newOffers: OfferInterface = {
+        ...this.offerData,
+        name: this.form.value.name,
+        link: this.form.value.link,
+        brand: this.form.value.brand,
+        payments: this.form.value.payments,
+        balance: this.form.value.balance
+      }
+      this.offersService.setNewChangesFromForm(newOffers, this.offersData);
+    })
   }
 
   public override closePopup(): void {

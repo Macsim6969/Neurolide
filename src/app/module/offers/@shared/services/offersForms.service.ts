@@ -14,7 +14,6 @@ export class OfferFormService {
   private offerFormDataSubject: BehaviorSubject<OfferInterface> = new BehaviorSubject<OfferInterface>(null);
   private statusModeSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
   private rulesOfferMode: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  private statusOfferSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
   constructor(
     private backendService: BackendService,
@@ -53,13 +52,7 @@ export class OfferFormService {
     return this.statusModeSubject;
   }
 
-  set _statusOffer(value: string) {
-    this.statusOfferSubject.next(value);
-  }
 
-  get _statusOffer() {
-    return this.statusOfferSubject.getValue();
-  }
 
   public sendMediaChannelsData(newForm: OfferInterface, choiceMethod: string) {
     this.setUnikeID()

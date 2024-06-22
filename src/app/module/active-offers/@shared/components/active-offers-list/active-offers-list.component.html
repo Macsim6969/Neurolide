@@ -8,12 +8,7 @@
     <nav class="subscribe">${{channel.payments ? channel.payments : 0}}</nav>
 
     <nav class="price">${{channel.balance ? channel.balance : 0}}</nav>
-    <nav class="settings">
-      <button (click)="changeOffers(channel?.id,'active')" type="submit" class="save "><mat-icon
-          svgIcon="settings"></mat-icon></button>
-      <button (click)="removeOffers(channel?.id)" type="button" class="remove "><mat-icon
-          svgIcon="remove"></mat-icon></button>
-    </nav>
+    <nav class="settings"> {{channel.vip ? 'VIP' : ''}}</nav>
   </div>
 </div>
 
