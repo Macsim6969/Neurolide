@@ -13,4 +13,6 @@ export interface StoreInterface {
   cardsTransactions: TransactionInterface[]
   mediaChannels: MediaFormInterface[]
   offers: OfferInterface[]
+  activeOffers: OfferInterface[]
+  addedOffers: OfferInterface[]
 }

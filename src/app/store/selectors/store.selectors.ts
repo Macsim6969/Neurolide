@@ -12,3 +12,6 @@ export const selectCardsPayments = (store : {store: StoreInterface}) => store.st
 export const selectCardTransactions = (store: {store: StoreInterface}) => store.store.cardsTransactions;
 export const selectMediaChannels = (store: {store: StoreInterface}) => store.store.mediaChannels;
 export const selectOffersData = (store: {store:StoreInterface}) => store.store.offers;
+
+export const selectAddedOffers = (store: {store: StoreInterface}) => store.store.addedOffers;
+export const selectActiveOffers = (store: {store: StoreInterface}) => store.store.activeOffers;
