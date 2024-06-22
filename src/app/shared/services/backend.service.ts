@@ -107,27 +107,27 @@ export class BackendService {
     })
   }
 
-  public setNewMediaChannels(userId: string, data: MediaFormInterface) {
-    return this.http.post<MediaFormInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels.json`, data).subscribe(() => {
-      this.getMediaChannels(userId);
+  public setNewMediaChannels(data: MediaFormInterface) {
+    return this.http.post<MediaFormInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/media-channels.json`, data).subscribe(() => {
+      this.getMediaChannels();
     })
   }
 
-  public setMediaChannels(userId: string, user: string, data: MediaFormInterface) {
-    return this.http.put<MediaFormInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels/${user}.json`, data).subscribe(() => {
-      this.getMediaChannels(userId);
+  public setMediaChannels(user: string, data: MediaFormInterface) {
+    return this.http.put<MediaFormInterface>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/media-channels/${user}.json`, data).subscribe(() => {
+      this.getMediaChannels();
     })
   }
 
-  public getMediaChannels(userId: string) {
-    return this.http.get<MediaFormInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels.json`).subscribe((data: MediaFormInterface[]) => {
+  public getMediaChannels() {
+    return this.http.get<MediaFormInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/media-channels.json`).subscribe((data: MediaFormInterface[]) => {
       data ? this.store.dispatch(setMediaChannelsData({ data: data })) : null;
     })
   }
 
-  public removeMediaChannels(userId: string, user: string) {
-    return this.http.delete<MediaFormInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/users/${userId}/media-channels/${user}.json`).subscribe((data: MediaFormInterface[]) => {
-      this.getMediaChannels(userId)
+  public removeMediaChannels(user: string) {
+    return this.http.delete<MediaFormInterface[]>(`https://neuroline-af6a2-default-rtdb.firebaseio.com/media-channels/${user}.json`).subscribe(() => {
+      this.getMediaChannels()
     })
   }
 

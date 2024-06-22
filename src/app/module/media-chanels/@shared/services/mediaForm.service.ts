@@ -40,7 +40,6 @@ export class MediaFormService {
   }
 
   public sendMediaChannelsData(newForm: MediaFormInterface, payment: string) {
-    const id = JSON.parse(localStorage.getItem('id'))
     const newMediaChannels: MediaFormInterface = {
       id: this.generateUniqueId(6),
       name: newForm.name,
@@ -52,7 +51,7 @@ export class MediaFormService {
       vip: false
     }
 
-    this.backendService.setNewMediaChannels(id, newMediaChannels)
+    this.backendService.setNewMediaChannels(newMediaChannels)
   }
 
   private generateUniqueId(length: number): string {

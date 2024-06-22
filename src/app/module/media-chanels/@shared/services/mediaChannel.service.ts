@@ -12,37 +12,33 @@ export class MediaChannelService {
   ) { }
 
   public removeMedia(mediaChannels: MediaFormInterface[], mainData: MediaFormInterface[], id: string) {
-    const userId = JSON.parse(localStorage.getItem('id'))
     const media = mediaChannels.find((e: MediaFormInterface) => e.id === id)
     const blockId = Object.keys(mainData).find(key => mainData[key] === media)
-    this.backendService.removeMediaChannels(userId, blockId);
+    this.backendService.removeMediaChannels(blockId);
   }
 
   public setVipStatus(mediaChannels: MediaFormInterface[], mainData: MediaFormInterface[], id: string) {
-    const userId = JSON.parse(localStorage.getItem('id'))
     const media = mediaChannels.find((e: MediaFormInterface) => e.id === id)
     const blockId = Object.keys(mainData).find(key => mainData[key] === media)
     const newData: MediaFormInterface = {
       ...media,
       vip: !media.vip
     }
-    this.backendService.setMediaChannels(userId, blockId, newData);
+    this.backendService.setMediaChannels(blockId, newData);
   }
 
   public setNewChanges(mediaChannels: MediaFormInterface[], mainData: MediaFormInterface[], id: string, newStatus: string) {
-    const userId = JSON.parse(localStorage.getItem('id'))
     const media = mediaChannels.find((e: MediaFormInterface) => e.id === id)
     const blockId = Object.keys(mainData).find(key => mainData[key] === media)
     const newData: MediaFormInterface = {
       ...media,
       payout: newStatus
     }
-    this.backendService.setMediaChannels(userId, blockId, newData);
+    this.backendService.setMediaChannels(blockId, newData);
   }
 
   public setNewChangesFromForm(mediaChannels: MediaFormInterface, mainData: MediaFormInterface[]) {
-    const userId = JSON.parse(localStorage.getItem('id'));
     const blockId = Object.keys(mainData).find(key => mainData[key].id === mediaChannels.id);
-    this.backendService.setMediaChannels(userId, blockId, mediaChannels);
+    this.backendService.setMediaChannels(blockId, mediaChannels);
   }
 }

@@ -29,10 +29,11 @@ export abstract class MediaChannelsDataClass implements OnInit, OnDestroy {
   private streamMediaChannelsDataFromStore() {
     this.store.select(selectMediaChannels).pipe(takeUntil(this.destroy$))
       .subscribe((data: MediaFormInterface[]) => {
+        console.log(data);
         if (data) {
           this.mainData = data;
           this.mediaChannels = Object.values(data);
-        }
+        } 
       });
   }
 
