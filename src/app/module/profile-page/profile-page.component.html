@@ -1,8 +1,15 @@
 <app-profile></app-profile>
 
-<section *ngIf="!isMobile" class="media">
-  <app-media-header></app-media-header>
-  <app-media-list [statusPage]="'profile'"></app-media-list>
-</section>
-<app-list-mobile *ngIf="isMobile"></app-list-mobile>
-<app-form-media *ngIf="isOpenForm"></app-form-media>
+<div *ngIf="rules === 'manager'">
+  <section *ngIf="!isMobile" class="media">
+    <app-media-header></app-media-header>
+    <app-media-list [statusPage]="'profile'"></app-media-list>
+  </section>
+  <app-list-mobile *ngIf="isMobile"></app-list-mobile>
+  <app-form-media *ngIf="isOpenForm"></app-form-media>
+</div>
+
+<div *ngIf="rules === 'brand'">
+  <app-cards-payment *ngIf="!isMobile"></app-cards-payment>
+  <app-cards-payment-mobile *ngIf="isMobile"></app-cards-payment-mobile>
+</div>

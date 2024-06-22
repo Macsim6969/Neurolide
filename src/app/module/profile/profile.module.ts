@@ -8,8 +8,6 @@ import { PopupEditeComponent } from './@shared/component/popup-edite/popup-edite
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileServices } from './@shared/services/profile.service';
 import { BalanceServiceModule } from '../../shared/services/balance/balanceService.module';
-import { MediaChanelsModule } from '../media-chanels/media-chanels.module';
-import { MediaModuleClass } from '../media-chanels/@shared/module/media.module';
 
 
 
