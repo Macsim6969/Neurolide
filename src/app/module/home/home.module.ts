@@ -15,7 +15,7 @@ const routes: Routes = [
       { path: '', loadChildren: () => import('../../module/main-mobile-page/main-mobile-page.module').then((m) => m.MainMobilePageModule), canActivate: [IsMobileGuard] },
       { path: 'manager', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'brand', loadChildren: () => import('../../module/brand/brand.module').then((m) => m.BrandModule) },
-      { path: 'affiliate', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
+      { path: 'affiliate', loadChildren: () => import('../../module/affiliate/affiliate.module').then((m) => m.AffiliateModule) },
       { path: 'users', loadChildren: () => import('../../module/users/users.module').then((m) => m.UsersModule) },
       { path: 'media-channels', loadChildren: () => import('../../module/media-chanels/media-chanels.module').then((m) => m.MediaChanelsModule) },
       { path: 'added-offers', loadChildren: () => import('../../module/added-offers/added-offers.module').then((m) => m.AddedOffersModule) },
