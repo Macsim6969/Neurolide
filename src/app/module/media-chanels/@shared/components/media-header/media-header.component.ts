@@ -16,6 +16,7 @@ export class MediaHeaderComponent implements OnInit, OnDestroy {
   public active: number = 0;
   public isActive: boolean[];
   public rules: string;
+  public url: string;
   constructor(
     private globalIcon: GlobalIconsService,
     private mediaFormService: MediaFormService,
@@ -28,7 +29,8 @@ export class MediaHeaderComponent implements OnInit, OnDestroy {
   }
 
   private checkRulesUser(){
-    this.rules = JSON.parse(localStorage.getItem('rules'))
+    this.rules = JSON.parse(localStorage.getItem('rules'));
+    this.url = localStorage.getItem('currentRoute')
   }
 
   public toogleFilter(i: number, tag: string) {

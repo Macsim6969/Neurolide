@@ -6,3 +6,12 @@
     }
   }
 }
+
+button{
+  &.hide{
+    display: none !important;
+  }
+  &.active{
+    display: flex !important;
+  }
+}
