@@ -12,7 +12,7 @@ import { newUserID, setRegiset, startGetData } from './store/actions/store.actio
 export class AppComponent implements AfterViewInit {
 
   choiceLang: ['en', 'ua', 'ru'] = ['en', 'ua', 'ru'];
-  constructor(
+  constructor( 
     private translate: TranslateService,
     private store: Store<{ store: StoreInterface }>
   ) { }
