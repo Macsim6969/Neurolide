@@ -14,7 +14,8 @@ import { OffersService } from "../services/offers.service";
 export abstract class OffersDataClass implements OnInit, OnDestroy {
   protected destroy$: Subject<void> = new Subject<void>();
   protected mainData: OfferInterface[];
-  public addedOffer: OfferInterface[];
+  protected addedOffer: OfferInterface[];
+  protected offerInWork: OfferInterface[];
   public offers: OfferInterface[];
   protected activePayout: string[] = [];
   constructor(
@@ -34,6 +35,7 @@ export abstract class OffersDataClass implements OnInit, OnDestroy {
           this.mainData = data;
           this.offers = Object.values(data);
           this.addedOffer = Object.values(data).filter((e) => e.statusOffer === 'added')
+          this.offerInWork = Object.values(data).filter((e) => e.isAdvertice === true);
         }
       });
 

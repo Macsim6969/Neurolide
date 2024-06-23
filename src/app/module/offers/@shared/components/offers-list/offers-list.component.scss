@@ -54,6 +54,23 @@
       width: 66px;
     }
 
+    .advertise {
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      background-color: #302EFF;
+      box-shadow: 0px 4px 20px 0px #00000040;
+      padding: 10px 12px;
+      font-size: 1.6rem;
+      color: #FFFFFF;
+      font-weight: 400;
+      line-height: 18.8px;
+      
+      &.hide{
+        opacity: 0.7;
+      }
+    }
+
     .payout {
       position: relative;
       z-index: 95;

@@ -7,14 +7,14 @@
   </div>
   <div class="user_action">
     <button
-    [ngClass]="{'hide': (rules === 'affiliate' || rules === 'brand'), 'active' : (url === '/profile' && rules === 'brand')}"
+    [ngClass]="{'hide': (rules === 'affiliate' || rules === 'brand'), 'active' : (url === '/profile' && rules === 'brand' || rules === 'affiliate')}"
       *ngFor="let action of userActions" class="sans {{action.class}}" (click)="openPopup()"
       mat-button>{{action.text}}</button>
   </div>
 </div>
 <div class="user_action_mobile">
   <button
-    [ngClass]="{'hide': (rules === 'affiliate' || rules === 'brand'), 'active' : (url === '/profile' && rules === 'brand')}"
+    [ngClass]="{'hide': (rules === 'affiliate' || rules === 'brand'), 'active' : (url === '/profile' && rules === 'brand' || rules === 'affiliate')}"
     *ngFor="let action of userActions" class="sans {{action.class}}" (click)="openPopup()"
     mat-button>{{action.text}}</button>
 </div>

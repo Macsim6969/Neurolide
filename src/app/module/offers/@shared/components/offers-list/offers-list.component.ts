@@ -139,5 +139,8 @@ export class OffersListComponent extends OffersDataClass {
     this.offersService.setOfferToActiveData(idOffer, this.mainData, this.offers);
   }
 
+  public goToWork(idOffer: number){
+     this.offersService.setOfferToWork(this.mainData, idOffer);
+  }
 
 }

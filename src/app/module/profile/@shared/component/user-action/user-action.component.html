@@ -4,7 +4,7 @@
       [src]="avatar ? avatar : '../../../../../../assets/images/profile/avatar.png'" alt="Avatar">
   </div>
   <div class="user_actions">
-    <button [ngClass]="{'hide': rules === 'affiliate' || rules === 'brand', 'active' : (url === '/profile' && rules === 'brand')}" (click)="actionsLogout(action.class)"
+    <button [ngClass]="{'hide': rules === 'affiliate' || rules === 'brand', 'active' : (url === '/profile' && rules === 'brand' || rules === 'affiliate')}" (click)="actionsLogout(action.class)"
       *ngFor="let action of userActions" class="sans {{action.class}}" mat-button>{{action.text}}</button>
 
   </div>

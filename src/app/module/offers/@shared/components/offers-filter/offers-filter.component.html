@@ -2,7 +2,8 @@
   <nav [ngClass]="{
     'hide': (search['tag'].toLocaleLowerCase() === 'vip' && rules === 'manager') ||
     search['tag'].toLocaleLowerCase() === 'setting'&& rules === 'brand' || 
-    search['tag'].toLocaleLowerCase() === 'payout' && rules === 'brand'
+    search['tag'].toLocaleLowerCase() === 'payout' && rules === 'brand' ||
+    search['tag'].toLocaleLowerCase() === 'setting' && rules === 'affiliate'
 
   }" class="header_content {{search['title'].toLocaleLowerCase()}}" (click)="toogleFilter(i, search.tag)"
     *ngFor="let search of userHead; index as i">

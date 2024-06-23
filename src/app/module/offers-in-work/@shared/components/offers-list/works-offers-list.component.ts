@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
@@ -16,9 +16,12 @@ import { ActiveOfferService } from '../../../../offers/@shared/services/activeOf
   templateUrl: './works-offers-list.component.html',
   styleUrls: ['./works-offers-list.component.scss']
 })
-export class WorksOffersListComponent extends OffersList {
+export class WorksOffersListComponent extends OffersList implements OnInit{
   public addedOffers: OfferInterface[];
   public allAddedOffers: OfferInterface[];
+
+  public rules: string;
+  public url: string;
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
@@ -31,6 +34,15 @@ export class WorksOffersListComponent extends OffersList {
   ) {
     super(store, globalIconsService, offersService, offersFormService, searchMediaChannelAndOffers, userSearchService, translate, activeOfferService);
     super.ngOnInit();
+  }
+
+  override ngOnInit(): void {
+    
+  }
+
+  private checkRulesAndUrlUser(){
+    this.rules = JSON.parse(localStorage.getItem('rules'));
+    this.url = localStorage.getItem('currentRoute')
   }
 
 }

@@ -404,6 +404,10 @@
         "tag": "payout"
       },
       {
+        "title": "Advertise offers",
+        "tag": "advertise"
+      },
+      {
         "title": "Status",
         "tag": "vip"
       },
