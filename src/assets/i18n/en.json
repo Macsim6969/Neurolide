@@ -219,6 +219,11 @@
     },
     {
       "icon": "./assets/images/sidebar/users.svg",
+      "title": "Offers in works",
+      "url": "/offers-in-works"
+    },
+    {
+      "icon": "./assets/images/sidebar/users.svg",
       "title": "Added offers",
       "url": "/added-offers"
     },
@@ -363,6 +368,7 @@
     }
   },
   "offers": {
+    "offersInWork": "Offers in works",
     "addedTitle": "Added offers",
     "activeOffers": "Active offers",
     "headerTitle": "Offer up",

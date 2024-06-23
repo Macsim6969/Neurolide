@@ -1,0 +1,9 @@
+<div class="search_header">
+  <p class="search_title" [innerHTML]="header"></p>
+  <div class="search_actions">
+    <div class="action_search {{rules}}">
+      <mat-icon svgIcon="search"></mat-icon>
+      <input type="text" placeholder="{{'media.search'| translate}}" (input)="changeData($event)">
+    </div>
+  </div>
+</div>

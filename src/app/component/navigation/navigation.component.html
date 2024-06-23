@@ -4,12 +4,12 @@
     'hide': (userRule === 'manager' && (page.url === '/brand' || page.url === '/affiliate' || page.url === '/added-offers')) ||
             (userRule === 'brand' && (page.url === '/manager' || page.url === '/affiliate')) ||
             (userRule === 'affiliate' && (page.url === '/manager' || page.url === '/brand')) || (i === 0 && !isMobile) ||
-            (userRule === 'brand' && (page.url === '/users'))
+            (userRule === 'brand' || userRule === 'affiliate' && (page.url === '/users' || page.url === '/added-offers')) 
   }">
     <a routerLinkActive="active" [routerLink]="[page.url]" (click)="removePopup()" class="content_card"
       *ngIf="(userRule !== 'manager' || (userRule === 'manager' && page.url !== '/brand' && page.url !== '/affiliate')) 
             && (userRule !== 'brand' || (userRule === 'brand' && page.url !== '/manager' && page.url !== '/affiliate'))
-            && (userRule !== 'affiliate' || (userRule === 'affiliate' && page.url !== '/manager' && page.url !== '/affiliate')) ||  (i === 0 && !isMobile)">
+            && (userRule !== 'affiliate' || (userRule === 'affiliate' && page.url !== '/manager' && page.url !== '/brand')) ||  (i === 0 && !isMobile)">
       <img [src]="page.icon" alt="{{page.title}}">
       <p>{{page.title}}</p>
     </a>
