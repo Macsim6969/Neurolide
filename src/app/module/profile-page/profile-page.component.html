@@ -1,6 +1,6 @@
 <app-profile ></app-profile> 
 
-<div *ngIf="rules === 'manager'">
+<div *ngIf="rules === 'manager' || rules === 'affiliate'">
   <section *ngIf="!isMobile" class="media">
     <app-media-header></app-media-header>
     <app-media-list [statusPage]="'profile'"></app-media-list>
