@@ -1,36 +1,36 @@
 <div class="profile-edite">
   <div class="popup">
-    <h3 class="popup_title sans">Внесення коректив платежу</h3>
+    <h3 class="popup_title sans">Making payment adjustments</h3>
     <form class="form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="userInfoTransaction">
       <div class="column">
-        <mat-label class="label sans">Номер</mat-label>
-        <input class="sans" placeholder="Номер" type="text" formControlName="number">
+        <mat-label class="label sans">Number</mat-label>
+        <input class="sans" placeholder="Number" type="text" formControlName="number">
       </div>
       <div class="row">
         <div class="column">
-          <mat-label class="label sans">Дата рахунку</mat-label>
-          <input class="sans" placeholder="Пошта" type="date" formControlName="invoiceData">
+          <mat-label class="label sans">Invoice dateу</mat-label>
+          <input class="sans" placeholder="Invoice date" type="date" formControlName="invoiceData">
         </div>
         <div class="column">
-          <mat-label class="label sans">Дата оплати</mat-label>
-          <input class="sans" placeholder="Пошта" type="date" formControlName="dataPayment">
+          <mat-label class="label sans">Date of payment</mat-label>
+          <input class="sans" placeholder="Date of payment" type="date" formControlName="dataPayment">
         </div>
       </div>
       <div class="column">
-        <mat-label class="label sans">Статус</mat-label>
-        <input class="sans" placeholder="Статус" type="text" formControlName="status">
+        <mat-label class="label sans">Status</mat-label>
+        <input class="sans" placeholder="Status" type="text" formControlName="status">
       </div>
       <div class="column">
-        <mat-label class="label sans">Спосіб оплати</mat-label>
-        <input class="sans" placeholder="Спосіб оплати" type="text" formControlName="paymentMethod">
+        <mat-label class="label sans">Payment method</mat-label>
+        <input class="sans" placeholder="Payment method" type="text" formControlName="paymentMethod">
       </div>
       <div class="column">
-        <mat-label class="label sans">Підписка</mat-label>
-        <input class="sans" placeholder="Підписка" type="text" formControlName="subscribe">
+        <mat-label class="label sans">Subscription</mat-label>
+        <input class="sans" placeholder="Subscription" type="text" formControlName="subscribe">
       </div>
       <div class="column">
-        <mat-label class="label sans">Сума</mat-label>
-        <input class="sans" placeholder="Сума" type="number" formControlName="suma">
+        <mat-label class="label sans">Amount</mat-label>
+        <input class="sans" placeholder="Amount" type="number" formControlName="suma">
       </div>
       <div class="action">
         <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
