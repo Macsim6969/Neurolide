@@ -16,10 +16,10 @@ export class HomeComponent extends IsMobilePage implements OnInit, OnDestroy {
     private router: Router
   ) {
     super();
-    super.ngOnInit();
   }
-
+  
   override ngOnInit(): void {
+    super.ngOnInit();
     this.streamRouterUrl();
   }
 

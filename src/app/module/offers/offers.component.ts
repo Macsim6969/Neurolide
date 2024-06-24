@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OfferFormService } from './@shared/services/offersForms.service';
 import { OffersOpenForm } from '../../shared/abstract/offers/offersOpenForm';
 
@@ -13,7 +13,9 @@ export class OffersComponent extends OffersOpenForm implements OnInit {
     override offerFormService: OfferFormService
   ) {
     super(offerFormService);
-    super.ngOnInit();
-    super.onResize();
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit()
   }
 }
