@@ -7,13 +7,15 @@ import { ShareModule } from "../../../../shared/shared.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { CommonModule } from "@angular/common";
 import { OffersBlockModule } from "../../../offers/@shared/module/offersBlock.module";
+import { WorksOffersMobileComponent } from "../components/offers-mobile/works-offers-mobile.component";
 
 @NgModule({
   declarations: [
     OffersInWorkComponent,
     WorksOffersFilterComponent,
     WorksOffersHeaderComponent,
-    WorksOffersListComponent
+    WorksOffersListComponent,
+    WorksOffersMobileComponent
   ],
   imports: [
     CommonModule,

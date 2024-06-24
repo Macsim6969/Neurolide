@@ -28,7 +28,6 @@ export class UserEditComponent implements OnInit, OnDestroy {
     this.initializeUserDataFromJsonAndStore();
     this.rules = JSON.parse(localStorage.getItem('rules'));
     this.url = localStorage.getItem('currentRoute');
-    console.log(this.url, this.rules)
   }
 
   private initializeUserDataFromJsonAndStore() {

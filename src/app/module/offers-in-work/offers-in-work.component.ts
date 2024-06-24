@@ -16,4 +16,5 @@ export class OffersInWorkComponent extends OffersOpenForm {
     super(offerFormService);
     super.ngOnInit();
   }
+
 }
