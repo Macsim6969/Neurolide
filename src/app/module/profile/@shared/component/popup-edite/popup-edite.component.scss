@@ -1,5 +1,5 @@
 .profile-edite {
-  background: rgba(67, 67, 67, 0.5019607843);
+  background: #43434380;
   position: fixed;
   inset: 0;
   width: 100%;
@@ -12,7 +12,7 @@
 
   .popup {
     border-radius: 20px;
-    background-color: #F1F4FF;
+    background-color: #0E1218;
     max-width: 368px;
     width: 100%;
     max-height: 766px;
@@ -32,7 +32,7 @@
       font-size: 2rem;
       font-weight: 400;
       line-height: 2.35rem;
-      color: #000000;
+      color: #FFFFFF;
     }
 
     .form {
@@ -49,16 +49,16 @@
         .label {
           font-size: 1.6rem;
           line-height: 1.88rem;
-          color: #000000;
+          color: #FFFFFF;
         }
 
         input {
-          border: 1px solid #A3AED0;
+          border: 1px solid #71788C;
           outline: none;
           border-radius: 20px;
           padding: 10px 20px;
-
-          color: #A3AED0;
+          background-color: transparent;
+          color: #71788C;
           font-size: 1.4rem;
           line-height: 16.45px;
         }
@@ -89,13 +89,13 @@
 
 
           &.cancel {
-            background: #A3AED0;
+            background: #181A1E;
             color: #FFFFFF;
 
           }
 
           &.save {
-            background: linear-gradient(90deg, #70A9FF 0%, #316EC9 57%, #0149B4 100%);
+            background: #3334FF;
             color: #FFFFFF;
           }
         }

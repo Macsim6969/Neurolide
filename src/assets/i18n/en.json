@@ -100,24 +100,20 @@
     ],
     "userInfo": [
       {
-        "key": "userID",
-        "text": "Admin id:"
-      },
-      {
         "key": "name",
         "text": "Name:"
       },
       {
-        "key": "address",
-        "text": "Address:"
+        "key": "surname",
+        "text": "Surname:"
       },
       {
         "key": "number",
-        "text": "Number phone:"
+        "text": "Tel num:"
       },
       {
         "key": "email",
-        "text": "E-mail:"
+        "text": "Email:"
       },
       {
         "key": "password",
@@ -126,22 +122,16 @@
     ],
     "userActions": [
       {
-        "text": "Edit personal data",
+        "text": "Edit",
         "class": "edit"
-      }
-    ],
-    "userLogoutChanges": [
+      },
       {
         "text": "Exit",
         "class": "logout"
       },
       {
-        "text": "Delete profile",
-        "class": "remove"
-      },
-      {
         "text": "Delete",
-        "class": "remove-mobile"
+        "class": "remove"
       }
     ]
   },

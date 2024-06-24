@@ -4,27 +4,31 @@
     <form class="form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="userInfo">
       <div class="column">
         <mat-label class="label sans">Name:</mat-label>
-        <input class="sans" placeholder="Name" type="text" formControlName="name">
+        <input class="sans" placeholder="...." type="text" formControlName="name">
       </div>
       <div class="column">
-        <mat-label class="label sans">Address:</mat-label>
-        <input class="sans" placeholder="Address" type="text" formControlName="address">
+        <mat-label class="label sans">Surname:</mat-label>
+        <input class="sans" placeholder="...." type="text" formControlName="address">
       </div>
       <div class="column">
         <mat-label class="label sans">Number Phone:</mat-label>
-        <input class="sans" placeholder="Number Phone" type="number" formControlName="number">
+        <input class="sans" placeholder="...." type="number" formControlName="number">
       </div>
       <div class="column">
         <mat-label class="label sans">Password</mat-label>
-        <input class="sans" placeholder="Password" type="password" formControlName="password">
+        <input class="sans" placeholder="...." type="password" formControlName="password">
       </div>
       <!-- <div class="column">
         <mat-label class="label sans">Avatar</mat-label>
         <input class="sans" type="file" formControlName="avatar">
       </div> -->
+      <div class="column">
+        <mat-label class="label sans">Password</mat-label>
+        <input class="sans" placeholder="...." type="password" formControlName="password">
+      </div>
       <div class="action">
-        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
-        <button type="submit" class="save sans" mat-button>Save Changes</button>
+        <button type="button" (click)="closePopup()" class="cancel" mat-button>Cancel</button>
+        <button type="submit" class="save" mat-button>Save Changes</button>
       </div>
     </form>
   </div>

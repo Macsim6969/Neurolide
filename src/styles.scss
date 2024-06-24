@@ -39,6 +39,7 @@ body {
   height: 100%;
   font-size: 10px;
   font-family: "Public Sans", sans-serif !important;
+  background-color: #0A0A0A;
 
 }
 
@@ -69,12 +70,8 @@ body {
     gap: 8px;
   }
 
-  .right_block {
+  .manager {
     width: 100%;
-    background-image: url("./assets/images/main/main_page.png");
-    background-repeat: no-repeat;
-    background-size: 950px 455px;
-    background-position: top right;
     padding-right: 30px;
   }
 }
