@@ -26,7 +26,7 @@
       </div>
     </button>
     <button [ngClass]="{'hide': channel.isAdvertice}" [disabled]="channel.isAdvertice" (click)="goToWork(channel.id)"
-      mat-button *ngIf="rules === 'manager' ||rules === 'affiliate'" class="advertise">Advertise</button>
+      mat-button *ngIf="rules === 'affiliate'" class="advertise">Advertise</button>
     <nav class="status" *ngIf="statusPage === 'offers' && rules === 'manager' ||rules === 'affiliate'">
       <button (click)="removeOffers(channel.id)" type="button" class="remove "><mat-icon
           svgIcon="cancel"></mat-icon></button>

@@ -195,7 +195,7 @@
     {
       "icon": "./assets/images/sidebar/main.svg",
       "title": "Main",
-      "url": "/home"
+      "url": "/"
     },
     {
       "icon": "./assets/images/sidebar/manager.svg",

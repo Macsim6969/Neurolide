@@ -11,7 +11,7 @@ import { OffersService } from "../services/offers.service";
   template: ''
 })
 
-export abstract class OffersDataClass implements OnInit, OnDestroy {
+export abstract class OffersDataClass  implements OnInit, OnDestroy {
   protected destroy$: Subject<void> = new Subject<void>();
   protected mainData: OfferInterface[];
   protected addedOffer: OfferInterface[];
