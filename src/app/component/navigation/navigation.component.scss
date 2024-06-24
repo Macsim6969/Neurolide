@@ -12,10 +12,8 @@
 
   .content_card {
     text-decoration: none;
-    background-color: #124897;
-    border-radius: 20px;
-    box-shadow: 0px 4px 20px 0px #00000040;
     padding: 20px 0;
+    border-radius: 20px;
 
     display: flex;
     flex-direction: row;
@@ -37,8 +35,24 @@
       color: #FFFFFF;
     }
 
+    &:hover {
+      background: #1e293a;
+    }
+
     &.active {
-      background-color: #092145;
+      p {
+        color: #302EFF;
+      }
+
+      mat-icon {
+        ::ng-deep {
+          svg {
+            path {
+              stroke: #302EFF;
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -13,7 +13,7 @@
 
   .card {
     border-radius: 10px;
-    background-color: #F1F4FF;
+    background-color: #0E1218;
     display: flex;
     flex-direction: column;
     max-width: 375.75px;
@@ -34,7 +34,7 @@
       font-weight: 500;
       line-height: 3.2rem;
       letter-spacing: -0.02em;
-      color: #434343;
+      color: #FFFFFF;
 
       @media (max-width: 1124px) {
         font-size: 1.2rem;
@@ -49,6 +49,7 @@
       font-weight: 700;
       line-height: 3.2rem;
       letter-spacing: -0.02em;
+      color: #FFFFFF;
 
       @media (max-width: 1124px) {
         font-size: 1.9rem;
@@ -61,36 +62,36 @@
       bottom: 0;
       right: 0;
       left: 0;
-      border: 4.5px solid #FF0000;
+      border: 4.5px solid #423EFC;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
 
       @media (max-width: 1124px) {
-        border: 1.75px solid #FF0000;
+        border: 1.75px solid #423EFC;
 
         &.yellow {
-          border: 1.75px solid #FFD600 !important;
+          border: 1.75px solid #F6D423 !important;
         }
 
         &.green {
-          border: 1.75px solid #0FB600 !important;
+          border: 1.75px solid #7C57F4 !important;
         }
 
         &.purple {
-          border: 1.75px solid #9E00FF !important;
+          border: 1.75px solid #36393E !important;
         }
       }
 
       &.yellow {
-        border: 4.5px solid #FFD600;
+        border: 4.5px solid #F6D423;
       }
 
       &.green {
-        border: 4.5px solid #0FB600;
+        border: 4.5px solid #7C57F4;
       }
 
       &.purple {
-        border: 4.5px solid #9E00FF;
+        border: 4.5px solid #36393E;
       }
     }
   }
