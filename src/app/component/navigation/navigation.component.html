@@ -6,7 +6,7 @@
             (userRule === 'affiliate' && (page.url === '/manager' || page.url === '/brand')) || (i === 0 && !isMobile) ||
             (userRule === 'brand' || userRule === 'affiliate' && (page.url === '/users' || page.url === '/added-offers')) 
   }">
-    <a routerLinkActive="active" [routerLink]="[page.url]" (click)="removePopup()" class="content_card"
+    <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="[page.url]" (click)="removePopup()" class="content_card"
       *ngIf="(userRule !== 'manager' || (userRule === 'manager' && page.url !== '/brand' && page.url !== '/affiliate')) 
             && (userRule !== 'brand' || (userRule === 'brand' && page.url !== '/manager' && page.url !== '/affiliate'))
             && (userRule !== 'affiliate' || (userRule === 'affiliate' && page.url !== '/manager' && page.url !== '/brand')) ||  (i === 0 && !isMobile)">
