@@ -25,4 +25,9 @@ export class AddedOffersComponent extends OffersOpenForm implements OnInit{
   private checkRoutePage(){
     this.url = localStorage.getItem('currentRoute')
   }
+
+  public openForm(rules: 'added' | 'offers' | 'active') {
+    this.offerFormService._isOfferForm = true;
+    this.offerFormService._rulesOffer = rules;
+  }ы
 }

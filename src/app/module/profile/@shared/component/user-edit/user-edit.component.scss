@@ -41,6 +41,15 @@
             line-height: 3.2rem;
           }
 
+          @media (max-width: 744px) {
+            font-size: 2.5rem;
+          }
+
+          @media (max-width: 576px) {
+            font-size: 1.6rem;
+            line-height: 3.2rem;
+          }
+
           &.description {
             color: #FFFFFF;
           }
@@ -80,6 +89,15 @@
         line-height: 1.88rem;
         background-color: #302EFF;
         color: #FFFFFF;
+
+        @media (max-width: 744px) {
+          font-size: 2.1rem;
+        }
+
+        @media (max-width: 576px) {
+          font-size: 1.3rem;
+        }
+
       }
     }
   }

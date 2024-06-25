@@ -7,7 +7,7 @@
 </section>
 <div *ngIf="isMobile" class="mobile_header">
   <h3>Your Offers</h3>
-  <button class="header_add_offer">
+  <button (click)="openForm('added')" class="header_add_offer">
     <mat-icon svgIcon="add"></mat-icon>
   </button>
 </div>

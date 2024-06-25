@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 35px 0 20px;
+  margin: 56px 0 31.5px 0;
 
   h3 {
     font-size: 3.2rem;
@@ -16,6 +17,14 @@
     background: linear-gradient(90deg, #E5F0FF 7%, #769BFE 66%, #302DFF 78%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    @media (max-width: 744px) {
+      font-size: 5.1rem;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 3.2rem;
+    }
   }
 
   .header_add_offer {
@@ -28,6 +37,20 @@
     align-items: center;
     justify-content: center;
     background-color: #FFFFFF;
+
+    @media (max-width: 744px) {
+      width: 46px;
+      height: 44px;
+
+      mat-icon {
+        width: 16px;
+      }
+    }
+
+    @media (max-width: 744px) {
+      width: 30px;
+      height: 27px;
+    }
 
     mat-icon {
       ::ng-deep {
