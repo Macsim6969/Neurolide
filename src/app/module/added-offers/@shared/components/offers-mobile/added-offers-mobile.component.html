@@ -35,8 +35,13 @@
           <nav class="title">Balance</nav>
           <nav class="desc">${{channel.balance}}</nav>
         </div>
-        <button [ngClass]="{'hide': channel.isAdvertice}" [disabled]="channel.isAdvertice"
-          (click)="goToWork(channel.id)" mat-button *ngIf="rules === 'affiliate'" class="advertise">Advertise</button>
+        <div class="column" *ngIf="url !== '/offers-in-works'">
+          <nav class="title">Payout</nav>
+          <div class="payout_methods">
+            <button [ngClass]="{'active': activePayout[i ] === model.title || channel?.payout === model.title}" mat-button class="payout"
+              *ngFor="let model of modelPayment">{{model.title}}</button>
+          </div>
+        </div>
       </div>
     </div>
   </drag-scroll>

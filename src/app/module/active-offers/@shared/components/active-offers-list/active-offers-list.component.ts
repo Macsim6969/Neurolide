@@ -20,6 +20,7 @@ import { takeUntil } from 'rxjs';
 })
 export class ActiveOffersListComponent extends OffersList {
   public activeOffers: OfferInterface[];
+  private activeOffersDop: OfferInterface[];
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
@@ -37,7 +38,18 @@ export class ActiveOffersListComponent extends OffersList {
   protected override streamOffersDataFromStore(): void {
     this.store.pipe(select(selectActiveOffers), takeUntil(this.destroy$)).subscribe((data) => {
       this.activeOffers = Object.values(data);
+      this.activeOffersDop = Object.values(data);
       this.activeOfferService._activeOfferData = data;
+    })
+  }
+
+  protected override streamSearchData(): void {
+    this.searchMediaChannelAndOffers._searchText$.pipe(takeUntil(this.destroy$)).subscribe((data: string) => {
+      if (data) {
+        this.activeOffers = this.activeOffersDop.filter((e: OfferInterface) => e.name.toLocaleLowerCase().includes(data.toLocaleLowerCase()));
+      } else {
+        this.activeOffers = this.activeOffersDop;
+      }
     })
   }
 }

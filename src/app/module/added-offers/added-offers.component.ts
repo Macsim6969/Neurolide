@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OffersOpenForm } from '../../shared/abstract/offers/offersOpenForm';
 import { OfferFormService } from '../offers/@shared/services/offersForms.service';
 import { GlobalIconsService } from '../../shared/services/globalIcon.service';
+import { NavigationIconsService } from '../../shared/services/navigation/navigationIcon.service';
 
 @Component({
   selector: 'app-added-offers',
@@ -12,7 +13,8 @@ export class AddedOffersComponent extends OffersOpenForm implements OnInit{
   public url: string;
   constructor(
     override offerFormService: OfferFormService,
-    private globalIcon: GlobalIconsService
+    private globalIcon: GlobalIconsService,
+    private navigationIconsService: NavigationIconsService
   ) {
     super(offerFormService);
     super.ngOnInit();

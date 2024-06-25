@@ -5,7 +5,11 @@
   <app-added-offers-list></app-added-offers-list>
 
 </section>
-<div *ngIf="isMobile" class="mobile_header">
+<div class="mobile_offer_title" *ngIf="isMobile && url === '/added-offers'">
+  <mat-icon svgIcon="media-canal"></mat-icon>
+  <h3 class="title">Added offers</h3>
+</div>
+<div class="mobile_header" *ngIf="isMobile && url !== '/added-offers'">
   <h3>Your Offers</h3>
   <button (click)="openForm('added')" class="header_add_offer">
     <mat-icon svgIcon="add"></mat-icon>

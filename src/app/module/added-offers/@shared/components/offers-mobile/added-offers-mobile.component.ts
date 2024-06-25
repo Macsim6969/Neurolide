@@ -7,6 +7,9 @@ import { OfferFormService } from '../../../../offers/@shared/services/offersForm
 import { OffersDataClass } from '../../../../offers/@shared/abstract/offersData';
 import { OfferInterface } from '../../../../offers/@shared/interface/offer.interface';
 import { DragScrollComponent } from 'ngx-drag-scroll';
+import { TranslateService } from '@ngx-translate/core';
+import { takeUntil } from 'rxjs';
+import { ModelPaymentInterface } from '../../../../offers/@shared/interface/model.interface';
 
 @Component({
   selector: 'app-added-offers-mobile',
@@ -15,33 +18,42 @@ import { DragScrollComponent } from 'ngx-drag-scroll';
 })
 export class AddedOffersMobileComponent extends OffersDataClass implements OnInit {
   @ViewChild('nav', { read: DragScrollComponent }) ds: DragScrollComponent;
-  // public rules: string;
+  public url: string;
+  public modelPayment: ModelPaymentInterface[];
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
     override offersService: OffersService,
-    private offerFormService: OfferFormService
+    private offerFormService: OfferFormService,
+    private translate: TranslateService
   ) {
     super(store, globalIconsService, offersService);
-    super.ngOnInit();
   }
   override ngOnInit(): void {
-    this.checkRulesUser(); 
+    super.ngOnInit();
+    this.streamModelPaymentFromJson();
+    this.checkRoutePage();
   }
 
-  private checkRulesUser() {
-    // this.rules = JSON.parse(localStorage.getItem('rules'))
+  private streamModelPaymentFromJson() {
+    this.translate.stream('offers.offerModel').pipe(takeUntil(this.destroy$)).subscribe((data: ModelPaymentInterface[]) => {
+      this.modelPayment = data;
+    })
   }
 
-  public goToWork(idOffer: number){
+  private checkRoutePage() {
+    this.url = localStorage.getItem('currentRoute')
+  }
+
+  public goToWork(idOffer: number) {
     this.offersService.setOfferToWork(this.mainData, idOffer);
- }
+  }
 
- public changeOffers(index: number) {
-  const media = this.offers?.find((e: OfferInterface) => e.id === index);
-  this.offerFormService._offerData = media;
-  this.offerFormService._statusMOde = 'edite';
-  this.offerFormService._isOfferForm = true;
-}
- 
+  public changeOffers(index: number) {
+    const media = this.offers?.find((e: OfferInterface) => e.id === index);
+    this.offerFormService._offerData = media;
+    this.offerFormService._statusMOde = 'edite';
+    this.offerFormService._isOfferForm = true;
+  }
+
 }

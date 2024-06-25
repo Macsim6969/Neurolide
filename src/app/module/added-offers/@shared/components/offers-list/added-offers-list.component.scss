@@ -164,13 +164,6 @@
             }
           }
         }
-
-        &.vip {
-          &.active {
-            background-color: #e8f8ca;
-          }
-        }
-
       }
     }
 
@@ -184,6 +177,17 @@
         outline: none;
         border: none;
         background-color: transparent;
+        &.remove {
+          mat-icon {
+            ::ng-deep svg {
+              circle,
+              path {
+                stroke: #E84646;
+              }
+            }
+
+          }
+        }
       }
     }
   }
