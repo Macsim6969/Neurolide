@@ -87,3 +87,14 @@ app-loading {
   align-items: center;
   justify-content: center;
 }
+
+app-manager {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: calc(100vh - 140px);
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}

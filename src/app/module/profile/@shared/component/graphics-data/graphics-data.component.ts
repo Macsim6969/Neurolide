@@ -25,7 +25,6 @@ export class GraphicsDataComponent implements OnInit, OnDestroy {
 
   private initializeMonitoringDataFromStore() {
     this.store.pipe(select(selectMonitoringData)).pipe(takeUntil(this.destroy$)).subscribe((data: MonitoringData) => {
-      console.log(data);
       if (data && this.rulse === 'manager') {
         this.grapicsManager(data);
       } else if (data && this.rulse === 'brand') {
@@ -67,7 +66,6 @@ export class GraphicsDataComponent implements OnInit, OnDestroy {
     if (value) {
       const maxValue = Math.max(...this.graphicsData.map(item => item.value));
       const width = maxValue ? (value / maxValue) * 100 : 0;
-      console.log(`Value: ${value}, Max Value: ${maxValue}, Width: ${width}`); // Log to check calculation
       return width;
     } else {
 

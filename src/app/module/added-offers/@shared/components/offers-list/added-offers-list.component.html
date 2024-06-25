@@ -1,7 +1,9 @@
 <div class="media-channel" *ngIf="addedOffer;else loading">
-  <div [ngClass]="{'active': activeChannel === i}" class="channel" *ngFor="let channel of addedOffer;index as i"
-    (click)="selectChannel(i)">
-    <nav class="id">{{channel.id}}</nav>
+  <div class="channel" *ngFor="let channel of addedOffer;index as i">
+    <div class="id_state">
+      <nav class="id">{{channel.id}}</nav>
+      <mat-icon svgIcon="offer_confirme"></mat-icon>
+    </div>
     <nav class="name">{{channel.name}}</nav>
     <nav class="link">{{channel.link}}</nav>
     <nav class="stream">{{channel.brand}}</nav>

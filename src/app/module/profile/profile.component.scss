@@ -5,6 +5,12 @@
   align-items: center;
   margin-top: 40px;
 
+  @media (max-width: 1124px) {
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+  }
+
   .profile {
     padding: 35px 15px 52px 29px;
     display: flex;
@@ -14,13 +20,17 @@
     max-width: 628px;
     width: 100%;
     border-radius: 20px;
+    @media (max-width: 1124px) {
+      padding: 11px 28px 15px 14px;
+      position: relative;
+    }
 
     app-user-edit {
       width: 100%;
     }
   }
 
-  .graphics-data{
+  .graphics-data {
     width: 100%;
   }
 }

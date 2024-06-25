@@ -22,7 +22,6 @@ import { GraphicsDataComponent } from './@shared/component/graphics-data/graphic
     CommonModule,
     ShareModule,
     FormsModule,
-    BalanceServiceModule,
     ReactiveFormsModule
   ],
   exports: [

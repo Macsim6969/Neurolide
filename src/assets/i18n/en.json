@@ -183,62 +183,62 @@
   ],
   "sidebar": [
     {
-      "icon": "./assets/images/sidebar/main.svg",
+      "icon": "main",
       "title": "Main",
       "url": "/"
     },
     {
-      "icon": "./assets/images/sidebar/manager.svg",
+      "icon": "manager",
       "title": "Manager",
       "url": "/manager"
     },
     {
-      "icon": "./assets/images/sidebar/manager.svg",
+      "icon": "manager",
       "title": "Brand",
       "url": "/brand"
     },
     {
-      "icon": "./assets/images/sidebar/manager.svg",
+      "icon": "manager",
       "title": "Affiliate",
       "url": "/affiliate"
     },
     {
-      "icon": "./assets/images/sidebar/users.svg",
+      "icon": "users",
       "title": "Users",
       "url": "/users"
     },
     {
-      "icon": "./assets/images/sidebar/users.svg",
+      "icon": "users",
       "title": "Offers in works",
       "url": "/offers-in-works"
     },
     {
-      "icon": "./assets/images/sidebar/users.svg",
+      "icon": "users",
       "title": "Added offers",
       "url": "/added-offers"
     },
     {
-      "icon": "./assets/images/sidebar/media-canal.png",
+      "icon": "media-canal",
       "title": "Media channels",
       "url": "/media-channels"
     },
     {
-      "icon": "./assets/images/sidebar/offer.png",
+      "icon": "media-canal",
       "title": "Offers",
       "url": "/offers"
     },
     {
-      "icon": "./assets/images/sidebar/profile.png",
+      "icon": "profile",
       "title": "Profile",
       "url": "/profile"
     },
     {
-      "icon": "./assets/images/sidebar/balance.png",
+      "icon": "balance",
       "title": "Balance",
       "url": "/balance"
     },
     {
-      "icon": "./assets/images/sidebar/support.png",
+      "icon": "support",
       "title": "Support",
       "url": "/support"
     }

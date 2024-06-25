@@ -39,7 +39,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
     combineLatest(([this.translate.stream('user'), this.store.pipe(select(selectUserData))])).pipe(takeUntil(this.destroy$)).subscribe(([translateData, storeData]) => {
       this.userActions = translateData.userActions;
       this.userInfo = translateData.userInfo;
-      this.avatar = storeData.avatar;
+      this.avatar = storeData?.avatar;
       if (storeData) {
         if (Object.keys(storeData).length > 1) {
           this.updateHeaderData(storeData);

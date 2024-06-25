@@ -32,7 +32,17 @@
       font-family: "Public Sans", sans-serif;
       font-size: 1.6rem;
       line-height: 18.8px;
-      color: #FFFFFF;
+      color: #E1E1E1;
+    }
+
+    mat-icon {
+      ::ng-deep {
+        svg {
+          path {
+            stroke: #E1E1E1;
+          }
+        }
+      }
     }
 
     &:hover {

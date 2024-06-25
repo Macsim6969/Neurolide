@@ -1,3 +1,14 @@
+.mobileTitle {
+  background: linear-gradient(90deg, #E5F0FF 0%, #769BFE 8%, #302DFF 14%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 41.66px;
+  margin-top: 12px;
+  padding-left: 20px;
+}
+
 .manager {
   display: flex;
   flex-direction: column;

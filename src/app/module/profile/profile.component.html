@@ -2,11 +2,8 @@
   <div class="profile">
     <app-user-edit></app-user-edit>
   </div>
-  <div class="graphics-data">
+  <div class="graphics-data" *ngIf="!isMobile">
     <app-graphics-data></app-graphics-data>
   </div>
 </section>
-
-<app-cards-payment-mobile *ngIf="isMobile"></app-cards-payment-mobile>
 <app-popup-edite *ngIf="isPopup"></app-popup-edite>
-<app-added-card *ngIf="addedCardPopup"></app-added-card>

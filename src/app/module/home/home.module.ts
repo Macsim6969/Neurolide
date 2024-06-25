@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { IsMobileGuard } from '../../shared/services/isMobileGuard.guard';
 import { GlobalIconsService } from '../../shared/services/globalIcon.service';
 import { SearchMediaChannelAndOffersService } from '../../shared/services/searchMediaChannelAndOffers.service';
+import { NavigationIconsService } from '../../shared/services/navigation/navigationIcon.service';
 
 const routes: Routes = [
   {
@@ -39,6 +40,6 @@ const routes: Routes = [
     MatToolbarModule,
     RouterModule.forChild(routes)
   ],
-  providers: [IsMobileGuard, GlobalIconsService, SearchMediaChannelAndOffersService]
+  providers: [IsMobileGuard, NavigationIconsService, GlobalIconsService, SearchMediaChannelAndOffersService]
 })
 export class HomeModule { }

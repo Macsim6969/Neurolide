@@ -36,7 +36,6 @@ export abstract class OffersDataClass  implements OnInit, OnDestroy {
           this.offers = Object.values(data);
           this.addedOffer = Object.values(data).filter((e) => e.statusOffer === 'added')
           this.offerInWork = Object.values(data).filter((e) => e.isAdvertice === true);
-          console.log(this.offerInWork)
         }
       });
 

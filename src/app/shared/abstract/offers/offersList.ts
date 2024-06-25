@@ -21,7 +21,6 @@ export abstract class OffersList extends OffersDataClass {
   @Input() statusPage: string;
   public isOpenDropdown: boolean[] = [];
   public isOpen: boolean = false;
-  public activeChannel: number;
   public modelPayment: ModelPaymentInterface[];
 
   constructor(
@@ -109,10 +108,6 @@ export abstract class OffersList extends OffersDataClass {
     this.offersFormService._offerData = media;
     this.offersFormService._statusMOde = 'edite';
     this.offersFormService._isOfferForm = true;
-  }
-
-  public selectChannel(index: number) {
-    this.activeChannel = index;
   }
 
   public openPayout(index: number) {

@@ -21,6 +21,7 @@
       color: #fff;
       font-size: 2.4rem;
       font-weight: 700;
+      margin-right: 70px;
 
       &.cliques,
       &.leads,
@@ -50,6 +51,8 @@
         height: 2px;
         width: 100%;
         position: absolute;
+        max-width: 907px;
+        left: 0;
       }
     }
   }

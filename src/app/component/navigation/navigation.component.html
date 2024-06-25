@@ -10,7 +10,7 @@
       *ngIf="(userRule !== 'manager' || (userRule === 'manager' && page.url !== '/brand' && page.url !== '/affiliate')) 
             && (userRule !== 'brand' || (userRule === 'brand' && page.url !== '/manager' && page.url !== '/affiliate'))
             && (userRule !== 'affiliate' || (userRule === 'affiliate' && page.url !== '/manager' && page.url !== '/brand')) ||  (i === 0 && !isMobile)">
-      <img [src]="page.icon" alt="{{page.title}}">
+      <mat-icon [svgIcon]="page.icon"></mat-icon>
       <p>{{page.title}}</p>
     </a>
   </nav>

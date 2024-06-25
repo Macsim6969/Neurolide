@@ -28,9 +28,7 @@
         gap: 95px;
 
         @media (max-width: 1124px) {
-          flex-direction: column;
-          gap: 6px;
-          align-items: flex-start;
+          gap: 17px;
         }
 
         nav {
@@ -39,8 +37,8 @@
           font-weight: 500;
 
           @media (max-width: 1124px) {
-            font-size: 1.7rem;
-            line-height: 19.98px;
+            font-size: 1.6rem;
+            line-height: 3.2rem;
           }
 
           &.description {
@@ -56,7 +54,9 @@
 
             @media (max-width: 1124px) {
               width: 175px;
-
+              display: flex;
+              font-weight: 700;
+              align-content: center;
             }
           }
         }
@@ -87,6 +87,14 @@
   .user_avatar {
     max-width: 138px;
     max-height: 138px;
+
+    @media (max-width: 1124px) {
+      position: absolute;
+      right: 28px;
+      top: 11px;
+      width: 61px;
+      height: 61px;
+    }
 
     img {
       border-radius: 50%;
