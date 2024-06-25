@@ -8,6 +8,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { CommonModule } from "@angular/common";
 import { OffersBlockModule } from "../../../offers/@shared/module/offersBlock.module";
 import { WorksOffersMobileComponent } from "../components/offers-mobile/works-offers-mobile.component";
+import { DragScrollModule } from "ngx-drag-scroll";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { WorksOffersMobileComponent } from "../components/offers-mobile/works-of
   imports: [
     CommonModule,
     ShareModule,
+    DragScrollModule,
     OffersBlockModule,
     TranslateModule
   ],

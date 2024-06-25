@@ -29,5 +29,5 @@ export class AddedOffersComponent extends OffersOpenForm implements OnInit{
   public openForm(rules: 'added' | 'offers' | 'active') {
     this.offerFormService._isOfferForm = true;
     this.offerFormService._rulesOffer = rules;
-  }ы
+  }
 }

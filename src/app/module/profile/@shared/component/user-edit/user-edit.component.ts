@@ -21,6 +21,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   public userInfo: UserData[];
   public userActions: UserActions[];
   public avatar: string;
+  public isPopupAttention: boolean;
   constructor(
     private translate: TranslateService,
     private store: Store<{ store: StoreInterface }>,
@@ -69,10 +70,14 @@ export class UserEditComponent implements OnInit, OnDestroy {
       this.authService.logout();
       this.router.navigate(['/auth/login']).then();
     } else if (action === 'remove') {
-      this.authService.deleteUser();
-    }else if (action === 'edit'){
+      this.isPopupAttention = true;
+    } else if (action === 'edit') {
       this.profileServices._isPopup = true;
     }
+  }
+
+  public removeAccount() {
+    this.authService.deleteUser();
   }
 
   ngOnDestroy(): void {

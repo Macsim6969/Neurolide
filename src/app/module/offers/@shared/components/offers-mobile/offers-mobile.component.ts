@@ -13,7 +13,6 @@ import { OfferFormService } from '../../services/offersForms.service';
 })
 export class OffersMobileComponent extends OffersDataClass implements OnInit {
   public activeSlide: number = 0;
-  public rules: string;
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,

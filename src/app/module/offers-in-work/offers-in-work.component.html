@@ -3,4 +3,10 @@
   <app-works-offers-filter></app-works-offers-filter>
   <app-works-offers-list></app-works-offers-list>
 </section>
+<div *ngIf="isMobile" class="mobile_header">
+  <h3>Offers in work</h3>
+    <!-- <button (click)="openForm('added')" class="header_add_offer">
+      <mat-icon svgIcon="add"></mat-icon>
+    </button> -->
+</div>
 <app-works-offers-mobile *ngIf="isMobile"></app-works-offers-mobile>

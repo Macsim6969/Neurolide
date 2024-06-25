@@ -19,6 +19,7 @@ export class WorksOffersMobileComponent extends OffersDataClass implements OnIni
   public isMobile: boolean;
   public activeSlide: number = 0;
   public modelPayment: ModelPaymentInterface[];
+  public url: string;
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
@@ -27,7 +28,6 @@ export class WorksOffersMobileComponent extends OffersDataClass implements OnIni
     private translate: TranslateService
   ) {
     super(store, globalIconsService, offersService);
-    super.ngOnInit();
   }
   @HostListener('window:resize', ['$event'])
   onResize() {
@@ -35,9 +35,10 @@ export class WorksOffersMobileComponent extends OffersDataClass implements OnIni
   }
 
   override ngOnInit(): void {
+    super.ngOnInit();
     this.streamModelPaymentFromJson();
     this.initializeIsMobilePage();
-
+    this.checkRoutePage();
   }
 
   private initializeIsMobilePage() {
@@ -51,6 +52,10 @@ export class WorksOffersMobileComponent extends OffersDataClass implements OnIni
     this.translate.stream('offers.offerModel').pipe(takeUntil(this.destroy$)).subscribe((data: ModelPaymentInterface[]) => {
       this.modelPayment = data;
     })
+  }
+
+  private checkRoutePage(){
+    this.url = localStorage.getItem('currentRoute')
   }
 
   public changeActiveCard(event: number) {

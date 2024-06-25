@@ -1,22 +1,18 @@
-<section class="list-mobile">
+<section class="list-mobile" *ngIf="activeOffers;else loading">
   <drag-scroll #nav>
-    <div drag-scroll-item class="media" *ngFor="let channel of offers; index as i"
-      [ngClass]="{'active': activeSlide === i}">
+    <div drag-scroll-item class="media" *ngFor="let channel of activeOffers; index as i">
       <div class="content">
         <div class="media_header">
           <div class="media_header_left">
             <nav class="id">UID {{channel.id}}</nav>
             <nav class="status">Status</nav>
           </div>
-          <div class="action">
-            <button *ngIf="rules === 'brand' || rules === 'manager'" (click)="removeOffers(channel.id)" type="button"
-              class="remove "><mat-icon svgIcon="cancel"></mat-icon></button>
-            <button *ngIf="rules === 'brand' || rules === 'manager'" type="submit" class="save "><mat-icon
-                svgIcon="confirme"></mat-icon></button>
-            <nav>{{channel.vip ? "VIP": ''}}</nav>
-            <button (click)="setVipStatus(channel.id)" type="submit" [ngClass]="{'active': channel.vip}"
-              class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
-          </div>
+          <!-- <div class="action">
+            <button (click)="changeOffers(channel?.id)" type="submit" class="save "><mat-icon
+                svgIcon="settings"></mat-icon></button>
+            <button (click)="removeOffers(channel?.id)" type="button" class="remove "><mat-icon
+                svgIcon="remove"></mat-icon></button>
+          </div> -->
         </div>
 
         <div class="column">
@@ -33,18 +29,19 @@
         </div>
         <div class="column">
           <nav class="title">Payments</nav>
-          <nav class="desc">{{channel.payments}}</nav>
+          <nav class="desc">${{channel.payments}}</nav>
         </div>
         <div class="column">
           <nav class="title">Balance</nav>
-          <nav class="desc">{{channel.balance}}</nav>
+          <nav class="desc">${{channel.balance}}</nav>
         </div>
         <button [ngClass]="{'hide': channel.isAdvertice}" [disabled]="channel.isAdvertice"
           (click)="goToWork(channel.id)" mat-button *ngIf="rules === 'affiliate'" class="advertise">Advertise</button>
       </div>
     </div>
   </drag-scroll>
+
 </section>
-<div *ngIf="rules === 'brand'" class="add" (click)="openForm()">
-  <mat-icon svgIcon="add"></mat-icon>
-</div>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

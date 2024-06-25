@@ -27,7 +27,7 @@
     </button>
     <button [ngClass]="{'hide': channel.isAdvertice}" [disabled]="channel.isAdvertice" (click)="goToWork(channel.id)"
       mat-button *ngIf="rules === 'affiliate'" class="advertise">Advertise</button>
-    <nav class="status" *ngIf="statusPage === 'offers' && rules === 'manager' ||rules === 'affiliate'">
+    <nav class="status" *ngIf="statusPage === 'offers' && rules === 'manager'">
       <button (click)="removeOffers(channel.id)" type="button" class="remove "><mat-icon
           svgIcon="cancel"></mat-icon></button>
       <button (click)="setToActiveOffer(channel.id)" type="submit" class="save "><mat-icon
@@ -36,10 +36,11 @@
         class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
     </nav>
 
+
     <!-- MANAGER PAGE -->
     <nav *ngIf="rules === 'brand'" class="price">${{channel.balance ? channel.balance : 0}}</nav>
     <nav *ngIf="rules === 'brand'" class="manager subscribe">${{channel.payments ? channel.payments : 0}}</nav>
-    <nav *ngIf="rules === 'brand'" class="status">{{channel.vip ? 'VIP' : ''}}</nav>
+    <nav *ngIf="rules === 'brand' || rules === 'affiliate' && url === '/offers' " class="status">{{channel.vip ? 'VIP' : ''}}</nav>
   </div>
 </div>
 

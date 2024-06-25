@@ -15,4 +15,9 @@ export class ActiveOffersComponent extends OffersOpenForm {
     super(offerFormService);
     super.ngOnInit();
   }
+
+  public openForm(rules: 'added' | 'offers' | 'active') {
+    this.offerFormService._isOfferForm = true;
+    this.offerFormService._rulesOffer = rules;
+  }
 }

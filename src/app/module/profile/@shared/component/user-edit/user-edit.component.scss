@@ -122,3 +122,64 @@
     }
   }
 }
+
+.popup_attention {
+  background-color: #0A0A0A;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .block {
+    padding: 78px 95px 56.61px 95px;
+    max-width: 613px;
+    width: 100%;
+    background-color: #0E1218;
+    box-shadow: 0px 4px 4px 0px #0000001A;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 56.31px;
+
+    .block_description {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .attention_title {
+        font-size: 2.7rem;
+        line-height: 31.73px;
+        padding-bottom: 25px;
+        color: #FFFFFF;
+      }
+
+      .attention_info {
+        font-size: 2.5rem;
+        line-height: 29.38px;
+        color: #FF0000;
+        text-align: center;
+      }
+    }
+
+    .action {
+      button {
+        outline: none;
+        border: none;
+        border-radius: 20px;
+        background: #3334FF;
+        box-shadow: 0px 4px 20px 0px #00000040;
+        color: #FFFFFF;
+        font-size: 2.5rem;
+        line-height: 29.38px;
+        min-width: 100%;
+        height: auto;
+        padding: 18.7px 63.78px;
+      }
+    }
+  }
+
+}

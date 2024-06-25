@@ -11,11 +11,12 @@ import { OffersService } from "../services/offers.service";
   template: ''
 })
 
-export abstract class OffersDataClass  implements OnInit, OnDestroy {
+export abstract class OffersDataClass implements OnInit, OnDestroy {
   protected destroy$: Subject<void> = new Subject<void>();
   protected mainData: OfferInterface[];
   protected addedOffer: OfferInterface[];
   protected offerInWork: OfferInterface[];
+  protected rules: string;
   public offers: OfferInterface[];
   protected activePayout: string[] = [];
   constructor(
@@ -50,7 +51,7 @@ export abstract class OffersDataClass  implements OnInit, OnDestroy {
   }
 
   public setVipStatus(id: number) {
-    this.offersService.setVipStatus(this.offers, this.mainData, id)
+    this.rules === 'manager' ? this.offersService.setVipStatus(this.offers, this.mainData, id) : null;
   }
 
   ngOnDestroy(): void {

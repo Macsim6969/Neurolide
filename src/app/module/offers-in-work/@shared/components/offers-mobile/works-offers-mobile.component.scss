@@ -1,5 +1,19 @@
 .list-mobile {
   margin-bottom: 54px;
+
+  .remove {
+    mat-icon {
+      ::ng-deep {
+        svg {
+
+          circle,
+          path {
+            stroke: #E84646;
+          }
+        }
+      }
+    }
+  }
 }
 
 .media_header_left {
@@ -10,14 +24,16 @@
 
   .id {
     height: 100% !important;
-  }  
+  }
 }
 
-.payout_methods{
+.payout_methods {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 5px;
+  margin: 30px 0 0 0;
+
   .payout {
     display: flex;
     border: 0;
@@ -30,7 +46,7 @@
     color: #FFFFFF;
 
 
-    &.active{
+    &.active {
       background-color: #3334FF;
     }
 

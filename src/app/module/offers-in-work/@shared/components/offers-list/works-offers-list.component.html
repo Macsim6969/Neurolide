@@ -19,7 +19,7 @@
     </button>
     <nav class="settings">
       <nav>{{channel.vip ? 'VIP' :''}}</nav>
-      <button *ngIf="rules !== 'affiliate' && url=== '/affiliate'" (click)="removeOffers(channel?.id)" type="button"
+      <button *ngIf="rules === 'affiliate' && url !== '/affiliate'" (click)="removeOffers(channel?.id)" type="button"
         class="remove "><mat-icon svgIcon="remove"></mat-icon></button>
     </nav>
   </div>

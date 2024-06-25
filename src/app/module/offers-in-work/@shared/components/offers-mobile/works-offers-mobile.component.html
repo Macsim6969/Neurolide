@@ -1,44 +1,52 @@
-<section class="list-mobile">
-  <div class="media" *ngFor="let channel of offerInWork; index as i" [ngClass]="{'active': activeSlide === i}">
-    <div class="media_header">
-      <div class="media_header_left">
-        <nav class="id">UID {{channel.id}}</nav>
-        <nav class="status">Status</nav>
-      </div>
-      <div class="action">
-        <nav>{{channel.vip ? 'VIP': ''}}</nav>
-        <button (click)="setVipStatus(channel.id)" type="submit" [ngClass]="{'active': channel.vip}"
-          class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
-      </div>
-    </div>
+<section class="list-mobile" *ngIf="offerInWork; else loading">
+  <drag-scroll #nav>
+    <div drag-scroll-item class="media" *ngFor="let channel of offerInWork; index as i"
+      [ngClass]="{'active': activeSlide === i}">
+      <div class="content">
+        <div class="media_header">
+          <div class="media_header_left">
+            <nav class="id">UID {{channel.id}}</nav>
+            <nav class="status">Status</nav>
+          </div>
+          <div class="action">
+            <nav>{{channel.vip ? 'VIP': ''}}</nav>
+            <button *ngIf="url === '/offers-in-works'" (click)="removeOffers(channel.id)" type="submit"
+              class="remove "><mat-icon svgIcon="remove"></mat-icon></button>
+          </div>
+        </div>
 
-    <div class="column">
-      <nav class="title">Name</nav>
-      <nav class="desc">{{channel.name}}</nav>
-    </div>
-    <div class="column">
-      <nav class="title">Link</nav>
-      <nav class="desc">{{channel.link}}</nav>
-    </div>
-    <div class="column">
-      <nav class="title">Brand</nav>
-      <nav class="desc">{{channel.brand}}</nav>
-    </div>
-    <div class="column">
-      <nav class="title">Payments</nav>
-      <nav class="desc">{{channel.payments}}</nav>
-    </div>
-    <div class="column">
-      <nav class="title">Balance</nav>
-      <nav class="desc">{{channel.balance}}</nav>
-    </div>
-    <div class="column">
-      <nav class="title">Payout</nav>
-      <div class="payout_methods">
-        <button [ngClass]="{'active': activePayout[i ] === model.title || channel?.payout === model.title}" (click)="choicePayout(i, model?.title, channel?.id)" mat-button class="payout" *ngFor="let model of modelPayment">{{model.title}}</button>
+        <div class="column">
+          <nav class="title">Name</nav>
+          <nav class="desc">{{channel.name}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Link</nav>
+          <nav class="desc">{{channel.link}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Brand</nav>
+          <nav class="desc">{{channel.brand}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Payments</nav>
+          <nav class="desc">{{channel.payments}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Balance</nav>
+          <nav class="desc">{{channel.balance}}</nav>
+        </div>
+        <div class="column" *ngIf="url !== '/offers-in-works'">
+          <nav class="title">Payout</nav>
+          <div class="payout_methods">
+            <button [ngClass]="{'active': activePayout[i ] === model.title || channel?.payout === model.title}"
+              (click)="choicePayout(i, model?.title, channel?.id)" mat-button class="payout"
+              *ngFor="let model of modelPayment">{{model.title}}</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
+  </drag-scroll>
 </section>
-<app-action-slide (activeId)="changeActiveCard($event)" [activeCard]="activeSlide" [slider]="offers"></app-action-slide>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

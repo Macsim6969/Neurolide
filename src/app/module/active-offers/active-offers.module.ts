@@ -7,19 +7,21 @@ import { ActiveOffersListComponent } from './@shared/components/active-offers-li
 import { ShareModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { OffersBlockModule } from '../offers/@shared/module/offersBlock.module';
-
-
+import { ActiveOffersMobileComponent } from './@shared/components/active-offers-mobile/active-offers-mobile.component';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 @NgModule({
   declarations: [
     ActiveOffersComponent,
     ActiveOffersFilterComponent,
     ActiveOffersHeaderComponent,
-    ActiveOffersListComponent
+    ActiveOffersListComponent,
+    ActiveOffersMobileComponent
   ],
   imports: [
     CommonModule,
     ShareModule,
+    DragScrollModule,
     TranslateModule,
     OffersBlockModule
   ],
