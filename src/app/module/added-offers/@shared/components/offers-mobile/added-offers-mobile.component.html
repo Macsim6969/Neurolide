@@ -1,0 +1,44 @@
+<section class="list-mobile">
+  <drag-scroll #nav>
+    <div drag-scroll-item class="media" *ngFor="let channel of addedOffer; index as i">
+      <div class="content">
+        <div class="media_header">
+          <div class="media_header_left">
+            <nav class="id">UID {{channel.id}}</nav>
+            <nav class="status">Status</nav>
+          </div>
+          <div class="action">
+            <button (click)="changeOffers(channel?.id)" type="submit" class="save "><mat-icon
+                svgIcon="settings"></mat-icon></button>
+            <button (click)="removeOffers(channel?.id)" type="button" class="remove "><mat-icon
+                svgIcon="remove"></mat-icon></button>
+          </div>
+        </div>
+
+        <div class="column">
+          <nav class="title">Name</nav>
+          <nav class="desc">{{channel.name}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Link</nav>
+          <nav class="desc">{{channel.link}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Brand</nav>
+          <nav class="desc">{{channel.brand}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Payments</nav>
+          <nav class="desc">${{channel.payments}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Balance</nav>
+          <nav class="desc">${{channel.balance}}</nav>
+        </div>
+        <button [ngClass]="{'hide': channel.isAdvertice}" [disabled]="channel.isAdvertice"
+          (click)="goToWork(channel.id)" mat-button *ngIf="rules === 'affiliate'" class="advertise">Advertise</button>
+      </div>
+    </div>
+  </drag-scroll>
+
+</section>

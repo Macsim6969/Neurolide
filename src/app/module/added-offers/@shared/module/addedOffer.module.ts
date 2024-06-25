@@ -7,6 +7,8 @@ import { CommonModule } from "@angular/common";
 import { TranslateModule } from "@ngx-translate/core";
 import { OffersBlockModule } from "../../../offers/@shared/module/offersBlock.module";
 import { ShareModule } from "../../../../shared/shared.module";
+import { AddedOffersMobileComponent } from "../components/offers-mobile/added-offers-mobile.component";
+import { DragScrollModule } from "ngx-drag-scroll";
 
 
 
@@ -15,11 +17,13 @@ import { ShareModule } from "../../../../shared/shared.module";
     AddedOffersComponent,
     AddedOffersHeaderComponent,
     AddedOffersFilterComponent,
-    AddedOffersListComponent
+    AddedOffersListComponent,
+    AddedOffersMobileComponent
   ],
   imports: [
     CommonModule,
     ShareModule,
+    DragScrollModule,
     OffersBlockModule,
     TranslateModule
   ],

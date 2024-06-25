@@ -9,8 +9,28 @@
   }
 }
 
+
+.action {
+  button {
+    &.remove {
+      mat-icon {
+        ::ng-deep {
+          svg {
+
+            circle,
+            path {
+
+              stroke: #E84646;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .advertise {
-  margin: 0 auto  ;
+  margin: 0 auto;
   border-radius: 20px;
   border: none;
   outline: none;
