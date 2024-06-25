@@ -2,9 +2,8 @@
   <nav id="{{i}}" *ngFor="let page of sidebarData; index as i" [ngClass]="{
 
     'hide': (userRule === 'manager' && (page.url === '/brand' || page.url === '/affiliate' || page.url === '/added-offers')) ||
-            (userRule === 'brand' && (page.url === '/manager' || page.url === '/affiliate')) ||
-            (userRule === 'affiliate' && (page.url === '/manager' || page.url === '/brand')) || (i === 0 && !isMobile) ||
-            (userRule === 'brand' || userRule === 'affiliate' && (page.url === '/users' || page.url === '/added-offers')) 
+            (userRule === 'brand' && (page.url === '/manager' || page.url === '/affiliate' || page.url === '/users' || page.url === '/added-offers')) ||
+            (userRule === 'affiliate' && (page.url === '/manager' || page.url === '/brand' || page.url === '/users' || page.url === '/added-offers')) || (i === 0 && !isMobile) 
   }">
     <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="[page.url]" (click)="removePopup()" class="content_card"
       *ngIf="(userRule !== 'manager' || (userRule === 'manager' && page.url !== '/brand' && page.url !== '/affiliate')) 

@@ -9,9 +9,10 @@
     font-weight: 500;
     line-height: 32px;
     padding: 15px 20px;
-    background: #F1F4FF;
+    background: #0E1218;
     box-shadow: 0px 4px 10px 0px #00000040;
     border-radius: 20px;
+    color: #FFFFFF;
   }
 
   .search_actions {
@@ -23,7 +24,7 @@
     .action_search {
       padding: 14.5px 20px;
       box-shadow: 0px 4px 10px 0px #00000040;
-      background-color: #F1F4FF;
+      background-color: #0E1218;
       border-radius: 20px;
       display: flex;
       flex-direction: row;
@@ -35,6 +36,13 @@
         width: 15px;
         height: 15px;
         cursor: pointer;
+        ::ng-deep{
+          svg{
+            path{
+              stroke: #FFFFFF;
+            }
+          }
+        }
       }
 
       input {
@@ -42,7 +50,8 @@
         line-height: 16.8px;
         border: none;
         outline: none;
-        background-color: transparent;
+        color: #FFFFFF;
+        background-color: #0E1218;
         max-width: 95px;
       }
     }
