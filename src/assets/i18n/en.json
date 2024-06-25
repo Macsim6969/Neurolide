@@ -358,6 +358,7 @@
     }
   },
   "offers": {
+    "offersTitle": "Offers",
     "offersInWork": "Offers in works",
     "addedTitle": "Added offers",
     "activeOffers": "Active offers",

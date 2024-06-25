@@ -21,7 +21,6 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
   public rules: string;
   public isOpenDropdown: boolean[] = [];
   public isOpen: boolean = false;
-  public activeChannel: number;
 
   constructor(
     override store: Store<{ store: StoreInterface }>,
@@ -105,9 +104,6 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
     this.mediaFormService._statusMOde = 'edite'
     this.mediaFormService._isMediaForm = true;
 
-  }
-  public selectChannel(index: number) {
-    this.activeChannel = index;
   }
 
   public openPayout(index: number) {

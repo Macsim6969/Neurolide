@@ -1,6 +1,6 @@
 <div class="media-channel" *ngIf="mediaChannels;else loading">
-  <div [ngClass]="{'active': activeChannel === i}" class="channel" *ngFor="let channel of mediaChannels;index as i"
-    (click)="selectChannel(i)">
+  <div class="channel" *ngFor="let channel of mediaChannels;index as i"
+   >
     <nav class="id">{{channel.id}}</nav>
     <nav class="name">{{channel.name}}</nav>
     <nav class="link">{{channel.link}}</nav>

@@ -1,11 +1,20 @@
 .user-header-search {
   padding: 30px 21.3px;
-  border-radius: 20px 20px 0 0 ;
+  border-radius: 20px 20px 0 0;
 
   display: grid;
-  grid-template-columns: repeat(9, 1fr); 
+  grid-template-columns: repeat(9, 1fr);
   align-items: center;
   background: #0E1218;
+
+  &.manager {
+    grid-template-columns: repeat(8, 1fr);
+    border-radius: 20px;
+  }
+
+  &.brand {
+    grid-template-columns: repeat(7, 1fr);
+  }
 
   .header_content {
     display: flex;
@@ -14,7 +23,7 @@
     align-items: center;
     cursor: pointer;
 
-    &.hide{
+    &.hide {
       display: none;
     }
 
