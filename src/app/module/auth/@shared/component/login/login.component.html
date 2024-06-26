@@ -4,68 +4,42 @@
 
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-rules">
-      <button
-        *ngFor="let rule of authRules"
-        type="button"
-        mat-button
-        class="rules"
-        [ngClass]="{ active: isRulesChoise === rule.rule }"
-        (click)="choiseRules(rule.rule)"
-      >
+      <button *ngFor="let rule of authRules" type="button" mat-button class="rules"
+        [ngClass]="{ active: isRulesChoise === rule.rule }" (click)="choiseRules(rule.rule)">
         {{ rule.data }}
       </button>
     </div>
 
     <div class="email">
       <mat-label class="label" [innerHTML]="formData.email"></mat-label>
-      <input
-        matInput
-        type="email"
-        [placeholder]="formData.email"
-        required
-        formControlName="email"
-        [value]="this.form.value.email"
-      />
+      <input matInput type="email" [placeholder]="formData.email" required formControlName="email"
+        [value]="this.form.value.email" />
     </div>
 
     <div class="password">
       <mat-label class="label" [innerHTML]="formData.password"></mat-label>
-      <input
-        matInput
-        type="password"
-        [placeholder]="formData.password"
-        required
-        formControlName="password"
-        [value]="this.form.value.password"
-      />
+      <input matInput type="password" [placeholder]="formData.password" required formControlName="password"
+        [value]="this.form.value.password" />
     </div>
 
     <div class="check-login">
       <mat-checkbox [formControl]="hideRequiredControl">{{
         formData.rememberData
-      }}</mat-checkbox>
+        }}</mat-checkbox>
     </div>
 
     <div class="error" *ngIf="errorData">
       <small style="color: red">{{ errorData }}</small>
     </div>
-    <div
-      class="error"
-      *ngIf="
+    <div class="error" *ngIf="
         (form.get('email').invalid && form.get('email').touched) ||
         (form.get('password').invalid && form.get('password').touched)
-      "
-    >
+      ">
       <small style="color: red">Email or password have incorrect data</small>
     </div>
 
-    <button
-      [disabled]="form.invalid && !this.isRulesChoise"
-      type="submit"
-      class="login"
-      mat-button
-      [innerHTML]="formData.login"
-    ></button>
+    <button [disabled]="form.invalid && !this.isRulesChoise" type="submit" class="login" mat-button
+      [innerHTML]="formData.login"></button>
   </form>
   <div class="footer_info">
     <p>
