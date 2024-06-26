@@ -1,0 +1,76 @@
+.question {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 12px;
+  padding: 0 8px;
+
+  .question_block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+
+    padding: 18px 18px 15px 18px;
+    background-color: #0e1218;
+    border-radius: 20px;
+    position: relative;
+
+    max-width: 768px;
+    width: 100%;
+    cursor: pointer;
+
+    &.active {
+      .description {
+        display: flex;
+      }
+
+      .icon {
+        mat-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .title {
+      font-family: Public Sans;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 28px;
+      color: #fff;
+
+      @media (min-width: 576px) {
+        font-size: 45px;
+        line-height: 50px;
+      }
+    }
+
+    .description {
+      display: none;
+      font-size: 1.6rem;
+      color: #ffffff;
+      line-height: 18.8px;
+    }
+
+    .icon {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      mat-icon {
+        width: 14px;
+
+        ::ng-deep {
+          svg {
+            width: 14px;
+            height: 7px;
+            path {
+              stroke: #FFFFFF;
+            }
+          }
+        }
+      }
+    }
+  }
+}

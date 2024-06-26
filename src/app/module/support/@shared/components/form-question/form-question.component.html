@@ -1,26 +1,44 @@
 <div class="form_question" *ngIf="formData">
-  <h1>{{formData.file}}</h1>
+  <h1>{{ formData.file }}</h1>
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <h2>Feedback</h2>
     <div class="row">
       <div class="column">
-        <mat-label class="label sans">{{formData.name}}</mat-label>
-        <input class="sans" placeholder="...." type="text" formControlName="name">
+        <mat-label class="label sans">{{ formData.name }}</mat-label>
+        <input
+          class="sans"
+          placeholder="...."
+          type="text"
+          formControlName="name"
+        />
       </div>
       <div class="column">
-        <mat-label class="label sans">{{formData.email}}</mat-label>
-        <input class="sans" placeholder="...." type="email" formControlName="email">
+        <mat-label class="label sans">{{ formData.email }}</mat-label>
+        <input
+          class="sans"
+          placeholder="...."
+          type="email"
+          formControlName="email"
+        />
       </div>
     </div>
     <div class="column">
-      <mat-label class="label sans">{{formData.textArea}}</mat-label>
+      <mat-label class="label sans">{{ formData.textArea }}</mat-label>
       <textarea formControlName="text" rows="3"></textarea>
     </div>
     <div class="column file">
-      <label >{{formData.file}}</label>
-      <input class="select_file" type="file" (change)="onFileSelected($event)">
+      <label>{{ formData.file }}</label>
+      <input
+        class="select_file"
+        type="file"
+        (change)="onFileSelected($event)"
+      />
     </div>
     <div class="action">
-      <button  type="submit" class="save sans" mat-button>{{formData.send}}</button>
+      <button class="add_file-button" type="button" mat-button>Add file</button>
+      <button type="submit" class="save sans" mat-button>
+        {{ formData.send }}
+      </button>
     </div>
   </form>
 </div>

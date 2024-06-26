@@ -1,3 +1,7 @@
+<div class="mobile_offer_title" *ngIf="isMobile">
+  <mat-icon svgIcon="balance"></mat-icon>
+  <h3 class="title">Balance</h3>
+</div>
 <app-questions *ngIf="!isMobile"></app-questions>
 <app-questions-mobile *ngIf="isMobile"></app-questions-mobile>
 <app-form-question></app-form-question>
