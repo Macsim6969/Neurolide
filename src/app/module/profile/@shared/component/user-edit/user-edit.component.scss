@@ -134,6 +134,7 @@
   justify-content: center;
 
   .block {
+    z-index: 9999999999999;
     padding: 78px 95px 56.61px 95px;
     max-width: 613px;
     width: 100%;
@@ -155,6 +156,10 @@
         line-height: 31.73px;
         padding-bottom: 25px;
         color: #FFFFFF;
+      }
+
+      mat-icon{
+        width: 55px;
       }
 
       .attention_info {

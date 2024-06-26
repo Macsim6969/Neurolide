@@ -17,11 +17,11 @@
   </div>
 </div>
 
-<div class="popup_attention" *ngIf="isPopupAttention">
-  <div class="block">
+<div class="popup_attention" *ngIf="isPopupAttention" (click)="onOutsideClick($event)">
+  <div class="block" (click)="$event.stopPropagation()">
     <div class="block_description">
       <h5 class="attention_title">Delete Profile</h5>
-      <mat-icon></mat-icon>
+      <mat-icon svgIcon="delete-attention"></mat-icon>
       <p class="attention_info">Are you sure you want to delete the profile permanently?</p>
     </div>
     <div class="action">

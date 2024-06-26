@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileServices } from './@shared/services/profile.service';
 import { BalanceServiceModule } from '../../shared/services/balance/balanceService.module';
 import { GraphicsDataComponent } from './@shared/component/graphics-data/graphics-data.component';
+import { ProfileIconService } from './@shared/services/profileIcon.service';
 
 
 
@@ -28,6 +29,6 @@ import { GraphicsDataComponent } from './@shared/component/graphics-data/graphic
     ProfileComponent,
     UserEditComponent
   ],
-  providers: [ProfileServices]
+  providers: [ProfileServices, ProfileIconService]
 })
 export class ProfileModule { }

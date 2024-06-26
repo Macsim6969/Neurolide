@@ -8,6 +8,8 @@ import { selectUserData } from '../../../../../store/selectors/store.selectors';
 import { ProfileServices } from '../../services/profile.service';
 import { AuthService } from '../../../../auth/@shared/services/auth.service';
 import { Router } from '@angular/router';
+import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
+import { ProfileIconService } from '../../services/profileIcon.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -27,7 +29,8 @@ export class UserEditComponent implements OnInit, OnDestroy {
     private store: Store<{ store: StoreInterface }>,
     private profileServices: ProfileServices,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private profileIcon: ProfileIconService
   ) { }
 
   ngOnInit(): void {
@@ -80,6 +83,9 @@ export class UserEditComponent implements OnInit, OnDestroy {
     this.authService.deleteUser();
   }
 
+  public  onOutsideClick(event: MouseEvent): void {
+    this.isPopupAttention = false;
+  }
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
