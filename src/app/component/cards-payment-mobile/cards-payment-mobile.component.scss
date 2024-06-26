@@ -1,6 +1,11 @@
 .cards_payment {
   align-items: center !important;
 
+  &.home {
+    flex-direction: column-reverse;
+    gap: 43px;
+  }
+
   .cards_payments_mobile {
     display: flex;
     flex-direction: row;
@@ -17,16 +22,20 @@
 
   .card-added {
     padding: 0;
+    border: none;
+    outline: none;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 30px;
+    height: 30px;
     border-radius: 50%;
     max-height: 30px;
     background-color: #FFFFFF;
 
     mat-icon {
       width: 10px;
+
       ::ng-deep {
         svg {
           path {

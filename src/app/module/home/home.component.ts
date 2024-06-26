@@ -1,7 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IsMobilePage } from '../../shared/abstract/mobilePage/mobilePage';
 import { NavigationEnd, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { StoreInterface } from '../../store/model/store.model';
+import { selectUserData } from '../../store/selectors/store.selectors';
+import { UserData } from '../../shared/interfaces/backend.interface';
 
 
 @Component({
@@ -10,7 +14,6 @@ import { Subject } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent extends IsMobilePage implements OnInit, OnDestroy {
-
   private destroy$: Subject<void> = new Subject<void>();
   constructor(
     private router: Router
@@ -24,7 +27,7 @@ export class HomeComponent extends IsMobilePage implements OnInit, OnDestroy {
   }
 
   private streamRouterUrl() {
-    this.router.events.subscribe(event => {
+    this.router.events.pipe(takeUntil(this.destroy$)).subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.saveCurrentRoute(event.urlAfterRedirects);
       }

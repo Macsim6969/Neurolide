@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProfileServices } from './@shared/services/profile.service';
 import { Subject, takeUntil } from 'rxjs';
-import { BalanceCardService } from '../../shared/services/balance/balanceCard.service';
 import { IsMobilePage } from '../../shared/abstract/mobilePage/mobilePage';
 import { AuthService } from '../auth/@shared/services/auth.service';
 import { Router } from '@angular/router';

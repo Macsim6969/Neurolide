@@ -1,4 +1,4 @@
-<section class="cards_payment">
+<section class="cards_payment" [ngClass]="{'home': url === '/'}">
   <div class="cards_payment_header">
     <div class="cards_payments_mobile">
       <p class="cards_payment_title">Add Card</p>
@@ -10,7 +10,8 @@
   </div>
   <div class="content">
     <drag-scroll #nav (indexChanged)="chanegActiveCard($event)">
-      <mat-card drag-scroll-item class="content-cards" *ngFor="let card of cards;index as i" [ngClass]="{'active': this.activeCard === i}">
+      <mat-card drag-scroll-item class="content-cards" *ngFor="let card of cards;index as i"
+        [ngClass]="{'active': this.activeCard === i}">
         <mat-card-content class="content-cards-container">
           <div class="card-payment" style="background-image: url('./assets/images/cards/cards.jfif')">
             <div class="card-payment-header">
@@ -42,5 +43,4 @@
       <app-loading></app-loading>
     </ng-template>
   </div>
-
 </section>

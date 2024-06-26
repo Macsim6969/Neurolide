@@ -28,7 +28,6 @@ export abstract class BasePaymentComponent implements OnInit, OnDestroy {
     this.store.pipe(select(selectCardsPayments), takeUntil(this.destroy$)).subscribe((data: CardsPayment[]) => {
       if (data) {
         this.cards = Object.values(data);
-        console.log(data)
       }
     })
   }

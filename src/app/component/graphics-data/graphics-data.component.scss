@@ -6,8 +6,17 @@
   gap: 27px;
   padding: 50.48px 0 0 0;
   background-color: #0E1218;
+  
+  @media (max-width: 1124px) {
+    max-width: 390px;
+    margin-top: 42px;
+    border-radius: 20px;
+    gap: 14px;
+    padding: 26px 0 0 0;
+    margin-bottom: 30px;
+  }
 
- .item {
+  .item {
     max-width: 837px;
     display: flex;
     align-items: center;
@@ -22,6 +31,10 @@
       font-size: 2.4rem;
       font-weight: 700;
       margin-right: 70px;
+
+      @media (max-width: 1124px) {
+        height: 25px;
+      }
 
       &.cliques,
       &.leads,
@@ -63,5 +76,8 @@
     height: 13.6px;
     border-radius: 0 0 20px 20px;
 
+    @media (max-width: 1124px) {
+      margin-top: 27px;
+    }
   }
 }

@@ -6,8 +6,6 @@ import { UserEditComponent } from './@shared/component/user-edit/user-edit.compo
 import { PopupEditeComponent } from './@shared/component/popup-edite/popup-edite.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileServices } from './@shared/services/profile.service';
-import { BalanceServiceModule } from '../../shared/services/balance/balanceService.module';
-import { GraphicsDataComponent } from './@shared/component/graphics-data/graphics-data.component';
 import { ProfileIconService } from './@shared/services/profileIcon.service';
 
 
@@ -16,8 +14,7 @@ import { ProfileIconService } from './@shared/services/profileIcon.service';
   declarations: [
     ProfileComponent,
     UserEditComponent,
-    PopupEditeComponent,
-    GraphicsDataComponent
+    PopupEditeComponent
   ],
   imports: [
     CommonModule,

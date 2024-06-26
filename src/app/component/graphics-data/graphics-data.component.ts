@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { StoreInterface } from '../../../../../store/model/store.model';
 import { Store, select } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { selectMonitoringData } from '../../../../../store/selectors/store.selectors';
-import { MonitoringData } from '../../../../../shared/interfaces/header.interface';
+import { StoreInterface } from '../../store/model/store.model';
+import { selectMonitoringData } from '../../store/selectors/store.selectors';
+import { MonitoringData } from '../../shared/interfaces/header.interface';
 
 @Component({
   selector: 'app-graphics-data',

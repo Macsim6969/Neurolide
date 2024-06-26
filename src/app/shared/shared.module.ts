@@ -24,6 +24,7 @@ import { FormMediaComponent } from './components/form-media/form-media.component
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FormOffersComponent } from "./components/form-offers/form-offers.component";
 import { DragScrollModule } from "ngx-drag-scroll";
+import { GraphicsDataComponent } from "../component/graphics-data/graphics-data.component";
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { DragScrollModule } from "ngx-drag-scroll";
     FormatCardNumberPipe,
     ActionSlideComponent,
     FormMediaComponent,
-    FormOffersComponent
+    FormOffersComponent,
+    GraphicsDataComponent
   ],
   exports: [
     CommonModule,
@@ -61,7 +63,8 @@ import { DragScrollModule } from "ngx-drag-scroll";
     CardsPaymentMobileComponent,
     ActionSlideComponent,
     FormMediaComponent,
-    FormOffersComponent
+    FormOffersComponent,
+    GraphicsDataComponent
   ],
   imports: [
     CommonModule,
