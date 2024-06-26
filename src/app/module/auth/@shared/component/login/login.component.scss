@@ -34,7 +34,7 @@
     padding-top: 10px;
     font-size: 1.6rem;
     line-height: 1.88rem;
-    color: #A3AED0;
+    color: #a3aed0;
     text-align: center;
   }
 
@@ -76,7 +76,7 @@
         font-size: 2rem;
         font-weight: 400;
         line-height: 2.35rem;
-        color: #FFFFFF;
+        color: #ffffff;
         padding: 20px;
 
         @media (max-width: 1124px) {
@@ -86,7 +86,7 @@
         }
 
         &.active {
-          background: #2E65F3;
+          background: #2e65f3;
         }
       }
     }
@@ -98,7 +98,6 @@
       color: #000000;
 
       @media (max-width: 1124px) {
-
         font-size: 1.4rem;
         line-height: 16.45px;
       }
@@ -111,9 +110,9 @@
       line-height: 2.35rem;
       font-weight: 400;
       outline: none;
-      border: 1px solid #A3AED0;
+      border: 1px solid #a3aed0;
       border-radius: 20px;
-      color: #A3AED0;
+      color: #a3aed0;
 
       @media (max-width: 1124px) {
         padding: 11px 0 11px 14px;
@@ -136,13 +135,12 @@
     }
 
     .password {
-
       .password_actions {
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 100%;
-        border: 1px solid #E0E2E7;
+        border: 1px solid #e0e2e7;
         border-radius: 16px;
 
         input {
@@ -179,7 +177,7 @@
     }
 
     .login {
-      background: linear-gradient(90deg, #70A9FF 0%, #316EC9 57%, #0149B4 100%);
+      background: linear-gradient(90deg, #70a9ff 0%, #316ec9 57%, #0149b4 100%);
       border-radius: 16px;
       padding: 20px 181.5px;
       display: flex;
@@ -187,7 +185,7 @@
       width: 100%;
       font-size: 2rem;
       line-height: 23.5px;
-      color: #FFFFFF;
+      color: #ffffff;
       margin: 0 0 20px 0;
 
       @media (max-width: 1124px) {
@@ -204,9 +202,8 @@
       font-weight: 500;
       line-height: 2.4rem;
       letter-spacing: -0.02em;
-      color: #A3AED0;
+      color: #a3aed0;
       margin: 0;
     }
   }
-
 }

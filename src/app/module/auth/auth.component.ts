@@ -5,27 +5,31 @@ import { Subject, take, takeUntil, timer } from 'rxjs';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  styleUrls: ['./auth-dark.component.scss'],
 })
 export class AuthComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   public isPopup: boolean;
-  constructor(private popupInfoService: PopupInfoService) { }
+  constructor(private popupInfoService: PopupInfoService) {}
 
   ngOnInit(): void {
     this.initializeStreamPopupIsAlert();
   }
 
   private initializeStreamPopupIsAlert() {
-    this.popupInfoService._isAlert$.pipe(takeUntil(this.destroy$)).subscribe((data: boolean) => {
-      this.isPopup = data;
+    this.popupInfoService._isAlert$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: boolean) => {
+        this.isPopup = data;
 
-      if (this.isPopup) {
-        timer(1000).pipe(take(1)).subscribe(() => {
-          this.popupInfoService._isAlert = false;
-        })
-      }
-    })
+        if (this.isPopup) {
+          timer(1000)
+            .pipe(take(1))
+            .subscribe(() => {
+              this.popupInfoService._isAlert = false;
+            });
+        }
+      });
   }
 
   ngOnDestroy(): void {
