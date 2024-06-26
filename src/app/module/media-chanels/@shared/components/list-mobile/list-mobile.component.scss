@@ -21,3 +21,22 @@
     }
   }
 }
+
+.action {
+  button {
+
+
+    &.remove {
+      background-color: #FFE4E3;
+    }
+
+    &.save {
+      background-color: #D1F5E4 !important;
+    }
+
+    mat-icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}

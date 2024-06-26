@@ -14,17 +14,19 @@
     <nav *ngIf="statusPage === 'offers' && rules === 'manager' ||rules === 'affiliate'" class="price">${{channel.balance
       ? channel.balance : 0}}
     </nav>
-    <button *ngIf="statusPage === 'offers' && rules === 'manager' ||rules === 'affiliate'" class="payout"
-      (click)="openPayout(i)">
-      <nav>{{activePayout && activePayout[i] ? activePayout[i] : channel?.payout}}</nav>
-      <mat-icon svgIcon="arrow"></mat-icon>
-      <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown[i]}">
-        <nav *ngFor="let methode of modelPayment;index as m" (click)="choicePayout(i, methode?.title, channel?.id)"
-          [ngClass]="{'active': activePayout[i ] === methode.title || channel?.payout === methode.title}">
-          {{methode.title}}</nav>
+    <nav>
+      <button *ngIf="statusPage === 'offers' && rules === 'manager' ||rules === 'affiliate'" class="payout"
+        (click)="openPayout(i)">
+        <nav>{{activePayout && activePayout[i] ? activePayout[i] : channel?.payout}}</nav>
         <mat-icon svgIcon="arrow"></mat-icon>
-      </div>
-    </button>
+        <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown[i]}">
+          <nav *ngFor="let methode of modelPayment;index as m" (click)="choicePayout(i, methode?.title, channel?.id)"
+            [ngClass]="{'active': activePayout[i ] === methode.title || channel?.payout === methode.title}">
+            {{methode.title}}</nav>
+          <mat-icon svgIcon="arrow"></mat-icon>
+        </div>
+      </button>
+    </nav>
     <button [ngClass]="{'hide': channel.isAdvertice}" [disabled]="channel.isAdvertice" (click)="goToWork(channel.id)"
       mat-button *ngIf="rules === 'affiliate'" class="advertise">Advertise</button>
     <nav class="status" *ngIf="statusPage === 'offers' && rules === 'manager'">
@@ -40,7 +42,8 @@
     <!-- MANAGER PAGE -->
     <nav *ngIf="rules === 'brand'" class="price">${{channel.balance ? channel.balance : 0}}</nav>
     <nav *ngIf="rules === 'brand'" class="manager subscribe">${{channel.payments ? channel.payments : 0}}</nav>
-    <nav *ngIf="rules === 'brand' || rules === 'affiliate' && url === '/offers' " class="status">{{channel.vip ? 'VIP' : ''}}</nav>
+    <nav *ngIf="rules === 'brand' || rules === 'affiliate' && url === '/offers' " class="status">{{channel.vip ? 'VIP' :
+      ''}}</nav>
   </div>
 </div>
 

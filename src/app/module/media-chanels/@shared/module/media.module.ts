@@ -10,6 +10,7 @@ import { ShareModule } from "../../../../shared/shared.module";
 import { TranslateModule } from "@ngx-translate/core";
 import { MediaFormService } from "../services/mediaForm.service";
 import { MediaChannelService } from "../services/mediaChannel.service";
+import { DragScrollModule } from "ngx-drag-scroll";
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MediaChannelService } from "../services/mediaChannel.service";
   imports: [
     CommonModule,
     ShareModule,
+    DragScrollModule,
     TranslateModule
   ],
   exports: [

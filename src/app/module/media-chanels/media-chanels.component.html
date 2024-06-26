@@ -2,5 +2,12 @@
   <app-media-header></app-media-header>
   <app-media-list></app-media-list>
 </section>
+<div class="mobile_offer_title" *ngIf="isMobile">
+    <mat-icon svgIcon="media-canal"></mat-icon>
+    <h3 class="title">Media Chanmels</h3>
+  <div class="add" *ngIf="rules === 'manger'">
+    <mat-icon svgIcon="add" (click)="openForm()"></mat-icon>
+  </div>
+</div>
 <app-list-mobile *ngIf="isMobile"></app-list-mobile>
 <app-form-media *ngIf="isOpenForm"></app-form-media>

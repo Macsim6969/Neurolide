@@ -1,17 +1,22 @@
-.action_search{
-  &.brand{
+.action_search {
+  &.brand {
     max-width: 289px !important;
-    input{
+
+    input {
       max-width: 100% !important;
     }
   }
 }
 
-button{
-  &.hide{
+button {
+  width: 100%;
+  min-width: fit-content;
+
+  &.hide {
     display: none !important;
   }
-  &.active{
+
+  &.active {
     display: flex !important;
   }
 }

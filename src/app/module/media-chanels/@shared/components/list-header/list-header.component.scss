@@ -1,12 +1,16 @@
 .user-header-search {
   padding: 30px 21.3px;
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px;
 
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   align-items: center;
   background: #0E1218;
   margin-top: 36px;
+
+  &.brand{
+    grid-template-columns: repeat(7, 1fr);
+  }
 
   &.manager {
     grid-template-columns: repeat(8, 1fr);
@@ -22,10 +26,6 @@
 
     &.hide {
       display: none;
-    }
-
-    &.nickname {
-      width: 240px;
     }
 
     p {

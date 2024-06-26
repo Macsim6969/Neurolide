@@ -27,18 +27,19 @@
         <mat-label class="label sans">Accrual model</mat-label>
         <div class="model">
           <button *ngFor="let payment of paymentData;index as i"
-            [ngClass]="{'active': isOpenTab[i] || choicePayment === payment.title} " type="button"
-            (click)="open( payment.title, i)">
+            [ngClass]="{'active': choicePayment === payment.title} " type="button" (click)="open( payment.title, i)">
             <p>{{payment.title}}</p>
-            <input *ngIf="isOpenTab[i]" type="text" value="{{payment.value}}">
-            <input *ngIf="isOpenTab[i]" type="number" value="{{payment.price}}">
+            <!-- <input *ngIf="isOpenTab[i]" type="text" value="{{payment.value}}">
+            <input *ngIf="isOpenTab[i]" type="number" value="{{payment.price}}"> -->
           </button>
 
         </div>
       </div>
       <div class="action">
         <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
-        <button type="submit" class="save sans" mat-button>Save Changes</button>
+        <button type="submit" class="save sans" mat-button><mat-icon svgIcon="add"></mat-icon>
+          <p>Save Changes</p>
+        </button>
       </div>
     </form>
   </div>

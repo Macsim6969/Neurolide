@@ -94,7 +94,7 @@ app-manager {
   overflow-y: auto;
   height: calc(100vh - 140px);
 
-  &::-webkit-scrollbar{
+  &::-webkit-scrollbar {
     display: none;
   }
 }
@@ -191,15 +191,39 @@ app-manager {
   align-items: center;
   justify-content: center;
   gap: 12px;
+  position: relative;
 
-  mat-icon{
+  @media (max-width: 576px) {
+    padding: 20px 0;
+    gap: 10px;
+  }
+
+  mat-icon {
     width: 37px;
     height: 37px;
+
+    @media (max-width: 576px) {
+      height: 18px;
+      width: 18px;
+      margin: 0;
+    }
   }
+
   .title {
     font-weight: 400;
     font-size: 3.3rem;
     line-height: 38.85px;
     color: #FFFFFF;
+
+    @media (max-width: 576px) {
+      font-size: 1.6rem;
+      line-height: 18.8px;
+    }
   }
+
+  .add {
+    position: absolute;
+    right: 24.62px;
+  }
+
 }
