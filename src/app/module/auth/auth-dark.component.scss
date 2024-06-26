@@ -1,0 +1,264 @@
+.auth {
+  display: flex;
+  // flex-direction: row;
+  // justify-content: space-between;
+  // height: 100%;
+  // width: 100%;
+  gap: 39px;
+  // background-color: #0a0a0a;
+  color: #fff;
+  padding: 0 26px 18px 26px;
+}
+
+@media (max-width: 1124px) {
+  // flex-direction: column;
+}
+.auth_logo {
+  display: none;
+}
+.auth_logo_mobile {
+  position: absolute;
+  background: url("../../../assets/images/auth/auth_bg_dark_mobile.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: left top;
+  top: 0;
+  left: -15px;
+  width: 100%;
+  height: 154px;
+
+  @media (min-width: 576px) {
+    background: url("../../../assets/images/auth/auth_bg_dark_tablet.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    left: 0;
+    height: 331px;
+
+    @media (min-width: 744px) {
+      background: url("../../../assets/images/auth/auth_bg_dark.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      left: 25%;
+      // right: 0;
+      width: 100%;
+      height: 100%;
+      /* максимальная ширина будет равна ширине родительского контейнера */
+    }
+  }
+
+  .auth_logo_inner {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
+    justify-content: center;
+    align-items: center;
+    left: 39px;
+    top: 40px;
+
+    @media (min-width: 576px) {
+      gap: 33px;
+      left: 98px;
+      top: 98px;
+    }
+
+    @media (min-width: 744px) {
+      flex-direction: column;
+      // display: none;
+      gap: 33px;
+      // left: 98px;
+      right: 120px;
+      top: 90px;
+    }
+
+    @media (min-width: 1024px) {
+      // display: none;
+      gap: 80px;
+      // left: 98px;
+      right: 245px;
+      top: 224px;
+    }
+
+    .logo {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+
+      img {
+        object-fit: cover;
+        width: 53px;
+        height: 54px;
+
+        @media (min-width: 576px) {
+          width: 105px;
+          height: 107px;
+        }
+
+        @media (min-width: 744px) {
+          // width: 2px;
+          // height: 208px;
+        }
+        @media (min-width: 1024px) {
+          width: 300px;
+          height: 312px;
+        }
+      }
+    }
+    h1 {
+      font-family: DM Sans;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 30.2px;
+      color: #fff;
+
+      @media (min-width: 576px) {
+        font-size: 55px;
+      }
+
+      @media (min-width: 744px) {
+        font-size: 52px;
+        line-height: 60px;
+      }
+
+      @media (min-width: 1024px) {
+        font-size: 100px;
+        line-height: 130.2px;
+      }
+    }
+  }
+
+  .title {
+    font-family: DM Sans;
+    font-size: 100px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+  }
+
+  @media (max-width: 1124px) {
+    // background: url("../../../assets/images/auth/auth_bg_dark_mobile.png");
+    // background-repeat: no-repeat;
+    // background-size: 100% 100%;
+    // background-position: left top;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // flex: 1;
+    // width: 100%;
+    // min-height: 154px;
+
+    // display: block;
+    // position: absolute;
+    // height: 100%;
+    // width: 100%;
+    // right: 0;
+    // top: 0;
+    // bottom: 0;
+    // z-index: -1;
+  }
+}
+
+// .logo_img {
+//   width: 53px;
+//   height: 54px;
+// }
+
+.auth_content {
+  // width: 38.2%;
+  // height: 100%;
+
+  @media (max-width: 1124px) {
+    // width: 100%;
+  }
+}
+
+// .auth_logo {
+//   background: url("../../../assets/images/auth/auth_bg_dark.png");
+//   background-repeat: no-repeat;
+//   background-size: 100% 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   max-width: 100%;
+//   /* максимальная ширина будет равна ширине родительского контейнера */
+//   position: relative;
+//   flex: 1;
+
+//   @media (max-width: 1124px) {
+//     display: none;
+//   }
+
+//   .auth_logo_inner {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 60px;
+//     position: absolute;
+//     align-items: center;
+//     right: 174px;
+//     top: 223.91px;
+
+//     @media (max-width: 1620px) {
+//       gap: 30px;
+//     }
+
+//     .logo {
+//       max-width: 300px;
+
+//       @media (max-width: 1620px) {
+//         max-width: 200px;
+//       }
+
+//       img {
+//         object-fit: cover;
+//         width: 100%;
+//         height: 100%;
+//       }
+//     }
+
+//     .title {
+//       font-size: 10rem;
+//       line-height: 13.02rem;
+//       color: #ffffff;
+
+//       @media (max-width: 1620px) {
+//         font-size: 6.5rem;
+//         line-height: 9.02rem;
+//       }
+//     }
+//   }
+// }
+
+// .popup-info {
+//   position: fixed;
+//   right: 70px;
+//   top: 100px;
+//   border-radius: 16px;
+//   padding: 12px;
+//   background-color: #d1f5e4;
+
+//   &.active {
+//     transition: all 0.5s ease;
+//     animation: open 0.5s;
+//   }
+
+//   p {
+//     font-size: 2rem;
+//   }
+// }
+// }
+
+@keyframes open {
+  from {
+    /* pushes the sun down past the viewport */
+    transform: translateX(500px);
+  }
+
+  to {
+    /* returns the sun to its default position */
+    transform: translateX(0);
+  }
+}

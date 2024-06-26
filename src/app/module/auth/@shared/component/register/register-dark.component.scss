@@ -3,9 +3,11 @@
   box-shadow: none;
   outline: none;
   min-width: 454px;
-  padding-top: 81px;
+  padding-top: 223px;
   margin-left: calc(25.7rem);
   background-color: transparent;
+  display: flex;
+  align-items: center;
 
   @media (max-width: 1620px) {
     margin-left: calc(12rem);
@@ -22,10 +24,12 @@
   }
 
   .register-title {
+    font-family: DM Sans;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 52.08px;
     text-align: center;
-    font-size: 3.6rem;
-    line-height: 5.6rem;
-    color: #000000;
+    margin-bottom: 18px;
   }
 
   .form {
@@ -53,9 +57,8 @@
       }
 
       .rules {
-        background: #124897;
+        background: #181a1e;
         justify-content: flex-start;
-
         border-radius: 20px;
         height: 100%;
         min-width: 218px !important;

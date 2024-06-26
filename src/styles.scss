@@ -1,28 +1,35 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 // Включаем общие стили для Angular Material.
 @include mat.core();
 
 // Определяем палитры для вашей темы, используя доступные палитры Material Design.
-$Neuroline-primary: mat.define-palette(mat.$blue-palette); // Используем синюю палитру
+$Neuroline-primary: mat.define-palette(
+  mat.$blue-palette
+); // Используем синюю палитру
 $Neuroline-accent: mat.define-palette(mat.$blue-palette, A200, A100, A400);
 
 // Палитра предупреждений (необязательно, по умолчанию красная).
 $Neuroline-warn: mat.define-palette(mat.$blue-palette);
 
 // Создаём объект темы. Тема состоит из конфигураций для отдельных систем, таких как "цвет" или "типография".
-$Neuroline-theme: mat.define-light-theme((color: (primary: $Neuroline-primary,
-        accent: $Neuroline-accent,
-        warn: $Neuroline-warn,
-      )));
+$Neuroline-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $Neuroline-primary,
+      accent: $Neuroline-accent,
+      warn: $Neuroline-warn,
+    ),
+  )
+);
 
 // Включаем стили темы для ядра и каждого компонента, используемого в вашем приложении.
 @include mat.all-component-themes($Neuroline-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
-@import url('./style/mobile.scss');
-@import url('./style/page.scss');
+@import url("./style/mobile.scss");
+@import url("./style/page.scss");
 
 p,
 h1,
@@ -81,7 +88,7 @@ body {
   gap: 42px;
   height: calc(100vh - 40px);
 
-  @media (max-width:1124px) {
+  @media (max-width: 1124px) {
     gap: 8px;
   }
 
