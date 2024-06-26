@@ -9,7 +9,7 @@ import { NavigationIconsService } from '../../shared/services/navigation/navigat
   styleUrls: ['./offers.component.scss']
 })
 export class OffersComponent extends OffersOpenForm implements OnInit {
-
+  public rules: string;
   constructor(
     override offerFormService: OfferFormService,
     private navigationIconsService: NavigationIconsService
@@ -18,6 +18,16 @@ export class OffersComponent extends OffersOpenForm implements OnInit {
   }
 
   override ngOnInit(): void {
-    super.ngOnInit()
+    super.ngOnInit();
+    this.checkRulesUser();
+  }
+
+  private checkRulesUser() {
+    this.rules = JSON.parse(localStorage.getItem('rules'));
+  }
+
+  public openForm(rules: 'added' | 'offers' | 'active') {
+    this.offerFormService._isOfferForm = true;
+    this.offerFormService._rulesOffer = rules;
   }
 }

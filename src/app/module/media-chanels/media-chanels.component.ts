@@ -25,7 +25,7 @@ export class MediaChanelsComponent extends MediaChannelsForm implements OnInit {
   }
 
   private checkRulesUser() {
-    this.rules = JSON.parse(localStorage.getItem('rules'))
+    this.rules = JSON.parse(localStorage.getItem('rules'));
   }
 
   public openForm() {

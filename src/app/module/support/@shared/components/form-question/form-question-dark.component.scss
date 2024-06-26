@@ -33,7 +33,7 @@
     width: 95%;
     background-color: #0e1218;
     border-radius: 20px;
-    padding: 24px 18px;
+    padding: 24px 0;
 
     @media (min-width: 576px) {
       padding: 48px 37px;
@@ -50,6 +50,7 @@
       font-weight: 400;
       line-height: 30.2px;
       color: #fff;
+      padding: 0 18px;
 
       @media (min-width: 744px) {
         font-family: DM Sans;
@@ -71,6 +72,7 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
+      padding: 0 18px;
 
       @media (min-width: 744px) {
         flex-direction: row;
@@ -88,6 +90,7 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      padding: 0 18px;
 
       &.file {
         align-items: flex-end;
@@ -157,6 +160,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+      padding: 0 18px;
 
       @media (min-width: 576px) {
         gap: 40px;

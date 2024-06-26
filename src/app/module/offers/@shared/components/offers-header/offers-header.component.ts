@@ -1,7 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
-import { OfferFormService } from '../../services/offersForms.service';
-import { SearchMediaChannelAndOffersService } from '../../../../../shared/services/searchMediaChannelAndOffers.service';
+import { Component } from '@angular/core';
 import { OfferHeaderTitle } from '../../../../../shared/abstract/offers/offersHeaderTitle';
 
 @Component({
