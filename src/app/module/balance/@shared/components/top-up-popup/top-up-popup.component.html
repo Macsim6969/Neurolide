@@ -5,7 +5,7 @@
       <div class="column">
         <mat-label class="label sans">Card number:</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="numberCard" maxlength="19"
-        [value]="form.get('numberCard').value | creditCardFormatter">
+          [value]="form.get('numberCard').value | creditCardFormatter">
       </div>
       <div class="row">
         <div class="column">
@@ -22,14 +22,16 @@
         <mat-label class="label sans">Name of the owner</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="name">
       </div>
-      <div class="column">
-        <mat-label class="label sans">Phone number</mat-label>
-        <input matInput class="sans" placeholder="+380" type="text" formControlName="number" maxlength="16"
-          [value]="form.get('number').value | phoneFormat">
-      </div>
-      <div class="column">
-        <mat-label class="label sans">Email</mat-label>
-        <input class="sans" placeholder="Email" type="email" formControlName="email">
+      <div class="row">
+        <div class="column">
+          <mat-label class="label sans">Phone number</mat-label>
+          <input matInput class="sans" placeholder="+380" type="text" formControlName="number" maxlength="16"
+            [value]="form.get('number').value | phoneFormat">
+        </div>
+        <div class="column">
+          <mat-label class="label sans">Email</mat-label>
+          <input class="sans" placeholder="Email" type="email" formControlName="email">
+        </div>
       </div>
       <div class="column">
         <mat-label class="label sans">Top-up amount</mat-label>
@@ -37,7 +39,7 @@
       </div>
       <div class="action">
         <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
-        <button type="submit" class="save sans" mat-button>Save Changes</button>
+        <button type="submit" class="save sans" mat-button>To replenish</button>
       </div>
     </form>
   </div>

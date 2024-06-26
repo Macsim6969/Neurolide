@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { CardsPayment } from '../../../../../shared/interfaces/backend.interface';
 import { DateInputFormatPipe } from '../../pipe/dateInputFormat.pipe';
 import { BalanceCardService } from '../../../../../shared/services/balance/balanceCard.service';
+import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 
 @Component({
   selector: 'app-added-card',
@@ -17,7 +18,8 @@ export class AddedCardComponent implements OnInit, OnDestroy {
   public form: FormGroup;
   dateInputFormatPipe = new DateInputFormatPipe();
   constructor(
-    private balanceCardService: BalanceCardService
+    private balanceCardService: BalanceCardService,
+    private globalIcon: GlobalIconsService
   ) { }
 
   ngOnInit(): void {
