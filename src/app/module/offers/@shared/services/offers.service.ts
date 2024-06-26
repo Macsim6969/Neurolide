@@ -49,6 +49,16 @@ export class OffersService {
     this.backendService.setToActiveOffer(offer).add(() => {
       this.removeOffers(offers, allOffers, idOffer)
     });
+  }
 
+  public setOfferToWork(mainData: OfferInterface[], idOffer: number) {
+    const media = Object.values(mainData).find((e: OfferInterface) => e.id === idOffer);
+    const blockId = Object.keys(mainData).find(key => mainData[key] === media);
+    const newData: OfferInterface = {
+      ...media,
+      isAdvertice: true
+    }
+
+    this.backendService.updateOffers(blockId, newData);
   }
 }

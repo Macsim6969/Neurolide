@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 import { SidebarService } from '../../shared/services/sidebarService';
 import { IsMobilePage } from '../../shared/abstract/mobilePage/mobilePage';
+import { NavigationIconsService } from '../../shared/services/navigation/navigationIcon.service';
 
 @Component({
   selector: 'app-navigation',
@@ -22,7 +23,8 @@ export class NavigationComponent extends IsMobilePage implements OnInit, OnDestr
   constructor(
     private translate: TranslateService,
     private store: Store<{ store: StoreInterface }>,
-    private sidebarService: SidebarService
+    private sidebarService: SidebarService,
+    private navigationIconsService: NavigationIconsService
   ) {
     super()
   }

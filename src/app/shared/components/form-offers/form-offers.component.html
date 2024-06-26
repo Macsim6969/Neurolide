@@ -1,33 +1,33 @@
 <div class="profile-edite">
   <div class="popup">
-    <h3 class="popup_title sans" *ngIf="statusEdite !== 'edite';else edite">Додати офер</h3>
+    <h3 class="popup_title sans" *ngIf="statusEdite !== 'edite';else edite">Add an offer</h3>
     <ng-template #edite>
-      <h3 class="popup_title sans">Редагувати офер</h3>
+      <h3 class="popup_title sans">Edit offer</h3>
     </ng-template>
 
     <form class="form" [formGroup]="form" (ngSubmit)="submit()">
       <div class="column">
-        <mat-label class="label sans">Назва</mat-label>
+        <mat-label class="label sans">Name</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="name">
       </div>
       <div class="column">
-        <mat-label class="label sans">Посилання</mat-label>
+        <mat-label class="label sans">Link</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="link">
       </div>
       <div class="column">
-        <mat-label class="label sans">Бренд</mat-label>
+        <mat-label class="label sans">Brand</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="brand">
       </div>
       <div class="column">
-        <mat-label class="label sans">Виплати</mat-label>
+        <mat-label class="label sans">Payments</mat-label>
         <input class="sans" placeholder="...." type="number" formControlName="payments">
       </div>
       <div class="column">
-        <mat-label class="label sans">Баланс</mat-label>
+        <mat-label class="label sans">Balance</mat-label>
         <input class="sans" placeholder="...." type="number" formControlName="balance">
       </div>
       <div class="column">
-        <mat-label class="label sans">Модель оплати</mat-label>
+        <mat-label class="label sans">Payment model</mat-label>
         <div class="methode">
           <button type="button" [ngClass]="{'active': method.title === activeMethod}"
             (click)="choiceMethod(method.title)"
@@ -36,7 +36,7 @@
       </div>
       <div class="action">
         <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
-        <button type="submit" class="save sans" mat-button>Save Changes</button>
+        <button type="submit" class="save sans" mat-button><p>Save Changes</p> <mat-icon svgIcon="add"></mat-icon></button>
       </div>
     </form>
   </div>

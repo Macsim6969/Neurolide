@@ -8,7 +8,7 @@ import { Component, HostListener, OnInit } from "@angular/core";
 export abstract class IsMobilePage implements OnInit {
   public isMobile: boolean
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  onResize() {
     this.initializeIsMobilePage();
   }
 
@@ -17,10 +17,6 @@ export abstract class IsMobilePage implements OnInit {
   }
 
   private initializeIsMobilePage() {
-    if (innerWidth < 1124) {
-      this.isMobile = true;
-    } else {
-      this.isMobile = false;
-    }
+    this.isMobile = innerWidth < 1124;
   }
 }

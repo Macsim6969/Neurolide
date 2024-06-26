@@ -13,11 +13,11 @@ export abstract class MediaChannelsForm extends IsMobilePage implements OnInit, 
   constructor(
     protected mediaFormService: MediaFormService
   ) {
-    super()
-    super.ngOnInit();
+    super();
   }
-
+  
   override ngOnInit(): void {
+    super.ngOnInit();
     this.initializeIsOpenForm();
   }
 

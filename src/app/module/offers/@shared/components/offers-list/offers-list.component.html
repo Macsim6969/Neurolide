@@ -1,5 +1,5 @@
-<div class="media-channel" *ngIf="offers;else loading">
-  <div [ngClass]="{'active': activeChannel === i}" class="channel" *ngFor="let channel of offers;index as i"
+<div class="media-channel {{rules}}" *ngIf="offers;else loading">
+  <div [ngClass]="{'active': activeChannel === i}" class="channel {{rules}}" *ngFor="let channel of offers;index as i"
     (click)="selectChannel(i)">
     <nav class="id">{{channel.id}}</nav>
     <nav class="name">{{channel.name}}</nav>
@@ -7,32 +7,43 @@
     <nav class="stream">{{channel.brand}}</nav>
 
 
-    <!-- Offers PAGE -->
-    <nav *ngIf="statusPage === 'offers' && rules === 'manager'" class="subscribe">${{channel.payments ? channel.payments : 0}}</nav>
-    <nav *ngIf="statusPage === 'offers' && rules === 'manager'" class="price">${{channel.balance ? channel.balance : 0}}</nav>
-    <button *ngIf="statusPage === 'offers' && rules === 'manager'" class="payout" (click)="openPayout(i)">
-      <nav>{{activePayout && activePayout[i] ? activePayout[i] : channel?.payout}}</nav>
-      <mat-icon svgIcon="arrow"></mat-icon>
-      <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown[i]}">
-        <nav *ngFor="let methode of modelPayment;index as m" (click)="choicePayout(i, methode?.title, channel?.id)"
-          [ngClass]="{'active': activePayout[i ] === methode.title || channel?.payout === methode.title}">
-          {{methode.title}}</nav>
+    <!-- Offers PAGE AND AFFILIATE PAGE -->
+    <nav *ngIf="statusPage === 'offers' && rules === 'manager' || rules === 'affiliate'" class="subscribe">
+      ${{channel.payments ? channel.payments
+      : 0}}</nav>
+    <nav *ngIf="statusPage === 'offers' && rules === 'manager' ||rules === 'affiliate'" class="price">${{channel.balance
+      ? channel.balance : 0}}
+    </nav>
+    <nav>
+      <button *ngIf="statusPage === 'offers' && rules === 'manager' ||rules === 'affiliate'" class="payout"
+        (click)="openPayout(i)">
+        <nav>{{activePayout && activePayout[i] ? activePayout[i] : channel?.payout}}</nav>
         <mat-icon svgIcon="arrow"></mat-icon>
-      </div>
-    </button>
+        <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown[i]}">
+          <nav *ngFor="let methode of modelPayment;index as m" (click)="choicePayout(i, methode?.title, channel?.id)"
+            [ngClass]="{'active': activePayout[i ] === methode.title || channel?.payout === methode.title}">
+            {{methode.title}}</nav>
+          <mat-icon svgIcon="arrow"></mat-icon>
+        </div>
+      </button>
+    </nav>
+    <button [ngClass]="{'hide': channel.isAdvertice}" [disabled]="channel.isAdvertice" (click)="goToWork(channel.id)"
+      mat-button *ngIf="rules === 'affiliate'" class="advertise">Advertise</button>
     <nav class="status" *ngIf="statusPage === 'offers' && rules === 'manager'">
       <button (click)="removeOffers(channel.id)" type="button" class="remove "><mat-icon
           svgIcon="cancel"></mat-icon></button>
-      <button (click)="setToActiveOffer(channel.id)"  type="submit" class="save "><mat-icon
+      <button (click)="setToActiveOffer(channel.id)" type="submit" class="save "><mat-icon
           svgIcon="confirme"></mat-icon></button>
       <button (click)="setVipStatus(channel.id)" type="submit" [ngClass]="{'active': channel.vip}"
         class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
     </nav>
 
+
     <!-- MANAGER PAGE -->
-    <nav *ngIf="rules === 'brand'" class="price">${{channel.balance ? channel.balance : 0}}</nav>    
+    <nav *ngIf="rules === 'brand'" class="price">${{channel.balance ? channel.balance : 0}}</nav>
     <nav *ngIf="rules === 'brand'" class="manager subscribe">${{channel.payments ? channel.payments : 0}}</nav>
-    <nav *ngIf="rules === 'brand'" class="status">{{channel.vip ? 'VIP' : ''}}</nav>
+    <nav *ngIf="rules === 'brand' || rules === 'affiliate' && url === '/offers' " class="status">{{channel.vip ? 'VIP' :
+      ''}}</nav>
   </div>
 </div>
 

@@ -6,6 +6,8 @@ import { Subject, takeUntil } from "rxjs";
 import { selectOffersData } from "../../../../store/selectors/store.selectors";
 import { OfferInterface } from "../interface/offer.interface";
 import { OffersService } from "../services/offers.service";
+import { TranslateService } from "@ngx-translate/core";
+import { ModelPaymentInterface } from "../interface/model.interface";
 
 @Component({
   template: ''
@@ -14,18 +16,21 @@ import { OffersService } from "../services/offers.service";
 export abstract class OffersDataClass implements OnInit, OnDestroy {
   protected destroy$: Subject<void> = new Subject<void>();
   protected mainData: OfferInterface[];
-  public addedOffer: OfferInterface[];
+  protected addedOffer: OfferInterface[];
+  protected offerInWork: OfferInterface[];
+  protected rules: string;
   public offers: OfferInterface[];
   protected activePayout: string[] = [];
   constructor(
     protected store: Store<{ store: StoreInterface }>,
     protected globalIconsService: GlobalIconsService,
-    protected offersService: OffersService,
+    protected offersService: OffersService
   ) { }
 
   ngOnInit(): void {
     this.streamOffersDataFromStore();
   }
+
 
   protected streamOffersDataFromStore() {
     this.store.select(selectOffersData).pipe(takeUntil(this.destroy$))
@@ -34,6 +39,7 @@ export abstract class OffersDataClass implements OnInit, OnDestroy {
           this.mainData = data;
           this.offers = Object.values(data);
           this.addedOffer = Object.values(data).filter((e) => e.statusOffer === 'added')
+          this.offerInWork = Object.values(data).filter((e) => e.isAdvertice === true);
         }
       });
 
@@ -48,7 +54,7 @@ export abstract class OffersDataClass implements OnInit, OnDestroy {
   }
 
   public setVipStatus(id: number) {
-    this.offersService.setVipStatus(this.offers, this.mainData, id)
+    this.rules === 'manager' ? this.offersService.setVipStatus(this.offers, this.mainData, id) : null;
   }
 
   ngOnDestroy(): void {

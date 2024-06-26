@@ -1,28 +1,28 @@
 <div class="profile-edite">
   <div class="popup">
-    <h3 class="popup_title sans">Вивести баланс</h3>
+    <h3 class="popup_title sans">Take out the balance</h3>
     <form class="form" [formGroup]="form" (ngSubmit)="submit()">
       <div class="column">
-        <mat-label class="label sans">Ім'я:</mat-label>
+        <mat-label class="label sans">Name:</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="name">
       </div>
       <div class="column">
-        <mat-label class="label sans">Номер картки</mat-label>
+        <mat-label class="label sans">Card number</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="numberCard" maxlength="19"
           [value]="form.get('numberCard').value | creditCardFormatter">
       </div>
 
       <div class="column">
         <mat-label class="label sans">Email</mat-label>
-        <input class="sans" placeholder="Email" type="email" formControlName="email">
+        <input class="sans" placeholder="...." type="email" formControlName="email">
       </div>
       <div class="column">
-        <mat-label class="label sans">Вивести суму</mat-label>
-        <input class="sans" type="number" placeholder="Сума поповнення" formControlName="suma">
+        <mat-label class="label sans">Withdraw the amount</mat-label>
+        <input class="sans" type="number" placeholder="...." formControlName="suma">
       </div>
       <div class="action">
-        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Відмінити</button>
-        <button type="submit" class="save sans" mat-button>Вивести</button>
+        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
+        <button type="submit" class="save sans" mat-button>Take out</button>
       </div>
     </form>
   </div>

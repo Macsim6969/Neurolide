@@ -1,16 +1,31 @@
-<div class="user">
-  <div class="user_info">
-    <div class="info_table" *ngFor="let user of userInfo">
-      <nav class="description">{{user.text}}</nav>
-      <nav class="log">{{user.data}}</nav>
+<div class="profile">
+  <div class="user">
+    <div class="user_info">
+      <div class="info_table" *ngFor="let user of userInfo">
+        <nav class="description">{{user.text}}</nav>
+        <nav class="log">{{user.data}}</nav>
+      </div>
+    </div>
+    <div class="user_action">
+      <button *ngFor="let action of userActions" class="sans {{action.class}}" (click)="actionsLogout(action.class)"
+        mat-button>{{action.text}}</button>
     </div>
   </div>
-  <div class="user_action">
-    <button [ngClass]="{'hide': rules === 'affiliate' || rules === 'brand'}" *ngFor="let action of userActions"
-      class="sans {{action.class}}" (click)="openPopup()" mat-button>{{action.text}}</button>
+  <div class="user_avatar">
+    <img (error)=" avatar = '../../../../../../assets/images/profile/avatar.png'"
+      [src]="avatar ? avatar : '../../../../../../assets/images/profile/avatar.png'" alt="Avatar">
   </div>
 </div>
-<div class="user_action_mobile">
-  <button [ngClass]="{'hide': rules === 'affiliate' || rules === 'brand'}" *ngFor="let action of userActions"
-    class="sans {{action.class}}" (click)="openPopup()" mat-button>{{action.text}}</button>
+
+<div class="popup_attention" *ngIf="isPopupAttention">
+  <div class="block">
+    <div class="block_description">
+      <h5 class="attention_title">Delete Profile</h5>
+      <mat-icon></mat-icon>
+      <p class="attention_info">Are you sure you want to delete the profile permanently?</p>
+    </div>
+    <div class="action">
+      <button mat-button (click)="removeAccount()">Delete</button>
+    </div>
+  </div>
 </div>

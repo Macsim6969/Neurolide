@@ -14,10 +14,10 @@ export abstract class OffersOpenForm extends IsMobilePage implements OnInit, OnD
     protected offerFormService: OfferFormService
   ) {
     super();
-    super.ngOnInit();
   }
 
   override ngOnInit(): void {
+    super.ngOnInit();
     this.initializeIsOpenForm();
   }
 

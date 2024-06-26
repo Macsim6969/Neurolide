@@ -10,6 +10,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { OfferFormService } from "../services/offersForms.service";
 import { OffersService } from "../services/offers.service";
 import { ActiveOfferService } from "../services/activeOffer.service";
+import { DragScrollModule } from "ngx-drag-scroll";
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ActiveOfferService } from "../services/activeOffer.service";
   imports: [
     CommonModule,
     ShareModule,
+    DragScrollModule,
     TranslateModule,
   ],
   providers: [OfferFormService, OffersService, ActiveOfferService]

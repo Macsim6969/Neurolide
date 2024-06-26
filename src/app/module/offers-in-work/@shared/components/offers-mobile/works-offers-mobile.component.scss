@@ -1,0 +1,54 @@
+.list-mobile {
+  margin-bottom: 54px;
+
+  .remove {
+    mat-icon {
+      ::ng-deep {
+        svg {
+
+          circle,
+          path {
+            stroke: #E84646;
+          }
+        }
+      }
+    }
+  }
+}
+
+.media_header_left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+
+  .id {
+    height: 100% !important;
+  }
+}
+
+.payout_methods {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  margin: 30px 0 0 0;
+
+  .payout {
+    display: flex;
+    border: 0;
+    outline: none;
+    border-radius: 20px;
+    background-color: #181A1E;
+    box-shadow: 0px 4px 20px 0px #00000040;
+    padding: 10px 12px;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+
+
+    &.active {
+      background-color: #3334FF;
+    }
+
+  }
+}

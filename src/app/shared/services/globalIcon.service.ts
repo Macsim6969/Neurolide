@@ -21,5 +21,6 @@ export class GlobalIconsService {
     this.matIconRegistry.addSvgIcon('vip', this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/images/profile/vip.svg'));
     this.matIconRegistry.addSvgIcon('add', this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/images/global/add.svg'));
     this.matIconRegistry.addSvgIcon('cancel', this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/images/profile/cancel.svg'));
+    this.matIconRegistry.addSvgIcon('offer_confirme', this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/images/global/offer_confirme.svg'));
   }
 }

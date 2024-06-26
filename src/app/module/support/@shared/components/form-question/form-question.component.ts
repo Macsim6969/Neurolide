@@ -7,16 +7,14 @@ import { QuestionForm } from '../../interface/questions.interface';
 @Component({
   selector: 'app-form-question',
   templateUrl: './form-question.component.html',
-  styleUrls: ['./form-question.component.scss']
+  styleUrls: ['./form-question-dark.component.scss'],
 })
 export class FormQuestionComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
   public form: FormGroup;
   public formData: QuestionForm;
-  constructor(
-    private translate: TranslateService
-  ) { }
+  constructor(private translate: TranslateService) {}
 
   ngOnInit(): void {
     this.initializeFormGroup();
@@ -28,23 +26,22 @@ export class FormQuestionComponent implements OnInit, OnDestroy {
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       text: new FormControl('', [Validators.required]),
-      file: new FormControl('')
-    })
+      file: new FormControl(''),
+    });
   }
 
   private streamDataFromJson() {
-    this.translate.stream('support.form').pipe(takeUntil(this.destroy$)).subscribe((data: QuestionForm) => {
-      this.formData = data;
-    })
+    this.translate
+      .stream('support.form')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((data: QuestionForm) => {
+        this.formData = data;
+      });
   }
 
-  public onFileSelected(event){
+  public onFileSelected(event) {}
 
-  }
-
-  public submit() { 
-    
-  }
+  public submit() {}
 
   ngOnDestroy(): void {
     this.destroy$.next();

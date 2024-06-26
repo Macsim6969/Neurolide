@@ -11,6 +11,7 @@ import { OffersList } from '../../../../../shared/abstract/offers/offersList';
 import { takeUntil } from 'rxjs';
 import { OfferInterface } from '../../../../offers/@shared/interface/offer.interface';
 import { ActiveOfferService } from '../../../../offers/@shared/services/activeOffer.service';
+import { selectActiveOffers } from '../../../../../store/selectors/store.selectors';
 
 @Component({
   selector: 'app-added-offers-list',

@@ -1,13 +1,46 @@
-.profile {
-  margin: 29px 0 54px 0;
+.profile-page {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding-left: 158px;
+  gap: 28px;
+  align-items: center;
+  margin-top: 40px;
 
-  position: relative;
   @media (max-width: 1124px) {
-    padding: 0 26px;
-    position: unset;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .profile {
+    padding: 35px 15px 52px 29px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #0E1218;
+    max-width: 628px;
+    width: 100%;
+    border-radius: 20px;
+
+    @media (max-width: 1420px) {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    @media (max-width: 1124px) {
+      padding: 11px 28px 15px 14px;
+      position: relative;
+    }
+
+    app-user-edit {
+      width: 100%;
+    }
+  }
+
+  .graphics-data {
+    width: 100%;
+
+    @media (max-width: 1420px) {
+      display: none;
+    }
   }
 }

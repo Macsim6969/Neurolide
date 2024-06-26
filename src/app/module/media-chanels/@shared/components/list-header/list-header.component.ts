@@ -16,6 +16,7 @@ export class ListHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   public active: number = 0;
   public isActive: boolean[];
   public userHead: UserSearch[];
+  public rules: string;
   public sortDirections: { [key: string]: boolean } = {};
   constructor(
     private translate: TranslateService,
@@ -26,10 +27,15 @@ export class ListHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.initializeDataFromJSON();
+    this.checkRulesUser();
   }
 
   ngAfterViewInit(): void {
     this.cd.detectChanges();
+  }
+
+  private checkRulesUser() {
+    this.rules = JSON.parse(localStorage.getItem('rules'))
   }
 
   private initializeDataFromJSON() {
@@ -40,7 +46,7 @@ export class ListHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public toogleFilter(i: number, tag: string) {
     this.isActive = [];
-  
+
     if (i === this.active) {
       // Toggle the sort direction for the active filter
       this.userSearchService.toggleSortDirection(tag);
@@ -51,7 +57,7 @@ export class ListHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       this.userSearchService._searchData = tag;
       this.userSearchService.setSortDirection(tag, true);
     }
-  
+
     if (i === this.active) {
       this.active = null;
       this.isActive[i] = false;
@@ -62,8 +68,8 @@ export class ListHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       this.userSearchService._searchData = tag;
     }
   }
-  
-  
+
+
 
   ngOnDestroy(): void {
     this.destroy$.next();

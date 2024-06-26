@@ -7,23 +7,20 @@ import { GlobalIconsService } from '../../../../../shared/services/globalIcon.se
 @Component({
   selector: 'app-questions-mobile',
   templateUrl: './questions-mobile.component.html',
-  styleUrls: ['./questions-mobile.component.scss']
+  styleUrls: ['./questions-mobile-dark.component.scss'],
 })
 export class QuestionsMobileComponent extends QuestionsClass {
-
   public isOpenTab: boolean[] = [];
   constructor(
     private globalIcon: GlobalIconsService,
     override translate: TranslateService,
     override supportIcon: SupportIconService
   ) {
-    super(translate, supportIcon)
+    super(translate, supportIcon);
   }
 
   public openTab(index: number) {
     this.isOpenTab = [];
-    this.isOpenTab[index] = true
-
+    this.isOpenTab[index] = true;
   }
-
 }

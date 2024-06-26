@@ -19,7 +19,8 @@ import { OfferFormService } from '../../services/offersForms.service';
 })
 export class OffersListComponent extends OffersDataClass {
   @Input() statusPage: string;
-  public rules: string;
+  public url: string;
+
   public isOpenDropdown: boolean[] = [];
   public isOpen: boolean = false;
   public activeChannel: number;
@@ -62,7 +63,8 @@ export class OffersListComponent extends OffersDataClass {
   }
 
   private checkRulesUser(){
-    this.rules = JSON.parse(localStorage.getItem('rules'))
+    this.rules = JSON.parse(localStorage.getItem('rules'));
+    this.url = localStorage.getItem('currentRoute')
   }
 
   private streamSearchFilterData() {
@@ -139,5 +141,8 @@ export class OffersListComponent extends OffersDataClass {
     this.offersService.setOfferToActiveData(idOffer, this.mainData, this.offers);
   }
 
+  public goToWork(idOffer: number){
+     this.offersService.setOfferToWork(this.mainData, idOffer);
+  }
 
 }

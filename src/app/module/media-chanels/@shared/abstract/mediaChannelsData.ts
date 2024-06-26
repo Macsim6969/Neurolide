@@ -32,7 +32,7 @@ export abstract class MediaChannelsDataClass implements OnInit, OnDestroy {
         if (data) {
           this.mainData = data;
           this.mediaChannels = Object.values(data);
-        }
+        } 
       });
   }
 

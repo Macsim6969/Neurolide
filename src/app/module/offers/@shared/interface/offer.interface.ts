@@ -7,5 +7,6 @@ export interface OfferInterface {
   balance: number
   payout: string
   vip: boolean,
-  statusOffer?: string
+  statusOffer?: string,
+  isAdvertice?: boolean
 }

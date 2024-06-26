@@ -18,19 +18,19 @@
       </div>
     </div>
     <div class="user_content">
-      <nav class="content_head">Нікнейм</nav>
+      <nav class="content_head">Nickname</nav>
       <nav class="content_desription">{{user.profile.name}}</nav>
     </div>
     <div class="user_content">
-      <nav class="content_head">Пошта</nav>
+      <nav class="content_head">Mail</nav>
       <nav class="content_desription">{{user.profile.email}}</nav>
     </div>
     <div class="user_content">
-      <nav class="content_head">Баланс</nav>
+      <nav class="content_head">Balance</nav>
       <nav class="content_desription">${{user.monitoring.balance}}</nav>
     </div>
     <div class="user_content">
-      <nav class="content_head">Транзакції</nav>
+      <nav class="content_head">Transactions</nav>
       <nav class="content_desription">${{user.monitoring.transactions}}</nav>
     </div>
     <div class="dop_content" [ngClass]="{'open': isOpen}">
@@ -51,7 +51,7 @@
         <div class="payments" *ngFor="let history of user.transactions; index as i" (click)="checkPayments(i)">
           <div class="payments_head">
 
-            <p class="payments_title">Платежі</p>
+            <p class="payments_title">Payments</p>
             <div class="payments_actions">
               <button (click)="openTransitionPopup(user?.profile?.email, history?.nomer, i, user.profile.userID)"> <img
                   src="../../../../../../assets/images/profile/edite.png" alt=""></button>
@@ -63,37 +63,37 @@
           </div>
           <div class="payments_content" [ngClass]="{'open': isOpenPayments === i}">
             <div class="content_column">
-              <nav class="content_head">Номер</nav>
+              <nav class="content_head">Number</nav>
               <nav class="content_desription">{{history.nomer}}</nav>
             </div>
             <div class="content_column">
-              <nav class="content_head">Дата рахунку</nav>
+              <nav class="content_head">Invoice date</nav>
               <nav class="content_desription">{{history.data}}</nav>
             </div>
             <div class="content_column">
-              <nav class="content_head">Дата оплати</nav>
+              <nav class="content_head">Date of payment</nav>
               <nav class="content_desription">{{history.termin}}</nav>
             </div>
             <div class="content_column">
-              <nav class="content_head">Спосіб оплати</nav>
+              <nav class="content_head">Payment method</nav>
               <nav class="content_desription">{{history?.method|cardFormat:history.subscription}}</nav>
             </div>
             <div class="content_column">
-              <nav class="content_head">Підписка</nav>
+              <nav class="content_head">Subscription</nav>
               <nav class="content_desription">{{history.subscription}}</nav>
             </div>
             <div class="content_column">
-              <nav class="content_head">Сума</nav>
+              <nav class="content_head">Amount</nav>
               <nav class="content_desription">{{history.kwota}}</nav>
             </div>
             <div class="content_row">
-              <nav class="content_head">Статус</nav>
+              <nav class="content_head">Status</nav>
               <nav class="content_desription">{{history.status}}</nav>
             </div>
           </div>
         </div>
         <div class="user_card">
-          <div class="title_card">Картки</div>
+          <div class="title_card">Cards</div>
           <div class="title_card" *ngFor="let card of user.card">
             <nav>{{card?.number}}</nav>
           </div>

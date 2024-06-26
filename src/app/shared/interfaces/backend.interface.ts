@@ -1,9 +1,9 @@
 export interface UserData {
   name: string
+  surname?: string
   userID?: string
   email: string
   password: string
-  address?: string
   number?: string
   avatar?: string
   rules: string

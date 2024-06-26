@@ -1,17 +1,17 @@
 <div class="profile-edite">
   <div class="popup">
-    <h3 class="popup_title sans">Додати новий канал</h3>
+    <h3 class="popup_title sans">Add a new channel</h3>
     <form class="form" [formGroup]="form" (ngSubmit)="submit()">
       <div class="column">
-        <mat-label class="label sans">Назва</mat-label>
+        <mat-label class="label sans">Name</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="name">
       </div>
       <div class="column">
-        <mat-label class="label sans">Посилання</mat-label>
+        <mat-label class="label sans">Link</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="link">
       </div>
       <div class="column">
-        <mat-label class="label sans">Підписники</mat-label>
+        <mat-label class="label sans">Subscribers</mat-label>
         <input class="sans" placeholder="...." type="number" formControlName="subscribe">
       </div>
 
@@ -20,25 +20,26 @@
         <input class="sans" placeholder="...." type="number" formControlName="stream">
       </div>
       <div class="column">
-        <mat-label class="label sans">Ціна</mat-label>
+        <mat-label class="label sans">Price</mat-label>
         <input class="sans" type="number" placeholder="...." formControlName="price">
       </div>
       <div class="column">
-        <mat-label class="label sans">Модель нарахування</mat-label>
+        <mat-label class="label sans">Accrual model</mat-label>
         <div class="model">
           <button *ngFor="let payment of paymentData;index as i"
-            [ngClass]="{'active': isOpenTab[i] || choicePayment === payment.title} " type="button"
-            (click)="open( payment.title, i)">
+            [ngClass]="{'active': choicePayment === payment.title} " type="button" (click)="open( payment.title, i)">
             <p>{{payment.title}}</p>
-            <input *ngIf="isOpenTab[i]" type="text" value="{{payment.value}}">
-            <input *ngIf="isOpenTab[i]" type="number" value="{{payment.price}}">
+            <!-- <input *ngIf="isOpenTab[i]" type="text" value="{{payment.value}}">
+            <input *ngIf="isOpenTab[i]" type="number" value="{{payment.price}}"> -->
           </button>
 
         </div>
       </div>
       <div class="action">
         <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
-        <button type="submit" class="save sans" mat-button>Save Changes</button>
+        <button type="submit" class="save sans" mat-button><mat-icon svgIcon="add"></mat-icon>
+          <p>Save Changes</p>
+        </button>
       </div>
     </form>
   </div>

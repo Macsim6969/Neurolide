@@ -6,15 +6,13 @@ import { QuestionsClass } from '../../abstract/questionBlock';
 @Component({
   selector: 'app-questions',
   templateUrl: './questions.component.html',
-  styleUrls: ['./questions.component.scss']
+  styleUrls: ['./questions-dark.component.scss'],
 })
 export class QuestionsComponent extends QuestionsClass {
-
   constructor(
     override translate: TranslateService,
     override supportIcon: SupportIconService
-  ){
-     super(translate, supportIcon)
+  ) {
+    super(translate, supportIcon);
   }
-
 }

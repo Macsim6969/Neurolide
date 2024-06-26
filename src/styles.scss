@@ -76,12 +76,8 @@ body {
     gap: 8px;
   }
 
-  .right_block {
+  .manager {
     width: 100%;
-    background-image: url("./assets/images/main/main_page.png");
-    background-repeat: no-repeat;
-    background-size: 950px 455px;
-    background-position: top right;
     padding-right: 30px;
   }
 }
@@ -94,4 +90,143 @@ app-loading {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+app-manager {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: calc(100vh - 140px);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.mobileTitle {
+  background: linear-gradient(90deg, #e5f0ff 0%, #769bfe 8%, #302dff 14%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 41.66px;
+  margin-top: 12px;
+  padding-left: 20px;
+
+  @media (max-width: 744px) {
+    font-size: 5.1rem;
+    line-height: 66px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 3.2rem;
+    line-height: 41px;
+  }
+}
+
+.mobile_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 35px 0 20px;
+  margin: 56px 0 31.5px 0;
+
+  h3 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 41.66px;
+    background: linear-gradient(90deg, #e5f0ff 7%, #769bfe 66%, #302dff 78%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @media (max-width: 744px) {
+      font-size: 5.1rem;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 3.2rem;
+    }
+  }
+
+  .header_add_offer {
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+
+    @media (max-width: 744px) {
+      width: 46px;
+      height: 44px;
+
+      mat-icon {
+        width: 16px;
+      }
+    }
+
+    @media (max-width: 744px) {
+      width: 30px;
+      height: 27px;
+    }
+
+    mat-icon {
+      ::ng-deep {
+        svg {
+          path {
+            stroke: #6ca5fc;
+            fill: #094fb8;
+          }
+        }
+      }
+    }
+  }
+}
+
+.mobile_offer_title {
+  background-color: #0e1218;
+  padding: 41.6px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+
+  @media (max-width: 576px) {
+    padding: 20px 0;
+    gap: 10px;
+  }
+
+  mat-icon {
+    width: 37px;
+    height: 37px;
+
+    @media (max-width: 576px) {
+      height: 18px;
+      width: 18px;
+      margin: 0;
+    }
+  }
+
+  .title {
+    font-weight: 400;
+    font-size: 3.3rem;
+    line-height: 38.85px;
+    color: #ffffff;
+
+    @media (max-width: 576px) {
+      font-size: 1.6rem;
+      line-height: 18.8px;
+    }
+  }
+
+  .add {
+    position: absolute;
+    right: 24.62px;
+  }
 }

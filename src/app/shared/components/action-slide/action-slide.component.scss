@@ -1,4 +1,3 @@
-
 .right,
 .left {
   position: absolute;
@@ -13,6 +12,14 @@
     outline: none;
     border: none;
     background: transparent;
+
+    mat-icon {
+      ::ng-deep svg {
+        path {
+          stroke: #ffff;
+        }
+      }
+    }
   }
 }
 

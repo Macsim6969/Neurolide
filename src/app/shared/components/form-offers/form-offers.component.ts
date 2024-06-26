@@ -10,6 +10,7 @@ import { OffersService } from '../../../module/offers/@shared/services/offers.se
 import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../../store/model/store.model';
 import { selectOffersData } from '../../../store/selectors/store.selectors';
+import { GlobalIconsService } from '../../services/globalIcon.service';
 
 @Component({
   selector: 'app-form-offers',
@@ -26,7 +27,8 @@ export class FormOffersComponent extends BasePopupComponent {
     private store: Store<{ store: StoreInterface }>,
     private offerFormService: OfferFormService,
     private offersService: OffersService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private globalIcon: GlobalIconsService
   ) {
     super();
     super.ngOnInit();

@@ -1,43 +1,55 @@
 <section class="list-mobile">
-  <div class="media" *ngFor="let channel of mediaChannels; index as i" [ngClass]="{'active': activeSlide === i}">
-    <div class="media_header">
-      <nav class="status">Status</nav> 
-      <div class="action">
-        <button (click)="removeMedia(channel.id)" type="button" class="remove "><mat-icon
-            svgIcon="cancel"></mat-icon></button>
-        <button (click)="setNewChanges(channel.id, i)" type="submit" class="save "><mat-icon
-            svgIcon="confirme"></mat-icon></button>
-        <button (click)="setVipStatus(channel.id)" type="submit" [ngClass]="{'active': channel.vip}"
-          class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
+  <drag-scroll #nav>
+    <div drag-scroll-item class="media" *ngFor="let channel of mediaChannels; index as i"
+      [ngClass]="{'active': activeSlide === i}">
+      <div class="content">
+        <div class="media_header">
+          <nav class="status">Status</nav>
+          <div class="action">
+            <button *ngIf="rules === 'manager'" (click)="removeMedia(channel.id)" type="button" class="remove "><mat-icon
+                svgIcon="cancel"></mat-icon></button>
+            <button *ngIf="rules === 'manager'" (click)="setNewChanges(channel.id, i)" type="submit"
+              class="save "><mat-icon svgIcon="confirme"></mat-icon></button>
+            <nav *ngIf="rules !== 'manager'">{{channel.vip ? 'VIP' : ''}}</nav>
+            <button type="submit" [ngClass]="{'active': channel.vip}" class="vip "><mat-icon
+                svgIcon="vip"></mat-icon></button>
+          </div>
+        </div>
+        <div class="id">
+          <nav>{{channel.id}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Name</nav>
+          <nav class="desc">{{channel.name}}</nav>
+        </div>
+        <div class="column" *ngIf="rules !== 'brand'">
+          <nav class="title">Link</nav>
+          <nav class="desc">{{channel.link}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Subsribe</nav>
+          <nav class="desc">{{channel.subscribe}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Stream</nav>
+          <nav class="desc">{{channel.stream}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Price</nav>
+          <nav class="desc">{{channel.price}}</nav>
+        </div>
+        <div class="column">
+          <nav class="title">Payout</nav>
+          <div class="payout_methods">
+            <button mat-button [ngClass]="{'active': activePayout[i ] === 'CPM' || channel?.payout === 'CPM'}"
+              (click)="choicePayout(i, 'CPM', channel?.id)"
+              [ngClass]="{'active': activePayout[i ] === 'CPM' || channel?.payout === 'CPM'}">CPM</button>
+            <button mat-button [ngClass]="{'active': activePayout[i ] === 'CPM' || channel?.payout === 'CPM'}"
+              (click)="choicePayout(i, 'CPH', channel?.id)"
+              [ngClass]="{'active': activePayout[i ] === 'CPH' || channel?.payout === 'CPH'}">CPH</button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="id">
-      <nav>{{channel.id}}</nav>
-    </div>
-    <div class="column">
-      <nav class="title">Name</nav>
-      <nav class="desc">{{channel.name}}</nav>
-    </div>
-    <div class="column">
-      <nav class="title">Link</nav>
-      <nav class="desc">{{channel.link}}</nav>
-    </div>
-    <div class="column">
-      <nav class="title">Subsribe</nav>
-      <nav class="desc">{{channel.subscribe}}</nav>
-    </div>
-    <div class="column">
-      <nav class="title">Stream</nav>
-      <nav class="desc">{{channel.stream}}</nav>
-    </div>
-    <div class="column">
-      <nav class="title">Price</nav>
-      <nav class="desc">{{channel.price}}</nav>
-    </div>
-  </div>
-
+  </drag-scroll>
 </section>
-<app-action-slide (activeId)="changeActiveCard($event)" [activeCard]="activeSlide" [slider]="mediaChannels"></app-action-slide>
-<div class="add" (click)="openForm()">
-  <mat-icon svgIcon="add"></mat-icon>
-</div>

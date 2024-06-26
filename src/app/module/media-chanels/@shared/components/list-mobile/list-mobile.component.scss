@@ -1,0 +1,42 @@
+.payout_methods {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+
+  button {
+    display: flex;
+    border: 0;
+    outline: none;
+    border-radius: 20px;
+    background-color: #181A1E;
+    box-shadow: 0px 4px 20px 0px #00000040;
+    padding: 10px 12px;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+
+
+    &.active {
+      background-color: #3334FF;
+    }
+  }
+}
+
+.action {
+  button {
+
+
+    &.remove {
+      background-color: #FFE4E3;
+    }
+
+    &.save {
+      background-color: #D1F5E4 !important;
+    }
+
+    mat-icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}

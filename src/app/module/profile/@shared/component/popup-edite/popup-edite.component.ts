@@ -37,7 +37,7 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
   private initializeForm() {
     this.form = new FormGroup<any>({
       name: new FormControl(this.userInfo.name, [Validators.required]),
-      address: new FormControl(this.userInfo.address, [Validators.required]),
+      surname: new FormControl(this.userInfo.surname, [Validators.required]),
       number: new FormControl(this.userInfo.number, [Validators.required]),
       password: new FormControl(this.userInfo.password, [Validators.required, Validators.minLength(8)]),
       avatar: new FormControl('', [Validators.required])
@@ -61,8 +61,8 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
     if (!this.form.value.password) {
       this.form.value.password = this.userInfo.password;
     }
-    if (!this.form.value.address) {
-      this.form.value.address = this.userInfo.address;
+    if (!this.form.value.surname) {
+      this.form.value.surname = this.userInfo.surname;
     }
     if (!this.form.value.email) {
       this.form.value.email = this.userInfo.email;
@@ -95,7 +95,7 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
       email: this.form.value.email,
       name: this.form.value.name,
       password: this.form.value.password,
-      address: this.form.value.address,
+      surname: this.form.value.surname,
       number: this.form.value.number,
       rules: this.userInfo.rules,
       avatar: this.form.value.avatar

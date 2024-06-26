@@ -3,5 +3,9 @@
   <app-offers-filter></app-offers-filter>
   <app-offers-list [statusPage]="'offers'"></app-offers-list>
 </section>
+<div class="mobile_offer_title" *ngIf="isMobile">
+  <mat-icon svgIcon="media-canal"></mat-icon>
+  <h3 class="title">Offers</h3>
+</div>
 <app-offers-mobile *ngIf="isMobile"></app-offers-mobile>
 <app-form-offers *ngIf="isOpenForm"></app-form-offers>

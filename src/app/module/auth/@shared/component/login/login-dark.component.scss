@@ -2,7 +2,6 @@
   border: none;
   box-shadow: none;
   outline: none;
-  // min-width: 308px;
   padding-top: 126px;
   background-color: transparent;
   display: flex;
@@ -19,9 +18,6 @@
 
   @media (min-width: 1620px) {
     margin-left: calc(12rem);
-    // margin: 0;
-    // min-width: 100%;
-    // padding-top: 0;
   }
 
   .register-title {
@@ -29,7 +25,6 @@
     font-size: 22px;
     font-weight: 400;
     line-height: 30px;
-    // text-align: start;
     margin-bottom: 5px;
 
     @media (min-width: 576px) {
@@ -65,19 +60,11 @@
   }
 
   .form {
-    // width: 100%;
-    // min-width: 308px;
     margin-top: 19px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    @media (min-width: 576px) {
-      // margin-top: 50px;
-      // padding: 0 15px;
-      // align-items: center;
-    }
 
     .form-rules {
       width: 100%;
@@ -88,13 +75,7 @@
       margin-bottom: 30px;
 
       @media (min-width: 576px) {
-        // flex-wrap: wrap;
-        // justify-content: center;
-        // display: flex;
-        // flex-direction: row;
-        // align-items: center;
         gap: 28px;
-        // margin-bottom: 30px;
       }
 
       @media (min-width: 744px) {
@@ -104,9 +85,6 @@
       .rules {
         background: #181a1e;
         border-radius: 20px;
-        // height: 100%;
-        // min-width: 218px !important;
-        // width: 100%;
         padding: 12px 48px;
 
         outline: none;
@@ -163,7 +141,7 @@
     input {
       max-width: 100%;
       height: 38px;
-      padding: 5px 0 5px 14px;
+      padding: 0 0 0 14px;
       background-color: transparent;
       font-family: Public Sans;
       font-size: 16px;
@@ -173,6 +151,10 @@
       border: 1px solid #a3aed0;
       border-radius: 30px;
       color: #a3aed0;
+
+      @media (min-width: 576px) {
+        padding: 10px 0 10px 20px;
+      }
 
       @media (min-width: 744px) {
         padding: 20px 0 20px 20px;

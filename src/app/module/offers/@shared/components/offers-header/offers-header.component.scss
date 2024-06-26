@@ -1,9 +1,17 @@
-.action_search{
-  &.brand{
-    padding: 17px 20px;
-    max-width: 408px !important;
-    input{
-      max-width: 100% !important;
+.search_actions {
+  .action_search {
+    &.brand {
+      padding: 17px 20px;
+      max-width: 408px !important;
+
+      input {
+        max-width: 100% !important;
+      }
     }
+  }
+
+  button {
+    width: 100%;
+    min-width: fit-content;
   }
 }

@@ -19,7 +19,7 @@ export interface UserActions {
 export interface UserInfo {
   userID: string
   name: string
-  address: string
+  surname: string
   number: number
   password: string
   doublePassword?: string

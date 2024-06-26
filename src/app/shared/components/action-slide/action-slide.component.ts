@@ -15,7 +15,7 @@ export class ActionSlideComponent {
   public left() {
     if (this.activeCard === 0) {
       this.isLeft = true;
-      this.isRight = false;
+      this.isRight = false; 
       return
     } else {
       this.isRight = false;

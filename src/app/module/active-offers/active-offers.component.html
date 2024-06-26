@@ -4,5 +4,11 @@
   <app-active-offers-list></app-active-offers-list>
 
 </section>
-<!-- <app-offers-mobile *ngIf="isMobile"></app-offers-mobile> -->
+<div *ngIf="isMobile" class="mobile_header">
+  <h3>Your Offers</h3>
+    <!-- <button (click)="openForm('added')" class="header_add_offer">
+      <mat-icon svgIcon="add"></mat-icon>
+    </button> -->
+</div>
+<app-active-offers-mobile *ngIf="isMobile"></app-active-offers-mobile>
 <app-form-offers *ngIf="isOpenForm"></app-form-offers>

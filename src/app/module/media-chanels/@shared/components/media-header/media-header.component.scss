@@ -1,0 +1,22 @@
+.action_search {
+  &.brand {
+    max-width: 289px !important;
+
+    input {
+      max-width: 100% !important;
+    }
+  }
+}
+
+button {
+  width: 100%;
+  min-width: fit-content;
+
+  &.hide {
+    display: none !important;
+  }
+
+  &.active {
+    display: flex !important;
+  }
+}

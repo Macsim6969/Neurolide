@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MediaChannelsDataClass } from '../../abstract/mediaChannelsData';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
@@ -11,8 +11,9 @@ import { MediaFormService } from '../../services/mediaForm.service';
   templateUrl: './list-mobile.component.html',
   styleUrls: ['./list-mobile.component.scss', '../../../../../../style/offers&channels.scss']
 })
-export class ListMobileComponent extends MediaChannelsDataClass {
+export class ListMobileComponent extends MediaChannelsDataClass implements OnInit {
   public activeSlide: number = 0;
+  public rules: string;
 
   constructor(
     override store: Store<{ store: StoreInterface }>,
@@ -20,7 +21,16 @@ export class ListMobileComponent extends MediaChannelsDataClass {
     override mediaChannelService: MediaChannelService,
     private mediaFormService: MediaFormService
   ) {
-    super(store, globalIconsService, mediaChannelService)
+    super(store, globalIconsService, mediaChannelService);
+    super.ngOnInit();
+  }
+
+  override ngOnInit(): void {
+    this.checkRulesUser();
+  }
+
+  private checkRulesUser(){
+    this.rules = JSON.parse(localStorage.getItem('rules'))
   }
 
   public changeActiveCard(event: number) {
@@ -29,5 +39,13 @@ export class ListMobileComponent extends MediaChannelsDataClass {
 
   public openForm() {
     this.mediaFormService._isMediaForm = true;
+  }
+
+  public choicePayout(index: number, value: 'CPM' | 'CPH', id) {
+    if (!this.activePayout[index]) {
+      this.activePayout[index] = '';
+    }
+    this.activePayout[index] = value;
+    this.mediaChannelService.setNewChanges(this.mediaChannels, this.mainData, id, this.activePayout[index])
   }
 }

@@ -1,0 +1,30 @@
+<div class="media-channel" *ngIf="offerInWork;else loading">
+  <div class="channel" *ngFor="let channel of offerInWork;index as i">
+    <nav class="id">{{channel.id}}</nav>
+    <nav class="name">{{channel.name}}</nav>
+    <nav class="link">{{channel.link}}</nav>
+    <nav class="stream">{{channel.brand}}</nav>
+    <nav class="subscribe">${{channel.payments ? channel.payments : 0}}</nav>
+
+    <nav class="price">${{channel.balance ? channel.balance : 0}}</nav>
+    <button class="payout" (click)="openPayout(i)">
+      <nav>{{activePayout && activePayout[i] ? activePayout[i] : channel?.payout}}</nav>
+      <mat-icon svgIcon="arrow"></mat-icon>
+      <div class="dropdown" [ngClass]="{'active': isOpen && isOpenDropdown[i]}">
+        <nav *ngFor="let methode of modelPayment;index as m" (click)="choicePayout(i, methode?.title, channel?.id)"
+          [ngClass]="{'active': activePayout[i ] === methode.title || channel?.payout === methode.title}">
+          {{methode.title}}</nav>
+        <mat-icon svgIcon="arrow"></mat-icon>
+      </div>
+    </button>
+    <nav class="settings">
+      <nav>{{channel.vip ? 'VIP' :''}}</nav>
+      <button *ngIf="rules === 'affiliate' && url !== '/affiliate'" (click)="removeOffers(channel?.id)" type="button"
+        class="remove "><mat-icon svgIcon="remove"></mat-icon></button>
+    </nav>
+  </div>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

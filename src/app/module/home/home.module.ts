@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { IsMobileGuard } from '../../shared/services/isMobileGuard.guard';
 import { GlobalIconsService } from '../../shared/services/globalIcon.service';
 import { SearchMediaChannelAndOffersService } from '../../shared/services/searchMediaChannelAndOffers.service';
+import { NavigationIconsService } from '../../shared/services/navigation/navigationIcon.service';
 
 const routes: Routes = [
   {
@@ -15,10 +16,11 @@ const routes: Routes = [
       { path: '', loadChildren: () => import('../../module/main-mobile-page/main-mobile-page.module').then((m) => m.MainMobilePageModule), canActivate: [IsMobileGuard] },
       { path: 'manager', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
       { path: 'brand', loadChildren: () => import('../../module/brand/brand.module').then((m) => m.BrandModule) },
-      { path: 'affiliate', loadChildren: () => import('../../module/manager/manager.module').then((m) => m.ManagerModule) },
+      { path: 'affiliate', loadChildren: () => import('../../module/affiliate/affiliate.module').then((m) => m.AffiliateModule) },
       { path: 'users', loadChildren: () => import('../../module/users/users.module').then((m) => m.UsersModule) },
       { path: 'media-channels', loadChildren: () => import('../../module/media-chanels/media-chanels.module').then((m) => m.MediaChanelsModule) },
       { path: 'added-offers', loadChildren: () => import('../../module/added-offers/added-offers.module').then((m) => m.AddedOffersModule) },
+      { path: 'offers-in-works', loadChildren: () => import('../../module/offers-in-work/offers-in-work.module').then((m) => m.OffersInWorkModule) },
       { path: 'offers', loadChildren: () => import('../../module/offers/offers.module').then((m) => m.OffersModule) },
       { path: 'profile', loadChildren: () => import('../../module/profile-page/profile-page.module').then((m) => m.ProfilePageModule) },
       { path: 'balance', loadChildren: () => import('../../module/balance/balance.module').then((m) => m.BalanceModule) },
@@ -38,6 +40,6 @@ const routes: Routes = [
     MatToolbarModule,
     RouterModule.forChild(routes)
   ],
-  providers: [IsMobileGuard, GlobalIconsService, SearchMediaChannelAndOffersService]
+  providers: [IsMobileGuard, NavigationIconsService, GlobalIconsService, SearchMediaChannelAndOffersService]
 })
 export class HomeModule { }

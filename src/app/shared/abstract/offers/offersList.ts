@@ -21,7 +21,6 @@ export abstract class OffersList extends OffersDataClass {
   @Input() statusPage: string;
   public isOpenDropdown: boolean[] = [];
   public isOpen: boolean = false;
-  public activeChannel: number;
   public modelPayment: ModelPaymentInterface[];
 
   constructor(
@@ -35,10 +34,10 @@ export abstract class OffersList extends OffersDataClass {
     protected activeOfferService: ActiveOfferService
   ) {
     super(store, globalIconsService, offersService);
-    super.ngOnInit();
   }
-
+  
   override ngOnInit(): void {
+    super.ngOnInit();
     this.streamModelPaymentFromJson();
     this.streamSearchData();
     this.streamSearchFilterData();
@@ -50,11 +49,13 @@ export abstract class OffersList extends OffersDataClass {
     })
   }
 
-  private streamSearchData() {
+  protected streamSearchData() {
     this.searchMediaChannelAndOffers._searchText$.pipe(takeUntil(this.destroy$)).subscribe((data: string) => {
       if (data && this.mainData) {
-        this.offers = Object.values(this.mainData).filter((e: OfferInterface) => e.name.toLocaleLowerCase().includes(data.toLocaleLowerCase()))
+        this.addedOffer = Object.values(this.mainData).filter((e: OfferInterface) => e.name.toLocaleLowerCase().includes(data.toLocaleLowerCase()));
+        this.offers = Object.values(this.mainData).filter((e: OfferInterface) => e.name.toLocaleLowerCase().includes(data.toLocaleLowerCase()));
       } else if (this.mainData) {
+        this.addedOffer = Object.values(this.mainData);
         this.offers = Object.values(this.mainData);
       }
     })
@@ -109,10 +110,6 @@ export abstract class OffersList extends OffersDataClass {
     this.offersFormService._offerData = media;
     this.offersFormService._statusMOde = 'edite';
     this.offersFormService._isOfferForm = true;
-  }
-
-  public selectChannel(index: number) {
-    this.activeChannel = index;
   }
 
   public openPayout(index: number) {
