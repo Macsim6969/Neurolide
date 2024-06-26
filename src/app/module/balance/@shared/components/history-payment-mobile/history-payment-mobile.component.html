@@ -2,37 +2,40 @@
   <p class="title" [innerHTML]="'balance.history' | translate"></p>
   <div class="block_info">
     <div class="info_content">
-      <div [ngClass]="{'active': activeCard === i}" class="history" *ngFor="let title of transactions; index as i">
-        <div class="row">
-          <nav>Status</nav>
-          <nav [ngClass]="{'check': title.status === 'Straight to'}">{{title.status}}</nav>
+      <drag-scroll #nav>
+        <div drag-scroll-item class="history" *ngFor="let title of transactions; index as i">
+          <div class="block">
+            <div class="row">
+              <nav>Status</nav>
+              <nav [ngClass]="{'check': title.status === 'Straight to'}">{{title.status}}</nav>
+            </div>
+            <div class="column">
+              <nav>Номер</nav>
+              <nav class="">{{title.numberCode}}</nav>
+            </div>
+            <div class="column">
+              <nav>Дата рахунку</nav>
+              <nav class="">{{title.dataCard}}</nav>
+            </div>
+            <div class="column">
+              <nav>Дата оплати</nav>
+              <nav class="">{{title.dataHistory}}</nav>
+            </div>
+            <div class="column">
+              <nav>Спосіб оплати</nav>
+              <nav class="">{{title.card| formatCardNumber:'center'}}</nav>
+            </div>
+            <div class="column">
+              <nav>Підписка</nav>
+              <nav class="">{{title.subscribe}}</nav>
+            </div>
+            <div class="column">
+              <nav>Сума</nav>
+              <nav class="">${{title.suma ? title.suma : 0}}</nav>
+            </div>
+          </div>
         </div>
-        <div class="column">
-          <nav>Номер</nav>
-          <nav class="">{{title.numberCode}}</nav>
-        </div>
-        <div class="column">
-          <nav>Дата рахунку</nav>
-          <nav class="">{{title.dataCard}}</nav>
-        </div>
-        <div class="column">
-          <nav>Дата оплати</nav>
-          <nav class="">{{title.dataHistory}}</nav>
-        </div>
-        <div class="column">
-          <nav>Спосіб оплати</nav>
-          <nav class="">{{title.card| formatCardNumber:'center'}}</nav>
-        </div>
-        <div class="column">
-          <nav>Підписка</nav>
-          <nav class="">{{title.subscribe}}</nav>
-        </div>
-        <div class="column">
-          <nav>Сума</nav>
-          <nav class="">${{title.suma}}</nav>
-        </div>
-      </div>
-     <app-action-slide (activeId)="changeActiveCard($event)" [activeCard]="activeCard" [slider]="transactions"></app-action-slide>
+      </drag-scroll>
     </div>
   </div>
 </section>

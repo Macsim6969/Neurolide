@@ -93,9 +93,7 @@ body {
 
 .sans {
   font-family: "Public Sans", sans-serif;
-
 }
-
 
 app-loading {
   display: flex;
@@ -103,6 +101,7 @@ app-loading {
   justify-content: center;
 }
 
+app-balance,
 app-manager {
   display: flex;
   flex-direction: column;

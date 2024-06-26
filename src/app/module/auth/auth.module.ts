@@ -16,6 +16,8 @@ const routes: Routes = [
     path: '', component: AuthComponent, children: [
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'register-manager', component: RegisterComponent },
+      { path: 'login-manager', component: LoginComponent },
       { path: '**', redirectTo: 'register' }
     ]
   }

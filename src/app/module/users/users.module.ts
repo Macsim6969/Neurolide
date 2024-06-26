@@ -13,6 +13,7 @@ import { UserService } from './@share/services/user.service';
 import { PopupEditetTransitionComponent } from './@share/components/popup-edite-transition/popup-edite-transition.component';
 import { UserHeaderComponent } from './@share/components/user-header/user-header.component';
 import { UserMobileComponent } from './@share/components/user-mobile/user-mobile.component';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 const routes: Routes = [
   { path: '', component: UsersComponent }
@@ -32,6 +33,7 @@ const routes: Routes = [
     CommonModule,
     ShareModule,
     FormsModule,
+    DragScrollModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],

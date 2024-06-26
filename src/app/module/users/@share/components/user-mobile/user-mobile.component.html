@@ -1,108 +1,112 @@
 <section class="user-mobile">
-  <div class="user" *ngFor="let user of userInfo;index as i"
-    [ngClass]="{'active': isActiveSlide === i, 'open': isOpen}">
-    <div class="user_header">
-      <div class="header_main">
-        <div class="header_main_top">
-          <nav class="id">{{user.profile.userID}}</nav>
-          <nav class="status">Status</nav>
-        </div>
-        <div class="header_main">
-          <nav>{{user.profile.rules}}</nav>
-        </div>
-      </div>
-      <div class="actions">
-        <button> <mat-icon svgIcon="settings" (click)="openPopupUser(user?.profile?.email)"></mat-icon> </button>
-        <button> <mat-icon svgIcon="remove"
-            (click)="removeUser(user.profile?.userID, user.profile?.token)"></mat-icon></button>
-      </div>
-    </div>
-    <div class="user_content">
-      <nav class="content_head">Nickname</nav>
-      <nav class="content_desription">{{user.profile.name}}</nav>
-    </div>
-    <div class="user_content">
-      <nav class="content_head">Mail</nav>
-      <nav class="content_desription">{{user.profile.email}}</nav>
-    </div>
-    <div class="user_content">
-      <nav class="content_head">Balance</nav>
-      <nav class="content_desription">${{user.monitoring.balance}}</nav>
-    </div>
-    <div class="user_content">
-      <nav class="content_head">Transactions</nav>
-      <nav class="content_desription">${{user.monitoring.transactions}}</nav>
-    </div>
-    <div class="dop_content" [ngClass]="{'open': isOpen}">
-      <div class="main_info">
-        <div *ngFor="let card of headerData; index as i" class="card">
-          <p class="title">{{card.title}}</p>
-          <div class="bottom">
-            <p *ngIf="isModeChange !== i" class="info">{{card.data}}</p>
-            <input [(ngModel)]="monitoringChanges" type="number" *ngIf="isModeChange === i">
-            <mat-icon svgIcon="settings" (click)="useEditeMode(i)" *ngIf="isModeChange !== i && i === 4"></mat-icon>
-            <img *ngIf="isModeChange !== i && i !== 4" (click)="useEditeMode(i)"
-              src="../../../../../../assets/images/profile/edite.png" alt="">
-            <mat-icon *ngIf="isModeChange === i" (click)="saveMonitoringData(card.title, user.profile?.userID)"
-              svgIcon="save"></mat-icon>
+  <drag-scroll #nav>
+    <div drag-scroll-item class="user" *ngFor="let user of userInfo;index as i"
+      [ngClass]="{'active': isActiveSlide === i, 'open': isOpen}">
+      <div class="user_inner">
+        <div class="user_header">
+          <div class="header_main">
+            <div class="header_main_top">
+              <nav class="id">{{user.profile.userID}}</nav>
+              <nav class="status">Status</nav>
+            </div>
+            <div class="header_main">
+              <nav>{{user.profile.rules}}</nav>
+            </div>
           </div>
-          <div class="line {{card.color}}"></div>
+          <div class="actions">
+            <button> <mat-icon svgIcon="settings" (click)="openPopupUser(user?.profile?.email)"></mat-icon> </button>
+            <button class="remove"> <mat-icon svgIcon="remove"
+                (click)="removeUser(user.profile?.userID, user.profile?.token)"></mat-icon></button>
+          </div>
         </div>
-        <div class="payments" *ngFor="let history of user.transactions; index as i" (click)="checkPayments(i)">
-          <div class="payments_head">
+        <div class="user_content">
+          <nav class="content_head">Nickname</nav>
+          <nav class="content_desription">{{user.profile.name}}</nav>
+        </div>
+        <div class="user_content">
+          <nav class="content_head">Mail</nav>
+          <nav class="content_desription">{{user.profile.email}}</nav>
+        </div>
+        <div class="user_content">
+          <nav class="content_head">Balance</nav>
+          <nav class="content_desription">${{user.monitoring.balance}}</nav>
+        </div>
+        <div class="user_content">
+          <nav class="content_head">Transactions</nav>
+          <nav class="content_desription">${{user.monitoring.transactions}}</nav>
+        </div>
+      </div>
+      <div class="dop_content" [ngClass]="{'open': isOpen}">
+        <div class="main_info">
+          <div *ngFor="let card of headerData; index as i" class="card">
+            <p class="title">{{card.title}}</p>
+            <div class="bottom">
+              <p *ngIf="isModeChange !== i" class="info">{{card.data}}</p>
+              <input [(ngModel)]="monitoringChanges" type="number" *ngIf="isModeChange === i">
+              <mat-icon svgIcon="settings" (click)="useEditeMode(i)" *ngIf="isModeChange !== i && i === 4"></mat-icon>
+              <img *ngIf="isModeChange !== i && i !== 4" (click)="useEditeMode(i)"
+                src="../../../../../../assets/images/profile/edite.png" alt="">
+              <mat-icon *ngIf="isModeChange === i" (click)="saveMonitoringData(card.title, user.profile?.userID)"
+                svgIcon="save"></mat-icon>
+            </div>
+            <div class="line {{card.color}}"></div>
+          </div>
+          <div class="payments" *ngFor="let history of user.transactions; index as i" (click)="checkPayments(i)">
+            <div class="payments_head">
 
-            <p class="payments_title">Payments</p>
-            <div class="payments_actions">
-              <button (click)="openTransitionPopup(user?.profile?.email, history?.nomer, i, user.profile.userID)"> <img
-                  src="../../../../../../assets/images/profile/edite.png" alt=""></button>
-             
-              <button (click)="removeTransition(user.profile.email, user.profile.userID, history?.nomer)"> <mat-icon svgIcon="remove"></mat-icon></button>
-              <button> <mat-icon [ngClass]="{'active': isOpenPayments === i}" class="arrow"
-                  svgIcon="arrow_mobile"></mat-icon></button>
+              <p class="payments_title">Payments</p>
+              <div class="payments_actions">
+                <button (click)="openTransitionPopup(user?.profile?.email, history?.nomer, i, user.profile.userID)">
+                  <img src="../../../../../../assets/images/profile/edite.png" alt=""></button>
+
+                <button (click)="removeTransition(user.profile.email, user.profile.userID, history?.nomer)"> <mat-icon
+                    svgIcon="remove"></mat-icon></button>
+                <button> <mat-icon [ngClass]="{'active': isOpenPayments === i}" class="arrow"
+                    svgIcon="arrow_mobile"></mat-icon></button>
+              </div>
+            </div>
+            <div class="payments_content" [ngClass]="{'open': isOpenPayments === i}">
+              <div class="content_column">
+                <nav class="content_head">Number</nav>
+                <nav class="content_desription">{{history.nomer}}</nav>
+              </div>
+              <div class="content_column">
+                <nav class="content_head">Invoice date</nav>
+                <nav class="content_desription">{{history.data}}</nav>
+              </div>
+              <div class="content_column">
+                <nav class="content_head">Date of payment</nav>
+                <nav class="content_desription">{{history.termin}}</nav>
+              </div>
+              <div class="content_column">
+                <nav class="content_head">Payment method</nav>
+                <nav class="content_desription">{{history?.method|cardFormat:history.subscription}}</nav>
+              </div>
+              <div class="content_column">
+                <nav class="content_head">Subscription</nav>
+                <nav class="content_desription">{{history.subscription}}</nav>
+              </div>
+              <div class="content_column">
+                <nav class="content_head">Amount</nav>
+                <nav class="content_desription">{{history.kwota}}</nav>
+              </div>
+              <div class="content_row">
+                <nav class="content_head">Status</nav>
+                <nav class="content_desription">{{history.status}}</nav>
+              </div>
             </div>
           </div>
-          <div class="payments_content" [ngClass]="{'open': isOpenPayments === i}">
-            <div class="content_column">
-              <nav class="content_head">Number</nav>
-              <nav class="content_desription">{{history.nomer}}</nav>
+          <div class="user_card">
+            <div class="title_card">Cards</div>
+            <div class="title_card" *ngFor="let card of user.card">
+              <nav>{{card?.number}}</nav>
             </div>
-            <div class="content_column">
-              <nav class="content_head">Invoice date</nav>
-              <nav class="content_desription">{{history.data}}</nav>
-            </div>
-            <div class="content_column">
-              <nav class="content_head">Date of payment</nav>
-              <nav class="content_desription">{{history.termin}}</nav>
-            </div>
-            <div class="content_column">
-              <nav class="content_head">Payment method</nav>
-              <nav class="content_desription">{{history?.method|cardFormat:history.subscription}}</nav>
-            </div>
-            <div class="content_column">
-              <nav class="content_head">Subscription</nav>
-              <nav class="content_desription">{{history.subscription}}</nav>
-            </div>
-            <div class="content_column">
-              <nav class="content_head">Amount</nav>
-              <nav class="content_desription">{{history.kwota}}</nav>
-            </div>
-            <div class="content_row">
-              <nav class="content_head">Status</nav>
-              <nav class="content_desription">{{history.status}}</nav>
-            </div>
-          </div>
-        </div>
-        <div class="user_card">
-          <div class="title_card">Cards</div>
-          <div class="title_card" *ngFor="let card of user.card">
-            <nav>{{card?.number}}</nav>
           </div>
         </div>
       </div>
+      <div class="footer">
+        <button (click)="openCard(user.profile.email)" mat-button>{{!isOpen? 'Розгорнути' : 'Згорнути'}}</button>
+      </div>
     </div>
-    <div class="footer">
-      <button (click)="openCard(user.profile.email)" mat-button>{{!isOpen? 'Розгорнути' : 'Згорнути'}}</button>
-    </div>
-  </div>
+  </drag-scroll>
 </section>
-<app-action-slide (activeId)="changeActiveCard($event)" [activeCard]="isActiveSlide" [slider]="userInfo"></app-action-slide>

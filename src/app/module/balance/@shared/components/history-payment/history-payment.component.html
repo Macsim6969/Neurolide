@@ -9,8 +9,10 @@
         <nav class="">{{title.numberCode}}</nav>
         <nav class="">{{title.dataCard}}</nav>
         <nav class="">{{title.dataHistory}}</nav>
-        <nav [ngClass]="{'check': title.status === 'Straight to'}" class="">{{title.status}}</nav>
-        <nav class="">{{title.card| formatCardNumber:'center'}}</nav>
+        <nav>
+          <span [ngClass]="{'check': title.status === 'Straight to'}" class="">{{title.status}}</span>
+        </nav>
+        <nav class="card">{{title.card| formatCardNumber:'center'}}</nav>
         <nav class="">{{title.subscribe}}</nav>
         <nav class="">{{title.suma}}</nav>
       </div>

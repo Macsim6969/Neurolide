@@ -1,3 +1,7 @@
+<div class="mobile_offer_title" *ngIf="isMobile">
+  <mat-icon svgIcon="balance"></mat-icon>
+  <h3 class="title">Balance</h3>
+</div>
 <app-cards-payment *ngIf="!isMobile"></app-cards-payment>
 <app-cards-payment-mobile *ngIf="isMobile"></app-cards-payment-mobile>
 <app-balance-card></app-balance-card>
@@ -5,4 +9,4 @@
 <app-history-payment-mobile *ngIf="isMobile"></app-history-payment-mobile>
 <app-added-card *ngIf="isAddedCard"></app-added-card>
 <app-top-up-popup *ngIf="isAddedMoney"></app-top-up-popup>
-<app-take-out-popup *ngIf="isTakeOutMoney"></app-take-out-popup>
+<app-take-out-popup *ngIf="isTakeOutMoney"></app-take-out-popup> 

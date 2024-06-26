@@ -4,6 +4,7 @@ import { BalanceCardService } from '../../shared/services/balance/balanceCard.se
 import { CardsconService } from '../../shared/services/balance/cardsIcon.service';
 import { BalanceActionService } from '../../shared/services/balance/balanceAction.service';
 import { IsMobilePage } from '../../shared/abstract/mobilePage/mobilePage';
+import { NavigationIconsService } from '../../shared/services/navigation/navigationIcon.service';
 
 @Component({
   selector: 'app-balance',
@@ -18,6 +19,7 @@ export class BalanceComponent extends IsMobilePage implements OnInit, OnDestroy 
 
   constructor(
     private cardsIconService: CardsconService,
+    private navigationIconsService: NavigationIconsService,
     private balanceCard: BalanceCardService,
     private balanceAction: BalanceActionService
   ) { 

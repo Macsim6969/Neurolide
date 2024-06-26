@@ -11,6 +11,7 @@ import { BalanceServiceModule } from '../../shared/services/balance/balanceServi
 import { HistoryPaymentMobileComponent } from './@shared/components/history-payment-mobile/history-payment-mobile.component';
 import { CardsPaymentComponent } from '../../component/cards-payment/cards-payment.component';
 import { CardsPaymentMobileComponent } from '../../component/cards-payment-mobile/cards-payment-mobile.component';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 const routes: Routes = [
   { path: '', component: BalanceComponent }
@@ -27,6 +28,7 @@ const routes: Routes = [
     ShareModule,
     HttpClientModule,
     BalanceServiceModule,
+    DragScrollModule,
     TranslateModule,
     RouterModule.forChild(routes)
   ],

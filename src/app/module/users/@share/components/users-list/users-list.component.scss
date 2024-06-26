@@ -199,7 +199,7 @@
         margin-right: 8px;
 
         .history {
-          padding: 17px 59px 17px 17px;
+          padding: 17px 15px 17px 17px;
           background-color: #0E1218;
           box-shadow: 0px 4px 10px 0px #00000040;
           border-radius: 20px;
@@ -208,9 +208,9 @@
           align-items: center;
 
           .sub {
-            background-color: #D8E1FF;
-            border-radius: 20px;
-            color: #FFFFFF;
+            // background-color: #D8E1FF;
+            // border-radius: 20px;
+            // color: #FFFFFF;
             padding: 5px 20px;
           }
 
@@ -225,6 +225,7 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            gap: 10px;
 
             button {
               ::ng-deep &.mat-mdc-icon-button.mat-mdc-button-base {
@@ -235,6 +236,20 @@
               ::ng-deep &.mat-mdc-icon-button .mat-mdc-button-touch-target {
                 width: 25px !important;
                 height: 25px !important;
+              }
+
+              &.remove {
+                mat-icon {
+                  ::ng-deep {
+                    svg {
+
+                      circle,
+                      path {
+                        stroke: #E84646;
+                      }
+                    }
+                  }
+                }
               }
 
               img,

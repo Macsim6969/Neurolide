@@ -11,9 +11,6 @@ import { HistoryClass } from '../../history';
 })
 export class HistoryPaymentMobileComponent extends HistoryClass {
   
-  public activeCard: number = 0;
-  public isLeft: boolean;
-  public isRight: boolean;
 
   constructor(
     override store: Store<{ store: StoreInterface }>,
@@ -21,11 +18,5 @@ export class HistoryPaymentMobileComponent extends HistoryClass {
   ) {
     super(store, translate)
   }
-
-  changeActiveCard(id: number){
-    this.activeCard = id;
-  }
-
-
 
 }

@@ -55,14 +55,24 @@
 
           .content-cards {
             height: 100% !important;
-            min-width: calc(70vw - 16px) !important;
+            min-width: calc(45vw - 16px) !important;
             display: flex !important;
             background-color: transparent;
 
-            .content-cards-container{
+            @media (max-width: 970px) {
+              min-width: calc(55vw - 16px) !important;
+            }
+
+            @media (max-width: 720px) {
+              min-width: calc(70vw - 16px) !important;
+            }
+
+            @media (max-width: 576px) {
+              min-width: calc(336px - 16px) !important;
+            }
+
+            .content-cards-container {
               margin: 0 auto;
-              max-width: 220px;
-              max-height: 136px;
             }
           }
         }
@@ -80,18 +90,8 @@
         max-width: 360px;
       }
 
-      @media (max-width: 400px) {
-        margin: 0 10px;
-      }
-
-      &.active {
-        .content-cards-container {
-          max-width: 288px;
-
-          @media (max-width: 400px) {
-            width: 100%;
-          }
-        }
+      @media (max-width: 576px) {
+        max-width: 288px;
       }
 
       .content-cards-container {
@@ -102,6 +102,11 @@
         width: 382px;
         max-height: 218px;
 
+        @media (max-width: 576px) {
+
+          max-width: 288px;
+        }
+
         .card-payment {
           border-radius: 20px;
           background-size: cover;
@@ -110,9 +115,8 @@
 
           @media (max-width: 576px) {
             padding: 20px;
+            width: 100%;
           }
-
-
 
           .card-payment-header {
             display: flex;
