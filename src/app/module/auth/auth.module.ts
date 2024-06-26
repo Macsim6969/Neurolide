@@ -10,14 +10,16 @@ import { AuthIconsService } from './@shared/services/authIcon.service';
 import { LoginComponent } from './@shared/component/login/login.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PopupInfoService } from './@shared/services/popupInfo.service';
+import { RegisterManagerComponent } from './@shared/component/register-manager/register-manager.component';
+import { LoginManagerComponent } from './@shared/component/login-manager/login-manager.component';
 
 const routes: Routes = [
   {
     path: '', component: AuthComponent, children: [
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'register-manager', component: RegisterComponent },
-      { path: 'login-manager', component: LoginComponent },
+      { path: 'mregister', component: RegisterManagerComponent },
+      { path: 'mlogin', component: LoginManagerComponent },
       { path: '**', redirectTo: 'register' }
     ]
   }
@@ -27,6 +29,8 @@ const routes: Routes = [
   declarations: [
     AuthComponent,
     RegisterComponent,
+    RegisterManagerComponent,
+    LoginManagerComponent,
     LoginComponent
   ],
   imports: [

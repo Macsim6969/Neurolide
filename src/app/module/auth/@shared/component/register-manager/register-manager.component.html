@@ -1,0 +1,47 @@
+<mat-card class="register">
+  <h3 class="register-title" [innerHTML]="formData.registration"></h3>
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="name">
+      <mat-label class="label" [innerHTML]="formData.name"></mat-label>
+      <input [placeholder]="formData.name" type="text" formControlName="name" [value]="this.form.value.name">
+    </div>
+    <div class="email">
+      <mat-label class="label" [innerHTML]="formData.email"></mat-label>
+      <input matInput type="email" [placeholder]="formData.email" required formControlName="email"
+        [value]="this.form.value.email">
+    </div>
+
+    <div class="email">
+      <mat-label class="label" [innerHTML]="formData.password"></mat-label>
+      <input matInput type="password" [placeholder]="formData.password" required formControlName="password"
+        [value]="this.form.value.password">
+    </div>
+    <div class="password doublePass">
+      <mat-label class="label" [innerHTML]="formData.repeatPassword"></mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [placeholder]="formData.password"
+        formControlName="doublePassword" [value]="this.form.value.doublePassword">
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon [svgIcon]="hide ? 'view' : 'view'"></mat-icon>
+      </button>
+    </div>
+
+    <div class="check-login">
+      <mat-checkbox [formControl]="hideRequiredControl">{{formData.rememberData}}</mat-checkbox>
+    </div>
+    <div class="footer_info">
+      <p><span>© </span> <span>{{data.getFullYear()}} </span> <span [innerHTML]="formData.formDescription"></span> </p>
+    </div>
+
+    <div class="error"
+      *ngIf="form.get('email').invalid && form.get('email').touched || form.get('password').invalid && form.get('password').touched">
+      <small style="color: red">Email or password have incorrect data</small>
+    </div>
+
+    <button [disabled]="checkToDisable()" type="submit" class="register" mat-button [innerHTML]="formData.reg"></button>
+  </form>
+
+
+
+
+</mat-card>
