@@ -14,7 +14,7 @@ export abstract class BasePaymentComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   public cards: CardsPayment[];
   public activeCard: number = 0;
-
+  public rules: string;
   constructor(
     protected store: Store<{ store: StoreInterface }>,
     protected balanceCard: BalanceCardService
@@ -28,6 +28,7 @@ export abstract class BasePaymentComponent implements OnInit, OnDestroy {
     this.store.pipe(select(selectCardsPayments), takeUntil(this.destroy$)).subscribe((data: CardsPayment[]) => {
       if (data) {
         this.cards = Object.values(data);
+        console.log(data)
       }
     })
   }
@@ -43,10 +44,10 @@ export abstract class BasePaymentComponent implements OnInit, OnDestroy {
 
   public openCardPopup() {
     this.balanceCard._isAddCard = true;
-    // if (this.rules !== 'brand' && this.rules !== 'afiliat') {
-    //   document.body.style.overflow = 'hidden';
-    //   this.cardPopup = true;
-    // }
+    if (this.rules !== 'brand' && this.rules !== 'afiliat') {
+      document.body.style.overflow = 'hidden';
+      // this.cardPopup = true;
+    }
   }
 
   ngOnDestroy(): void {

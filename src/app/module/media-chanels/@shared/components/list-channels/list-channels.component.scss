@@ -138,7 +138,6 @@
         background-color: transparent;
         cursor: pointer;
 
-
         &.save {
           background-color: #D1F5E4;
           display: flex;
@@ -170,10 +169,24 @@
       gap: 30px;
 
       button {
+        padding: 0;
         cursor: pointer;
         outline: none;
         border: none;
         background-color: transparent;
+
+        &.profil{
+          mat-icon{
+            ::ng-deep{
+              svg{
+                circle,
+                path{
+                  stroke: #E84646;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

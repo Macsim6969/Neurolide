@@ -1,41 +1,43 @@
 <section class="cards_payment">
   <div class="cards_payment_header">
-    <p class="cards_payment_title" [innerHTML]="'balance.method'|translate"></p>
-    <button class="card-added" (click)="openCardPopup()" mat-button
-      [innerHTML]="'balance.addedCard'| translate"></button>
+    <div class="cards_payments_mobile">
+      <p class="cards_payment_title">Add Card</p>
+      <mat-icon svgIcon="credit-card"></mat-icon>
+    </div>
+    <button class="card-added" (click)="openCardPopup()">
+      <mat-icon svgIcon="add"></mat-icon>
+    </button>
   </div>
   <div class="content">
-    <mat-card class="content-cards" *ngFor="let card of cards;index as i" (click)="choiceCard(card.cvc, i)"
-      [ngClass]="{'active': this.activeCard === i}">
-      <mat-card-content class="content-cards-container">
-        <div class="card-payment" style="background-image: url('./assets/images/cards/cards.jfif')">
-          <div class="card-payment-header">
-            <div class="values-data">
-              <p class="value">${{ card.balance ? card.balance : 0 }}</p>
-              <p class="valut">USD</p>
+    <drag-scroll #nav (indexChanged)="chanegActiveCard($event)">
+      <mat-card drag-scroll-item class="content-cards" *ngFor="let card of cards;index as i" [ngClass]="{'active': this.activeCard === i}">
+        <mat-card-content class="content-cards-container">
+          <div class="card-payment" style="background-image: url('./assets/images/cards/cards.jfif')">
+            <div class="card-payment-header">
+              <div class="values-data">
+                <p class="value">${{ card.balance ? card.balance : 0 }}</p>
+                <p class="valut">USD</p>
+              </div>
+              <mat-icon [svgIcon]="card.type === 'Visa' ? 'visa' : 'master_card'"></mat-icon>
             </div>
-            <mat-icon [svgIcon]="card.type === 'Visa' ? 'visa' : 'master_card'"></mat-icon>
-          </div>
-          <div class="card-payment-content">
-            <div class="card-payment-content-left">
-              <p class="number">{{ card.number| formatCardNumber:'start'}}</p>
-              <mat-icon svgIcon="copy" (click)="copyToClipboard(card.number)"></mat-icon>
+            <div class="card-payment-content">
+              <div class="card-payment-content-left">
+                <p class="number">{{ card.number| formatCardNumber:'start'}}</p>
+                <mat-icon svgIcon="copy" (click)="copyToClipboard(card.number)"></mat-icon>
+              </div>
+              <div class="card-payment-content-right">
+                <p class="expires">Expires</p>
+                <p class="number">{{ card.data }}</p>
+              </div>
             </div>
-            <div class="card-payment-content-right">
-              <p class="expires">Expires</p>
-              <p class="number">{{ card.data }}</p>
+            <div class="card-payment-footer">
+              <p class="name-card">{{ card.name }}</p>
+              <mat-icon svgIcon="more"></mat-icon>
             </div>
           </div>
-          <div class="card-payment-footer">
-            <p class="name-card">{{ card.name }}</p>
-            <mat-icon svgIcon="more"></mat-icon>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-
-   <app-action-slide (activeId)="changeActiveCard($event)" [activeCard]="activeCard" [slider]="cards"></app-action-slide>
-
+        </mat-card-content>
+      </mat-card>
+    </drag-scroll>
     <ng-template #loading>
       <app-loading></app-loading>
     </ng-template>

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { StoreInterface } from '../../store/model/store.model';
 import { BalanceCardService } from '../../shared/services/balance/balanceCard.service';
 import { BasePaymentComponent } from '../../shared/abstract/payment/payment';
 import { GlobalIconsService } from '../../shared/services/globalIcon.service';
+import { DragScrollComponent } from 'ngx-drag-scroll';
 
 @Component({
   selector: 'app-cards-payment-mobile',
@@ -11,6 +12,7 @@ import { GlobalIconsService } from '../../shared/services/globalIcon.service';
   styleUrls: ['./cards-payment-mobile.component.scss', '../../shared/abstract/payment/payment.scss']
 })
 export class CardsPaymentMobileComponent extends BasePaymentComponent {
+  @ViewChild('nav', { read: DragScrollComponent }) ds: DragScrollComponent;
   public override activeCard: number;
   constructor(
     override store: Store<{ store: StoreInterface }>,
@@ -20,7 +22,8 @@ export class CardsPaymentMobileComponent extends BasePaymentComponent {
     super(store, balanceCard);
   }
 
-  changeActiveCard(id: number){
+  chanegActiveCard(id){
+    console.log(id)
     this.activeCard = id;
   }
 

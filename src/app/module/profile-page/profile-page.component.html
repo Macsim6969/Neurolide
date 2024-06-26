@@ -1,3 +1,4 @@
+<div *ngIf="isMobile" class="mobileTitle">Your Profile</div>
 <app-profile ></app-profile> 
 
 <div *ngIf="rules === 'manager' || rules === 'affiliate'">
@@ -5,6 +6,12 @@
     <app-media-header></app-media-header>
     <app-media-list [statusPage]="'profile'"></app-media-list>
   </section>
+  <div class="media_header_mobile" *ngIf="isMobile">
+    <p>Media Channels</p>
+    <button>
+      <mat-icon svgIcon="add" ></mat-icon>
+    </button>
+  </div>
   <app-list-mobile *ngIf="isMobile"></app-list-mobile>
   <app-form-media *ngIf="isOpenForm"></app-form-media>
 </div>
@@ -12,4 +19,4 @@
 <div *ngIf="rules === 'brand'">
   <app-cards-payment *ngIf="!isMobile"></app-cards-payment>
   <app-cards-payment-mobile *ngIf="isMobile"></app-cards-payment-mobile>
-</div>
+</div> 

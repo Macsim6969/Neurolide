@@ -7,6 +7,7 @@ import { ProfileModule } from '../profile/profile.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { MediaModuleClass } from '../media-chanels/@shared/module/media.module';
+import { HistoryPaymentComponent } from '../balance/@shared/components/history-payment/history-payment.component';
 
 const routes: Routes = [
   { path: '', component: ProfilePageComponent }

@@ -5,6 +5,7 @@ import { GlobalIconsService } from '../../../../../shared/services/globalIcon.se
 import { MediaChannelService } from '../../services/mediaChannel.service';
 import { Store } from '@ngrx/store';
 import { MediaFormService } from '../../services/mediaForm.service';
+import { MediaFormInterface } from '../../interface/mediaForm.interface';
 
 @Component({
   selector: 'app-list-mobile',
@@ -13,8 +14,7 @@ import { MediaFormService } from '../../services/mediaForm.service';
 })
 export class ListMobileComponent extends MediaChannelsDataClass implements OnInit {
   public activeSlide: number = 0;
-  public rules: string;
-
+  public url: string;
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
@@ -22,15 +22,15 @@ export class ListMobileComponent extends MediaChannelsDataClass implements OnIni
     private mediaFormService: MediaFormService
   ) {
     super(store, globalIconsService, mediaChannelService);
-    super.ngOnInit();
   }
 
   override ngOnInit(): void {
-    this.checkRulesUser();
+    super.ngOnInit();
+    this.checkUrlPage();
   }
 
-  private checkRulesUser(){
-    this.rules = JSON.parse(localStorage.getItem('rules'))
+  private checkUrlPage() {
+    this.url = localStorage.getItem('currentRoute')
   }
 
   public changeActiveCard(event: number) {
@@ -41,11 +41,23 @@ export class ListMobileComponent extends MediaChannelsDataClass implements OnIni
     this.mediaFormService._isMediaForm = true;
   }
 
-  public choicePayout(index: number, value: 'CPM' | 'CPH', id) {
-    if (!this.activePayout[index]) {
-      this.activePayout[index] = '';
+  public changeMedia(index: string) {
+    if (this.rules === 'manager') {
+      const media = this.mediaChannels.find((e: MediaFormInterface) => e.id === index)
+      this.mediaFormService._mediaData = media;
+      this.mediaFormService._statusMOde = 'edite'
+      this.mediaFormService._isMediaForm = true;
     }
-    this.activePayout[index] = value;
-    this.mediaChannelService.setNewChanges(this.mediaChannels, this.mainData, id, this.activePayout[index])
+  }
+
+  public choicePayout(index: number, value: 'CPM' | 'CPH', id) {
+    if (this.rules !== 'affiliate') {
+      if (!this.activePayout[index]) {
+        this.activePayout[index] = '';
+      }
+      this.activePayout[index] = value;
+      this.mediaChannelService.setNewChanges(this.mediaChannels, this.mainData, id, this.activePayout[index])
+    }
+
   }
 }

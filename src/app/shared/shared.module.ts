@@ -23,6 +23,7 @@ import { ActionSlideComponent } from "./components/action-slide/action-slide.com
 import { FormMediaComponent } from './components/form-media/form-media.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FormOffersComponent } from "./components/form-offers/form-offers.component";
+import { DragScrollModule } from "ngx-drag-scroll";
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { FormOffersComponent } from "./components/form-offers/form-offers.compon
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    DragScrollModule
   ]
 })
 

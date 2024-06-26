@@ -22,5 +22,7 @@ export class GlobalIconsService {
     this.matIconRegistry.addSvgIcon('add', this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/images/global/add.svg'));
     this.matIconRegistry.addSvgIcon('cancel', this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/images/profile/cancel.svg'));
     this.matIconRegistry.addSvgIcon('offer_confirme', this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/images/global/offer_confirme.svg'));
+
+    this.matIconRegistry.addSvgIcon('credit-card', this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/images/global/credit-card.svg'));
   }
 }

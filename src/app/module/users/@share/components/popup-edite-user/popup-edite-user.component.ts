@@ -23,7 +23,7 @@ export class PopupEditeUserComponent {
   ngOnInit(): void {
     this.initializeUserDataFromStore();
     this.initializeForm();
-
+    document.body.style.overflow = 'hidden';
   }
 
   private initializeUserDataFromStore() {
@@ -89,5 +89,6 @@ export class PopupEditeUserComponent {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    document.body.style.overflow = '';
   }
 }

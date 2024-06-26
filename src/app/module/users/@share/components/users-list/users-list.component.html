@@ -1,18 +1,20 @@
 <div class="users-list">
-  <div class="user" *ngFor="let user of userInfo">
+  <div class="user" *ngFor="let user of userInfo; index as i">
     <div [ngClass]="{ 'active': isActiveEmail === user.profile.email }" class="user_info"
       (click)="openSettings(user.profile.email)">
-      <nav class="id sans">{{ user?.profile?.userID }}</nav>
+      <nav class="id sans">{{ i+1 }}</nav>
       <nav class="name sans">{{ user?.profile?.name }}</nav>
       <nav class="email sans">{{ user?.profile?.email }}</nav>
-      <nav class="balance sans">{{ user?.monitoring?.balance ? user?.monitoring?.balance : 0 }}</nav>
-      <nav class="transaction sans">{{ user?.monitoring?.transactions ? user?.monitoring?.transactions : 0 }}</nav>
-      <nav class="status sans">{{ user?.profile?.rules }}</nav>
-      <div class="history_actions">
-        <button (click)="removeUser(user.profile?.userID, user.profile?.token)"> <mat-icon
-            svgIcon="remove"></mat-icon></button>
-        <button (click)="openPopupUser(user?.profile?.email)"> <mat-icon svgIcon="settings"></mat-icon> </button>
-      </div>
+      <nav class="balance sans">${{ user?.monitoring?.balance ? user?.monitoring?.balance : 0 }}</nav>
+      <nav class="transaction sans">${{ user?.monitoring?.transactions ? user?.monitoring?.transactions : 0 }}</nav>
+      <div class="status_sett">
+        <nav class="status sans">{{ user?.profile?.rules }}</nav>
+        <div class="history_actions">
+          <button class="remove" (click)="removeUser(user.profile?.userID, user.profile?.token)"> <mat-icon
+              svgIcon="remove"></mat-icon></button>
+          <button (click)="openPopupUser(user?.profile?.email)"> <mat-icon svgIcon="settings"></mat-icon> </button>
+        </div>
+      </div> 
     </div>
     <div class="user_dop" [ngClass]="{ 'active': isActiveEmail === user.profile.email }">
       <div class="main_info">
@@ -44,7 +46,8 @@
             <button mat-icon-button
               (click)="openTransitionPopup(user?.profile?.email, history?.nomer, i, user.profile.userID)"> <img
                 src="../../../../../../assets/images/profile/edite.png" alt=""></button>
-            <button (click)="removeTransition(user.profile.email, user.profile.userID, history?.nomer)" mat-icon-button> <mat-icon svgIcon="remove"></mat-icon></button>
+            <button (click)="removeTransition(user.profile.email, user.profile.userID, history?.nomer)" mat-icon-button>
+              <mat-icon svgIcon="remove"></mat-icon></button>
           </div>
         </div>
       </div>

@@ -52,6 +52,21 @@ body {
   // font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 16px;
+  }
+
+  &::-webkit-scrollbar-track {
+    width: 8px;
+    background-color: white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 8px;
+    background-color: rgb(122, 122, 122);
+  }
 }
 
 ::ng-deep {

@@ -1,4 +1,57 @@
 .media {
-  max-width: 1200px;
-  margin: 0 auto;
+  margin-top: 32px;
+
+  ::ng-deep app-media-list {
+    app-list-header {
+      .user-header-search {
+        margin-top: 11px;
+      }
+    }
+
+    app-list-channels {
+      .media-channel {
+        margin-top: 13px;
+      }
+    }
+  }
+}
+
+.media_header_mobile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding: 0 14px;
+
+  p {
+    padding: 6px 10px;
+    font-size: 1.6rem;
+    line-height: 3.2rem;
+    color: #FFFFFF;
+    font-weight: 500;
+    border-radius: 20px;
+    background-color: #0E1218;
+    box-shadow: 0px 4px 10px 0px #00000040;
+  }
+
+  button {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+      ::ng-deep {
+        svg {
+          path {
+            fill: #6CA5FC;
+          }
+        }
+      }
+    }
+  }
 }

@@ -33,7 +33,7 @@ import { PhoneFormatPipe } from "../../../module/balance/@shared/pipe/phoneForma
     TopUpPopupComponent,
     TakeOutPopupComponent,
   ],
-  providers: [BalanceCardService, BalanceActionService, CardsconService]
+  providers: [BalanceActionService]
 })
 
 export class BalanceServiceModule { }

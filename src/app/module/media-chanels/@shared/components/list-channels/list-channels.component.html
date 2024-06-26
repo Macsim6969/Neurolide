@@ -30,9 +30,9 @@
         class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
     </nav>
     <nav *ngIf="statusPage === 'profile'" class="settings">
-      <button (click)="changeMedia(channel.id)" type="submit" class="save "><mat-icon
+      <button (click)="changeMedia(channel.id)" type="submit" class="save"><mat-icon
           svgIcon="settings"></mat-icon></button>
-      <button (click)="removeMedia(channel.id)" type="button" class="remove "><mat-icon
+      <button (click)="removeMedia(channel.id)" type="button" class="remove {{urls}}"><mat-icon
           svgIcon="remove"></mat-icon></button>
     </nav>
   </div>

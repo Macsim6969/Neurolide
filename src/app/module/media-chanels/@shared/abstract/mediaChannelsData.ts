@@ -16,6 +16,7 @@ export abstract class MediaChannelsDataClass implements OnInit, OnDestroy {
   protected mainData: MediaFormInterface[];
   public mediaChannels: MediaFormInterface[];
   protected activePayout: string[] = [];
+  public rules: string;
   constructor(
     protected store: Store<{ store: StoreInterface }>,
     protected globalIconsService: GlobalIconsService,
@@ -23,6 +24,7 @@ export abstract class MediaChannelsDataClass implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.checkRulesUser();
     this.streamMediaChannelsDataFromStore();
   }
 
@@ -36,8 +38,14 @@ export abstract class MediaChannelsDataClass implements OnInit, OnDestroy {
       });
   }
 
+  private checkRulesUser(){
+    this.rules = JSON.parse(localStorage.getItem('rules'))
+  }
+
   public removeMedia(id: string) {
-    this.mediaChannelService.removeMedia(this.mediaChannels, this.mainData, id)
+    if(this.rules === 'manager'){
+      this.mediaChannelService.removeMedia(this.mediaChannels, this.mainData, id)
+    }
   }
 
   public setNewChanges(id: string, idChannel: number) {

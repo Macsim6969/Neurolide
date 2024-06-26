@@ -6,13 +6,18 @@
         <div class="media_header">
           <nav class="status">Status</nav>
           <div class="action">
-            <button *ngIf="rules === 'manager'" (click)="removeMedia(channel.id)" type="button" class="remove "><mat-icon
-                svgIcon="cancel"></mat-icon></button>
-            <button *ngIf="rules === 'manager'" (click)="setNewChanges(channel.id, i)" type="submit"
-              class="save "><mat-icon svgIcon="confirme"></mat-icon></button>
-            <nav *ngIf="rules !== 'manager'">{{channel.vip ? 'VIP' : ''}}</nav>
-            <button type="submit" [ngClass]="{'active': channel.vip}" class="vip "><mat-icon
-                svgIcon="vip"></mat-icon></button>
+            <button *ngIf="rules === 'manager' && url !== '/profile'" (click)="removeMedia(channel.id)" type="button"
+              class="remove "><mat-icon svgIcon="cancel"></mat-icon></button>
+            <button *ngIf="rules === 'manager' && url !== '/profile'" (click)="setNewChanges(channel.id, i)"
+              type="submit" class="save "><mat-icon svgIcon="confirme"></mat-icon></button>
+            <nav *ngIf="rules !== 'manager' && rules === 'affiliate' && url === '/profile'">{{channel.vip ? 'VIP' : ''}}
+            </nav>
+            <button *ngIf="rules !== 'affiliate' && url !== '/profile'" [ngClass]="{'active': channel.vip}"
+              class="vip "><mat-icon svgIcon="vip"></mat-icon></button>
+            <button *ngIf=" rules === 'affiliate' || rules === 'manager' && url === '/profile'" type="submit"
+              (click)="changeMedia(channel.id)" class="save-pf"><mat-icon svgIcon="settings"></mat-icon></button>
+            <button *ngIf=" rules === 'affiliate' || rules === 'manager' && url === '/profile'" type="button"
+              (click)="removeMedia(channel.id)" class="remove-pf"><mat-icon svgIcon="remove"></mat-icon></button>
           </div>
         </div>
         <div class="id">

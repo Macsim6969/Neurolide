@@ -18,9 +18,9 @@ import { MediaFormService } from '../../services/mediaForm.service';
 })
 export class ListChannelsComponent extends MediaChannelsDataClass {
   @Input() statusPage: string;
-  public rules: string;
   public isOpenDropdown: boolean[] = [];
   public isOpen: boolean = false;
+  public urls: string;
 
   constructor(
     override store: Store<{ store: StoreInterface }>,
@@ -35,13 +35,13 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
   }
 
   override ngOnInit(): void {
-    this.checkRulesUser();
+    this.checkUrlPage();
     this.streamSearchData();
     this.streamSearchFilterData();
   }
 
-  private checkRulesUser() {
-    this.rules = JSON.parse(localStorage.getItem('rules'));
+  private checkUrlPage() {
+    this.urls = localStorage.getItem('currentRoute').slice(1, -1)
   }
 
   private streamSearchData() {
@@ -99,11 +99,12 @@ export class ListChannelsComponent extends MediaChannelsDataClass {
   }
 
   public changeMedia(index: string) {
-    const media = this.mediaChannels.find((e: MediaFormInterface) => e.id === index)
-    this.mediaFormService._mediaData = media;
-    this.mediaFormService._statusMOde = 'edite'
-    this.mediaFormService._isMediaForm = true;
-
+    if (this.rules === 'manager') {
+      const media = this.mediaChannels.find((e: MediaFormInterface) => e.id === index)
+      this.mediaFormService._mediaData = media;
+      this.mediaFormService._statusMOde = 'edite'
+      this.mediaFormService._isMediaForm = true;
+    }
   }
 
   public openPayout(index: number) {

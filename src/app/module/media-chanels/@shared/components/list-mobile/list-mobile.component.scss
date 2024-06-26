@@ -34,6 +34,24 @@
       background-color: #D1F5E4 !important;
     }
 
+    &.remove-pf {
+      mat-icon {
+        height: auto;
+        width: 20px;
+        height: 20px;
+
+        ::ng-deep {
+          svg {
+
+            circle,
+            path {
+              stroke: #E84646;
+            }
+          }
+        }
+      }
+    }
+
     mat-icon {
       width: 18px;
       height: 18px;
