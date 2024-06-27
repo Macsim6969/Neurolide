@@ -17,7 +17,7 @@ import { PopupInfoService } from '../../services/popupInfo.service';
 @Component({
   selector: 'app-register-manager',
   templateUrl: './register-manager.component.html',
-  styleUrls: ['./register-dark.component.scss'],
+  styleUrls: ['./register-manager.component.scss'],
 })
 export class RegisterManagerComponent implements OnInit, AfterViewInit, OnDestroy {
   private destroy$ = new Subject<void>();
