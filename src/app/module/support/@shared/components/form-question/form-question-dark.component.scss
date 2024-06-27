@@ -1,29 +1,33 @@
 .form_question {
-  margin-top: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 41px;
   gap: 30px;
   max-width: 768px;
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 8px auto 24px auto;
+  background-color: #0e1218;
+
   @media (min-width: 576px) {
-    margin-top: 27px;
+
+    max-width: 710px;
+    width: 95%;
   }
 
   @media (min-width: 744px) {
-    margin-top: 76px;
+    margin: 76px auto 24px auto;
     max-width: none;
   }
 
   h1 {
     display: none;
-    // font-size: 2.8rem;
-    // font-weight: 500;
-    // line-height: 36.46px;
-    // color: #1e1e1e;
+    padding: 0 18px;
+
+    @media (min-width: 744px) {
+      padding: 0;
+    }
   }
 
   .form {
@@ -31,13 +35,8 @@
     flex-direction: column;
     gap: 30px;
     width: 95%;
-    background-color: #0e1218;
     border-radius: 20px;
     padding: 24px 0;
-
-    @media (min-width: 576px) {
-      padding: 48px 37px;
-    }
 
     @media (min-width: 744px) {
       background-color: transparent;
@@ -59,7 +58,8 @@
         line-height: 36px;
         color: #fff;
         text-align: center;
-        margin-bottom: 30px;
+        padding: 0;
+        margin: 25px 0 0 0;
       }
 
       @media (min-width: 576px) {
@@ -72,7 +72,6 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
-      padding: 0 18px;
 
       @media (min-width: 744px) {
         flex-direction: row;
@@ -81,8 +80,10 @@
       }
 
       .column {
-        max-width: 714px;
-        width: 100%;
+        @media (min-width: 744px) {
+          max-width: 714px;
+          width: 100%;
+        }
       }
     }
 
@@ -92,15 +93,29 @@
       gap: 20px;
       padding: 0 18px;
 
+      @media (min-width: 744px) {
+        padding: 0;
+      }
+
       &.file {
         align-items: flex-end;
+        display: none;
+
+        @media (min-width: 744px) {
+          padding: 0;
+          display: block;
+        }
+
+        input {
+          display: none;
+        }
 
         label {
-          display: none;
-
-          @media (min-width: 744px) {
-            display: block;
-          }
+          display: inline-block;
+          font-size: 1.4rem;
+          outline: none;
+          cursor: pointer;
+          color: #FFFFFF;
         }
       }
 
@@ -119,7 +134,7 @@
         padding: 8px;
 
         @media (min-width: 744px) {
-          padding: 20px;
+          padding: 8px 20px;
         }
       }
 
@@ -155,12 +170,14 @@
         }
       }
     }
+
     .action {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
       padding: 0 18px;
+      margin-bottom: 25px;
 
       @media (min-width: 576px) {
         gap: 40px;
@@ -171,6 +188,18 @@
       }
 
       .add_file-button {
+        input {
+          display: none;
+        }
+
+        label {
+          display: inline-block;
+          font-size: 1.6rem;
+          outline: none;
+          cursor: pointer;
+          color: #FFFFFF;
+        }
+
         @media (min-width: 744px) {
           display: none;
         }
@@ -191,19 +220,18 @@
         border: none;
 
         @media (min-width: 576px) {
-          padding: 25px 50px;
+          padding: 10px 50px;
           border-radius: 41px;
           font-size: 33px;
           line-height: 30px;
         }
 
         @media (min-width: 744px) {
-          width: 15%;
+          width: auto;
           box-shadow: 0px 4px 20px 0px #00000040;
           color: #ffffff;
           font-size: 1.6rem;
           line-height: 18.8px;
-          padding: 20px 40px;
         }
       }
     }

@@ -7,7 +7,7 @@ import { MediaFormInterface } from '../../interface/mediaForm.interface';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { MediaChannelService } from '../../services/mediaChannel.service';
 import { UserSearchService } from '../../../../../shared/services/userSearch.service';
-import { MediaChannelsDataClass } from '../../abstract/mediaChannelsData';
+import { MediaChannelsDataClass } from '../../abstract/mediaChannelsData'; 
 import { SearchMediaChannelAndOffersService } from '../../../../../shared/services/searchMediaChannelAndOffers.service';
 import { MediaFormService } from '../../services/mediaForm.service';
 

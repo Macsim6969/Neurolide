@@ -48,11 +48,9 @@ export class ListHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isActive = [];
 
     if (i === this.active) {
-      // Toggle the sort direction for the active filter
       this.userSearchService.toggleSortDirection(tag);
     } else {
-      // Set new active filter and reset sort direction to ascending
-      this.active = i;
+      this.active = i; 
       this.isActive[i] = true;
       this.userSearchService._searchData = tag;
       this.userSearchService.setSortDirection(tag, true);

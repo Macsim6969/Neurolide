@@ -16,7 +16,7 @@ export class ActiveOffersFilterComponent extends OffersFilter {
     override globalIcon: GlobalIconsService,
     override cd: ChangeDetectorRef,
     override userSearchService: UserSearchService
-  ) {
+  ) { 
     super(translate, globalIcon, cd, userSearchService);
     super.ngOnInit();
   }

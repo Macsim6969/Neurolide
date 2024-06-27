@@ -5,21 +5,11 @@
     <div class="row">
       <div class="column">
         <mat-label class="label sans">{{ formData.name }}</mat-label>
-        <input
-          class="sans"
-          placeholder="...."
-          type="text"
-          formControlName="name"
-        />
+        <input class="sans" placeholder="...." type="text" formControlName="name" />
       </div>
       <div class="column">
         <mat-label class="label sans">{{ formData.email }}</mat-label>
-        <input
-          class="sans"
-          placeholder="...."
-          type="email"
-          formControlName="email"
-        />
+        <input class="sans" placeholder="...." type="email" formControlName="email" />
       </div>
     </div>
     <div class="column">
@@ -27,15 +17,12 @@
       <textarea formControlName="text" rows="3"></textarea>
     </div>
     <div class="column file">
-      <label>{{ formData.file }}</label>
-      <input
-        class="select_file"
-        type="file"
-        (change)="onFileSelected($event)"
-      />
+      <label for="uploadBtn">{{ formData.file }}</label>
+      <input id="uploadBtn" class="select_file" type="file" (change)="onFileSelected($event)" />
     </div>
     <div class="action">
-      <button class="add_file-button" type="button" mat-button>Add file</button>
+      <button class="add_file-button" type="button"><label for="uploadBtn">{{ formData.file }}</label>
+        <input id="uploadBtn" class="select_file" type="file" (change)="onFileSelected($event)" /></button>
       <button type="submit" class="save sans" mat-button>
         {{ formData.send }}
       </button>
