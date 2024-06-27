@@ -11,7 +11,7 @@ import { OffersList } from '../../../../../shared/abstract/offers/offersList';
 import { takeUntil } from 'rxjs';
 import { OfferInterface } from '../../../../offers/@shared/interface/offer.interface';
 import { ActiveOfferService } from '../../../../offers/@shared/services/activeOffer.service';
-import { selectActiveOffers } from '../../../../../store/selectors/store.selectors';
+import { selectActiveOffers, selectOffersData } from '../../../../../store/selectors/store.selectors';
 
 @Component({
   selector: 'app-added-offers-list',
@@ -35,4 +35,12 @@ export class AddedOffersListComponent extends OffersList {
     super.ngOnInit();
   }
 
+  override streamOffersDataFromStore() {
+    this.store.select(selectOffersData).pipe(takeUntil(this.destroy$))
+      .subscribe((data: OfferInterface[]) => {
+        if (data) {
+          this.addedOffer = Object.values(data).filter((e) => e.statusOffer === 'added')
+        }
+      });
+  }
 }

@@ -6,8 +6,6 @@ import { Subject, takeUntil } from "rxjs";
 import { selectOffersData } from "../../../../store/selectors/store.selectors";
 import { OfferInterface } from "../interface/offer.interface";
 import { OffersService } from "../services/offers.service";
-import { TranslateService } from "@ngx-translate/core";
-import { ModelPaymentInterface } from "../interface/model.interface";
 
 @Component({
   template: ''
