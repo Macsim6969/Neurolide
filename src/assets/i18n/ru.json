@@ -9,10 +9,6 @@
       {
         "data": "Brand",
         "rule": "brand"
-      },
-      {
-        "data": "Manager",
-        "rule": "manager"
       }
     ],
     "form": {
@@ -100,24 +96,20 @@
     ],
     "userInfo": [
       {
-        "key": "userID",
-        "text": "Admin id:"
-      },
-      {
         "key": "name",
         "text": "Name:"
       },
       {
-        "key": "address",
-        "text": "Address:"
+        "key": "surname",
+        "text": "Surname:"
       },
       {
         "key": "number",
-        "text": "Number phone:"
+        "text": "Tel num:"
       },
       {
         "key": "email",
-        "text": "E-mail:"
+        "text": "Email:"
       },
       {
         "key": "password",
@@ -126,22 +118,16 @@
     ],
     "userActions": [
       {
-        "text": "Edit personal data",
+        "text": "Edit",
         "class": "edit"
-      }
-    ],
-    "userLogoutChanges": [
+      },
       {
         "text": "Exit",
         "class": "logout"
       },
       {
-        "text": "Delete profile",
-        "class": "remove"
-      },
-      {
         "text": "Delete",
-        "class": "remove-mobile"
+        "class": "remove"
       }
     ]
   },
@@ -184,7 +170,7 @@
     },
     {
       "title": "Advice",
-      "color": "purple"
+      "color": "purple gray"
     },
     {
       "title": "Balance",
@@ -193,66 +179,82 @@
   ],
   "sidebar": [
     {
-      "icon": "./assets/images/sidebar/manager.svg",
+      "icon": "main",
+      "title": "Main",
+      "url": "/"
+    },
+    {
+      "icon": "manager",
       "title": "Manager",
       "url": "/manager"
     },
     {
-      "icon": "./assets/images/sidebar/manager.svg",
+      "icon": "manager",
       "title": "Brand",
       "url": "/brand"
     },
     {
-      "icon": "./assets/images/sidebar/manager.svg",
+      "icon": "manager",
       "title": "Affiliate",
       "url": "/affiliate"
     },
     {
-      "icon": "./assets/images/sidebar/users.svg",
+      "icon": "users",
       "title": "Users",
       "url": "/users"
     },
     {
-      "icon": "./assets/images/sidebar/media-canal.png",
+      "icon": "users",
+      "title": "Offers in works",
+      "url": "/offers-in-works"
+    },
+    {
+      "icon": "users",
+      "title": "Added offers",
+      "url": "/added-offers"
+    },
+    {
+      "icon": "media-canal",
       "title": "Media channels",
       "url": "/media-channels"
     },
     {
-      "icon": "./assets/images/sidebar/offer.png",
+      "icon": "media-canal",
       "title": "Offers",
       "url": "/offers"
     },
     {
-      "icon": "./assets/images/sidebar/profile.png",
+      "icon": "profile",
       "title": "Profile",
       "url": "/profile"
     },
     {
-      "icon": "./assets/images/sidebar/balance.png",
+      "icon": "balance",
       "title": "Balance",
       "url": "/balance"
     },
     {
-      "icon": "./assets/images/sidebar/support.png",
+      "icon": "support",
       "title": "Support",
       "url": "/support"
     }
   ],
   "balance": {
-    "method": "Платежный метод",
-    "balanceInfoTitle": "Баланс",
-    "history": "История платежей",
+    "addedCard": "Add a map",
+    "method": "Payment method",
+    "balanceInfoTitle": "Balance",
+    "history": "Payment history",
     "balanceData": [
       {
-        "title": "Личный баланс",
+        "title": "Personal balance",
         "tage": ""
       },
       {
-        "title": "Поповнити баланс",
+        "title": "Top up the balance",
         "tage": "top-up"
       },
       {
-        "title": "Вивести баланс",
+        "title": "Take out the balance",
         "tage": "take-out"
       }
     ]
@@ -270,33 +272,33 @@
     "questions": [
       {
         "icon": "books",
-        "title": "Чи можу я додавати або редагувати більше ніж одного користувача одночасно?",
-        "description": "Lorem ipsum — класичний варіант умовного беззмістовного тексту, що вставляється в макет сторінки (у сленгу дизайнерів такий текст називається «рибою»)."
+        "title": "Can I add or edit more than one user at a time?",
+        "description": "Lorem ipsum is a classic version of conditional, meaningless text that is inserted into the page layout (in the slang of designers, such text is called 'fish')."
       },
       {
         "icon": "albert",
-        "title": "Як редагувати дані існуючого користувача?",
-        "description": "Існує багато інших варіантів Lorem ipsum, часто дуже віддалені від оригіналу."
+        "title": "How to edit the data of an existing user?",
+        "description": "There are many other variants of Lorem ipsum, often very far from the original."
       },
       {
         "icon": "paint",
-        "title": "Які «додаткові дані» можна вибрати?",
-        "description": "Lorem ipsum — це перекручений уривок з філософського трактату Цицерона «Про межі добра і зла», написаного в 45 році до нашої ери латиною."
+        "title": "What «additional data» can be selected?",
+        "description": "Lorem ipsum is a twisted passage from Cicero's philosophical treatise On the Limits of Good and Evil, written in Latin in 45 BC."
       },
       {
         "icon": "pansile",
-        "title": "Як створити та визначати дозволи для ролі?",
-        "description": "Часом вони містять додаткові літери, такі як k, w і z — які не існували або були рідко вживані в латині, і беззмістовні слова на кшталт zzril, takimata і gubergren, додані до первинного тексту."
+        "title": "How do I create and define permissions for a role?",
+        "description": "Sometimes they contain additional letters such as k, w, and z—which did not exist or were rarely used in Latin—and nonsensical words such as zzril, takimata, and gubergren added to the original text."
       },
       {
         "icon": "rocket",
-        "title": "Які адміністративні функції тепер доступні для RapidLite?",
-        "description": "З точки зору зручності сприйняття друкованих текстів Lorem ipsum показує, що латинська графіка найслушніше пристосовується для написання саме творів латинською мовою (тут враховується частота вживання символів з виносними елементами, таких як g, l, h, p)."
+        "title": "What administrative features are now available for RapidLite?",
+        "description": "From the point of view of ease of perception of printed texts, Lorem ipsum shows that Latin graphics are most suitable for writing works in Latin (the frequency of use of symbols with remote elements such as g, l, h, p is taken into account here)."
       },
       {
         "icon": "diagram",
-        "title": "Як користуватися вкладкою PSAP?",
-        "description": "В Microsoft Word 2007 і PowerPoint 2007 (і в більш пізніх версіях) є функція lorem (=lorem(параметр1,параметр2), де параметр1 — число абзаців, параметр2 — число речень в абзаці). Необхідно набрати, наприклад =lorem(2,7) (і натиснути Enter), після чого в документі з'явиться текст."
+        "title": "How to use the PSAP tab?",
+        "description": "In Microsoft Word 2007 and PowerPoint 2007 (and in later versions) there is a function lorem (=lorem(parameter1,parameter2), where parameter1 is the number of paragraphs, parameter2 is the number of sentences in a paragraph). It is necessary to type, for example =lorem(2,7) (and press Enter), after which the text will appear in the document."
       }
     ],
     "form": {
@@ -304,8 +306,123 @@
       "name": "Enter a name",
       "email": "E-mail for communication",
       "textArea": "Message",
-      "file":"Add file",
+      "file": "Add file",
       "send": "Send"
     }
+  },
+  "media": {
+    "headerTitle": "Media channels",
+    "search": "Search",
+    "addedOffer": "Add an offer",
+    "mediaSearch": [
+      {
+        "title": "UID",
+        "tag": "userID"
+      },
+      {
+        "title": "Nickname",
+        "tag": "name"
+      },
+      {
+        "title": "Link",
+        "tag": "link"
+      },
+      {
+        "title": "Subscribers",
+        "tag": "subscribers"
+      },
+      {
+        "title": "CTR",
+        "tag": "stream"
+      },
+      {
+        "title": "Payout",
+        "tag": "payout"
+      },
+      {
+        "title": "Price",
+        "tag": "price"
+      },
+      {
+        "title": "Status",
+        "tag": "vip"
+      }
+    ],
+    "mediaMobile": {
+      "status": "Статус",
+      "name": "Назва"
+    }
+  },
+  "offers": {
+    "offersTitle": "Offers",
+    "offersInWork": "Offers in works",
+    "addedTitle": "Added offers",
+    "activeOffers": "Active offers",
+    "headerTitle": "Offer up",
+    "search": "Search",
+    "addedOffer": "Add an offer",
+    "offerSearch": [
+      {
+        "title": "UID",
+        "tag": "userID"
+      },
+      {
+        "title": "Nickname",
+        "tag": "name"
+      },
+      {
+        "title": "Link",
+        "tag": "link"
+      },
+      {
+        "title": "Brand",
+        "tag": "brand"
+      },
+      {
+        "title": "Payments",
+        "tag": "payments"
+      },
+      {
+        "title": "Balance",
+        "tag": "balance"
+      },
+      {
+        "title": "Payout",
+        "tag": "payout"
+      },
+      {
+        "title": "Advertise offers",
+        "tag": "advertise"
+      },
+      {
+        "title": "Status",
+        "tag": "vip"
+      },
+      {
+        "title": "Settings",
+        "tag": "setting"
+      }
+    ],
+    "offerMobile": {
+      "status": "Статус",
+      "name": "Назва"
+    },
+    "offerModel": [
+      {
+        "title": "RevShare"
+      },
+      {
+        "title": "CPL"
+      },
+      {
+        "title": "CPC"
+      },
+      {
+        "title": "CPM"
+      },
+      {
+        "title": "CPH"
+      }
+    ]
   }
 }

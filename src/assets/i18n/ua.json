@@ -1,3 +1,428 @@
 {
-  "ter": "UA"
+  "logo": "Neurolide",
+  "auth": {
+    "rules": [
+      {
+        "data": "Affiliate",
+        "rule": "affiliate"
+      },
+      {
+        "data": "Brand",
+        "rule": "brand"
+      }
+    ],
+    "form": {
+      "registration": "Registration",
+      "name": "Name",
+      "email": "E-mail",
+      "password": "Password",
+      "repeatPassword": "Repeat the password",
+      "rememberData": "Remember data",
+      "formDescription": "Horizon UI. All Rights Reserved. Made with love by Simmmple!",
+      "reg": "Sign up",
+      "login": "Sign in",
+      "loginAccount": "Login to the account",
+      "loginDescription": "Enter e-mail and password to log in to the account!"
+    }
+  },
+  "headerInfo": [
+    {
+      "title": "Cliques",
+      "color": "red"
+    },
+    {
+      "title": "Index",
+      "color": "red"
+    },
+    {
+      "title": "Leads",
+      "color": "red"
+    },
+    {
+      "title": "Hold",
+      "color": "yellow"
+    },
+    {
+      "title": "Accrual",
+      "color": "green"
+    },
+    {
+      "title": "Disregard",
+      "color": "yellow"
+    },
+    {
+      "title": "Enrollment",
+      "color": "yellow"
+    },
+    {
+      "title": "Budget",
+      "color": "green"
+    },
+    {
+      "title": "Approve",
+      "color": "green"
+    },
+    {
+      "title": "Advice",
+      "color": "purple"
+    }
+  ],
+  "user": {
+    "userSearch": [
+      {
+        "title": "UID",
+        "tag": "userID"
+      },
+      {
+        "title": "Nickname",
+        "tag": "name"
+      },
+      {
+        "title": "Mail",
+        "tag": "email"
+      },
+      {
+        "title": "Balance",
+        "tag": "balance"
+      },
+      {
+        "title": "Transactions",
+        "tag": "transactions"
+      },
+      {
+        "title": "Status",
+        "tag": "rules"
+      }
+    ],
+    "userInfo": [
+      {
+        "key": "name",
+        "text": "Name:"
+      },
+      {
+        "key": "surname",
+        "text": "Surname:"
+      },
+      {
+        "key": "number",
+        "text": "Tel num:"
+      },
+      {
+        "key": "email",
+        "text": "Email:"
+      },
+      {
+        "key": "password",
+        "text": "Password:"
+      }
+    ],
+    "userActions": [
+      {
+        "text": "Edit",
+        "class": "edit"
+      },
+      {
+        "text": "Exit",
+        "class": "logout"
+      },
+      {
+        "text": "Delete",
+        "class": "remove"
+      }
+    ]
+  },
+  "usersList": [
+    {
+      "title": "Cliques",
+      "color": "red"
+    },
+    {
+      "title": "Index",
+      "color": "red"
+    },
+    {
+      "title": "Leads",
+      "color": "red"
+    },
+    {
+      "title": "Hold",
+      "color": "yellow"
+    },
+    {
+      "title": "Accrual",
+      "color": "green"
+    },
+    {
+      "title": "Disregard",
+      "color": "yellow"
+    },
+    {
+      "title": "Enrollment",
+      "color": "yellow"
+    },
+    {
+      "title": "Budget",
+      "color": "green"
+    },
+    {
+      "title": "Approve",
+      "color": "green"
+    },
+    {
+      "title": "Advice",
+      "color": "purple gray"
+    },
+    {
+      "title": "Balance",
+      "color": "purple"
+    }
+  ],
+  "sidebar": [
+    {
+      "icon": "main",
+      "title": "Main",
+      "url": "/"
+    },
+    {
+      "icon": "manager",
+      "title": "Manager",
+      "url": "/manager"
+    },
+    {
+      "icon": "manager",
+      "title": "Brand",
+      "url": "/brand"
+    },
+    {
+      "icon": "manager",
+      "title": "Affiliate",
+      "url": "/affiliate"
+    },
+    {
+      "icon": "users",
+      "title": "Users",
+      "url": "/users"
+    },
+    {
+      "icon": "users",
+      "title": "Offers in works",
+      "url": "/offers-in-works"
+    },
+    {
+      "icon": "users",
+      "title": "Added offers",
+      "url": "/added-offers"
+    },
+    {
+      "icon": "media-canal",
+      "title": "Media channels",
+      "url": "/media-channels"
+    },
+    {
+      "icon": "media-canal",
+      "title": "Offers",
+      "url": "/offers"
+    },
+    {
+      "icon": "profile",
+      "title": "Profile",
+      "url": "/profile"
+    },
+    {
+      "icon": "balance",
+      "title": "Balance",
+      "url": "/balance"
+    },
+    {
+      "icon": "support",
+      "title": "Support",
+      "url": "/support"
+    }
+  ],
+  "balance": {
+    "addedCard": "Add a map",
+    "method": "Payment method",
+    "balanceInfoTitle": "Balance",
+    "history": "Payment history",
+    "balanceData": [
+      {
+        "title": "Personal balance",
+        "tage": ""
+      },
+      {
+        "title": "Top up the balance",
+        "tage": "top-up"
+      },
+      {
+        "title": "Take out the balance",
+        "tage": "take-out"
+      }
+    ]
+  },
+  "transactions": {
+    "number": "Number",
+    "invoiceData": "Invoice date",
+    "dataPayment": "Date of payment",
+    "status": "Status",
+    "payment": "Payment method",
+    "subscription": "Subscription",
+    "amount": "Amount"
+  },
+  "support": {
+    "questions": [
+      {
+        "icon": "books",
+        "title": "Can I add or edit more than one user at a time?",
+        "description": "Lorem ipsum is a classic version of conditional, meaningless text that is inserted into the page layout (in the slang of designers, such text is called 'fish')."
+      },
+      {
+        "icon": "albert",
+        "title": "How to edit the data of an existing user?",
+        "description": "There are many other variants of Lorem ipsum, often very far from the original."
+      },
+      {
+        "icon": "paint",
+        "title": "What «additional data» can be selected?",
+        "description": "Lorem ipsum is a twisted passage from Cicero's philosophical treatise On the Limits of Good and Evil, written in Latin in 45 BC."
+      },
+      {
+        "icon": "pansile",
+        "title": "How do I create and define permissions for a role?",
+        "description": "Sometimes they contain additional letters such as k, w, and z—which did not exist or were rarely used in Latin—and nonsensical words such as zzril, takimata, and gubergren added to the original text."
+      },
+      {
+        "icon": "rocket",
+        "title": "What administrative features are now available for RapidLite?",
+        "description": "From the point of view of ease of perception of printed texts, Lorem ipsum shows that Latin graphics are most suitable for writing works in Latin (the frequency of use of symbols with remote elements such as g, l, h, p is taken into account here)."
+      },
+      {
+        "icon": "diagram",
+        "title": "How to use the PSAP tab?",
+        "description": "In Microsoft Word 2007 and PowerPoint 2007 (and in later versions) there is a function lorem (=lorem(parameter1,parameter2), where parameter1 is the number of paragraphs, parameter2 is the number of sentences in a paragraph). It is necessary to type, for example =lorem(2,7) (and press Enter), after which the text will appear in the document."
+      }
+    ],
+    "form": {
+      "title": "Feedback",
+      "name": "Enter a name",
+      "email": "E-mail for communication",
+      "textArea": "Message",
+      "file": "Add file",
+      "send": "Send"
+    }
+  },
+  "media": {
+    "headerTitle": "Media channels",
+    "search": "Search",
+    "addedOffer": "Add an offer",
+    "mediaSearch": [
+      {
+        "title": "UID",
+        "tag": "userID"
+      },
+      {
+        "title": "Nickname",
+        "tag": "name"
+      },
+      {
+        "title": "Link",
+        "tag": "link"
+      },
+      {
+        "title": "Subscribers",
+        "tag": "subscribers"
+      },
+      {
+        "title": "CTR",
+        "tag": "stream"
+      },
+      {
+        "title": "Payout",
+        "tag": "payout"
+      },
+      {
+        "title": "Price",
+        "tag": "price"
+      },
+      {
+        "title": "Status",
+        "tag": "vip"
+      }
+    ],
+    "mediaMobile": {
+      "status": "Статус",
+      "name": "Назва"
+    }
+  },
+  "offers": {
+    "offersTitle": "Offers",
+    "offersInWork": "Offers in works",
+    "addedTitle": "Added offers",
+    "activeOffers": "Active offers",
+    "headerTitle": "Offer up",
+    "search": "Search",
+    "addedOffer": "Add an offer",
+    "offerSearch": [
+      {
+        "title": "UID",
+        "tag": "userID"
+      },
+      {
+        "title": "Nickname",
+        "tag": "name"
+      },
+      {
+        "title": "Link",
+        "tag": "link"
+      },
+      {
+        "title": "Brand",
+        "tag": "brand"
+      },
+      {
+        "title": "Payments",
+        "tag": "payments"
+      },
+      {
+        "title": "Balance",
+        "tag": "balance"
+      },
+      {
+        "title": "Payout",
+        "tag": "payout"
+      },
+      {
+        "title": "Advertise offers",
+        "tag": "advertise"
+      },
+      {
+        "title": "Status",
+        "tag": "vip"
+      },
+      {
+        "title": "Settings",
+        "tag": "setting"
+      }
+    ],
+    "offerMobile": {
+      "status": "Статус",
+      "name": "Назва"
+    },
+    "offerModel": [
+      {
+        "title": "RevShare"
+      },
+      {
+        "title": "CPL"
+      },
+      {
+        "title": "CPC"
+      },
+      {
+        "title": "CPM"
+      },
+      {
+        "title": "CPH"
+      }
+    ]
+  }
 }
