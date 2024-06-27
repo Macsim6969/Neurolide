@@ -48,8 +48,16 @@ body {
   transition: 0.5s all ease;
 
   mat-checkbox {
-
-    .mdc-checkbox__background,
+    .mdc-checkbox .mdc-checkbox__native-control:enabled:focus:checked{
+      background-color: #094fb8 !important;
+      .mdc-checkbox__background:not(:checked){
+        border-color: #094fb8 !important;
+      }
+    }
+    
+    .mdc-checkbox__background:not(:checked){
+      border-color: #ffffff !important;
+    }
     label {
       color: #ffffff;
     }

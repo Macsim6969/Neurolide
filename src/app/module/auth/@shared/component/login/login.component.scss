@@ -20,9 +20,12 @@
   }
 
   @media (max-width: 1124px) {
-    margin: 0;
-    min-width: 100%;
-    padding-top: 0;
+    margin: 0 auto;
+    padding: 0 26px;
+  }
+
+  @media (max-width: 454px) {
+    min-width: 320px;
   }
 
   .register-title {
@@ -30,6 +33,12 @@
     font-size: 3.6rem;
     line-height: 5.6rem;
     color: #FFFFFF;
+    font-weight: 400;
+
+    @media (max-width: 620px) {
+      font-size: 2.2rem;
+      line-height: 25.85px;
+    }
   }
 
   .register-description {
@@ -38,6 +47,11 @@
     line-height: 1.88rem;
     color: #71788C;
     text-align: center;
+
+    @media (max-width: 620px) {
+      font-size: 1.2rem;
+      line-height: 15.62px;
+    }
   }
 
   .form {
@@ -49,8 +63,7 @@
 
     @media (max-width: 1124px) {
       margin-top: 19px;
-      width: auto;
-      padding: 0 15px;
+      width: 100%;
     }
 
     .form-rules {
@@ -61,8 +74,11 @@
       margin-bottom: 30px;
 
       @media (max-width: 1124px) {
-        flex-wrap: wrap;
         justify-content: center;
+      }
+
+      @media (max-width: 576px) {
+        gap: 3px;
       }
 
       .rules {
@@ -83,7 +99,7 @@
         padding: 20px;
 
         &.affiliate {
-          background-color: #3334FF;
+          background-color: #181A1E;
         }
 
         &.brand {
@@ -91,13 +107,20 @@
         }
 
         @media (max-width: 1124px) {
-          width: auto;
-          padding: 10px 46px;
-          min-width: 100% !important;
+          padding: 21px 0;
+          width: 329px;
+          justify-content: center;
+        }
+
+        @media (max-width: 720px) {
+          padding: 10px 0;
+          min-width: 160px !important;
+          width: 160px;
+
         }
 
         &.active {
-          background: #94a7d8;
+          background: #3334FF;
         }
       }
     }
@@ -201,6 +224,10 @@
       letter-spacing: -0.02em;
       color: #71788C;
       margin: 0;
+
+      @media (max-width: 576px) {
+        text-align: center;
+      }
     }
   }
 }

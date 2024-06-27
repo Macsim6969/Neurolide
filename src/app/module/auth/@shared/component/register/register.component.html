@@ -3,7 +3,7 @@
 
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-rules">
-      <button *ngFor="let rule of authRules" type="button" mat-button class="rules"
+      <button *ngFor="let rule of authRules" type="button" mat-button class="rules {{rule.rule}}"
         [ngClass]="{'active': isRulesChoise === rule.rule}" (click)="choiseRules(rule.rule)">{{rule.data}}</button>
     </div>
     <div class="name">
