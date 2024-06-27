@@ -18,7 +18,7 @@ import { newUserID } from '../../../../../store/actions/store.actions';
 @Component({
   selector: 'app-login-manager',
   templateUrl: './login-manager.component.html',
-  styleUrls: ['./login-dark.component.scss'],
+  styleUrls: ['./login-manager.component.scss'],
 })
 export class LoginManagerComponent implements OnInit, AfterViewInit, OnDestroy {
   private destroy$ = new Subject<void>();

@@ -46,9 +46,15 @@ body {
 
 * {
   transition: 0.5s all ease;
-  &mat-label{
-    color: #ffffff;
+
+  mat-checkbox {
+
+    .mdc-checkbox__background,
+    label {
+      color: #ffffff;
+    }
   }
+
 }
 
 body {
