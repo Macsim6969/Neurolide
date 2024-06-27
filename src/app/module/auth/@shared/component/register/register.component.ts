@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject, Subscription, take, takeUntil, timer } from 'rxjs';
+import { Subject, take, takeUntil, timer } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { AuthIconsService } from '../../services/authIcon.service';
 import { TranslateService } from '@ngx-translate/core';
