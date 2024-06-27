@@ -3,23 +3,21 @@
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
     <div class="name">
       <mat-label class="label" [innerHTML]="formData.name"></mat-label>
-      <input [placeholder]="formData.name" type="text" formControlName="name" [value]="this.form.value.name">
+      <input [placeholder]="formData.name" type="text" formControlName="name" >
     </div>
     <div class="email">
       <mat-label class="label" [innerHTML]="formData.email"></mat-label>
-      <input matInput type="email" [placeholder]="formData.email" required formControlName="email"
-        [value]="this.form.value.email">
+      <input matInput type="email" [placeholder]="formData.email" required formControlName="email">
     </div>
 
     <div class="email">
       <mat-label class="label" [innerHTML]="formData.password"></mat-label>
-      <input matInput type="password" [placeholder]="formData.password" required formControlName="password"
-        [value]="this.form.value.password">
+      <input matInput type="password" [placeholder]="formData.password" required formControlName="password">
     </div>
     <div class="password doublePass">
       <mat-label class="label" [innerHTML]="formData.repeatPassword"></mat-label>
       <input matInput [type]="hide ? 'password' : 'text'" [placeholder]="formData.password"
-        formControlName="doublePassword" [value]="this.form.value.doublePassword">
+        formControlName="doublePassword">
       <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide">
         <mat-icon [svgIcon]="hide ? 'view' : 'view'"></mat-icon>

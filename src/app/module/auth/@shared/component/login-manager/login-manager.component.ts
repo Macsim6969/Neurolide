@@ -41,12 +41,11 @@ export class LoginManagerComponent implements OnInit, AfterViewInit, OnDestroy {
   ) { }
   ngOnInit() {
     this.backendService.getAlluser();
-    this.initializeForm();
+    this.initializeStorageDataForm();
     this.initializeDataFromJSON();
   }
 
   ngAfterViewInit(): void {
-    this.initializeStorageDataForm();
     this.store
       .pipe(select(selectAllUsers), takeUntil(this.destroy$))
       .subscribe((data) => {
@@ -56,10 +55,20 @@ export class LoginManagerComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  private initializeForm() {
-    this.form = new FormGroup<any>({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl(null, [
+  private initializeStorageDataForm() {
+    if (localStorage.getItem('save')) {
+      const data = JSON.parse(localStorage.getItem('save'));
+      this.initializeForm(data);
+      this.dataUser = data.rules;
+    } else {
+      this.initializeForm();
+    }
+  }
+
+  private initializeForm(data?) {
+    this.form = new FormGroup({
+      email: new FormControl(data.email ? data.email : '', [Validators.required, Validators.email]),
+      password: new FormControl(data.password ? data.password : '', [
         Validators.required,
         Validators.minLength(8),
       ]),
@@ -75,16 +84,6 @@ export class LoginManagerComponent implements OnInit, AfterViewInit, OnDestroy {
         this.formData = data.form;
       });
   }
-
-  private initializeStorageDataForm() {
-    if (localStorage.getItem('save')) {
-      const data = JSON.parse(localStorage.getItem('save'));
-      this.form.value.email = data.email;
-      this.form.value.password = data.password;
-      this.dataUser = data.rules;
-    }
-  }
-
 
   public submit() {
     this.allUsers.find((e) => {
@@ -114,8 +113,8 @@ export class LoginManagerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
 
-ngOnDestroy() {
-  this.destroy$.next();
-  this.destroy$.complete();
-}
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

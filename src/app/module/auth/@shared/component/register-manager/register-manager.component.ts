@@ -34,26 +34,35 @@ export class RegisterManagerComponent implements OnInit, AfterViewInit, OnDestro
     private translate: TranslateService,
     private popupInfoService: PopupInfoService,
     private cd: ChangeDetectorRef
-  ) {}
+  ) { }
   ngOnInit() {
+    this.initializeStorageDataForm();
     this.initializeForm();
     this.initializeDataFromJSON();
   }
 
   ngAfterViewInit(): void {
-    this.initializeStorageDataForm();
     this.cd.detectChanges();
   }
 
-  private initializeForm() {
+  private initializeStorageDataForm() {
+    if (localStorage.getItem('save')) {
+      const data = JSON.parse(localStorage.getItem('save'));
+      this.initializeForm(data);
+    } else {
+      this.initializeForm();
+    }
+  }
+
+  private initializeForm(data?) {
     this.form = new FormGroup<any>({
-      name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl(null, [
+      name: new FormControl(data.name ? data.name : '', [Validators.required]),
+      email: new FormControl(data.email ? data.email : '', [Validators.required, Validators.email]),
+      password: new FormControl(data.password ? data.password : '', [
         Validators.required,
         Validators.minLength(8),
       ]),
-      doublePassword: new FormControl('', [
+      doublePassword: new FormControl(data.password ? data.password : '', [
         Validators.required,
         Validators.minLength(8),
       ]),
@@ -68,16 +77,6 @@ export class RegisterManagerComponent implements OnInit, AfterViewInit, OnDestro
         this.authRules = data.rules;
         this.formData = data.form;
       });
-  }
-
-  private initializeStorageDataForm() {
-    if (localStorage.getItem('save')) {
-      const data = JSON.parse(localStorage.getItem('save'));
-      this.form.value.name = data.name;
-      this.form.value.email = data.email;
-      this.form.value.password = data.password;
-      this.form.value.doublePassword = data.password;
-    }
   }
 
   public submit() {
