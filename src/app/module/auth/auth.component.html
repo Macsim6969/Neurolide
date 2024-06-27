@@ -2,9 +2,9 @@
   <div class="auth_logo_mobile">
     <div class="auth_logo_inner">
       <nav class="logo">
-        <img src="../../../assets/images/auth/auth_logo.png" alt="Neurolide" />
+        <img src="../../../assets/images/auth/auth_bg_dark.png" alt="Neurolide">
       </nav>
-      <h1 class="title" [innerHTML]="'logo' | translate"></h1>
+      <h1 class="title" [innerHTML]="'logo'| translate"></h1>
     </div>
   </div>
   <div class="auth_content">
@@ -13,13 +13,14 @@
   <div class="auth_logo">
     <div class="auth_logo_inner">
       <nav class="logo">
-        <img src="../../../assets/images/auth/auth_logo.png" alt="Neurolide" />
+        <img src="../../../assets/images/auth/auth_logo.png" alt="Neurolide">
       </nav>
-      <h1 class="title" [innerHTML]="'logo' | translate"></h1>
+      <h1 class="title" [innerHTML]="'logo'| translate"></h1>
     </div>
   </div>
 
-  <div class="popup-info" [ngClass]="{ active: isPopup }" *ngIf="isPopup">
+  <div class="popup-info" [ngClass]="{'active': isPopup}" *ngIf="isPopup">
     <p>Registration completed successfully</p>
   </div>
+
 </section>

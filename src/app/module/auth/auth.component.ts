@@ -5,7 +5,7 @@ import { Subject, take, takeUntil, timer } from 'rxjs';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth-dark.component.scss'],
+  styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();

@@ -46,6 +46,9 @@ body {
 
 * {
   transition: 0.5s all ease;
+  &mat-label{
+    color: #ffffff;
+  }
 }
 
 body {

@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject, Subscription, takeUntil } from 'rxjs';
+import { Subject, Subscription, take, takeUntil } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { AuthIconsService } from '../../services/authIcon.service';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ import { newUserID } from '../../../../../store/actions/store.actions';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login-dark.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   private destroy$ = new Subject<void>();
@@ -42,25 +42,32 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
   ngOnInit() {
     this.backendService.getAlluser();
-    this.initializeForm();
+    this.initializeStorageDataForm();
     this.initializeDataFromJSON();
   }
 
   ngAfterViewInit(): void {
-    this.initializeStorageDataForm();
     this.store
-      .pipe(select(selectAllUsers), takeUntil(this.destroy$))
+      .pipe(select(selectAllUsers), take(1))
       .subscribe((data) => {
         if (data) {
           this.allUsers = Object.values(data);
         }
       });
   }
+  private initializeStorageDataForm() {
+    if (localStorage.getItem('save')) {
+      const data = JSON.parse(localStorage.getItem('save'));
+      this.initializeForm(data);
+      this.isRulesChoise = data.rules;
+      this.dataUser = data.rules;
+    }
+  }
 
-  private initializeForm() {
-    this.form = new FormGroup<any>({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl(null, [
+  private initializeForm(data) {
+    this.form = new FormGroup({
+      email: new FormControl(data.email ? data.email : '', [Validators.required, Validators.email]),
+      password: new FormControl(data.password ? data.password : '', [
         Validators.required,
         Validators.minLength(8),
       ]),
@@ -75,16 +82,6 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
         this.authRules = data.rules;
         this.formData = data.form;
       });
-  }
-
-  private initializeStorageDataForm() {
-    if (localStorage.getItem('save')) {
-      const data = JSON.parse(localStorage.getItem('save'));
-      this.form.value.email = data.email;
-      this.form.value.password = data.password;
-      this.isRulesChoise = data.rules;
-      this.dataUser = data.rules;
-    }
   }
 
   public choiseRules(rules: string) {

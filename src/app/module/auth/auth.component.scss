@@ -5,8 +5,7 @@
   height: 100%;
   width: 100%;
   gap: 39px;
-  background-color: #0a0a0a;
-  color: #fff;
+  background-color: #0A0A0A;
 
   @media (max-width: 1124px) {
     flex-direction: column;
@@ -15,8 +14,9 @@
   .auth_logo_mobile {
     display: none;
 
+
     @media (max-width: 1124px) {
-      background: url("../../../assets/images/auth/auth_bg_mobile.png");
+      background: url('../../../assets/images/auth/auth_bg_dark_mobile.png');
       background-repeat: no-repeat;
       background-size: 96% 100%;
       display: flex;
@@ -36,10 +36,12 @@
       left: 18px;
       top: 33px;
 
+
+
       .logo {
         width: 68px;
         height: 68px;
-        background: #ffffff;
+        background: #FFFFFF;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -55,9 +57,10 @@
       .title {
         font-size: 3.2rem;
         line-height: 4.16rem;
-        color: #ffffff;
+        color: #FFFFFF;
       }
     }
+
   }
 
   .auth_content {
@@ -70,15 +73,15 @@
   }
 
   .auth_logo {
-    background: url("../../../assets/images/auth/auth_bg.png");
+    background: url('../../../assets/images/auth/auth_bg_dark.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 100%;
-    /* максимальная ширина будет равна ширине родительского контейнера */
     position: relative;
+    z-index: 0;
     flex: 1;
 
     @media (max-width: 1124px) {
@@ -115,14 +118,16 @@
       .title {
         font-size: 10rem;
         line-height: 13.02rem;
-        color: #ffffff;
+        color: #FFFFFF;
 
         @media (max-width: 1620px) {
           font-size: 6.5rem;
           line-height: 9.02rem;
         }
+
       }
     }
+
   }
 
   .popup-info {
@@ -131,7 +136,7 @@
     top: 100px;
     border-radius: 16px;
     padding: 12px;
-    background-color: #d1f5e4;
+    background-color: #D1F5E4;
 
     &.active {
       transition: all 0.5s ease;
