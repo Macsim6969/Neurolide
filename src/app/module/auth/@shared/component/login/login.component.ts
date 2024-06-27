@@ -61,12 +61,10 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
       this.initializeForm(data);
       this.isRulesChoise = data.rules;
       this.dataUser = data.rules;
-    } else {
-      this.initializeForm();
     }
   }
 
-  private initializeForm(data?) {
+  private initializeForm(data) {
     this.form = new FormGroup({
       email: new FormControl(data.email ? data.email : '', [Validators.required, Validators.email]),
       password: new FormControl(data.password ? data.password : '', [
