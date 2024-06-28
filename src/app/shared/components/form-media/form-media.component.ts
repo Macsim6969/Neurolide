@@ -3,11 +3,12 @@ import { BasePopupComponent } from '../../../module/balance/@shared/form';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MediaFormService } from '../../../module/media-chanels/@shared/services/mediaForm.service';
 import { combineLatest, take, takeUntil } from 'rxjs';
-import { MediaFormInterface } from '../../../module/media-chanels/@shared/interface/mediaForm.interface';
+import { MediaFormData, MediaFormInterface } from '../../../module/media-chanels/@shared/interface/mediaForm.interface';
 import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../../store/model/store.model';
 import { selectMediaChannels } from '../../../store/selectors/store.selectors';
 import { MediaChannelService } from '../../../module/media-chanels/@shared/services/mediaChannel.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-form-media',
@@ -15,7 +16,7 @@ import { MediaChannelService } from '../../../module/media-chanels/@shared/servi
   styleUrls: ['./form-media.component.scss']
 })
 export class FormMediaComponent extends BasePopupComponent {
-
+  public formData: MediaFormData;
   public paymentData = [
     {
       title: 'CPH',
@@ -33,20 +34,29 @@ export class FormMediaComponent extends BasePopupComponent {
   public isOpenTab: boolean[] = [];
   private mediaChannelsData: MediaFormInterface[];
   private mediaData: MediaFormInterface;
-
   private statusEdite: string
   constructor(
     private store: Store<{store: StoreInterface}>,
     private mediaFormService: MediaFormService,
-    private mediaChannelsService: MediaChannelService
+    private mediaChannelsService: MediaChannelService,
+    private translate: TranslateService
   ) {
     super();
+  }
+  
+  override ngOnInit(): void {
     super.ngOnInit();
+    this.streamOffersData();
+    this.streamFormMediaFormJson();
   }
 
-  override ngOnInit(): void {
-    this.streamOffersData()
+  private streamFormMediaFormJson(){
+    this.translate.stream('media.form').pipe(takeUntil(this.destroy$))
+    .subscribe((data: MediaFormData) =>{
+      this.formData = data;
+    })
   }
+
   private streamOffersData() {
     combineLatest(([this.mediaFormService._mediaData$, this.mediaFormService._statusMOde$]))
       .pipe(takeUntil(this.destroy$)).subscribe(([dataValue, dataMode]) => {

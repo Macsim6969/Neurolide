@@ -19,7 +19,6 @@ import { FormatCardNumberPipe } from "./pipe/formatCardNumber.pipe";
 import { TranslateModule } from "@ngx-translate/core";
 import { BalanceCardComponent } from "../component/balance-card/balance-card.component";
 import { CardsPaymentMobileComponent } from "../component/cards-payment-mobile/cards-payment-mobile.component";
-import { ActionSlideComponent } from "./components/action-slide/action-slide.component";
 import { FormMediaComponent } from './components/form-media/form-media.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FormOffersComponent } from "./components/form-offers/form-offers.component";
@@ -37,7 +36,6 @@ import { GraphicsDataComponent } from "../component/graphics-data/graphics-data.
     BalanceCardComponent,
     NavigationComponent,
     FormatCardNumberPipe,
-    ActionSlideComponent,
     FormMediaComponent,
     FormOffersComponent,
     GraphicsDataComponent
@@ -61,7 +59,6 @@ import { GraphicsDataComponent } from "../component/graphics-data/graphics-data.
     FormatCardNumberPipe,
     BalanceCardComponent,
     CardsPaymentMobileComponent,
-    ActionSlideComponent,
     FormMediaComponent,
     FormOffersComponent,
     GraphicsDataComponent

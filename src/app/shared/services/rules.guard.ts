@@ -1,14 +1,11 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { Observable } from "rxjs";
-import { Store } from "@ngrx/store";
-import { StoreInterface } from './../../store/model/store.model';
 
 @Injectable()
 export class RulesGuard implements CanActivate {
   constructor(
-    private router: Router,
-    private store: Store<{ store: StoreInterface }>
+    private router: Router
   ) { }
 
   canActivate(

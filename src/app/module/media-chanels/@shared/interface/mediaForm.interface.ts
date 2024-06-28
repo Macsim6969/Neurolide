@@ -8,3 +8,15 @@ export interface MediaFormInterface {
   price: number
   vip: boolean
 }
+
+export interface MediaFormData{
+  title: string
+  name: string
+  link: string
+  subscribe: string
+  ctr: string
+  price: string
+  model: string
+  cancel: string
+  save: string
+}

@@ -27,7 +27,7 @@
                 <mat-icon svgIcon="copy" (click)="copyToClipboard(card.number)"></mat-icon>
               </div>
               <div class="card-payment-content-right">
-                <p class="expires">Expires</p>
+                <p class="expires">{{'balance.expires' | translate}}</p>
                 <p class="number">{{ card.data }}</p>
               </div>
             </div>

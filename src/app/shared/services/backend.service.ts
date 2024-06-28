@@ -12,7 +12,7 @@ import { OfferInterface } from '../../module/offers/@shared/interface/offer.inte
 @Injectable({ providedIn: 'root' })
 
 export class BackendService {
-  private baseUrl = 'https://neuroline-c426d-default-rtdb.firebaseio.com';
+  private baseUrl = 'https://neuroline-af6a2-default-rtdb.firebaseio.com/';
   constructor(private http: HttpClient,
     private store: Store<{ store: StoreInterface }>,) {
   }

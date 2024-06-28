@@ -244,6 +244,8 @@
     "method": "Payment method",
     "balanceInfoTitle": "Balance",
     "history": "Payment history",
+    "expires": "Expires",
+    "addNewCard": "Add new card",
     "balanceData": [
       {
         "title": "Personal balance",
@@ -351,9 +353,21 @@
     "mediaMobile": {
       "status": "Статус",
       "name": "Назва"
+    },
+    "form": {
+      "title": "Add a new channel",
+      "name": "Name",
+      "link": "Link",
+      "subscribe": "Subscribers",
+      "ctr": "CTR",
+      "price": "Price",
+      "model": "Accrual model",
+      "cancel": "Cancel",
+      "save": "Save Changes"
     }
   },
   "offers": {
+    "mobileTitle": "Your Offers",
     "offersTitle": "Offers",
     "offersInWork": "Offers in works",
     "addedTitle": "Added offers",
@@ -423,6 +437,19 @@
       {
         "title": "CPH"
       }
-    ]
+    ],
+    "form": {
+      "title": "Edit offer",
+      "name": "Name",
+      "link": "Link",
+      "brand": "Brand",
+      "payments": "Payments",
+      "balance": "Balance",
+      "model": "Payment model",
+      "cancel": "Cancel",
+      "save": "Save Changes",
+      "status": "Status",
+      "advertise": "Advertise"
+    }
   }
 }

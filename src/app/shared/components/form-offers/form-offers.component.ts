@@ -1,4 +1,4 @@
-import { OfferInterface } from './../../../module/offers/@shared/interface/offer.interface';
+import { OfferInterface, OffersFormsData } from './../../../module/offers/@shared/interface/offer.interface';
 import { Component } from '@angular/core';
 import { BasePopupComponent } from '../../../module/balance/@shared/form';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -18,6 +18,7 @@ import { GlobalIconsService } from '../../services/globalIcon.service';
   styleUrls: ['./form-offers.component.scss']
 })
 export class FormOffersComponent extends BasePopupComponent {
+  public formData: OffersFormsData;
   public statusEdite: string;
   private offersData: OfferInterface[];
   public offerData: OfferInterface;
@@ -31,12 +32,20 @@ export class FormOffersComponent extends BasePopupComponent {
     private globalIcon: GlobalIconsService
   ) {
     super();
-    super.ngOnInit();
   }
 
   override ngOnInit(): void {
+    super.ngOnInit();
+    this.streamFormMediaFormJson();
     this.streamOffersData();
     this.streamModelPaymentFromJson();
+  }
+
+  private streamFormMediaFormJson() {
+    this.translate.stream('offers.form').pipe(takeUntil(this.destroy$))
+      .subscribe((data: OffersFormsData) => {
+        this.formData = data;
+      })
   }
 
   private streamOffersData() {
