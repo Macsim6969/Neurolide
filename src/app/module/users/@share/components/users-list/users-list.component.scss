@@ -303,11 +303,13 @@
     flex-direction: column;
     max-width: 360px;
     align-items: center;
+    background-color: #181A1E;
 
     mat-card-header {
       mat-card-title {
         text-align: center;
         font-size: 2rem;
+        color: #FFFFFF;
       }
     }
 
@@ -322,6 +324,7 @@
         font-size: 1.8rem;
         padding: 10px 15px;
         font-weight: 400;
+        color: #FFFFFF;
       }
     }
   }
