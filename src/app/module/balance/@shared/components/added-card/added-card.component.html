@@ -1,36 +1,36 @@
 <div class="profile-edite">
   <div class="popup">
-    <h3 class="popup_title sans">Add a new card</h3>
+    <h3 class="popup_title sans">{{addedCardData.addCardTitle}}</h3>
     <form class="form" [formGroup]="form" (ngSubmit)="submit()">
       <div class="column">
-        <mat-label class="label sans">Card number:</mat-label>
-        <input class="sans" placeholder="Card number" type="text" formControlName="numberCard" maxlength="19"
+        <mat-label class="label sans">{{addedCardData.cardNumber}}:</mat-label>
+        <input class="sans" placeholder="{{addedCardData.cardNumber}}" type="text" formControlName="numberCard" maxlength="19"
           [value]="form.get('numberCard').value | creditCardFormatter">
       </div>
       <div class="column">
-        <mat-label class="label sans">Initials indicated on the card:</mat-label>
-        <input class="sans" placeholder="Initials indicated on the card" type="text" formControlName="name">
+        <mat-label class="label sans">{{addedCardData.initialsName}}:</mat-label>
+        <input class="sans" placeholder="{{addedCardData.initialsName}}" type="text" formControlName="name">
       </div>
       <div class="column">
-        <mat-label class="label sans">Number Phone:</mat-label>
-        <input class="sans" placeholder="Number Phone" type="number" formControlName="number">
+        <mat-label class="label sans">{{addedCardData.numberPhone}}:</mat-label>
+        <input class="sans" placeholder="{{addedCardData.numberPhone}}" type="number" formControlName="number">
       </div>
       <div class="row">
         <div class="column">
-          <mat-label class="label sans">CVC</mat-label>
-          <input class="sans" placeholder="CVC" type="number" max (input)="onInputChange($event, 3)"
+          <mat-label class="label sans">{{addedCardData.cvc}}</mat-label>
+          <input class="sans" placeholder="CVC" type="{{addedCardData.cvc}}" max (input)="onInputChange($event, 3)"
             formControlName="cvc">
         </div>
         <div class="column">
-          <mat-label class="label sans">Completion date</mat-label>
+          <mat-label class="label sans">{{addedCardData.date}}</mat-label>
           <input class="sans" type="text" (input)="onDateInputChange($event)" placeholder="MM/YY"
             formControlName="data">
         </div>
       </div>
 
       <div class="action">
-        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
-        <button type="submit" class="save sans" mat-button><mat-icon svgIcon="add"></mat-icon> <p>Add card</p></button>
+        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>{{addedCardData.cancel}}</button>
+        <button type="submit" class="save sans" mat-button><mat-icon svgIcon="add"></mat-icon> <p>{{addedCardData.addCard}}</p></button>
       </div>
     </form>
   </div>

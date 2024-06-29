@@ -5,10 +5,10 @@ import { StoreInterface } from '../../../../../store/model/store.model';
 import { OffersService } from '../../../../offers/@shared/services/offers.service';
 import { OfferFormService } from '../../../../offers/@shared/services/offersForms.service';
 import { OffersDataClass } from '../../../../offers/@shared/abstract/offersData';
-import { OfferInterface } from '../../../../offers/@shared/interface/offer.interface';
+import { OfferInterface, OffersFormsData } from '../../../../offers/@shared/interface/offer.interface';
 import { DragScrollComponent } from 'ngx-drag-scroll';
 import { TranslateService } from '@ngx-translate/core';
-import { takeUntil } from 'rxjs';
+import { combineLatest, takeUntil } from 'rxjs';
 import { ModelPaymentInterface } from '../../../../offers/@shared/interface/model.interface';
 
 @Component({
@@ -20,6 +20,7 @@ export class AddedOffersMobileComponent extends OffersDataClass implements OnIni
   @ViewChild('nav', { read: DragScrollComponent }) ds: DragScrollComponent;
   public url: string;
   public modelPayment: ModelPaymentInterface[];
+  public formData: OffersFormsData;
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
@@ -31,13 +32,14 @@ export class AddedOffersMobileComponent extends OffersDataClass implements OnIni
   }
   override ngOnInit(): void {
     super.ngOnInit();
-    this.streamModelPaymentFromJson();
+    this.streamModelPaymentAndDataFromJson();
     this.checkRoutePage();
   }
 
-  private streamModelPaymentFromJson() {
-    this.translate.stream('offers.offerModel').pipe(takeUntil(this.destroy$)).subscribe((data: ModelPaymentInterface[]) => {
-      this.modelPayment = data;
+  private streamModelPaymentAndDataFromJson() {
+    combineLatest(([this.translate.stream('offers.offerModel'),  this.translate.stream('offers.form')])).pipe(takeUntil(this.destroy$)).subscribe(([dataModel, dataForm]) =>{
+      this.modelPayment = dataModel;
+      this.formData = dataForm;
     })
   }
 

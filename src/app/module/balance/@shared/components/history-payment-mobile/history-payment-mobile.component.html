@@ -6,31 +6,31 @@
         <div drag-scroll-item class="history" *ngFor="let title of transactions; index as i">
           <div class="block">
             <div class="row">
-              <nav>Status</nav>
+              <nav>{{historyPayment.status}}</nav>
               <nav [ngClass]="{'check': title.status === 'Straight to'}">{{title.status}}</nav>
             </div>
             <div class="column">
-              <nav>Номер</nav>
+              <nav>{{historyPayment.number}}</nav>
               <nav class="">{{title.numberCode}}</nav>
             </div>
             <div class="column">
-              <nav>Дата рахунку</nav>
+              <nav>{{historyPayment.dataPayments}}</nav>
               <nav class="">{{title.dataCard}}</nav>
             </div>
             <div class="column">
-              <nav>Дата оплати</nav>
+              <nav>{{historyPayment.data}}</nav>
               <nav class="">{{title.dataHistory}}</nav>
             </div>
             <div class="column">
-              <nav>Спосіб оплати</nav>
+              <nav>{{historyPayment.payouts}}</nav>
               <nav class="">{{title.card| formatCardNumber:'center'}}</nav>
             </div>
             <div class="column">
-              <nav>Підписка</nav>
+              <nav>{{historyPayment.subscribe}}</nav>
               <nav class="">{{title.subscribe}}</nav>
             </div>
             <div class="column">
-              <nav>Сума</nav>
+              <nav>{{historyPayment.price}}</nav>
               <nav class="">${{title.suma ? title.suma : 0}}</nav>
             </div>
           </div>

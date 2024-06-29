@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BasePopupComponent } from '../../form';
 import { BalanceActionService } from '../../../../../shared/services/balance/balanceAction.service';
+import { TranslateService } from '@ngx-translate/core';
+import { takeUntil } from 'rxjs';
+import { TakeOutInterface } from '../../interface/takeOutUp.interface';
 
 
 @Component({
@@ -10,12 +13,25 @@ import { BalanceActionService } from '../../../../../shared/services/balance/bal
   templateUrl: './take-out-popup.component.html',
   styleUrls: ['./take-out-popup.component.scss']
 })
-export class TakeOutPopupComponent extends BasePopupComponent {
-
+export class TakeOutPopupComponent extends BasePopupComponent implements OnInit {
+  public takeOutData: TakeOutInterface;
   constructor(
-    private balanceActionService: BalanceActionService
+    private balanceActionService: BalanceActionService,
+    private translate: TranslateService
   ) {
     super();
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+    this.streamTakeOutDataFromJson()
+  }
+
+  private streamTakeOutDataFromJson() {
+    this.translate.stream('balance.takeOut').pipe(takeUntil(this.destroy$))
+      .subscribe((data: TakeOutInterface) => {
+        this.takeOutData = data;
+      })
   }
 
   protected initializeForm(): void {

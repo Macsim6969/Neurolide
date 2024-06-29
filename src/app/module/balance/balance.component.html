@@ -1,6 +1,6 @@
 <div class="mobile_offer_title" *ngIf="isMobile">
   <mat-icon svgIcon="balance"></mat-icon>
-  <h3 class="title">Balance</h3>
+  <h3 class="title">{{'balance.balance'| translate}}</h3>
 </div>
 <app-cards-payment *ngIf="!isMobile"></app-cards-payment>
 <app-cards-payment-mobile *ngIf="isMobile"></app-cards-payment-mobile>

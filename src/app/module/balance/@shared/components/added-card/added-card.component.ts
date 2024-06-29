@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { CardsPayment } from '../../../../../shared/interfaces/backend.interface';
 import { DateInputFormatPipe } from '../../pipe/dateInputFormat.pipe';
 import { BalanceCardService } from '../../../../../shared/services/balance/balanceCard.service';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
+import { TranslateService } from '@ngx-translate/core';
+import { AdddedCardData } from '../../interface/addCard.interface';
 
 @Component({
   selector: 'app-added-card',
@@ -16,15 +18,25 @@ export class AddedCardComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   public cardInfo: CardsPayment;
   public form: FormGroup;
-  dateInputFormatPipe = new DateInputFormatPipe();
+  public addedCardData: AdddedCardData;
+  public dateInputFormatPipe = new DateInputFormatPipe();
   constructor(
     private balanceCardService: BalanceCardService,
-    private globalIcon: GlobalIconsService
+    private globalIcon: GlobalIconsService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
-    document.body.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden';
+    this.streamAddedCardData();
     this.initializeForm();
+  }
+
+  private streamAddedCardData() {
+    this.translate.stream('balance.addCardForm').pipe(takeUntil(this.destroy$))
+      .subscribe((data: AdddedCardData) => {
+        this.addedCardData = data;
+      })
   }
 
   private initializeForm() {

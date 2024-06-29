@@ -23,4 +23,5 @@ export interface OffersFormsData {
   save: string
   status: string
   advertise: string
+  payout: string
 }

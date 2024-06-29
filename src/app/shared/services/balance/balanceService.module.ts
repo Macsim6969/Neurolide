@@ -1,7 +1,5 @@
 import { NgModule } from "@angular/core";
-import { BalanceCardService } from "./balanceCard.service";
 import { BalanceActionService } from "./balanceAction.service";
-import { CardsconService } from "./cardsIcon.service";
 import { TakeOutPopupComponent } from "../../../module/balance/@shared/components/take-out-popup/take-out-popup.component";
 import { TopUpPopupComponent } from "../../../module/balance/@shared/components/top-up-popup/top-up-popup.component";
 import { AddedCardComponent } from "../../../module/balance/@shared/components/added-card/added-card.component";

@@ -244,6 +244,9 @@
     "method": "Payment method",
     "balanceInfoTitle": "Balance",
     "history": "Payment history",
+    "expires": "Expires",
+    "addNewCard": "Add new card",
+    "balance": "Balance",
     "balanceData": [
       {
         "title": "Personal balance",
@@ -257,7 +260,47 @@
         "title": "Take out the balance",
         "tage": "take-out"
       }
-    ]
+    ],
+    "addCardForm": {
+      "addCardTitle": "Add a new card:",
+      "cardNumber": "Card number",
+      "initialsName": "Initials indicated on the card",
+      "numberPhone": "Number Phone",
+      "cvc": "CVC",
+      "date": "Completion date",
+      "cancel": "Cancel",
+      "addCard": "Add card"
+    },
+    "historyPayment": {
+      "status": "Status",
+      "number": "Number",
+      "dataPayments": "Invoice date",
+      "data": "Date of payment",
+      "payouts": "Payment method",
+      "subscribe": "Subscription",
+      "price": "Amount"
+    },
+    "takeOut": {
+      "title": "Take out the balance",
+      "name": "Name:",
+      "cardNumber": "Card number",
+      "email": "Email",
+      "amount": "Withdraw the amount",
+      "cancel": "Cancel",
+      "submit": "Take out"
+    },
+    "takeUp":{
+      "title": "Replenishment of the balance",
+      "cardNumber" :"Card number:",
+      "validity": "Validity",
+      "cw": "CW2",
+      "nameUser":"Name of the owner",
+      "number": "Phone number",
+      "email": "Email",
+      "amount": "Top-up amount",
+      "cancel": "Cancel",
+      "replenish": "To replenish"
+    }
   },
   "transactions": {
     "number": "Number",
@@ -351,9 +394,21 @@
     "mediaMobile": {
       "status": "Статус",
       "name": "Назва"
+    },
+    "form": {
+      "title": "Add a new channel",
+      "name": "Name",
+      "link": "Link",
+      "subscribe": "Subscribers",
+      "ctr": "CTR",
+      "price": "Price",
+      "model": "Accrual model",
+      "cancel": "Cancel",
+      "save": "Save Changes"
     }
   },
   "offers": {
+    "mobileTitle": "Your Offers",
     "offersTitle": "Offers",
     "offersInWork": "Offers in works",
     "addedTitle": "Added offers",
@@ -423,6 +478,20 @@
       {
         "title": "CPH"
       }
-    ]
+    ],
+    "form": {
+      "title": "Edit offer",
+      "name": "Name",
+      "link": "Link",
+      "brand": "Brand",
+      "payments": "Payments",
+      "balance": "Balance",
+      "model": "Payment model",
+      "cancel": "Cancel",
+      "save": "Save Changes",
+      "status": "Status",
+      "advertise": "Advertise",
+      "payout": "Payout"
+    }
   }
 }

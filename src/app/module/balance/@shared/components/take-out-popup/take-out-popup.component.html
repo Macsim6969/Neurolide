@@ -1,28 +1,28 @@
 <div class="profile-edite">
   <div class="popup">
-    <h3 class="popup_title sans">Take out the balance</h3>
+    <h3 class="popup_title sans">{{takeOutData.title}}</h3>
     <form class="form" [formGroup]="form" (ngSubmit)="submit()">
       <div class="column">
-        <mat-label class="label sans">Name:</mat-label>
+        <mat-label class="label sans">{{takeOutData.name}}</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="name">
       </div>
       <div class="column">
-        <mat-label class="label sans">Card number</mat-label>
+        <mat-label class="label sans">{{takeOutData.cardNumber}}</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="numberCard" maxlength="19"
           [value]="form.get('numberCard').value | creditCardFormatter">
       </div>
 
       <div class="column">
-        <mat-label class="label sans">Email</mat-label>
+        <mat-label class="label sans">{{takeOutData.email}}</mat-label>
         <input class="sans" placeholder="...." type="email" formControlName="email">
       </div>
       <div class="column">
-        <mat-label class="label sans">Withdraw the amount</mat-label>
+        <mat-label class="label sans">{{takeOutData.amount}}</mat-label>
         <input class="sans" type="number" placeholder="...." formControlName="suma">
       </div>
       <div class="action">
-        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
-        <button type="submit" class="save sans" mat-button>Take out</button>
+        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>{{takeOutData.cancel}}</button>
+        <button type="submit" class="save sans" mat-button>{{takeOutData.submit}}</button>
       </div>
     </form>
   </div>
