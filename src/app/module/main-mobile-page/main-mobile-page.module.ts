@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MainMobilePageComponent } from './main-mobile-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ShareModule } from '../../shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   {path: '', component: MainMobilePageComponent}
@@ -17,6 +18,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ShareModule,
+    TranslateModule,
     BalanceServiceModule
   ]
 })
