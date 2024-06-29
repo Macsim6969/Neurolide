@@ -1,5 +1,6 @@
 {
   "logo": "Neurolide",
+  "welcome": "Welcome",
   "auth": {
     "rules": [
       {
