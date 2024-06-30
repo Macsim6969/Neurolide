@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserClass } from '../../abstract/user';
 import { ListIconsService } from '../../services/listIcon.service';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
@@ -7,6 +7,8 @@ import { ChangeMonitoringDataService } from '../../services/changeMonitoringData
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { StoreInterface } from '../../../../../store/model/store.model';
+import { takeUntil } from 'rxjs';
+import { UserMobileInterface } from '../../interfaces/userMobile.interface';
 
 
 @Component({
@@ -14,12 +16,12 @@ import { StoreInterface } from '../../../../../store/model/store.model';
   templateUrl: './user-mobile.component.html',
   styleUrls: ['./user-mobile.component.scss']
 })
-export class UserMobileComponent extends UserClass {
+export class UserMobileComponent extends UserClass implements OnInit {
 
   public isActiveSlide: number = 0;
   public isOpen: boolean;
   public isOpenPayments: number;
-
+  public userMobileData: UserMobileInterface;
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override translate: TranslateService,
@@ -28,6 +30,18 @@ export class UserMobileComponent extends UserClass {
     override globalIconsService: GlobalIconsService
   ) {
     super(store, translate, changeMonitoringDataService, userSerice, globalIconsService)
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+    this.streamUserMobileData();
+  }
+
+  private streamUserMobileData() {
+    this.translate.stream('user.userMobile')
+      .pipe(takeUntil(this.destroy$)).subscribe((data: UserMobileInterface) => {
+        this.userMobileData = data;
+      })
   }
 
   public openCard(email: string) {

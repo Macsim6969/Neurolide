@@ -151,6 +151,44 @@
       "title": "Are you sure that you want delete this user",
       "cancel": "Cancel",
       "confirme": "Confirme"
+    },
+    "popupEditeTransactions": {
+      "title": "Making payment adjustments",
+      "number": "Number",
+      "invoiceDate" :"Invoice date",
+      "dataPayment": "Date of payment",
+      "status": "Status",
+      "payment": "Payment method",
+      "subscription": "Subscription",
+      "amount": "Amount",
+      "cancel": "Cancel",
+      "saveChanges": "Save Changes",
+      "save": "Save"
+    },
+    "editeUser": {
+      "title": "Edit user data",
+      "name" :"Nickname",
+      "mail": "Mail",
+      "balance": "Balance",
+      "transactions": "Transactions",
+      "cancel": "Cancel",
+      "saveChanges": "Save Changes",
+      "save": "Save"
+    },
+    "userMobile": {
+      "status" : "Status",
+      "nickname": "Nickname",
+      "mail": "Mail",
+      "balance": "Balance",
+      "transactions": "Transactions",
+      "payments": "Payments",
+      "number": "Number",
+      "invoiceDate": "Invoice date",
+      "datePayment": "Date of payment",
+      "method": "Payment method",
+      "subscription": "Subscription",
+      "amount": "Amount",
+      "cards": "Cards"
     }
   },
   "usersList": [
