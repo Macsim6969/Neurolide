@@ -1,72 +1,72 @@
 {
   "logo": "Neurolide",
-  "welcome": "Welcome",
-  "profile": "Your Profile",
-  "cards": "Cards",
+  "welcome": "Ласкаво просимо.",
+  "profile": "Ваш профіль",
+  "cards": "Картки",
   "auth": {
     "rules": [
       {
-        "data": "Affiliate",
+        "data": "Партнер",
         "rule": "affiliate"
       },
       {
-        "data": "Brand",
+        "data": "Бренд",
         "rule": "brand"
       }
     ],
     "form": {
-      "registration": "Registration",
-      "name": "Name",
-      "email": "E-mail",
-      "password": "Password",
-      "repeatPassword": "Repeat the password",
-      "rememberData": "Remember data",
-      "formDescription": "Horizon UI. All Rights Reserved. Made with love by Simmmple!",
-      "reg": "Sign up",
-      "login": "Sign in",
-      "loginAccount": "Login to the account",
-      "loginDescription": "Enter e-mail and password to log in to the account!"
+      "registration": "Реєстрація",
+      "name": "Ім'я",
+      "email": "Електронна пошта",
+      "password": "Пароль",
+      "repeatPassword": "Повторіть пароль",
+      "rememberData": "Запам'ятати дані",
+      "formDescription": "Horizon UI. Всі права захищені. Зроблено з любов'ю компанією Simmmple!",
+      "reg": "Зареєструватися",
+      "login": "Увійдіть в систему",
+      "loginAccount": "Увійдіть до облікового запису",
+      "loginDescription": "Введіть e-mail та пароль для входу в обліковий запис!"
     }
   },
   "headerInfo": [
     {
-      "title": "Cliques",
+      "title": "Кліки",
       "color": "red"
     },
     {
-      "title": "Index",
+      "title": "Індекс",
       "color": "red"
     },
     {
-      "title": "Leads",
+      "title": "Ліди",
       "color": "red"
     },
     {
-      "title": "Hold",
+      "title": "Утримувати",
       "color": "yellow"
     },
     {
-      "title": "Accrual",
+      "title": "Нарахування",
       "color": "green"
     },
     {
-      "title": "Disregard",
+      "title": "Ігнорувати",
       "color": "yellow"
     },
     {
-      "title": "Enrollment",
+      "title": "Зарахування на навчання",
       "color": "yellow"
     },
     {
-      "title": "Budget",
+      "title": "Бюджет",
       "color": "green"
     },
     {
-      "title": "Approve",
+      "title": "Схвалити",
       "color": "green"
     },
     {
-      "title": "Advice",
+      "title": "Поради",
       "color": "purple"
     }
   ],
@@ -77,159 +77,159 @@
         "tag": "userID"
       },
       {
-        "title": "Nickname",
+        "title": "Нікнейм",
         "tag": "name"
       },
       {
-        "title": "Mail",
+        "title": "Пошта",
         "tag": "email"
       },
       {
-        "title": "Balance",
+        "title": "Баланс",
         "tag": "balance"
       },
       {
-        "title": "Transactions",
+        "title": "Транзакції",
         "tag": "transactions"
       },
       {
-        "title": "Status",
+        "title": "Статус",
         "tag": "rules"
       }
     ],
     "userInfo": [
       {
         "key": "name",
-        "text": "Name:"
+        "text": "Ім'я:"
       },
       {
         "key": "surname",
-        "text": "Surname:"
+        "text": "Прізвище:"
       },
       {
         "key": "number",
-        "text": "Tel num:"
+        "text": "Тел. номер:"
       },
       {
         "key": "email",
-        "text": "Email:"
+        "text": "Електронна пошта:"
       },
       {
         "key": "password",
-        "text": "Password:"
+        "text": "Пароль:"
       }
     ],
     "userActions": [
       {
-        "text": "Edit",
+        "text": "Редагувати",
         "class": "edit"
       },
       {
-        "text": "Exit",
+        "text": "Виходьте",
         "class": "logout"
       },
       {
-        "text": "Delete",
+        "text": "Видалити",
         "class": "remove"
       }
     ],
     "popupEdite":{
-      "changeProfile": "Change Profile",
-      "name": "Name:",
-      "surname": "Surname:",
-      "number": "Number Phone:",
-      "password": "Password",
-      "cancel": "Cancel",
-      "save": "Save Changes"
+      "changeProfile": "Змінити профіль",
+      "name": "Ім'я:",
+      "surname": "Прізвище:",
+      "number": "Номер телефону:",
+      "password": "Пароль",
+      "cancel": "Відмінити",
+      "save": "Зберегти зміни"
     },
     "deleteProfile":{
-      "title": "Delete Profile",
-      "desc": "Are you sure you want to delete the profile permanently?",
-      "delete": "Delete"
+      "title": "Видалити профіль",
+      "desc": "Ви впевнені, що хочете видалити профіль назавжди?",
+      "delete": "Видалити"
     },
     "deleteUser":{
-      "title": "Are you sure that you want delete this user",
-      "cancel": "Cancel",
-      "confirme": "Confirme"
+      "title": "Ви впевнені, що хочете видалити цього користувача",
+      "cancel": "Скасувати",
+      "confirme": "Підтвердити."
     },
     "popupEditeTransactions": {
-      "title": "Making payment adjustments",
-      "number": "Number",
-      "invoiceDate" :"Invoice date",
-      "dataPayment": "Date of payment",
-      "status": "Status",
-      "payment": "Payment method",
-      "subscription": "Subscription",
-      "amount": "Amount",
-      "cancel": "Cancel",
-      "saveChanges": "Save Changes",
-      "save": "Save"
+      "title": "Здійснення коригування платежів",
+      "number": "Номер",
+      "invoiceDate" :"Дата виставлення рахунку",
+      "dataPayment": "Дата платежу",
+      "status": "Статус",
+      "payment": "Спосіб оплати",
+      "subscription": "Підписка",
+      "amount": "Сума",
+      "cancel": "Скасувати",
+      "saveChanges": "Зберегти зміни",
+      "save": "Зберегти"
     },
     "editeUser": {
-      "title": "Edit user data",
-      "name" :"Nickname",
-      "mail": "Mail",
-      "balance": "Balance",
-      "transactions": "Transactions",
-      "cancel": "Cancel",
-      "saveChanges": "Save Changes",
-      "save": "Save"
+      "title": "Редагування даних користувача",
+      "name" :"Нікнейм",
+      "mail": "Пошта",
+      "balance": "Баланс",
+      "transactions": "Транзакції",
+      "cancel": "Скасувати",
+      "saveChanges": "Зберегти зміни",
+      "save": "Зберегти"
     },
     "userMobile": {
-      "status" : "Status",
-      "nickname": "Nickname",
-      "mail": "Mail",
-      "balance": "Balance",
-      "transactions": "Transactions",
-      "payments": "Payments",
-      "number": "Number",
-      "invoiceDate": "Invoice date",
-      "datePayment": "Date of payment",
-      "method": "Payment method",
-      "subscription": "Subscription",
-      "amount": "Amount",
-      "cards": "Cards"
+      "status" : "Статус",
+      "nickname": "Нікнейм",
+      "mail": "Пошта",
+      "balance": "Баланс",
+      "transactions": "Транзакції",
+      "payments": "Платежі",
+      "number": "Номер",
+      "invoiceDate": "Дата виставлення рахунку",
+      "datePayment": "Дата платежу",
+      "method": "Спосіб оплати",
+      "subscription": "Підписка",
+      "amount": "Сума",
+      "cards": "Картки"
     }
   },
   "usersList": [
     {
-      "title": "Cliques",
+      "title": "Кліки",
       "color": "red"
     },
     {
-      "title": "Index",
+      "title": "Індекс",
       "color": "red"
     },
     {
-      "title": "Leads",
+      "title": "Ліди",
       "color": "red"
     },
     {
-      "title": "Hold",
+      "title": "Утримувати",
       "color": "yellow"
     },
     {
-      "title": "Accrual",
+      "title": "Нарахування",
       "color": "green"
     },
     {
-      "title": "Disregard",
+      "title": "Ігнорувати",
       "color": "yellow"
     },
     {
-      "title": "Enrollment",
+      "title": "Зарахування на навчання",
       "color": "yellow"
     },
     {
-      "title": "Budget",
+      "title": "Бюджет",
       "color": "green"
     },
     {
-      "title": "Approve",
+      "title": "Схвалити",
       "color": "green"
     },
     {
-      "title": "Advice",
+      "title": "Поради",
       "color": "purple gray"
     },
     {
@@ -240,200 +240,200 @@
   "sidebar": [
     {
       "icon": "main",
-      "title": "Main",
+      "title": "Головна",
       "url": "/"
     },
     {
       "icon": "manager",
-      "title": "Manager",
+      "title": "Менеджер",
       "url": "/manager"
     },
     {
       "icon": "manager",
-      "title": "Brand",
+      "title": "Бренд",
       "url": "/brand"
     },
     {
       "icon": "manager",
-      "title": "Affiliate",
+      "title": "Партнер",
       "url": "/affiliate"
     },
     {
       "icon": "users",
-      "title": "Users",
+      "title": "Користувачі",
       "url": "/users"
     },
     {
       "icon": "users",
-      "title": "Offers in works",
+      "title": "Пропозиції в роботі",
       "url": "/offers-in-works"
     },
     {
       "icon": "users",
-      "title": "Added offers",
+      "title": "Додані пропозиції",
       "url": "/added-offers"
     },
     {
       "icon": "media-canal",
-      "title": "Media channels",
+      "title": "Медіа-канали",
       "url": "/media-channels"
     },
     {
       "icon": "media-canal",
-      "title": "Offers",
+      "title": "Пропозиції",
       "url": "/offers"
     },
     {
       "icon": "profile",
-      "title": "Profile",
+      "title": "Профіль",
       "url": "/profile"
     },
     {
       "icon": "balance",
-      "title": "Balance",
+      "title": "Баланс",
       "url": "/balance"
     },
     {
       "icon": "support",
-      "title": "Support",
+      "title": "Підтримка",
       "url": "/support"
     }
   ],
   "balance": {
-    "addedCard": "Add a map",
-    "method": "Payment method",
-    "balanceInfoTitle": "Balance",
-    "history": "Payment history",
-    "expires": "Expires",
-    "addNewCard": "Add new card",
-    "balance": "Balance",
+    "addedCard": "Додати карту",
+    "method": "Спосіб оплати",
+    "balanceInfoTitle": "Баланс",
+    "history": "Історія платежів",
+    "expires": "Закінчується",
+    "addNewCard": "Додати нову картку",
+    "balance": "Баланс",
     "balanceData": [
       {
-        "title": "Personal balance",
+        "title": "Особистий баланс",
         "tage": ""
       },
       {
-        "title": "Top up the balance",
+        "title": "Поповнити баланс",
         "tage": "top-up"
       },
       {
-        "title": "Take out the balance",
+        "title": "Зніміть баланс",
         "tage": "take-out"
       }
     ],
     "addCardForm": {
-      "addCardTitle": "Add a new card:",
-      "cardNumber": "Card number",
-      "initialsName": "Initials indicated on the card",
-      "numberPhone": "Number Phone",
+      "addCardTitle": "Додайте нову картку:",
+      "cardNumber": "Номер картки",
+      "initialsName": "Ініціали, вказані на картці",
+      "numberPhone": "Номер телефону",
       "cvc": "CVC",
-      "date": "Completion date",
-      "cancel": "Cancel",
-      "addCard": "Add card"
+      "date": "Дата завершення",
+      "cancel": "Скасувати",
+      "addCard": "Додати картку"
     },
     "historyPayment": {
-      "status": "Status",
-      "number": "Number",
-      "dataPayments": "Invoice date",
-      "data": "Date of payment",
-      "payouts": "Payment method",
-      "subscribe": "Subscription",
-      "price": "Amount"
+      "status": "Статус",
+      "number": "Номер",
+      "dataPayments": "Дата виставлення рахунку",
+      "data": "Дата платежу",
+      "payouts": "Спосіб оплати",
+      "subscribe": "Підписка",
+      "price": "Сума"
     },
     "takeOut": {
-      "title": "Take out the balance",
-      "name": "Name:",
-      "cardNumber": "Card number",
-      "email": "Email",
-      "amount": "Withdraw the amount",
-      "cancel": "Cancel",
-      "submit": "Take out"
+      "title": "Зніміть залишок",
+      "name": "Ім'я:",
+      "cardNumber": "Номер картки",
+      "email": "Електронна пошта",
+      "amount": "Зняти суму",
+      "cancel": "Скасувати",
+      "submit": "Вивести"
     },
     "takeUp":{
-      "title": "Replenishment of the balance",
-      "cardNumber" :"Card number:",
-      "validity": "Validity",
+      "title": "Поповнення балансу",
+      "cardNumber" :"Номер картки:",
+      "validity": "Термін дії",
       "cw": "CW2",
-      "nameUser":"Name of the owner",
-      "number": "Phone number",
-      "email": "Email",
-      "amount": "Top-up amount",
-      "cancel": "Cancel",
-      "replenish": "To replenish"
+      "nameUser":"Ім'я власника",
+      "number": "Номер телефону",
+      "email": "Електронна пошта",
+      "amount": "Сума поповнення",
+      "cancel": "Скасувати",
+      "replenish": "Поповнити"
     }
   },
   "transactions": {
-    "number": "Number",
-    "invoiceData": "Invoice date",
-    "dataPayment": "Date of payment",
-    "status": "Status",
-    "payment": "Payment method",
-    "subscription": "Subscription",
-    "amount": "Amount"
+    "number": "Номер",
+    "invoiceData": "Дата виставлення рахунку",
+    "dataPayment": "Дата платежу",
+    "status": "Статус",
+    "payment": "Спосіб оплати",
+    "subscription": "Підписка",
+    "amount": "Сума"
   },
   "support": {
-    "title": "Support",
-    "feeadback": "Feedback",
+    "title": "Підтримка",
+    "feeadback": "Зворотній зв'язок",
     "questions": [
       {
         "icon": "books",
-        "title": "Can I add or edit more than one user at a time?",
-        "description": "Lorem ipsum is a classic version of conditional, meaningless text that is inserted into the page layout (in the slang of designers, such text is called 'fish')."
+        "title": "Чи можу я додати або редагувати більше одного користувача одночасно?",
+        "description": "Lorem ipsum - класичний варіант умовного, беззмістовного тексту, який вставляється в макет сторінки (на сленгу дизайнерів такий текст називається риба)."
       },
       {
         "icon": "albert",
-        "title": "How to edit the data of an existing user?",
-        "description": "There are many other variants of Lorem ipsum, often very far from the original."
+        "title": "Як редагувати дані існуючого користувача?",
+        "description": "Існує багато інших варіантів Lorem ipsum, часто дуже далеких від оригіналу."
       },
       {
         "icon": "paint",
-        "title": "What «additional data» can be selected?",
-        "description": "Lorem ipsum is a twisted passage from Cicero's philosophical treatise On the Limits of Good and Evil, written in Latin in 45 BC."
+        "title": "Які «додаткові дані» можна вибрати?",
+        "description": "Lorem ipsum - це перекручений уривок з філософського трактату Цицерона Про межі добра і зла, написаного латиною в 45 році до нашої ери."
       },
       {
         "icon": "pansile",
-        "title": "How do I create and define permissions for a role?",
-        "description": "Sometimes they contain additional letters such as k, w, and z—which did not exist or were rarely used in Latin—and nonsensical words such as zzril, takimata, and gubergren added to the original text."
+        "title": "Як створити та визначити дозволи для ролі?",
+        "description": "Іноді вони містять додаткові літери, такі як k, w і z - які не існували або рідко використовувалися в латинській мові - і безглузді слова, такі як zzril, takimata і gubergren, додані до оригінального тексту."
       },
       {
         "icon": "rocket",
-        "title": "What administrative features are now available for RapidLite?",
-        "description": "From the point of view of ease of perception of printed texts, Lorem ipsum shows that Latin graphics are most suitable for writing works in Latin (the frequency of use of symbols with remote elements such as g, l, h, p is taken into account here)."
+        "title": "Які адміністративні функції тепер доступні для RapidLite?",
+        "description": "З точки зору зручності сприйняття друкованих текстів, Lorem ipsum показує, що латинська графіка найбільш придатна для написання творів латиницею (тут враховується частота використання символів з віддаленими елементами, такими як g, l, h, p)."
       },
       {
         "icon": "diagram",
-        "title": "How to use the PSAP tab?",
-        "description": "In Microsoft Word 2007 and PowerPoint 2007 (and in later versions) there is a function lorem (=lorem(parameter1,parameter2), where parameter1 is the number of paragraphs, parameter2 is the number of sentences in a paragraph). It is necessary to type, for example =lorem(2,7) (and press Enter), after which the text will appear in the document."
+        "title": "Як користуватися вкладкою PSAP?",
+        "description": "У Microsoft Word 2007 і PowerPoint 2007 (і в більш пізніх версіях) є функція lorem (=lorem(параметр1,параметр2), де параметр1 - кількість абзаців, параметр2 - кількість речень в абзаці). Необхідно набрати, наприклад, =lorem(2,7) (і натиснути Enter), після чого текст з'явиться в документі."
       }
     ],
     "form": {
-      "title": "Feedback",
-      "name": "Enter a name",
-      "email": "E-mail for communication",
-      "textArea": "Message",
-      "file": "Add file",
-      "send": "Send"
+      "title": "Зворотній зв'язок",
+      "name": "Введіть ім'я",
+      "email": "Електронна пошта для зв'язку",
+      "textArea": "Повідомлення",
+      "file": "Додати файл",
+      "send": "Надіслати"
     }
   },
   "media": {
-    "headerTitle": "Media channels",
-    "search": "Search",
-    "addedOffer": "Add an offer",
+    "headerTitle": "Медіа-канали",
+    "search": "Пошук",
+    "addedOffer": "Додати пропозицію",
     "mediaSearch": [
       {
         "title": "UID",
         "tag": "userID"
       },
       {
-        "title": "Nickname",
+        "title": "Нікнейм",
         "tag": "name"
       },
       {
-        "title": "Link",
+        "title": "Посилання",
         "tag": "link"
       },
       {
-        "title": "Subscribers",
+        "title": "Підписники",
         "tag": "subscribers"
       },
       {
@@ -441,93 +441,93 @@
         "tag": "stream"
       },
       {
-        "title": "Payout",
+        "title": "Виплата",
         "tag": "payout"
       },
       {
-        "title": "Price",
+        "title": "Ціна",
         "tag": "price"
       },
       {
-        "title": "Status",
+        "title": "Статус",
         "tag": "vip"
       }
     ],
     "mediaMobile": {
-      "status": "Status",
-      "name": "Name"
+      "status": "Статус",
+      "name": "Ім'я"
     },
     "mobileData":{
-      "status": "Status",
-      "name": "Name",
-      "link": "Link",
-      "subscribe": "Subscribe",
-      "stream": "Stream",
-      "price": "Price",
-      "payout": "Payout",
+      "status": "Статус",
+      "name": "Ім'я",
+      "link": "Посилання",
+      "subscribe": "Підписатися",
+      "stream": "Потік",
+      "price": "Ціна",
+      "payout": "Виплата",
       "cpm": "CPM",
       "cph": "CPH"
     },
     "form": {
-      "title": "Add a new channel",
-      "name": "Name",
-      "link": "Link",
-      "subscribe": "Subscribers",
+      "title": "Додати новий канал",
+      "name": "Ім'я",
+      "link": "Посилання",
+      "subscribe": "Підписатися",
       "ctr": "CTR",
-      "price": "Price",
-      "model": "Accrual model",
-      "cancel": "Cancel",
-      "save": "Save Changes"
+      "price": "Ціна",
+      "model": "Модель нарахування",
+      "cancel": "Скасувати",
+      "save": "Зберегти зміни"
     }
   },
   "offers": {
-    "mobileTitle": "Your Offers",
-    "offersTitle": "Offers",
-    "offersInWork": "Offers in works",
-    "addedTitle": "Added offers",
-    "activeOffers": "Active offers",
-    "headerTitle": "Offer up",
-    "search": "Search",
-    "addedOffer": "Add an offer",
+    "mobileTitle": "Ваші пропозиції",
+    "offersTitle": "Пропозиції",
+    "offersInWork": "Пропозиції в роботі",
+    "addedTitle": "Додані пропозиції",
+    "activeOffers": "Активні пропозиції",
+    "headerTitle": "Пропонуйте",
+    "search": "Пошук",
+    "addedOffer": "Додати пропозицію",
     "offerSearch": [
       {
         "title": "UID",
         "tag": "userID"
       },
       {
-        "title": "Nickname",
+        "title": "Нікнейм",
         "tag": "name"
       },
       {
-        "title": "Link",
+        "title": "Посилання",
         "tag": "link"
       },
       {
-        "title": "Brand",
+        "title": "Бренд",
         "tag": "brand"
       },
       {
-        "title": "Payments",
+        "title": "Платежі",
         "tag": "payments"
       },
       {
-        "title": "Balance",
+        "title": "Баланс",
         "tag": "balance"
       },
       {
-        "title": "Payout",
+        "title": "Виплата",
         "tag": "payout"
       },
       {
-        "title": "Advertise offers",
+        "title": "Рекламувати пропозиції",
         "tag": "advertise"
       },
       {
-        "title": "Status",
+        "title": "Статус",
         "tag": "vip"
       },
       {
-        "title": "Settings",
+        "title": "Налаштування",
         "tag": "setting"
       }
     ],
@@ -553,18 +553,18 @@
       }
     ],
     "form": {
-      "title": "Edit offer",
-      "name": "Name",
-      "link": "Link",
-      "brand": "Brand",
-      "payments": "Payments",
-      "balance": "Balance",
-      "model": "Payment model",
-      "cancel": "Cancel",
-      "save": "Save Changes",
-      "status": "Status",
+      "title": "Редагувати пропозицію",
+      "name": "Ім'я",
+      "link": "Посилання",
+      "brand": "Бренд",
+      "payments": "Платежі",
+      "balance": "Баланс",
+      "model": "Модель оплати",
+      "cancel": "Скасувати",
+      "save": "Зберегти зміни",
+      "status": "Статус",
       "advertise": "Advertise",
-      "payout": "Payout"
+      "payout": "Виплата"
     }
   }
 }

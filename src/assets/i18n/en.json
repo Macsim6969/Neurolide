@@ -532,8 +532,8 @@
       }
     ],
     "offerMobile": {
-      "status": "Статус",
-      "name": "Назва"
+      "status": "Status",
+      "name": "Name"
     },
     "offerModel": [
       {

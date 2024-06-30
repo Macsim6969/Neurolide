@@ -1,72 +1,72 @@
 {
   "logo": "Neurolide",
-  "welcome": "Welcome",
-  "profile": "Your Profile",
-  "cards": "Cards",
+  "welcome": "Добро пожаловать",
+  "profile": "Ваш профиль",
+  "cards": "Карточки",
   "auth": {
     "rules": [
       {
-        "data": "Affiliate",
+        "data": "Партнер",
         "rule": "affiliate"
       },
       {
-        "data": "Brand",
+        "data": "Бренд",
         "rule": "brand"
       }
     ],
     "form": {
-      "registration": "Registration",
-      "name": "Name",
-      "email": "E-mail",
-      "password": "Password",
-      "repeatPassword": "Repeat the password",
-      "rememberData": "Remember data",
-      "formDescription": "Horizon UI. All Rights Reserved. Made with love by Simmmple!",
-      "reg": "Sign up",
-      "login": "Sign in",
-      "loginAccount": "Login to the account",
-      "loginDescription": "Enter e-mail and password to log in to the account!"
+      "registration": "Регистрация",
+      "name": "Имя",
+      "email": "Электронная почта",
+      "password": "Пароль",
+      "repeatPassword": "Повторите пароль",
+      "rememberData": "Запомнить данные",
+      "formDescription": "Horizon UI. Все права защищены. Сделано с любовью Simmmple!",
+      "reg": "Зарегистрироваться",
+      "login": "Войти",
+      "loginAccount": "Войдите в аккаунт",
+      "loginDescription": "Введите e-mail и пароль для входа в аккаунт!"
     }
   },
   "headerInfo": [
     {
-      "title": "Cliques",
+      "title": "Клики",
       "color": "red"
     },
     {
-      "title": "Index",
+      "title": "Индекс",
       "color": "red"
     },
     {
-      "title": "Leads",
+      "title": "Лиды",
       "color": "red"
     },
     {
-      "title": "Hold",
+      "title": "Удерживать",
       "color": "yellow"
     },
     {
-      "title": "Accrual",
+      "title": "Начисление",
       "color": "green"
     },
     {
-      "title": "Disregard",
+      "title": "Пренебрегать",
       "color": "yellow"
     },
     {
-      "title": "Enrollment",
+      "title": "Зачисление",
       "color": "yellow"
     },
     {
-      "title": "Budget",
+      "title": "Бюджет",
       "color": "green"
     },
     {
-      "title": "Approve",
+      "title": "Утвердить",
       "color": "green"
     },
     {
-      "title": "Advice",
+      "title": "Советы",
       "color": "purple"
     }
   ],
@@ -77,363 +77,363 @@
         "tag": "userID"
       },
       {
-        "title": "Nickname",
+        "title": "Псевдоним",
         "tag": "name"
       },
       {
-        "title": "Mail",
+        "title": "Почта",
         "tag": "email"
       },
       {
-        "title": "Balance",
+        "title": "Баланс",
         "tag": "balance"
       },
       {
-        "title": "Transactions",
+        "title": "Транзакции",
         "tag": "transactions"
       },
       {
-        "title": "Status",
+        "title": "Статус",
         "tag": "rules"
       }
     ],
     "userInfo": [
       {
         "key": "name",
-        "text": "Name:"
+        "text": "Имя:"
       },
       {
         "key": "surname",
-        "text": "Surname:"
+        "text": "Фамилия:"
       },
       {
         "key": "number",
-        "text": "Tel num:"
+        "text": "Тел. номер:"
       },
       {
         "key": "email",
-        "text": "Email:"
+        "text": "Электронная почта:"
       },
       {
         "key": "password",
-        "text": "Password:"
+        "text": "Пароль:"
       }
     ],
     "userActions": [
       {
-        "text": "Edit",
+        "text": "Редактировать",
         "class": "edit"
       },
       {
-        "text": "Exit",
+        "text": "Выход",
         "class": "logout"
       },
       {
-        "text": "Delete",
+        "text": "Удалить",
         "class": "remove"
       }
     ],
     "popupEdite":{
-      "changeProfile": "Change Profile",
-      "name": "Name:",
-      "surname": "Surname:",
-      "number": "Number Phone:",
-      "password": "Password",
-      "cancel": "Cancel",
-      "save": "Save Changes"
+      "changeProfile": "Изменить профиль",
+      "name": "Имя:",
+      "surname": "Фамилия:",
+      "number": "Номер Телефон:",
+      "password": "Пароль",
+      "cancel": "Отменить",
+      "save": "Сохранить изменения"
     },
     "deleteProfile":{
-      "title": "Delete Profile",
-      "desc": "Are you sure you want to delete the profile permanently?",
-      "delete": "Delete"
+      "title": "Удалить профиль",
+      "desc": "Вы уверены, что хотите удалить профиль навсегда?",
+      "delete": "Удалить"
     },
     "deleteUser":{
-      "title": "Are you sure that you want delete this user",
-      "cancel": "Cancel",
-      "confirme": "Confirme"
+      "title": "Вы уверены, что хотите удалить этого пользователя",
+      "cancel": "Отмена",
+      "confirme": "Подтвердить"
     },
     "popupEditeTransactions": {
-      "title": "Making payment adjustments",
-      "number": "Number",
-      "invoiceDate" :"Invoice date",
-      "dataPayment": "Date of payment",
+      "title": "Внесение корректировок в платежи",
+      "number": "Номер",
+      "invoiceDate" :"Дата счета",
+      "dataPayment": "Дата платежа",
       "status": "Status",
       "payment": "Payment method",
       "subscription": "Subscription",
-      "amount": "Amount",
-      "cancel": "Cancel",
-      "saveChanges": "Save Changes",
-      "save": "Save"
+      "amount": "Сумма",
+      "cancel": "Отмена",
+      "saveChanges": "Сохранить изменения",
+      "save": "Сохранить"
     },
     "editeUser": {
-      "title": "Edit user data",
-      "name" :"Nickname",
-      "mail": "Mail",
-      "balance": "Balance",
-      "transactions": "Transactions",
-      "cancel": "Cancel",
-      "saveChanges": "Save Changes",
-      "save": "Save"
+      "title": "Редактирование данных пользователя",
+      "name" :"Прозвище",
+      "mail": "Почта",
+      "balance": "Баланс",
+      "transactions": "Транзакции",
+      "cancel": "Отмена",
+      "saveChanges": "Сохранить изменения",
+      "save": "Сохранить"
     },
     "userMobile": {
-      "status" : "Status",
-      "nickname": "Nickname",
-      "mail": "Mail",
-      "balance": "Balance",
-      "transactions": "Transactions",
-      "payments": "Payments",
-      "number": "Number",
-      "invoiceDate": "Invoice date",
-      "datePayment": "Date of payment",
-      "method": "Payment method",
-      "subscription": "Subscription",
-      "amount": "Amount",
-      "cards": "Cards"
+      "status" : "Статус",
+      "nickname": "Прозвище",
+      "mail": "Почта",
+      "balance": "Баланс",
+      "transactions": "Транзакции",
+      "payments": "Платежи",
+      "number": "Номер",
+      "invoiceDate": "Дата счета",
+      "datePayment": "Дата платежа",
+      "method": "Способ оплаты",
+      "subscription": "Подписка",
+      "amount": "Сумма",
+      "cards": "Карточки"
     }
   },
   "usersList": [
     {
-      "title": "Cliques",
+      "title": "Клики",
       "color": "red"
     },
     {
-      "title": "Index",
+      "title": "Индекс",
       "color": "red"
     },
     {
-      "title": "Leads",
+      "title": "Лиды",
       "color": "red"
     },
     {
-      "title": "Hold",
+      "title": "Удерживать",
       "color": "yellow"
     },
     {
-      "title": "Accrual",
+      "title": "Начисление",
       "color": "green"
     },
     {
-      "title": "Disregard",
+      "title": "Игнорировать",
       "color": "yellow"
     },
     {
-      "title": "Enrollment",
+      "title": "Зачисление",
       "color": "yellow"
     },
     {
-      "title": "Budget",
+      "title": "Бюджет",
       "color": "green"
     },
     {
-      "title": "Approve",
+      "title": "Утвердить",
       "color": "green"
     },
     {
-      "title": "Advice",
+      "title": "Советы",
       "color": "purple gray"
     },
     {
-      "title": "Balance",
+      "title": "Баланс",
       "color": "purple"
     }
   ],
   "sidebar": [
     {
       "icon": "main",
-      "title": "Main",
+      "title": "Главная",
       "url": "/"
     },
     {
       "icon": "manager",
-      "title": "Manager",
+      "title": "Менеджер",
       "url": "/manager"
     },
     {
       "icon": "manager",
-      "title": "Brand",
+      "title": "Бренд",
       "url": "/brand"
     },
     {
       "icon": "manager",
-      "title": "Affiliate",
+      "title": "Партнер",
       "url": "/affiliate"
     },
     {
       "icon": "users",
-      "title": "Users",
+      "title": "Пользователи",
       "url": "/users"
     },
     {
       "icon": "users",
-      "title": "Offers in works",
+      "title": "Предложения в работе",
       "url": "/offers-in-works"
     },
     {
       "icon": "users",
-      "title": "Added offers",
+      "title": "Добавленные предложения",
       "url": "/added-offers"
     },
     {
       "icon": "media-canal",
-      "title": "Media channels",
+      "title": "Медиа-каналы",
       "url": "/media-channels"
     },
     {
       "icon": "media-canal",
-      "title": "Offers",
+      "title": "Предложения",
       "url": "/offers"
     },
     {
       "icon": "profile",
-      "title": "Profile",
+      "title": "Профиль",
       "url": "/profile"
     },
     {
       "icon": "balance",
-      "title": "Balance",
+      "title": "Баланс",
       "url": "/balance"
     },
     {
       "icon": "support",
-      "title": "Support",
+      "title": "Поддержка",
       "url": "/support"
     }
   ],
   "balance": {
-    "addedCard": "Add a map",
-    "method": "Payment method",
-    "balanceInfoTitle": "Balance",
-    "history": "Payment history",
-    "expires": "Expires",
-    "addNewCard": "Add new card",
-    "balance": "Balance",
+    "addedCard": "Добавить карту",
+    "method": "Метод оплаты",
+    "balanceInfoTitle": "Баланс",
+    "history": "История платежей",
+    "expires": "Срок действия:",
+    "addNewCard": "Добавить новую карту",
+    "balance": "Баланс",
     "balanceData": [
       {
-        "title": "Personal balance",
+        "title": "Личный баланс",
         "tage": ""
       },
       {
-        "title": "Top up the balance",
+        "title": "Пополните баланс",
         "tage": "top-up"
       },
       {
-        "title": "Take out the balance",
+        "title": "Withdraw the balance",
         "tage": "take-out"
       }
     ],
     "addCardForm": {
-      "addCardTitle": "Add a new card:",
-      "cardNumber": "Card number",
-      "initialsName": "Initials indicated on the card",
-      "numberPhone": "Number Phone",
+      "addCardTitle": "Добавить новую карту:",
+      "cardNumber": "Номер карты",
+      "initialsName": "Инициалы, указанные на карте",
+      "numberPhone": "Номер Телефон",
       "cvc": "CVC",
-      "date": "Completion date",
-      "cancel": "Cancel",
-      "addCard": "Add card"
+      "date": "Дата завершения",
+      "cancel": "Отмена",
+      "addCard": "Добавить карту"
     },
     "historyPayment": {
-      "status": "Status",
-      "number": "Number",
-      "dataPayments": "Invoice date",
-      "data": "Date of payment",
-      "payouts": "Payment method",
-      "subscribe": "Subscription",
-      "price": "Amount"
+      "status": "Статус",
+      "number": "Номер",
+      "dataPayments": "Дата счета",
+      "data": "Дата платежа",
+      "payouts": "Метод оплаты",
+      "subscribe": "Подписка",
+      "price": "Сумма"
     },
     "takeOut": {
-      "title": "Take out the balance",
-      "name": "Name:",
-      "cardNumber": "Card number",
-      "email": "Email",
-      "amount": "Withdraw the amount",
-      "cancel": "Cancel",
-      "submit": "Take out"
+      "title": "Снимите баланс",
+      "name": "Имя:",
+      "cardNumber": "Номер карты",
+      "email": "Электронная почта",
+      "amount": "Вывести сумму",
+      "cancel": "Отмена",
+      "submit": "Вывести"
     },
     "takeUp":{
-      "title": "Replenishment of the balance",
-      "cardNumber" :"Card number:",
-      "validity": "Validity",
+      "title": "Пополнение баланса",
+      "cardNumber" :"Номер карты:",
+      "validity": "Срок действия",
       "cw": "CW2",
-      "nameUser":"Name of the owner",
-      "number": "Phone number",
-      "email": "Email",
-      "amount": "Top-up amount",
-      "cancel": "Cancel",
-      "replenish": "To replenish"
+      "nameUser":"Имя владельца",
+      "number": "Номер телефона",
+      "email": "Электронная почта",
+      "amount": "Сумма пополнения",
+      "cancel": "Отмена",
+      "replenish": "Пополнять"
     }
   },
   "transactions": {
-    "number": "Number",
-    "invoiceData": "Invoice date",
-    "dataPayment": "Date of payment",
-    "status": "Status",
-    "payment": "Payment method",
-    "subscription": "Subscription",
-    "amount": "Amount"
+    "number": "Номер",
+    "invoiceData": "Дата счета",
+    "dataPayment": "Дата платежа",
+    "status": "Статус",
+    "payment": "Способ оплаты",
+    "subscription": "Подписка",
+    "amount": "Сумма"
   },
   "support": {
-    "title": "Support",
-    "feeadback": "Feedback",
+    "title": "Поддержка",
+    "feeadback": "Обратная связь",
     "questions": [
       {
         "icon": "books",
-        "title": "Can I add or edit more than one user at a time?",
+        "title": "Могу ли я добавлять или редактировать более одного пользователя одновременно?",
         "description": "Lorem ipsum is a classic version of conditional, meaningless text that is inserted into the page layout (in the slang of designers, such text is called 'fish')."
       },
       {
         "icon": "albert",
-        "title": "How to edit the data of an existing user?",
-        "description": "There are many other variants of Lorem ipsum, often very far from the original."
+        "title": "Как отредактировать данные существующего пользователя?",
+        "description": "Существует множество других вариантов Lorem ipsum, часто очень далеких от оригинала."
       },
       {
         "icon": "paint",
-        "title": "What «additional data» can be selected?",
+        "title": "Какие «дополнительные данные» могут быть выбраны?",
         "description": "Lorem ipsum is a twisted passage from Cicero's philosophical treatise On the Limits of Good and Evil, written in Latin in 45 BC."
       },
       {
         "icon": "pansile",
-        "title": "How do I create and define permissions for a role?",
-        "description": "Sometimes they contain additional letters such as k, w, and z—which did not exist or were rarely used in Latin—and nonsensical words such as zzril, takimata, and gubergren added to the original text."
+        "title": "Как создать и определить разрешения для роли?",
+        "description": "Иногда они содержат дополнительные буквы, такие как k, w и z, которых не было или они редко использовались в латинском языке, а также бессмысленные слова, такие как zzril, takimata и gubergren, добавленные к оригинальному тексту."
       },
       {
         "icon": "rocket",
-        "title": "What administrative features are now available for RapidLite?",
-        "description": "From the point of view of ease of perception of printed texts, Lorem ipsum shows that Latin graphics are most suitable for writing works in Latin (the frequency of use of symbols with remote elements such as g, l, h, p is taken into account here)."
+        "title": "Какие административные функции теперь доступны для RapidLite?",
+        "description": "С точки зрения удобства восприятия печатных текстов, Lorem ipsum показывает, что латинская графика наиболее подходит для написания произведений на латыни (здесь учитывается частота использования символов с удаленными элементами, такими как g, l, h, p)."
       },
       {
         "icon": "diagram",
-        "title": "How to use the PSAP tab?",
-        "description": "In Microsoft Word 2007 and PowerPoint 2007 (and in later versions) there is a function lorem (=lorem(parameter1,parameter2), where parameter1 is the number of paragraphs, parameter2 is the number of sentences in a paragraph). It is necessary to type, for example =lorem(2,7) (and press Enter), after which the text will appear in the document."
+        "title": "Как использовать вкладку PSAP?",
+        "description": "В Microsoft Word 2007 и PowerPoint 2007 (и в более поздних версиях) есть функция lorem (=lorem(parameter1,parameter2), где parameter1 - количество абзацев, parameter2 - количество предложений в абзаце). Необходимо набрать, например, =lorem(2,7) (и нажать Enter), после чего текст появится в документе."
       }
     ],
     "form": {
-      "title": "Feedback",
-      "name": "Enter a name",
-      "email": "E-mail for communication",
-      "textArea": "Message",
-      "file": "Add file",
-      "send": "Send"
+      "title": "Обратная связь",
+      "name": "Введите имя",
+      "email": "Электронная почта для связи",
+      "textArea": "Сообщение",
+      "file": "Добавить файл",
+      "send": "Отправить"
     }
   },
   "media": {
-    "headerTitle": "Media channels",
-    "search": "Search",
-    "addedOffer": "Add an offer",
+    "headerTitle": "Медиаканалы",
+    "search": "Поиск",
+    "addedOffer": "Добавить предложение",
     "mediaSearch": [
       {
         "title": "UID",
         "tag": "userID"
       },
       {
-        "title": "Nickname",
+        "title": "Прозвище",
         "tag": "name"
       },
       {
-        "title": "Link",
+        "title": "Ссылка",
         "tag": "link"
       },
       {
-        "title": "Subscribers",
+        "title": "Подписчики",
         "tag": "subscribers"
       },
       {
@@ -441,93 +441,93 @@
         "tag": "stream"
       },
       {
-        "title": "Payout",
+        "title": "Выплаты",
         "tag": "payout"
       },
       {
-        "title": "Price",
+        "title": "Цена",
         "tag": "price"
       },
       {
-        "title": "Status",
+        "title": "Статус",
         "tag": "vip"
       }
     ],
     "mediaMobile": {
-      "status": "Status",
-      "name": "Name"
+      "status": "Статус",
+      "name": "Имя"
     },
     "mobileData":{
-      "status": "Status",
-      "name": "Name",
-      "link": "Link",
-      "subscribe": "Subscribe",
-      "stream": "Stream",
-      "price": "Price",
-      "payout": "Payout",
+      "status": "Статус",
+      "name": "Имя",
+      "link": "Ссылка",
+      "subscribe": "Подписаться",
+      "stream": "Поток",
+      "price": "Цена",
+      "payout": "Выплаты",
       "cpm": "CPM",
       "cph": "CPH"
     },
     "form": {
       "title": "Add a new channel",
-      "name": "Name",
-      "link": "Link",
-      "subscribe": "Subscribers",
+      "name": "Имя",
+      "link": "Ссылка",
+      "subscribe": "Подписаться",
       "ctr": "CTR",
-      "price": "Price",
-      "model": "Accrual model",
-      "cancel": "Cancel",
-      "save": "Save Changes"
+      "price": "Цена",
+      "model": "Модель начисления",
+      "cancel": "Отмена",
+      "save": "Сохранить изменения"
     }
   },
   "offers": {
-    "mobileTitle": "Your Offers",
-    "offersTitle": "Offers",
-    "offersInWork": "Offers in works",
-    "addedTitle": "Added offers",
-    "activeOffers": "Active offers",
-    "headerTitle": "Offer up",
-    "search": "Search",
-    "addedOffer": "Add an offer",
+    "mobileTitle": "Ваши предложения",
+    "offersTitle": "Предложения",
+    "offersInWork": "Предложения в работе",
+    "addedTitle": "Добавлены предложения",
+    "activeOffers": "Активные предложения",
+    "headerTitle": "Предложение",
+    "search": "Поиск",
+    "addedOffer": "Добавить предложение",
     "offerSearch": [
       {
         "title": "UID",
         "tag": "userID"
       },
       {
-        "title": "Nickname",
+        "title": "Прозвище",
         "tag": "name"
       },
       {
-        "title": "Link",
+        "title": "Ссылка",
         "tag": "link"
       },
       {
-        "title": "Brand",
+        "title": "Бренд",
         "tag": "brand"
       },
       {
-        "title": "Payments",
+        "title": "Платежи",
         "tag": "payments"
       },
       {
-        "title": "Balance",
+        "title": "Баланс",
         "tag": "balance"
       },
       {
-        "title": "Payout",
+        "title": "Выплаты",
         "tag": "payout"
       },
       {
-        "title": "Advertise offers",
+        "title": "Рекламировать предложения",
         "tag": "advertise"
       },
       {
-        "title": "Status",
+        "title": "Статус",
         "tag": "vip"
       },
       {
-        "title": "Settings",
+        "title": "Настройки",
         "tag": "setting"
       }
     ],
@@ -553,18 +553,18 @@
       }
     ],
     "form": {
-      "title": "Edit offer",
-      "name": "Name",
-      "link": "Link",
-      "brand": "Brand",
-      "payments": "Payments",
-      "balance": "Balance",
-      "model": "Payment model",
-      "cancel": "Cancel",
-      "save": "Save Changes",
-      "status": "Status",
-      "advertise": "Advertise",
-      "payout": "Payout"
+      "title": "Редактировать предложение",
+      "name": "Имя",
+      "link": "Ссылка",
+      "brand": "Бренд",
+      "payments": "Платежи",
+      "balance": "Баланс",
+      "model": "Модель оплаты",
+      "cancel": "Отмена",
+      "save": "Сохранить изменения",
+      "status": "Статус",
+      "advertise": "Рекламировать",
+      "payout": "Выплаты"
     }
   }
 }
