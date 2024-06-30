@@ -1,27 +1,27 @@
 <div class="profile-edite">
   <div class="popup">
-    <h3 class="popup_title sans">Edit user data</h3>
+    <h3 class="popup_title sans">{{editeData.title}}</h3>
     <form class="form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="userInfo">
       <div class="column">
-        <mat-label class="label sans">Nickname</mat-label>
-        <input class="sans" placeholder="Nickname" type="text" formControlName="name">
+        <mat-label class="label sans">{{editeData.name}}</mat-label>
+        <input class="sans" placeholder="{{editeData.name}}" type="text" formControlName="name">
       </div>
       <div class="column">
-        <mat-label class="label sans">Mail</mat-label>
-        <input class="sans" placeholder="Mail" type="email" formControlName="email">
+        <mat-label class="label sans">{{editeData.mail}}</mat-label>
+        <input class="sans" placeholder="{{editeData.mail}}" type="email" formControlName="email">
       </div>
       <div class="column">
-        <mat-label class="label sans">Balance</mat-label>
-        <input class="sans" placeholder="Balance" type="number" formControlName="balance">
+        <mat-label class="label sans">{{editeData.balance}}</mat-label>
+        <input class="sans" placeholder="{{editeData.balance}}" type="number" formControlName="balance">
       </div>
       <div class="column">
-        <mat-label class="label sans">Transactions</mat-label>
-        <input class="sans" placeholder="Transactions" type="number" formControlName="transactions">
+        <mat-label class="label sans">{{editeData.transactions}}</mat-label>
+        <input class="sans" placeholder="{{editeData.transactions}}" type="number" formControlName="transactions">
       </div>
       <div class="action">
-        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
-        <button type="submit" class="save sans" mat-button>Save Changes</button>
-        <button type="submit" class="save mobile sans" mat-button>Save</button>
+        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>{{editeData.cancel}}</button>
+        <button type="submit" class="save sans" mat-button>{{editeData.saveChanges}}</button>
+        <button type="submit" class="save mobile sans" mat-button>{{editeData.save}}</button>
       </div>
     </form>
   </div>

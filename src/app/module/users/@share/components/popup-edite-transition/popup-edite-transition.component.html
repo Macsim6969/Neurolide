@@ -1,41 +1,41 @@
 <div class="profile-edite">
   <div class="popup">
-    <h3 class="popup_title sans">Making payment adjustments</h3>
+    <h3 class="popup_title sans">{{dataEdite.title}}</h3>
     <form class="form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="userInfoTransaction">
       <div class="column">
-        <mat-label class="label sans">Number</mat-label>
-        <input class="sans" placeholder="Number" type="text" formControlName="number">
+        <mat-label class="label sans">{{dataEdite.number}}</mat-label>
+        <input class="sans" placeholder="{{dataEdite.number}}" type="text" formControlName="number">
       </div>
       <div class="row">
         <div class="column">
-          <mat-label class="label sans">Invoice dateу</mat-label>
-          <input class="sans" placeholder="Invoice date" type="date" formControlName="invoiceData">
+          <mat-label class="label sans">{{dataEdite.invoiceDate}}</mat-label>
+          <input class="sans" placeholder="{{dataEdite.invoiceDate}}" type="date" formControlName="invoiceData">
         </div>
         <div class="column">
-          <mat-label class="label sans">Date of payment</mat-label>
-          <input class="sans" placeholder="Date of payment" type="date" formControlName="dataPayment">
+          <mat-label class="label sans">{{dataEdite.dataPayment}}</mat-label>
+          <input class="sans" placeholder="{{dataEdite.dataPayment}}" type="date" formControlName="dataPayment">
         </div>
       </div>
       <div class="column">
-        <mat-label class="label sans">Status</mat-label>
-        <input class="sans" placeholder="Status" type="text" formControlName="status">
+        <mat-label class="label sans">{{dataEdite.status}}</mat-label>
+        <input class="sans" placeholder="{{dataEdite.status}}" type="text" formControlName="status">
       </div>
       <div class="column">
-        <mat-label class="label sans">Payment method</mat-label>
-        <input class="sans" placeholder="Payment method" type="text" formControlName="paymentMethod">
+        <mat-label class="label sans">{{dataEdite.payment}}</mat-label>
+        <input class="sans" placeholder="{{dataEdite.payment}}" type="text" formControlName="paymentMethod">
       </div>
       <div class="column">
-        <mat-label class="label sans">Subscription</mat-label>
-        <input class="sans" placeholder="Subscription" type="text" formControlName="subscribe">
+        <mat-label class="label sans">{{dataEdite.subscription}}</mat-label>
+        <input class="sans" placeholder="{{dataEdite.subscription}}" type="text" formControlName="subscribe">
       </div>
       <div class="column">
-        <mat-label class="label sans">Amount</mat-label>
-        <input class="sans" placeholder="Amount" type="number" formControlName="suma">
+        <mat-label class="label sans">{{dataEdite.amount}}</mat-label>
+        <input class="sans" placeholder="{{dataEdite.amount}}" type="number" formControlName="suma">
       </div>
       <div class="action">
-        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>Cancel</button>
-        <button type="submit" class="save sans" mat-button>Save Changes</button>
-        <button type="submit" class="save mobile sans" mat-button>Save</button>
+        <button type="button" (click)="closePopup()" class="cancel sans" mat-button>{{dataEdite.cancel}}</button>
+        <button type="submit" class="save sans" mat-button>{{dataEdite.saveChanges}}</button>
+        <button type="submit" class="save mobile sans" mat-button>{{dataEdite.save}}</button>
       </div>
     </form>
   </div>

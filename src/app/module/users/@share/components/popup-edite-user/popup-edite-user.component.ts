@@ -4,6 +4,8 @@ import { Subject, takeUntil } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserData } from '../../../../../shared/interfaces/backend.interface';
 import { UserService } from '../../services/user.service';
+import { TranslateService } from '@ngx-translate/core';
+import { EditUserDataPopup } from '../../interfaces/popupEdite.interface';
 
 @Component({
   selector: 'app-popup-edite-user',
@@ -14,16 +16,26 @@ export class PopupEditeUserComponent {
   private destroy$ = new Subject<void>();
   public userInfo: any;
   public form: FormGroup;
+  public editeData: EditUserDataPopup;
 
   constructor(
     private backendService: BackendService,
-    private userService: UserService
+    private userService: UserService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
+    this.streamEditeUserDataPopup();
     this.initializeUserDataFromStore();
     this.initializeForm();
     document.body.style.overflow = 'hidden';
+  }
+
+  private streamEditeUserDataPopup(){
+    this.translate.stream('user.editeUser').pipe(takeUntil(this.destroy$))
+    .subscribe((data: EditUserDataPopup) =>{
+      this.editeData = data;
+    })
   }
 
   private initializeUserDataFromStore() {

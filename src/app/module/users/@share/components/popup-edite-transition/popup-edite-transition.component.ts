@@ -4,6 +4,8 @@ import { Subject, Subscription, combineLatest, takeUntil } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserData } from '../../../../../shared/interfaces/backend.interface';
 import { UserService } from '../../services/user.service';
+import { TranslateService } from '@ngx-translate/core';
+import { PopupEditeInterface } from '../../interfaces/popupEdite.interface';
 
 @Component({
   selector: 'app-popup-edite-transition',
@@ -18,16 +20,27 @@ export class PopupEditetTransitionComponent implements OnInit, OnDestroy {
   public key: number;
   public userId: string;
   public form: FormGroup;
+  public dataEdite: PopupEditeInterface;
 
   constructor(
     private backendService: BackendService,
-    private userService: UserService
+    private userService: UserService,
+    private translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
+    this.streamPopupEditeTransactions();
     this.initializeUserDataFromStore();
     this.initializeForm();
     document.body.style.overflow = 'hidden';
+  }
+
+  private streamPopupEditeTransactions() {
+    this.translate.stream('user.popupEditeTransactions')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((dataEdite: PopupEditeInterface) => {
+        this.dataEdite = dataEdite;
+      })
   }
 
   private initializeUserDataFromStore() {
