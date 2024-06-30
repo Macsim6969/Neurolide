@@ -5,9 +5,10 @@ import { OffersService } from '../../services/offers.service';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { StoreInterface } from '../../../../../store/model/store.model';
 import { OfferFormService } from '../../services/offersForms.service';
-import { takeUntil } from 'rxjs';
+import { combineLatest, takeUntil } from 'rxjs';
 import { ModelPaymentInterface } from '../../interface/model.interface';
 import { TranslateService } from '@ngx-translate/core';
+import { OffersFormsData } from '../../interface/offer.interface';
 
 @Component({
   selector: 'app-offers-mobile',
@@ -18,6 +19,7 @@ export class OffersMobileComponent extends OffersDataClass implements OnInit {
   public activeSlide: number = 0;
   public modelPayment: ModelPaymentInterface[];
   public url: string;
+  public formData: OffersFormsData;
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
@@ -34,9 +36,10 @@ export class OffersMobileComponent extends OffersDataClass implements OnInit {
   }
 
   private streamModelPaymentFromJson() {
-    this.translate.stream('offers.offerModel').pipe(takeUntil(this.destroy$)).subscribe((data: ModelPaymentInterface[]) => {
-      this.modelPayment = data;
-    }) 
+    combineLatest(([this.translate.stream('offers.offerModel'),  this.translate.stream('offers.form')])).pipe(takeUntil(this.destroy$)).subscribe(([dataModel, dataForm]) =>{
+      this.modelPayment = dataModel;
+      this.formData = dataForm;
+    })
   }
   private checkRulesUser() {
     this.rules = JSON.parse(localStorage.getItem('rules'))

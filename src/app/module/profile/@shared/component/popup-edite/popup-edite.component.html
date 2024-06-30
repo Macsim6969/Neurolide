@@ -1,21 +1,21 @@
 <div class="profile-edite">
   <div class="popup">
-    <h3 class="popup_title sans">Change Profile</h3>
+    <h3 class="popup_title sans">{{popupData.changeProfile}}</h3>
     <form class="form" [formGroup]="form" (ngSubmit)="submit()" *ngIf="userInfo">
       <div class="column">
-        <mat-label class="label sans">Name:</mat-label>
+        <mat-label class="label sans">{{popupData.name}}</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="name">
       </div>
       <div class="column">
-        <mat-label class="label sans">Surname:</mat-label>
+        <mat-label class="label sans">{{popupData.surname}}</mat-label>
         <input class="sans" placeholder="...." type="text" formControlName="surname">
       </div>
       <div class="column">
-        <mat-label class="label sans">Number Phone:</mat-label>
+        <mat-label class="label sans">{{popupData.number}}</mat-label>
         <input class="sans" placeholder="...." type="number" formControlName="number">
       </div>
       <div class="column">
-        <mat-label class="label sans">Password</mat-label>
+        <mat-label class="label sans">{{popupData.password}}</mat-label>
         <input class="sans" placeholder="...." type="password" formControlName="password">
       </div>
       <!-- <div class="column">
@@ -23,12 +23,12 @@
         <input class="sans" type="file" formControlName="avatar">
       </div> -->
       <div class="column">
-        <mat-label class="label sans">Password</mat-label>
+        <mat-label class="label sans">{{popupData.password}}</mat-label>
         <input class="sans" placeholder="...." type="password" formControlName="password">
       </div>
       <div class="action">
-        <button type="button" (click)="closePopup()" class="cancel" mat-button>Cancel</button>
-        <button type="submit" class="save" mat-button>Save Changes</button>
+        <button type="button" (click)="closePopup()" class="cancel" mat-button>{{popupData.cancel}}</button>
+        <button type="submit" class="save" mat-button>{{popupData.save}}</button>
       </div>
     </form>
   </div>

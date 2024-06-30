@@ -53,8 +53,7 @@
       </div>
       <div class="allCard">
         <div class="card_title sans">
-          Картки
-        </div>
+          {{'cards'| translate}}</div>
         <div class="card_title" *ngFor="let card of user.card">
           <p>{{card?.number}}</p>
         </div>
@@ -67,11 +66,11 @@
 <div class="popup" *ngIf="isConfirmAttention">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Are you sure that you want delete this user</mat-card-title>
+      <mat-card-title>{{userDeleteData.title}}</mat-card-title>
     </mat-card-header>
     <mat-card-actions>
-      <button mat-button (click)="isConfirmAttention = false">Cances</button>
-      <button mat-button (click)="confirme()">Confirme</button>
+      <button mat-button (click)="isConfirmAttention = false">{{userDeleteData.cancel}}</button>
+      <button mat-button (click)="confirme()">{{userDeleteData.confirme}}</button>
     </mat-card-actions>
   </mat-card>
 </div>

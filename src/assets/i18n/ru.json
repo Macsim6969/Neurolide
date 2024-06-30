@@ -1,6 +1,8 @@
 {
   "logo": "Neurolide",
   "welcome": "Welcome",
+  "profile": "Your Profile",
+  "cards": "Cards",
   "auth": {
     "rules": [
       {
@@ -130,7 +132,26 @@
         "text": "Delete",
         "class": "remove"
       }
-    ]
+    ],
+    "popupEdite":{
+      "changeProfile": "Change Profile",
+      "name": "Name:",
+      "surname": "Surname:",
+      "number": "Number Phone:",
+      "password": "Password",
+      "cancel": "Cancel",
+      "save": "Save Changes"
+    },
+    "deleteProfile":{
+      "title": "Delete Profile",
+      "desc": "Are you sure you want to delete the profile permanently?",
+      "delete": "Delete"
+    },
+    "deleteUser":{
+      "title": "Are you sure that you want delete this user",
+      "cancel": "Cancel",
+      "confirme": "Confirme"
+    }
   },
   "usersList": [
     {
@@ -313,6 +334,8 @@
     "amount": "Amount"
   },
   "support": {
+    "title": "Support",
+    "feeadback": "Feedback",
     "questions": [
       {
         "icon": "books",
@@ -393,8 +416,19 @@
       }
     ],
     "mediaMobile": {
-      "status": "Статус",
-      "name": "Назва"
+      "status": "Status",
+      "name": "Name"
+    },
+    "mobileData":{
+      "status": "Status",
+      "name": "Name",
+      "link": "Link",
+      "subscribe": "Subscribe",
+      "stream": "Stream",
+      "price": "Price",
+      "payout": "Payout",
+      "cpm": "CPM",
+      "cph": "CPH"
     },
     "form": {
       "title": "Add a new channel",

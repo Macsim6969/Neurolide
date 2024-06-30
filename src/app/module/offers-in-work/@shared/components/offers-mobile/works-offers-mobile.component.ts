@@ -7,8 +7,9 @@ import { OffersService } from '../../../../offers/@shared/services/offers.servic
 import { OfferFormService } from '../../../../offers/@shared/services/offersForms.service';
 import { OffersDataClass } from '../../../../offers/@shared/abstract/offersData';
 import { TranslateService } from '@ngx-translate/core';
-import { takeUntil } from 'rxjs';
+import { combineLatest, takeUntil } from 'rxjs';
 import { ModelPaymentInterface } from '../../../../offers/@shared/interface/model.interface';
+import { OffersFormsData } from '../../../../offers/@shared/interface/offer.interface';
 
 @Component({
   selector: 'app-works-offers-mobile',
@@ -20,6 +21,7 @@ export class WorksOffersMobileComponent extends OffersDataClass implements OnIni
   public activeSlide: number = 0;
   public modelPayment: ModelPaymentInterface[];
   public url: string;
+  public formData: OffersFormsData;
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
@@ -39,7 +41,7 @@ export class WorksOffersMobileComponent extends OffersDataClass implements OnIni
     this.streamModelPaymentFromJson();
     this.initializeIsMobilePage();
     this.checkRoutePage();
-  }
+  } 
 
   private initializeIsMobilePage() {
     if (innerWidth < 1124) {
@@ -49,8 +51,10 @@ export class WorksOffersMobileComponent extends OffersDataClass implements OnIni
     }
   }
   private streamModelPaymentFromJson() {
-    this.translate.stream('offers.offerModel').pipe(takeUntil(this.destroy$)).subscribe((data: ModelPaymentInterface[]) => {
-      this.modelPayment = data;
+    combineLatest(([this.translate.stream('offers.offerModel'),  this.translate.stream('offers.form')])).pipe(takeUntil(this.destroy$))
+    .subscribe(([dataModel, dataForm]) =>{
+      this.modelPayment = dataModel;
+      this.formData = dataForm;
     })
   }
 

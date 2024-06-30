@@ -6,7 +6,7 @@
         <div class="media_header">
           <div class="media_header_left">
             <nav class="id">UID {{channel.id}}</nav>
-            <nav class="status">Status</nav>
+            <nav class="status">{{formData.status}}</nav>
           </div>
           <div class="action">
             <button *ngIf=" rules === 'manager'" (click)="removeOffers(channel.id)" type="button"
@@ -20,27 +20,27 @@
         </div>
 
         <div class="column">
-          <nav class="title">Name</nav>
+          <nav class="title">{{formData.name}}</nav>
           <nav class="desc">{{channel.name}}</nav>
         </div>
         <div class="column">
-          <nav class="title">Link</nav>
+          <nav class="title">{{formData.link}}</nav>
           <nav class="desc">{{channel.link}}</nav>
         </div>
         <div class="column">
-          <nav class="title">Brand</nav>
+          <nav class="title">{{formData.brand}}</nav>
           <nav class="desc">{{channel.brand}}</nav>
         </div>
         <div class="column">
-          <nav class="title">Payments</nav>
+          <nav class="title">{{formData.payments}}</nav>
           <nav class="desc">{{channel.payments}}</nav>
         </div>
         <div class="column">
-          <nav class="title">Balance</nav>
+          <nav class="title">{{formData.balance}}</nav>
           <nav class="desc">{{channel.balance}}</nav>
         </div>
         <div class="column" *ngIf="url === '/offers' && rules === 'brand' || rules === 'manager'">
-          <nav class="title">Payout</nav>
+          <nav class="title">{{formData.payout}}</nav>
           <div class="payout_methods">
             <button (click)="choicePayout(i, model?.title, channel?.id)" [ngClass]="{'active': activePayout[i ] === model.title || channel?.payout === model.title}" mat-button class="payout"
               *ngFor="let model of modelPayment">{{model.title}}</button>

@@ -5,7 +5,7 @@
 </section>
 <div class="mobile_offer_title" *ngIf="isMobile">
   <mat-icon svgIcon="media-canal"></mat-icon>
-  <h3 class="title">Offers</h3>
+  <h3 class="title">{{'offers.offersTitle'| translate}}</h3>
   <div class="add" *ngIf="rules === 'manager'">
     <mat-icon svgIcon="add"  (click)="openForm('offers')"></mat-icon>
   </div>

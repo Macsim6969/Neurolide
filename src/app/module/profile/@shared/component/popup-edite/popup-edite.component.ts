@@ -8,6 +8,8 @@ import { AuthService } from '../../../../auth/@shared/services/auth.service';
 import { BackendService } from '../../../../../shared/services/backend.service';
 import { UserData } from '../../../../../shared/interfaces/backend.interface';
 import { ProfileServices } from '../../services/profile.service';
+import { TranslateService } from '@ngx-translate/core';
+import { PopupEditeInterface } from '../../interfaces/popup.interface';
 
 @Component({
   selector: 'app-popup-edite',
@@ -19,19 +21,27 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
   public userInfo: UserData
   public form: FormGroup;
   public selectedFile: File | null = null;
+  public popupData: PopupEditeInterface;
 
   constructor(
     private store: Store<{ store: StoreInterface }>,
     private authService: AuthService,
     private backendService: BackendService,
-    private profileService: ProfileServices
-
+    private profileService: ProfileServices,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
+    this.streamPopupEditeData();
     this.initializeUserDataFromStore();
     this.initializeForm();
+  }
 
+  private streamPopupEditeData(){
+    this.translate.stream('user.popupEdite')
+    .pipe(takeUntil(this.destroy$)).subscribe((data: PopupEditeInterface) =>{
+      this.popupData = data;
+    })
   }
 
   private initializeForm() {

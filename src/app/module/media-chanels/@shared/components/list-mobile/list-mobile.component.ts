@@ -6,6 +6,9 @@ import { MediaChannelService } from '../../services/mediaChannel.service';
 import { Store } from '@ngrx/store';
 import { MediaFormService } from '../../services/mediaForm.service';
 import { MediaFormInterface } from '../../interface/mediaForm.interface';
+import { TranslateService } from '@ngx-translate/core';
+import { takeUntil } from 'rxjs';
+import { MediaDataInterface } from '../../interface/mediaData.interface';
 
 @Component({
   selector: 'app-list-mobile',
@@ -15,18 +18,28 @@ import { MediaFormInterface } from '../../interface/mediaForm.interface';
 export class ListMobileComponent extends MediaChannelsDataClass implements OnInit {
   public activeSlide: number = 0;
   public url: string;
+  public mediaData: MediaDataInterface;
   constructor(
     override store: Store<{ store: StoreInterface }>,
     override globalIconsService: GlobalIconsService,
     override mediaChannelService: MediaChannelService,
-    private mediaFormService: MediaFormService
+    private mediaFormService: MediaFormService,
+    private translate: TranslateService
   ) {
     super(store, globalIconsService, mediaChannelService);
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
+    this.streamMediaDataFromJson();
     this.checkUrlPage();
+  }
+
+  private streamMediaDataFromJson(){
+    this.translate.stream('media.mobileData').pipe(takeUntil(this.destroy$))
+    .subscribe((data: MediaDataInterface) =>{
+      this.mediaData = data;
+    })
   }
 
   private checkUrlPage() {

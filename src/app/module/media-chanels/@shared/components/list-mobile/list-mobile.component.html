@@ -4,7 +4,7 @@
       [ngClass]="{'active': activeSlide === i}">
       <div class="content">
         <div class="media_header">
-          <nav class="status">Status</nav>
+          <nav class="status">{{mediaData.status}}</nav>
           <div class="action">
             <button *ngIf="rules === 'manager' && url !== '/profile'" (click)="removeMedia(channel.id)" type="button"
               class="remove "><mat-icon svgIcon="cancel"></mat-icon></button>
@@ -24,34 +24,34 @@
           <nav>{{channel.id}}</nav>
         </div>
         <div class="column">
-          <nav class="title">Name</nav>
+          <nav class="title">{{mediaData.name}}</nav>
           <nav class="desc">{{channel.name}}</nav>
         </div>
         <div class="column" *ngIf="rules !== 'brand'">
-          <nav class="title">Link</nav>
+          <nav class="title">{{mediaData.link}}</nav>
           <nav class="desc">{{channel.link}}</nav>
         </div>
         <div class="column">
-          <nav class="title">Subsribe</nav>
+          <nav class="title">{{mediaData.subscribe}}</nav>
           <nav class="desc">{{channel.subscribe}}</nav>
         </div>
         <div class="column">
-          <nav class="title">Stream</nav>
+          <nav class="title">{{mediaData.stream}}</nav>
           <nav class="desc">{{channel.stream}}</nav>
         </div>
         <div class="column">
-          <nav class="title">Price</nav>
+          <nav class="title">{{mediaData.price}}</nav>
           <nav class="desc">{{channel.price}}</nav>
         </div>
         <div class="column">
-          <nav class="title">Payout</nav>
+          <nav class="title">{{mediaData.payout}}</nav>
           <div class="payout_methods">
             <button mat-button [ngClass]="{'active': activePayout[i ] === 'CPM' || channel?.payout === 'CPM'}"
               (click)="choicePayout(i, 'CPM', channel?.id)"
-              [ngClass]="{'active': activePayout[i ] === 'CPM' || channel?.payout === 'CPM'}">CPM</button>
+              [ngClass]="{'active': activePayout[i ] === 'CPM' || channel?.payout === 'CPM'}">{{mediaData.cpm}}</button>
             <button mat-button [ngClass]="{'active': activePayout[i ] === 'CPM' || channel?.payout === 'CPM'}"
               (click)="choicePayout(i, 'CPH', channel?.id)"
-              [ngClass]="{'active': activePayout[i ] === 'CPH' || channel?.payout === 'CPH'}">CPH</button>
+              [ngClass]="{'active': activePayout[i ] === 'CPH' || channel?.payout === 'CPH'}">{{mediaData.cph}}</button>
           </div>
         </div>
       </div>

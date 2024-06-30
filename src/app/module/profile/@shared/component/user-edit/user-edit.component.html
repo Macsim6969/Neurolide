@@ -20,12 +20,12 @@
 <div class="popup_attention" *ngIf="isPopupAttention" (click)="onOutsideClick($event)">
   <div class="block" (click)="$event.stopPropagation()">
     <div class="block_description">
-      <h5 class="attention_title">Delete Profile</h5>
+      <h5 class="attention_title">{{deleteData.title}}</h5>
       <mat-icon svgIcon="delete-attention"></mat-icon>
-      <p class="attention_info">Are you sure you want to delete the profile permanently?</p>
+      <p class="attention_info">{{deleteData.desc}}</p>
     </div>
     <div class="action">
-      <button mat-button (click)="removeAccount()">Delete</button>
+      <button mat-button (click)="removeAccount()">{{deleteData.delete}}</button>
     </div>
   </div>
 </div>

@@ -10,6 +10,7 @@ import { AuthService } from '../../../../auth/@shared/services/auth.service';
 import { Router } from '@angular/router';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { ProfileIconService } from '../../services/profileIcon.service';
+import { DeleteDataInterface } from '../../interfaces/popup.interface';
 
 @Component({
   selector: 'app-user-edit',
@@ -24,6 +25,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
   public userActions: UserActions[];
   public avatar: string;
   public isPopupAttention: boolean;
+  public deleteData: DeleteDataInterface
   constructor(
     private translate: TranslateService,
     private store: Store<{ store: StoreInterface }>,
@@ -40,9 +42,11 @@ export class UserEditComponent implements OnInit, OnDestroy {
   }
 
   private initializeUserDataFromJsonAndStore() {
-    combineLatest(([this.translate.stream('user'), this.store.pipe(select(selectUserData))])).pipe(takeUntil(this.destroy$)).subscribe(([translateData, storeData]) => {
+    combineLatest(([this.translate.stream('user'), this.store.pipe(select(selectUserData)), this.translate.stream('user.deleteProfile')]))
+    .pipe(takeUntil(this.destroy$)).subscribe(([translateData, storeData, translateDeleteData]) => {
       this.userActions = translateData.userActions;
       this.userInfo = translateData.userInfo;
+      this.deleteData = translateData;
       this.avatar = storeData?.avatar;
       if (storeData) {
         if (Object.keys(storeData).length > 1) {

@@ -8,6 +8,7 @@ import { ChangeMonitoringDataService } from '../../services/changeMonitoringData
 import { UserService } from '../../services/user.service';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { UserSearchService } from '../../../../../shared/services/userSearch.service';
+import { UserDeleteData } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-users-list',
@@ -15,7 +16,7 @@ import { UserSearchService } from '../../../../../shared/services/userSearch.ser
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent extends UserClass {
-
+  public userDeleteData: UserDeleteData;
   public isSetting: boolean;
 
   constructor(
@@ -31,7 +32,15 @@ export class UsersListComponent extends UserClass {
 
   override ngOnInit(): void {
     super.ngOnInit();
+    this.streamUserDeleteData();
     this.streamSearchFilterData();
+  }
+
+  private streamUserDeleteData() {
+    this.translate.stream('user.deleteUser').pipe(takeUntil(this.destroy$))
+      .subscribe((data: UserDeleteData) => {
+        this.userDeleteData = data;
+      })
   }
 
   private streamSearchFilterData() {
@@ -65,7 +74,7 @@ export class UsersListComponent extends UserClass {
       case 'transactions':
         return user.monitoring?.transactions ? user.monitoring.transactions.length : 0;
       case 'rules':
-        return user.profile?.rules || ''; 
+        return user.profile?.rules || '';
       default:
         return null;
     }

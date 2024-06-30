@@ -1,7 +1,7 @@
 <div class="form_question" *ngIf="formData">
   <h1>{{ formData.file }}</h1>
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
-    <h2>Feedback</h2>
+    <h2>{{'support.feeadback'| translate}}</h2>
     <div class="row">
       <div class="column">
         <mat-label class="label sans">{{ formData.name }}</mat-label>
