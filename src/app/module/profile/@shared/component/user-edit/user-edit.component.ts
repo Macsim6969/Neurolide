@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { GlobalIconsService } from '../../../../../shared/services/globalIcon.service';
 import { ProfileIconService } from '../../services/profileIcon.service';
 import { DeleteDataInterface } from '../../interfaces/popup.interface';
+import { FirebaseStorageService } from '../../../../../services/firebase-storage.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -23,16 +24,19 @@ export class UserEditComponent implements OnInit, OnDestroy {
   public url: string;
   public userInfo: UserData[];
   public userActions: UserActions[];
+  public storeData;
   public avatar: string;
   public isPopupAttention: boolean;
-  public deleteData: DeleteDataInterface
+  public deleteData: DeleteDataInterface;
+
   constructor(
     private translate: TranslateService,
     private store: Store<{ store: StoreInterface }>,
     private profileServices: ProfileServices,
     private authService: AuthService,
     private router: Router,
-    private profileIcon: ProfileIconService
+    private profileIcon: ProfileIconService,
+    private firebaseStorageService: FirebaseStorageService
   ) { }
 
   ngOnInit(): void {
@@ -42,12 +46,16 @@ export class UserEditComponent implements OnInit, OnDestroy {
   }
 
   private initializeUserDataFromJsonAndStore() {
-    combineLatest(([this.translate.stream('user'), this.store.pipe(select(selectUserData)), this.translate.stream('user.deleteProfile')]))
-    .pipe(takeUntil(this.destroy$)).subscribe(([translateData, storeData, translateDeleteData]) => {
+    combineLatest([
+      this.translate.stream('user'),
+      this.store.pipe(select(selectUserData)),
+      this.translate.stream('user.deleteProfile')
+    ]).pipe(takeUntil(this.destroy$)).subscribe(async ([translateData, storeData, translateDeleteData]) => {
       this.userActions = translateData.userActions;
       this.userInfo = translateData.userInfo;
       this.deleteData = translateData;
-      this.avatar = storeData?.avatar;
+      this.storeData = storeData;
+      this.avatar = await this.profileServices.onGetImage(storeData);
       if (storeData) {
         if (Object.keys(storeData).length > 1) {
           this.updateHeaderData(storeData);
@@ -55,8 +63,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
           this.updateHeaderData(Object.values(storeData)[0]);
         }
       }
-    })
-
+    });
   }
 
   private updateHeaderData(data: any) {
@@ -87,9 +94,10 @@ export class UserEditComponent implements OnInit, OnDestroy {
     this.authService.deleteUser();
   }
 
-  public  onOutsideClick(event: MouseEvent): void {
+  public onOutsideClick(event: MouseEvent): void {
     this.isPopupAttention = false;
   }
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();

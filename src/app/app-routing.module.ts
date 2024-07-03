@@ -5,11 +5,13 @@ import { RulesGuard } from './shared/services/rules.guard';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./module/auth/auth.module').then((m) => m.AuthModule), canActivate: [AuthGuard] },
-  { path: '', loadChildren: () => import('./module/home/home.module').then((m) => m.HomeModule), canActivate: [RulesGuard] },
+  { path: '', loadChildren: () => import('./module/home/home.module').then((m) => m.HomeModule), canActivate: [RulesGuard] }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -10,6 +10,7 @@ import { UserData } from '../../../../../shared/interfaces/backend.interface';
 import { ProfileServices } from '../../services/profile.service';
 import { TranslateService } from '@ngx-translate/core';
 import { PopupEditeInterface } from '../../interfaces/popup.interface';
+import { FirebaseStorageService } from '../../../../../services/firebase-storage.service';
 
 @Component({
   selector: 'app-popup-edite',
@@ -28,7 +29,8 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private backendService: BackendService,
     private profileService: ProfileServices,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private firebaseStorageService: FirebaseStorageService
   ) { }
 
   ngOnInit(): void {
@@ -37,11 +39,11 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
     this.initializeForm();
   }
 
-  private streamPopupEditeData(){
+  private streamPopupEditeData() {
     this.translate.stream('user.popupEdite')
-    .pipe(takeUntil(this.destroy$)).subscribe((data: PopupEditeInterface) =>{
-      this.popupData = data;
-    })
+      .pipe(takeUntil(this.destroy$)).subscribe((data: PopupEditeInterface) => {
+        this.popupData = data;
+      })
   }
 
   private initializeForm() {
@@ -64,6 +66,10 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
     })
   }
 
+  public onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+  }
+
   public submit() {
     if (!this.form.value.name) {
       this.form.value.name = this.userInfo.name;
@@ -77,13 +83,16 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
     if (!this.form.value.email) {
       this.form.value.email = this.userInfo.email;
     }
-    if (!this.form.value.avatar) {
+    if (!this.selectedFile) {
       this.form.value.avatar = this.userInfo.avatar;
+    } else {
+      this.form.value.avatar = this.selectedFile.name;
+      const filePath = `images/${this.selectedFile.name}`;
+      this.firebaseStorageService.uploadImage(this.selectedFile, filePath);
     }
     if (this.form.value.number === null || this.form.value.number === undefined) {
       this.form.value.number = this.userInfo.number;
-    }
-
+    } 
     this.setDataToStore();
   }
 

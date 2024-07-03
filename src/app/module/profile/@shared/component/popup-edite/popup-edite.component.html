@@ -18,10 +18,10 @@
         <mat-label class="label sans">{{popupData.password}}</mat-label>
         <input class="sans" placeholder="...." type="password" formControlName="password">
       </div>
-      <!-- <div class="column">
+      <div class="column">
         <mat-label class="label sans">Avatar</mat-label>
-        <input class="sans" type="file" formControlName="avatar">
-      </div> -->
+        <input (change)="onFileSelected($event)" class="sans" type="file" formControlName="avatar">
+      </div>
       <div class="column">
         <mat-label class="label sans">{{popupData.password}}</mat-label>
         <input class="sans" placeholder="...." type="password" formControlName="password">
