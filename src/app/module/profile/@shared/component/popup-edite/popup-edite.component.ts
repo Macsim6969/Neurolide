@@ -86,14 +86,23 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
     if (!this.selectedFile) {
       this.form.value.avatar = this.userInfo.avatar;
     } else {
+      const oldPhotoUrl = this.userInfo?.avatar;
       this.form.value.avatar = this.selectedFile.name;
-      const filePath = `images/${this.selectedFile.name}`;
-      this.firebaseStorageService.uploadImage(this.selectedFile, filePath);
+      if (oldPhotoUrl) {
+        const filePath = this.firebaseStorageService.getFilePathFromUrl(oldPhotoUrl);
+        this.firebaseStorageService.deleteImage(filePath).catch(error => {
+          console.error('Error deleting old avatar:', error);
+        });
+      }
     }
     if (this.form.value.number === null || this.form.value.number === undefined) {
       this.form.value.number = this.userInfo.number;
-    } 
+    }
     this.setDataToStore();
+  }
+  private getFilePathFromUrl(url: string): string {
+    const storageRootUrl = 'https://firebasestorage.googleapis.com/v0/b/gs://neuroline-af6a2.appspot.com/images/';
+    return decodeURIComponent(url.replace(storageRootUrl, '').split('?')[0]);
   }
 
   private changePassword() {

@@ -56,6 +56,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
       this.deleteData = translateData;
       this.storeData = storeData;
       this.avatar = await this.profileServices.onGetImage(storeData);
+      console.log(this.avatar, 'avater');
       if (storeData) {
         if (Object.keys(storeData).length > 1) {
           this.updateHeaderData(storeData);
