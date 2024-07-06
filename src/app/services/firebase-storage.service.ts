@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { getStorage, ref, uploadBytes, getDownloadURL, listAll, getMetadata, deleteObject } from 'firebase/storage';
-import { initializeApp } from 'firebase/app';
-import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseStorageService {
   private storage = getStorage();
-  //private storage = getStorage(initializeApp(environment.firebaseConfig));
 
   constructor() { }
 
