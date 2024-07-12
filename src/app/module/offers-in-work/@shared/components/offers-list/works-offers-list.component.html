@@ -2,7 +2,7 @@
   <div class="channel" *ngFor="let channel of offerInWork;index as i">
     <nav class="id">{{channel.id}}</nav>
     <nav class="name">{{channel.name}}</nav>
-    <nav class="link">{{channel.link}}</nav>
+    <nav class="link">{{channel.link}} {{channel?.userId|truncateUserId}}</nav>
     <nav class="stream">{{channel.brand}}</nav>
     <nav class="subscribe">${{channel.payments ? channel.payments : 0}}</nav>
 

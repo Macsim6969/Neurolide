@@ -9,6 +9,7 @@ import { CommonModule } from "@angular/common";
 import { OffersBlockModule } from "../../../offers/@shared/module/offersBlock.module";
 import { WorksOffersMobileComponent } from "../components/offers-mobile/works-offers-mobile.component";
 import { DragScrollModule } from "ngx-drag-scroll";
+import { TruncateUserIdPipe } from "../pipe/truncateUserId.pipe";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DragScrollModule } from "ngx-drag-scroll";
     WorksOffersFilterComponent,
     WorksOffersHeaderComponent,
     WorksOffersListComponent,
-    WorksOffersMobileComponent
+    WorksOffersMobileComponent,
+    TruncateUserIdPipe
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { DragScrollModule } from "ngx-drag-scroll";
     TranslateModule
   ],
   exports: [
-    OffersInWorkComponent
+    OffersInWorkComponent,
+    TruncateUserIdPipe
   ]
 })
 

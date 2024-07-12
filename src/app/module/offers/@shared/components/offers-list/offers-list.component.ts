@@ -62,7 +62,7 @@ export class OffersListComponent extends OffersDataClass {
     })
   }
 
-  private checkRulesUser(){
+  private checkRulesUser() {
     this.rules = JSON.parse(localStorage.getItem('rules'));
     this.url = localStorage.getItem('currentRoute')
   }
@@ -137,12 +137,13 @@ export class OffersListComponent extends OffersDataClass {
     this.setNewChanges(idOffer, value);
   }
 
-  public setToActiveOffer(idOffer: number){
+  public setToActiveOffer(idOffer: number) {
     this.offersService.setOfferToActiveData(idOffer, this.mainData, this.offers);
   }
 
-  public goToWork(idOffer: number){
-     this.offersService.setOfferToWork(this.mainData, idOffer);
+  public goToWork(idOffer: number) {
+    const idUser = JSON.parse(localStorage.getItem('userData'));
+    this.offersService.setOfferToWork(this.mainData, idOffer, idUser['localId']);
   }
 
 }

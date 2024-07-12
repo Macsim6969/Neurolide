@@ -8,7 +8,8 @@ export interface OfferInterface {
   payout: string
   vip: boolean,
   statusOffer?: string,
-  isAdvertice?: boolean
+  isAdvertice?: boolean,
+  userId?: string
 }
 
 export interface OffersFormsData {

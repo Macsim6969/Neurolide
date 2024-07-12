@@ -51,12 +51,13 @@ export class OffersService {
     });
   }
 
-  public setOfferToWork(mainData: OfferInterface[], idOffer: number) {
+  public setOfferToWork(mainData: OfferInterface[], idOffer: number, idUser?: string) {
     const media = Object.values(mainData).find((e: OfferInterface) => e.id === idOffer);
     const blockId = Object.keys(mainData).find(key => mainData[key] === media);
     const newData: OfferInterface = {
       ...media,
-      isAdvertice: true
+      isAdvertice: true,
+      userId: idUser
     }
 
     this.backendService.updateOffers(blockId, newData);
