@@ -24,7 +24,7 @@ export class ProfileServices {
     return final;
   }
 
-  public async updateProfilePhoto(newPhoto: File, oldPhotoUrl: string): Promise<string> {
+  public async updateProfilePhoto(newPhoto: File, oldPhotoUrl?: string): Promise<string> {
     if (oldPhotoUrl) {
       const filePath = this.getFilePathFromUrl(oldPhotoUrl);
       await this.firebaseStorageService.deleteImage(filePath);

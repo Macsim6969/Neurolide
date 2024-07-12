@@ -95,6 +95,7 @@ export class PopupEditeComponent implements OnInit, OnDestroy {
         });
       }
     }
+    this.profileService.updateProfilePhoto(this.selectedFile);
     if (this.form.value.number === null || this.form.value.number === undefined) {
       this.form.value.number = this.userInfo.number;
     }
