@@ -18,7 +18,7 @@ export class ProfileServices {
   }
 
   public async onGetImage(storeData): Promise<string> {
-    const imageUrl = await this.firebaseStorageService.getImageURLs('gs://neuroline-c426d.appspot.com/images');
+    const imageUrl = await this.firebaseStorageService.getImageURLs('gs://neurolide-ee476.appspot.com/images');
     const ourUrl = storeData.avatar;
     const final = imageUrl.find(e => e.includes(ourUrl));
     return final;

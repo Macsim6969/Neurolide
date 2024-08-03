@@ -1,13 +1,13 @@
 export const environment = {
   production: false,
-  apiKey: 'AIzaSyAvTALDuOpuZFUay7MdC53Jn22Iw4MplaI',
+  apiKey: 'AIzaSyBjAn7QrJLa5TaO6AE6ahOQo43RvACDu80',
   firebaseConfig: {
-    apiKey: "AIzaSyAvTALDuOpuZFUay7MdC53Jn22Iw4MplaI",
-    authDomain: "neuroline-af6a2.firebaseapp.com",
-    databaseURL: "https://neuroline-af6a2-default-rtdb.firebaseio.com",
-    projectId: "neuroline-af6a2",
-    storageBucket: "neuroline-af6a2.appspot.com",
-    messagingSenderId: "105048957003",
-    appId: "1:105048957003:web:78782f151a9d6f92dcedce"
+    apiKey: "AIzaSyBjAn7QrJLa5TaO6AE6ahOQo43RvACDu80",
+    authDomain: "neurolide-ee476.firebaseapp.com",
+    databaseURL: "https://neurolide-ee476-default-rtdb.firebaseio.com",
+    projectId: "neurolide-ee476",
+    storageBucket: "neurolide-ee476.appspot.com",
+    messagingSenderId: "107479586604",
+    appId: "1:107479586604:web:8bd3432a18866d09f23e89"
   }
 };
