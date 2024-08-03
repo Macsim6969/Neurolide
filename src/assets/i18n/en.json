@@ -533,7 +533,7 @@
     ],
     "offerMobile": {
       "status": "Status",
-      "name": "Name"
+    "name": "Name"
     },
     "offerModel": [
       {
