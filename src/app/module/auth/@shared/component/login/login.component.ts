@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
   private dataUser;
   public errorData: string;
   private allUsers: any[];
+
   constructor(
     private authService: AuthService,
     private authIconsService: AuthIconsService,
@@ -39,11 +40,12 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
     private translate: TranslateService,
     private store: Store<{ store: StoreInterface }>,
     private backendService: BackendService
-  ) {}
+  ) { }
+
   ngOnInit() {
+    this.initializeDataFromJSON();
     this.backendService.getAlluser();
     this.initializeStorageDataForm();
-    this.initializeDataFromJSON();
   }
 
   ngAfterViewInit(): void {
@@ -55,24 +57,6 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
   }
-  private initializeStorageDataForm() {
-    if (localStorage.getItem('save')) {
-      const data = JSON.parse(localStorage.getItem('save'));
-      this.initializeForm(data);
-      this.isRulesChoise = data.rules;
-      this.dataUser = data.rules;
-    }
-  }
-
-  private initializeForm(data) {
-    this.form = new FormGroup({
-      email: new FormControl(data.email ? data.email : '', [Validators.required, Validators.email]),
-      password: new FormControl(data.password ? data.password : '', [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
-    });
-  }
 
   private initializeDataFromJSON() {
     this.translate
@@ -82,6 +66,27 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
         this.authRules = data.rules;
         this.formData = data.form;
       });
+  }
+
+  private initializeStorageDataForm() {
+    if (localStorage.getItem('save')) {
+      const data = JSON.parse(localStorage.getItem('save'));
+      this.initializeForm(data);
+      this.isRulesChoise = data.rules;
+      this.dataUser = data.rules;
+    } else {
+      this.initializeForm();
+    }
+  }
+
+  private initializeForm(data = null) {
+    this.form = new FormGroup({
+      email: new FormControl(data ? data.email : '', [Validators.required, Validators.email]),
+      password: new FormControl(data ? data.password : '', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+    });
   }
 
   public choiseRules(rules: string) {

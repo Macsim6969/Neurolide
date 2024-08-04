@@ -1,6 +1,6 @@
 <mat-card class="register">
-  <h3 class="register-title" [innerHTML]="formData.loginAccount"></h3>
-  <p class="register-description" [innerHTML]="formData.loginDescription"></p>
+  <h3 class="register-title" [innerHTML]="formData?.loginAccount"></h3>
+  <p class="register-description" [innerHTML]="formData?.loginDescription"></p>
 
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-rules">
@@ -9,31 +9,31 @@
     </div>
 
     <div class="email">
-      <mat-label class="label" [innerHTML]="formData.email"></mat-label>
+      <mat-label class="label" [innerHTML]="formData?.email"></mat-label>
       <input matInput type="email" [placeholder]="'mail@simmmple.com'" required formControlName="email">
     </div>
 
     <div class="password">
-      <mat-label class="label" [innerHTML]="formData.password"></mat-label>
+      <mat-label class="label" [innerHTML]="formData?.password"></mat-label>
       <input matInput type="password" [placeholder]="'Minimum 8 characters'" required formControlName="password">
     </div>
 
     <div class="check-login">
-      <mat-checkbox [formControl]="hideRequiredControl">{{formData.rememberData}}</mat-checkbox>
+      <mat-checkbox [formControl]="hideRequiredControl">{{formData?.rememberData}}</mat-checkbox>
     </div>
 
     <div class="error" *ngIf="errorData">
       <small style="color: red">{{errorData}}</small>
     </div>
     <div class="error"
-      *ngIf="form.get('email').invalid && form.get('email').touched || form.get('password').invalid && form.get('password').touched">
+      *ngIf="form?.get('email')?.invalid && form?.get('email')?.touched || form?.get('password')?.invalid && form?.get('password')?.touched">
       <small style="color: red">Email or password have incorrect data</small>
     </div>
 
-    <button [disabled]="form.invalid && (!this.isRulesChoise)" type="submit" class="login" mat-button
-      [innerHTML]="formData.login"></button>
+    <button [disabled]="form?.invalid && (!this.isRulesChoise)" type="submit" class="login"
+      mat-button>{{formData?.login}}</button>
   </form>
   <div class="footer_info">
-    <p><span>© </span> <span>{{data.getFullYear()}} </span> <span [innerHTML]="formData.formDescription"></span> </p>
+    <p><span>© </span> <span>{{data.getFullYear()}} </span> <span [innerHTML]="formData?.formDescription"></span> </p>
   </div>
 </mat-card>
