@@ -3,7 +3,7 @@
     (click)="selectChannel(i)">
     <nav class="id">{{channel.id}}</nav>
     <nav class="name">{{channel.name}}</nav>
-    <nav class="link">{{channel.link}}</nav>
+    <nav class="link" matTooltip="{{channel.link}}" [attr.aria-label]="channel.name">{{channel.link}}</nav>
     <nav class="stream">{{channel.brand}}</nav>
 
 

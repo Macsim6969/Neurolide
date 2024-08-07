@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FormOffersComponent } from "./components/form-offers/form-offers.component";
 import { DragScrollModule } from "ngx-drag-scroll";
 import { GraphicsDataComponent } from "../component/graphics-data/graphics-data.component";
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { GraphicsDataComponent } from "../component/graphics-data/graphics-data.
     CardsPaymentMobileComponent,
     FormMediaComponent,
     FormOffersComponent,
-    GraphicsDataComponent
+    GraphicsDataComponent,
+    MatTooltipModule
   ],
   imports: [
     CommonModule,
@@ -78,7 +80,8 @@ import { GraphicsDataComponent } from "../component/graphics-data/graphics-data.
     ReactiveFormsModule,
     TranslateModule,
     MatProgressSpinnerModule,
-    DragScrollModule
+    DragScrollModule,
+    MatTooltipModule
   ]
 })
 
