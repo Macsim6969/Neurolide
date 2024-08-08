@@ -11,9 +11,8 @@
         mat-button>{{action.text}}</button>
     </div>
   </div>
-  <div class="user_avatar">
-    <img (error)=" avatar = '../../../../../../assets/images/profile/avatar.png'"
-      [src]="avatar ? avatar : '../../../../../../assets/images/profile/avatar.png'" alt="Avatar">
+  <div class="user_avatar" *ngIf="avatar">
+    <img [src]="avatar" alt="Avatar">
   </div>
 </div>
 
