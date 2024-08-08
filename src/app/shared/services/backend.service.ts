@@ -8,13 +8,110 @@ import { MonitoringData } from '../interfaces/header.interface';
 import { TransactionInterface } from '../../module/balance/@shared/interface/transactions.interface';
 import { MediaFormInterface } from '../../module/media-chanels/@shared/interface/mediaForm.interface';
 import { OfferInterface } from '../../module/offers/@shared/interface/offer.interface';
+import { Database, onValue, ref } from 'firebase/database';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 
 export class BackendService {
   private baseUrl = 'https://neurolide-ee476-default-rtdb.firebaseio.com/';
   constructor(private http: HttpClient,
-    private store: Store<{ store: StoreInterface }>,) {
+    private store: Store<{ store: StoreInterface }>,
+    private db: Database) {
+      this.setupRealtimeListeners();
+  }
+
+  private setupRealtimeListeners() {
+    // Tracking users
+    const usersRef = ref(this.db, 'users');
+    onValue(usersRef, (snapshot) => {
+      const userData = snapshot.val();
+      if (userData) {
+        this.store.dispatch(allUsers({ data: userData }));
+      }
+    });
+
+    // Tracking profile
+    const userProfilesRef = ref(this.db, 'users');
+    onValue(userProfilesRef, (snapshot) => {
+      const profilesData = snapshot.val();
+      if (profilesData) {
+        Object.keys(profilesData).forEach(userId => {
+          const userProfile = profilesData[userId]['profile'];
+          if (userProfile) {
+            this.store.dispatch(newUserData({ data: userProfile }));
+          }
+        });
+      }
+    });
+
+    // Tracking monitoring
+    const monitoringRef = ref(this.db, 'users');
+    onValue(monitoringRef, (snapshot) => {
+      const monitoringData = snapshot.val();
+      if (monitoringData) {
+        Object.keys(monitoringData).forEach(userId => {
+          const data = monitoringData[userId]['monitoring'];
+          if (data) {
+            this.store.dispatch(updatedMonitoringData({ data }));
+          }
+        });
+      }
+    });
+
+    // Tracking card
+    const cardsPaymentRef = ref(this.db, 'users');
+    onValue(cardsPaymentRef, (snapshot) => {
+      const cardsData = snapshot.val();
+      if (cardsData) {
+        Object.keys(cardsData).forEach(userId => {
+          const data = cardsData[userId]['card'];
+          if (data) {
+            this.store.dispatch(setCardsPayment({ data }));
+          }
+        });
+      }
+    });
+
+    // Tracking cardTransaction
+    const cardsTransactionRef = ref(this.db, 'users');
+    onValue(cardsTransactionRef, (snapshot) => {
+      const transactionsData = snapshot.val();
+      if (transactionsData) {
+        Object.keys(transactionsData).forEach(userId => {
+          const data = transactionsData[userId]['cardTransaction'];
+          if (data) {
+            this.store.dispatch(setCardsTransaction({ data }));
+          }
+        });
+      }
+    });
+
+    // Tracking media-channels
+    const mediaChannelsRef = ref(this.db, 'media-channels');
+    onValue(mediaChannelsRef, (snapshot) => {
+      const mediaChannelsData = snapshot.val();
+      if (mediaChannelsData) {
+        this.store.dispatch(setMediaChannelsData({ data: Object.values(mediaChannelsData) }));
+      }
+    });
+
+    // Tracking offers
+    const offersRef = ref(this.db, 'offers');
+    onValue(offersRef, (snapshot) => {
+      const offersData = snapshot.val();
+      if (offersData) {
+        this.store.dispatch(setOffersData({ data: Object.values(offersData) }));
+      }
+    });
+
+    // Tracking active proposals
+    const activeOffersRef = ref(this.db, 'active-offers');
+    onValue(activeOffersRef, (snapshot) => {
+      const activeOffersData = snapshot.val();
+      if (activeOffersData) {
+        this.store.dispatch(setToActiveOffer({ offer: activeOffersData }));
+      }
+    });
   }
 
   public updateUserData(userData) {

@@ -73,7 +73,7 @@ export class OfferFormService {
 
   private setUnikeID(): number {
     let id: number
-    this.store.pipe(select(selectOffersData)).subscribe((data) => {
+    this.store.pipe(select(selectOffersData), take(1)).subscribe((data) => {
       id = Object.values(data).length + 1;
     })
     return id

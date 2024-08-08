@@ -29,14 +29,11 @@ export class FirebaseStorageService {
 
   public async deleteImage(url: string): Promise<void> {
     const storageRef = ref(this.storage, `images/${url}`);
-    console.log(this.storage);
     try {
       await getMetadata(storageRef);
-      console.log('File exists:', url);
       await deleteObject(storageRef);
     } catch (error) {
       if (error.code === 'storage/object-not-found') {
-        console.log('File does not exist:', url);
       } else {
         console.error('Error deleting file:', error);
         throw error;

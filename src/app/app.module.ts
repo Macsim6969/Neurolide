@@ -22,7 +22,7 @@ import { SidebarService } from './shared/services/sidebarService';
 import { UserSearchService } from './shared/services/userSearch.service';
 import { initializeApp } from 'firebase/app';
 import { getStorage } from 'firebase/storage';
-import { getDatabase } from 'firebase/database';  
+import { Database, getDatabase } from 'firebase/database';  
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -55,7 +55,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     RulesGuard, 
     AuthService, 
     MonitoringService, 
-    SidebarService
+    SidebarService,
+    {
+      provide: Database,
+      useFactory: () => {
+        const app = initializeApp(environment.firebaseConfig);
+        return getDatabase(app);
+      }
+    }
   ],
   bootstrap: [AppComponent]
 })

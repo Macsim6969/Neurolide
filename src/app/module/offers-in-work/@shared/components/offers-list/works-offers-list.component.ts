@@ -47,14 +47,12 @@ export class WorksOffersListComponent extends OffersList implements OnInit {
       } else if (this.mainData) {
         this.offerInWork = Object.values(this.mainData).filter(e => e.isAdvertice);
       }
-      console.log(this.offerInWork);
     })
   }
 
   private checkRulesAndUrlUser() {
     // this.rules = JSON.parse(localStorage.getItem('rules'));
     this.url = localStorage.getItem('currentRoute')
-    console.log(this.rules, this.url)
   }
 
   protected override streamOffersDataFromStore(): void {
