@@ -1,0 +1,49 @@
+.user-header-search {
+  margin-top: 36px;
+  padding: 30px 21.3px;
+  border-radius: 20px 20px 0 0 ;
+
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  background: #0E1218;
+
+  .header_content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+
+    &.hide {
+      display: none;
+    }
+
+
+    p {
+      font-family: "Public Sans", sans-serif;
+      font-size: 2rem;
+      line-height: 23.5px;
+      color: #FFFFFF;
+    }
+
+    mat-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.active {
+
+        transform: rotateX(180deg);
+
+      }
+
+      ::ng-deep {
+        svg {
+          width: 12px;
+          height: 6px;
+        }
+      }
+    }
+  }
+}

@@ -100,7 +100,7 @@ export class BackendService {
     onValue(offersRef, (snapshot) => {
       const offersData = snapshot.val();
       if (offersData) {
-        this.store.dispatch(setOffersData({ data: Object.values(offersData) }));
+        this.store.dispatch(setOffersData({ data: offersData }));
       }
     });
 
@@ -237,6 +237,7 @@ export class BackendService {
 
   public getOffers() {
     return this.http.get<OfferInterface[]>(`${this.baseUrl}/offers.json`).subscribe((data: OfferInterface[]) => {
+      console.log(data);
       data ? this.store.dispatch(setOffersData({ data: data })) : null;
     })
   }

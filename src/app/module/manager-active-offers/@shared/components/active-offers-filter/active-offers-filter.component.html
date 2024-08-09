@@ -1,0 +1,13 @@
+<div class="user-header-search" *ngIf="userHead">
+  <nav [ngClass]="{
+    'hide': search['tag'].toLocaleLowerCase() === 'setting' || search['tag'].toLocaleLowerCase() === 'advertise' && rules === 'brand' || 
+   search['tag'].toLocaleLowerCase() === 'payout' && rules === 'brand' ||
+   search['tag'].toLocaleLowerCase() === 'payout' && rules === 'manager' ||
+   search['tag'].toLocaleLowerCase() === 'advertise' && rules === 'manager' 
+
+  }" class="header_content {{search['title'].toLocaleLowerCase()}}" (click)="toogleFilter(i, search.tag)"
+    *ngFor="let search of userHead; index as i">
+    <p>{{search.title}}</p>
+    <mat-icon [ngClass]="{'active': i === active}" svgIcon="arrow"></mat-icon>
+  </nav>
+</div>

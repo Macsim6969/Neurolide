@@ -138,7 +138,12 @@ export class OffersListComponent extends OffersDataClass {
   }
 
   public setToActiveOffer(idOffer: number) {
-    this.offersService.setOfferToActiveData(idOffer, this.mainData, this.offers);
+    const activeOffer = this.offers.find((e) => e.id === idOffer);
+    const newOffer = {
+      ...activeOffer,
+      statusOffer: 'active'
+    }
+    this.offersService.setNewChangesFromForm(newOffer, this.mainData);
   }
 
   public goToWork(idOffer: number) {

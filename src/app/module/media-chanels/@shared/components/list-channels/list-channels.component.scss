@@ -34,6 +34,11 @@
 
     .link {
       font-size: 2rem;
+      cursor: pointer;
+      max-width: 145px;
+      width: 95%;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .payout {

@@ -35,13 +35,16 @@ export abstract class OffersList extends OffersDataClass {
   ) {
     super(store, globalIconsService, offersService);
   }
-  
+
   override ngOnInit(): void {
     super.ngOnInit();
+    super.streamOffersDataFromStore();
+    this.streamOffersDataFromStore();
     this.streamModelPaymentFromJson();
     this.streamSearchData();
     this.streamSearchFilterData();
   }
+
 
   private streamModelPaymentFromJson() {
     this.translate.stream('offers.offerModel').pipe(takeUntil(this.destroy$)).subscribe((data: ModelPaymentInterface[]) => {
@@ -128,6 +131,11 @@ export abstract class OffersList extends OffersDataClass {
   }
 
   public setToActiveOffer(idOffer: number) {
-    this.offersService.setOfferToActiveData(idOffer, this.mainData, this.offers);
+    const activeOffer = this.offers.find((e) => e.id === idOffer);
+    const newOffer = {
+      ...activeOffer,
+      statusOffer: 'active'
+    }
+    this.offersService.setNewChangesFromForm(newOffer, this.mainData);
   }
 }

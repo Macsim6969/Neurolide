@@ -41,14 +41,16 @@ export class OffersService {
 
   public setNewChangesFromForm(mediaChannels: OfferInterface, mainData: OfferInterface[]) {
     const blockId = Object.keys(mainData).find(key => mainData[key].id === mediaChannels.id);
+    console.log(blockId)
     this.backendService.updateOffers(blockId, mediaChannels);
   }
 
-  public setOfferToActiveData(idOffer: number, allOffers: OfferInterface[], offers: OfferInterface[]) {
-    const offer = offers.find((e: OfferInterface) => e.id === idOffer)
-    this.backendService.setToActiveOffer(offer).add(() => {
-      this.removeOffers(offers, allOffers, idOffer)
-    });
+  public setOfferToActiveData(idOffer: string, allOffers: OfferInterface[], offers: OfferInterface[]) {
+    // const blockId = Object.keys(mainData).find(key => mainData[key].id === mediaChannels.id);
+    // this.backendService.updateOffers(offer, mediaChannels);
+    // this.backendService.setToActiveOffer(offer).add(() => {
+    //   this.removeOffers(offers, allOffers, idOffer)
+    // });
   }
 
   public setOfferToWork(mainData: OfferInterface[], idOffer: number, idUser?: string) {

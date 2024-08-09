@@ -1,0 +1,23 @@
+<div class="media-channel" *ngIf="activeOffers;else loading">
+  <div class="channel" *ngFor="let channel of activeOffers;index as i">
+    <nav class="id">{{channel.id}}
+      <img src="../../../../../../assets/images/global/active.svg" alt="Active">
+    </nav>
+    <nav class="name">{{channel.name}}</nav>
+    <nav class="link">{{channel.link}}</nav>
+    <nav class="stream">{{channel.brand}}</nav>
+    <nav class="subscribe">${{channel.payments ? channel.payments : 0}}</nav>
+
+    <nav class="price">${{channel.balance ? channel.balance : 0}}</nav>
+    <nav class="settings">
+      <button (click)="removeOffers(channel.id)" type="button" class="remove "><mat-icon
+          svgIcon="remove"></mat-icon></button>
+      <button (click)="changeOffers(channel.id)" type="submit" class="save "><mat-icon
+          svgIcon="settings"></mat-icon></button>
+    </nav>
+  </div>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

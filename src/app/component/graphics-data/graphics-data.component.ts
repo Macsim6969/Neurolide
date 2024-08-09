@@ -36,30 +36,39 @@ export class GraphicsDataComponent implements OnInit, OnDestroy {
   }
 
   private grapicsManager(data: MonitoringData) {
-    this.graphicsData = [
-      { key: 'index', value: Object.values(data)[0].index ?? 0 },
-      { key: 'enrollment', value: Object.values(data)[0].enrollment ?? 0 },
-      { key: 'budget', value: Object.values(data)[0].budget ?? 0 },
-      { key: 'advice', value: Object.values(data)[0].advice ?? 0 }
-    ];
+    if (data) {
+      this.graphicsData = [
+        { key: 'index', value: Object.values(data)[0].index ?? 0 },
+        { key: 'enrollment', value: Object.values(data)[0].enrollment ?? 0 },
+        { key: 'budget', value: Object.values(data)[0].budget ?? 0 },
+        { key: 'advice', value: Object.values(data)[0].advice ?? 0 }
+      ];
+    }
+
   }
 
   private grapicsBrand(data: MonitoringData) {
-    this.graphicsData = [
-      { key: 'leads', value: Object.values(data)[0].leads ?? 0 },
-      { key: 'disregard', value: Object.values(data)[0].disregard ?? 0 },
-      { key: 'approve', value: Object.values(data)[0].approve ?? 0 },
-      { key: 'advice', value: Object.values(data)[0].advice ?? 0 }
-    ];
+    if (data) {
+      this.graphicsData = [
+        { key: 'leads', value: Object.values(data)[0].leads ?? 0 },
+        { key: 'disregard', value: Object.values(data)[0].disregard ?? 0 },
+        { key: 'approve', value: Object.values(data)[0].approve ?? 0 },
+        { key: 'advice', value: Object.values(data)[0].advice ?? 0 }
+      ];
+    }
+
   }
 
   private grapicsAffiliate(data: MonitoringData) {
-    this.graphicsData = [
-      { key: 'index', value: Object.values(data)[0].index ?? 0 },
-      { key: 'enrollment', value: Object.values(data)[0].enrollment ?? 0 },
-      { key: 'budget', value: Object.values(data)[0].budget ?? 0 },
-      { key: 'advice', value: Object.values(data)[0].advice ?? 0 }
-    ];
+    if (data) {
+      this.graphicsData = [
+        { key: 'index', value: Object.values(data)[0].index ?? 0 },
+        { key: 'enrollment', value: Object.values(data)[0].enrollment ?? 0 },
+        { key: 'budget', value: Object.values(data)[0].budget ?? 0 },
+        { key: 'advice', value: Object.values(data)[0].advice ?? 0 }
+      ];
+    }
+
   }
 
   public getWidth(value: number): number {

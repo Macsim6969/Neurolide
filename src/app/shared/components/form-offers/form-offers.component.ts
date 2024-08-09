@@ -9,7 +9,7 @@ import { ModelPaymentInterface } from '../../../module/offers/@shared/interface/
 import { OffersService } from '../../../module/offers/@shared/services/offers.service';
 import { Store, select } from '@ngrx/store';
 import { StoreInterface } from '../../../store/model/store.model';
-import { selectOffersData } from '../../../store/selectors/store.selectors';
+import { selectActiveOffers, selectOffersData } from '../../../store/selectors/store.selectors';
 import { GlobalIconsService } from '../../services/globalIcon.service';
 
 @Component({
@@ -92,7 +92,8 @@ export class FormOffersComponent extends BasePopupComponent {
   }
 
   private getAllOffersData() {
-    this.store.pipe(take(1), select(selectOffersData), takeUntil(this.destroy$)).subscribe((data) => {
+
+    this.store.pipe(take(1), select(selectOffersData)).subscribe((data) => {
       this.offersData = data;
       const newOffers: OfferInterface = {
         ...this.offerData,

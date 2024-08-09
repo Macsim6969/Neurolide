@@ -10,7 +10,7 @@ import { UserSearchService } from "../../services/userSearch.service";
 })
 
 export abstract class OffersFilter implements OnInit, AfterViewInit, OnDestroy {
-  private destroy$ = new Subject<void>();
+  public destroy$ = new Subject<void>();
   public rules: string;
   public active: number = 0;
   public isActive: boolean[];
