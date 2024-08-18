@@ -44,15 +44,18 @@ export class BalanceCardComponent implements OnInit, OnDestroy {
     });
   }
 
-
   public openPopup(tage: string) {
-    if (tage === 'top-up') {
-      this.balanceActionService._isAddedMoney = true;
-    } else if (tage === 'take-out') {
-      this.balanceActionService._isTakeOutdMoney = true;
+    switch (tage) {
+      case 'top-up':
+        this.balanceActionService._isAddedMoney = true;
+        break;
+      case 'take-out':
+        this.balanceActionService._isTakeOutdMoney = true;
+        break;
+      default:
+        break;
     }
   }
-
 
   ngOnDestroy(): void {
     this.destroy$.next();
