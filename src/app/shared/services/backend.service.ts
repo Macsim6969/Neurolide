@@ -13,7 +13,7 @@ import { Database, onValue, ref } from 'firebase/database';
 @Injectable()
 
 export class BackendService {
-  private baseUrl = 'https://neurolide-ee476-default-rtdb.firebaseio.com/';
+  private baseUrl = 'https://neuroli-c9f74-default-rtdb.firebaseio.com/';
   constructor(private http: HttpClient,
     private store: Store<{ store: StoreInterface }>,
     private db: Database) {

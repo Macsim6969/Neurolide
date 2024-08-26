@@ -23,7 +23,7 @@ export class FirebaseStorageService {
   }
 
   public getFilePathFromUrl(url: string): string {
-    const storageRootUrl = 'gs://neurolide-ee476.appspot.com';
+    const storageRootUrl = 'gs://neuroli-c9f74.appspot.com';
     return decodeURIComponent(url.replace(storageRootUrl, '').split('?')[0]);
   }
 
